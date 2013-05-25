@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using System.Collections.ObjectModel;
+
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Firefox;
+using SwdPageRecorder.WebDriver;
+
+namespace SwdPageRecorder.UI
+{
+    public class SwdMainPresenter
+    {
+        private SwdMainView view;
+        public IWebDriver Driver { get { return SwdBrowser.Driver(); } }
+
+        public SwdMainPresenter(SwdMainView view)
+        {
+            this.view = view;
+        }
+
+
+        internal void StartNewBrowser()
+        {
+            SwdBrowser.Initialize();
+            Driver.Navigate().GoToUrl(@"http://yandex.ru");
+        }
+
+
+        public ReadOnlyCollection<IWebElement>  FindElements(LocatorSearchMethod searchMethod, string locator)
+        {
+            By by = null;
+            switch (searchMethod)
+            {
+                case LocatorSearchMethod.Id:
+                    by = By.Id(locator);
+                    break;
+                case LocatorSearchMethod.CssSelector:
+                    by = By.CssSelector(locator);
+                    break;
+                case LocatorSearchMethod.XPath:
+                    by = By.XPath(locator);
+                    break;
+            }
+
+            return Driver.FindElements(by);
+        }
+
+        internal void TestLocators()
+        {
+
+            var searchMethod = view.GetLocatorSearchMethod();
+            var locator = view.GetLocatorText();
+            
+            var elements = FindElements(searchMethod, locator);
+
+            List<ResultElement> displayList = new List<ResultElement>();
+            foreach (var el in elements)
+            {
+                ResultElement displayItem = new ResultElement();
+                displayItem.DisplayString = el.TagName + " " + el.Text;
+                displayItem.WebElement = el;
+                displayList.Add(displayItem);
+            }
+
+            view.DisplaySearchResults(displayList);
+        }
+    }
+}
