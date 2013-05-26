@@ -17,6 +17,8 @@ namespace SwdPageRecorder.UI
         private SwdMainView view;
         public IWebDriver Driver { get { return SwdBrowser.Driver(); } }
 
+
+
         public SwdMainPresenter(SwdMainView view)
         {
             this.view = view;
@@ -43,6 +45,26 @@ namespace SwdPageRecorder.UI
                     break;
                 case LocatorSearchMethod.XPath:
                     by = By.XPath(locator);
+                    break;
+
+                case LocatorSearchMethod.Name:
+                    by = By.Name(locator);
+                    break;
+
+                case LocatorSearchMethod.TagName:
+                    by = By.TagName(locator);
+                    break;
+
+                case LocatorSearchMethod.ClassName:
+                    by = By.ClassName(locator);
+                    break;
+
+                case LocatorSearchMethod.LinkText:
+                    by = By.LinkText(locator);
+                    break;
+
+                case LocatorSearchMethod.PartialLinkText:
+                    by = By.PartialLinkText(locator);
                     break;
             }
 
