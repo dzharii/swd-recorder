@@ -31,12 +31,22 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkUseRemoteHub = new System.Windows.Forms.CheckBox();
+            this.grpRemoteConnection = new System.Windows.Forms.GroupBox();
+            this.lblHubConnectionStatus = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtRemoteHubUrl = new System.Windows.Forms.TextBox();
             this.btnStartWebDriver = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ddlBrowserToStart = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lbElements = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateDeclaration = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtWebElementName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtOtherLocator = new System.Windows.Forms.TextBox();
             this.btnTestLocator = new System.Windows.Forms.Button();
             this.ddlOtherLocator = new System.Windows.Forms.ComboBox();
@@ -48,13 +58,11 @@
             this.rbtnCssSelector = new System.Windows.Forms.RadioButton();
             this.txtCssSelector = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lbWebElements = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.grpRemoteConnection.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,8 +90,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.chkUseRemoteHub);
+            this.tabPage1.Controls.Add(this.grpRemoteConnection);
             this.tabPage1.Controls.Add(this.btnStartWebDriver);
-            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.ddlBrowserToStart);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -92,9 +103,66 @@
             this.tabPage1.Text = "Browser Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 155);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Browser:";
+            // 
+            // chkUseRemoteHub
+            // 
+            this.chkUseRemoteHub.AutoSize = true;
+            this.chkUseRemoteHub.Location = new System.Drawing.Point(6, 19);
+            this.chkUseRemoteHub.Name = "chkUseRemoteHub";
+            this.chkUseRemoteHub.Size = new System.Drawing.Size(164, 17);
+            this.chkUseRemoteHub.TabIndex = 3;
+            this.chkUseRemoteHub.Text = "Use Remote Hub connection";
+            this.chkUseRemoteHub.UseVisualStyleBackColor = true;
+            this.chkUseRemoteHub.CheckedChanged += new System.EventHandler(this.chkUseRemoteHub_CheckedChanged);
+            // 
+            // grpRemoteConnection
+            // 
+            this.grpRemoteConnection.Controls.Add(this.lblHubConnectionStatus);
+            this.grpRemoteConnection.Controls.Add(this.label2);
+            this.grpRemoteConnection.Controls.Add(this.txtRemoteHubUrl);
+            this.grpRemoteConnection.Location = new System.Drawing.Point(6, 42);
+            this.grpRemoteConnection.Name = "grpRemoteConnection";
+            this.grpRemoteConnection.Size = new System.Drawing.Size(558, 100);
+            this.grpRemoteConnection.TabIndex = 2;
+            this.grpRemoteConnection.TabStop = false;
+            this.grpRemoteConnection.Text = "Remote Driver Configuration";
+            // 
+            // lblHubConnectionStatus
+            // 
+            this.lblHubConnectionStatus.AutoSize = true;
+            this.lblHubConnectionStatus.Location = new System.Drawing.Point(508, 31);
+            this.lblHubConnectionStatus.Name = "lblHubConnectionStatus";
+            this.lblHubConnectionStatus.Size = new System.Drawing.Size(37, 13);
+            this.lblHubConnectionStatus.TabIndex = 2;
+            this.lblHubConnectionStatus.Text = "Status";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Hub URL:";
+            // 
+            // txtRemoteHubUrl
+            // 
+            this.txtRemoteHubUrl.Location = new System.Drawing.Point(69, 28);
+            this.txtRemoteHubUrl.Name = "txtRemoteHubUrl";
+            this.txtRemoteHubUrl.Size = new System.Drawing.Size(433, 20);
+            this.txtRemoteHubUrl.TabIndex = 0;
+            // 
             // btnStartWebDriver
             // 
-            this.btnStartWebDriver.Location = new System.Drawing.Point(151, 7);
+            this.btnStartWebDriver.Location = new System.Drawing.Point(187, 152);
             this.btnStartWebDriver.Name = "btnStartWebDriver";
             this.btnStartWebDriver.Size = new System.Drawing.Size(75, 23);
             this.btnStartWebDriver.TabIndex = 1;
@@ -102,17 +170,17 @@
             this.btnStartWebDriver.UseVisualStyleBackColor = true;
             this.btnStartWebDriver.Click += new System.EventHandler(this.btnStartWebDriver_Click);
             // 
-            // comboBox1
+            // ddlBrowserToStart
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.ddlBrowserToStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlBrowserToStart.FormattingEnabled = true;
+            this.ddlBrowserToStart.Items.AddRange(new object[] {
             "FireFox",
             "Internet Explorer"});
-            this.comboBox1.Location = new System.Drawing.Point(23, 7);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.ddlBrowserToStart.Location = new System.Drawing.Point(60, 152);
+            this.ddlBrowserToStart.Name = "ddlBrowserToStart";
+            this.ddlBrowserToStart.Size = new System.Drawing.Size(121, 21);
+            this.ddlBrowserToStart.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -147,8 +215,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnUpdateDeclaration);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtWebElementName);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtOtherLocator);
             this.groupBox2.Controls.Add(this.btnTestLocator);
@@ -166,6 +235,41 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selectors";
+            // 
+            // btnUpdateDeclaration
+            // 
+            this.btnUpdateDeclaration.Location = new System.Drawing.Point(458, 160);
+            this.btnUpdateDeclaration.Name = "btnUpdateDeclaration";
+            this.btnUpdateDeclaration.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateDeclaration.TabIndex = 13;
+            this.btnUpdateDeclaration.Text = "Update >>";
+            this.btnUpdateDeclaration.UseVisualStyleBackColor = true;
+            this.btnUpdateDeclaration.Click += new System.EventHandler(this.btnUpdateDeclaration_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(461, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Generate";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // txtWebElementName
+            // 
+            this.txtWebElementName.Location = new System.Drawing.Point(177, 13);
+            this.txtWebElementName.Name = "txtWebElementName";
+            this.txtWebElementName.Size = new System.Drawing.Size(277, 20);
+            this.txtWebElementName.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Awesome source code identifier:";
             // 
             // txtOtherLocator
             // 
@@ -264,21 +368,13 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.propertyGrid1);
-            this.groupBox4.Controls.Add(this.listBox1);
+            this.groupBox4.Controls.Add(this.lbWebElements);
             this.groupBox4.Location = new System.Drawing.Point(592, 79);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(237, 397);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(225, 95);
-            this.listBox1.TabIndex = 0;
             // 
             // propertyGrid1
             // 
@@ -287,30 +383,14 @@
             this.propertyGrid1.Size = new System.Drawing.Size(225, 271);
             this.propertyGrid1.TabIndex = 1;
             // 
-            // label1
+            // lbWebElements
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Awesome source code identifier:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(177, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(277, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(461, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Generate";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lbWebElements.FormattingEnabled = true;
+            this.lbWebElements.Location = new System.Drawing.Point(6, 19);
+            this.lbWebElements.Name = "lbWebElements";
+            this.lbWebElements.Size = new System.Drawing.Size(225, 95);
+            this.lbWebElements.TabIndex = 0;
+            this.lbWebElements.DoubleClick += new System.EventHandler(this.lbWebElements_DoubleClick);
             // 
             // SwdMainView
             // 
@@ -324,6 +404,9 @@
             this.Text = "SWD Page Recorder";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.grpRemoteConnection.ResumeLayout(false);
+            this.grpRemoteConnection.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -338,7 +421,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox ddlBrowserToStart;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnStartWebDriver;
         private System.Windows.Forms.Button btnTestLocator;
@@ -355,11 +438,18 @@
         private System.Windows.Forms.RadioButton rbtnOtherLocator;
         private System.Windows.Forms.TextBox txtOtherLocator;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbWebElements;
         private System.Windows.Forms.PropertyGrid propertyGrid1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtWebElementName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUpdateDeclaration;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkUseRemoteHub;
+        private System.Windows.Forms.GroupBox grpRemoteConnection;
+        private System.Windows.Forms.Label lblHubConnectionStatus;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtRemoteHubUrl;
 
     }
 }

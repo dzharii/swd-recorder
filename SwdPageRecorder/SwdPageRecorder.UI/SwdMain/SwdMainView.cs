@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SwdPageRecorder.WebDriver;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 
 
 namespace SwdPageRecorder.UI
@@ -33,6 +36,44 @@ namespace SwdPageRecorder.UI
         };
 
 
+        const string browser_Firefox = "Firefox";
+        const string browser_Chrome = "Chrome";
+        const string browser_InternetExplorer = "InternetExplorer";
+        const string browser_PhantomJS = "PhantomJS";
+        const string browser_HtmlUnit = "HtmlUnit";
+        const string browser_HtmlUnitWithJavaScript = "HtmlUnitWithJavaScript";
+        const string browser_Opera = "Opera";
+        const string browser_Safari = "Safari";
+        const string browser_IPhone = "IPhone";
+        const string browser_IPad = "IPad";
+        const string browser_Android = "Android";
+
+
+        string[] allWebdriverBrowsersSupported = new string[]
+        {
+            browser_Firefox,
+            browser_Chrome,
+            browser_InternetExplorer,
+            browser_PhantomJS,
+            browser_HtmlUnit,
+            browser_HtmlUnitWithJavaScript,
+            browser_Opera,
+            browser_Safari,
+            browser_IPhone,
+            browser_IPad,
+            browser_Android,
+        };
+
+        string[] embededWebdriverBrowsersSupported = new string[]
+        {
+            browser_Firefox,
+            browser_Chrome,
+            browser_InternetExplorer,
+            browser_PhantomJS,
+            browser_Safari,
+        };
+
+
         //private System.Windows.Forms.PropertyGrid OptionsPropertyGrid;
         // http://msdn.microsoft.com/en-us/library/aa302326.aspx
 
@@ -44,9 +85,41 @@ namespace SwdPageRecorder.UI
             ddlOtherLocator.Items.AddRange(otherLocatorListItems);
             ddlOtherLocator.SelectedIndex = ddlOtherLocator.FindString(otherLocator_LinkText);
 
+            HandleRemoteDriverSettingsEnabledStatus();
 
 
         }
+
+        private void ChangeBrowsersList(bool showAll)
+        {
+            var selectedItem = ddlBrowserToStart.SelectedItem;
+            string previousValue = "";
+            
+            if (selectedItem != null)
+            {
+                previousValue = ddlBrowserToStart.SelectedItem as string;
+            }
+
+            ddlBrowserToStart.Items.Clear();
+
+            string[] addedItems = null;
+            if (showAll)
+            {
+                addedItems = allWebdriverBrowsersSupported;
+                ddlBrowserToStart.Items.AddRange(addedItems);
+            }
+            else
+            {
+                addedItems = embededWebdriverBrowsersSupported;
+                ddlBrowserToStart.Items.AddRange(addedItems);
+            }
+
+            int index = Array.IndexOf(addedItems, previousValue);
+            index = index >= 0 ? index : 0;
+            ddlBrowserToStart.SelectedIndex = index;
+
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -172,5 +245,67 @@ namespace SwdPageRecorder.UI
         {
             rbtnHtmlId.Checked = true;
         }
+
+        private void btnUpdateDeclaration_Click(object sender, EventArgs e)
+        {
+            var element = new WebElementDefinition()
+            {
+                Name = txtWebElementName.Text,
+                HowToSearch = GetLocatorSearchMethod(),
+                Locator = GetLocatorText(),
+            };
+
+            presenter.UpdatePageDefinition(element);
+        }
+
+        internal IEnumerable<WebElementDefinition> GetKnownWebElements()
+        {
+            foreach (var item in lbWebElements.Items)
+            {
+                yield return (item as WebElementDefinition);
+            }
+        }
+
+        internal void AddToPageDefinitions(WebElementDefinition element)
+        {
+            lbWebElements.Items.Add(element);
+        }
+
+        private void lbWebElements_DoubleClick(object sender, EventArgs e)
+        {
+            // TODO: TEST TEST
+            if (lbWebElements.SelectedItem != null)
+            {
+                var element = lbWebElements.SelectedItem as WebElementDefinition;
+
+                var by = presenter.ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
+
+                SwdBrowser.GetDriver().FindElement(by).Click();
+
+                //element.WebElement.Click();
+            }
+        }
+
+        private void HandleRemoteDriverSettingsEnabledStatus()
+        {
+            if (chkUseRemoteHub.Checked)
+            {
+                grpRemoteConnection.Enabled = true;
+            }
+            else
+            {
+                grpRemoteConnection.Enabled = false;
+            }
+
+            ChangeBrowsersList(chkUseRemoteHub.Checked);
+        }
+        
+        private void chkUseRemoteHub_CheckedChanged(object sender, EventArgs e)
+        {
+            HandleRemoteDriverSettingsEnabledStatus();
+            
+        }
+
+
     }
 }

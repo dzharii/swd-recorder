@@ -15,7 +15,7 @@ namespace SwdPageRecorder.UI
     public class SwdMainPresenter
     {
         private SwdMainView view;
-        public IWebDriver Driver { get { return SwdBrowser.Driver(); } }
+        public IWebDriver Driver { get { return SwdBrowser.GetDriver(); } }
 
 
 
@@ -32,7 +32,7 @@ namespace SwdPageRecorder.UI
         }
 
 
-        public ReadOnlyCollection<IWebElement>  FindElements(LocatorSearchMethod searchMethod, string locator)
+        public By ByFromLocatorSearchMethod(LocatorSearchMethod searchMethod, string locator)
         {
             By by = null;
             switch (searchMethod)
@@ -67,7 +67,14 @@ namespace SwdPageRecorder.UI
                     by = By.PartialLinkText(locator);
                     break;
             }
+            return by;
+        }
 
+
+        public ReadOnlyCollection<IWebElement>  FindElements(LocatorSearchMethod searchMethod, string locator)
+        {
+
+            var by = ByFromLocatorSearchMethod(searchMethod, locator);
             return Driver.FindElements(by);
         }
 
@@ -89,6 +96,14 @@ namespace SwdPageRecorder.UI
             }
 
             view.DisplaySearchResults(displayList);
+        }
+
+
+
+        internal void UpdatePageDefinition(WebElementDefinition element)
+        {
+            view.AddToPageDefinitions(element);
+
         }
     }
 }
