@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -59,8 +59,8 @@
             this.rbtnCssSelector = new System.Windows.Forms.RadioButton();
             this.txtCssSelector = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.tvWebElements = new System.Windows.Forms.TreeView();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpRemoteConnection.SuspendLayout();
@@ -160,7 +160,7 @@
             this.txtRemoteHubUrl.Name = "txtRemoteHubUrl";
             this.txtRemoteHubUrl.Size = new System.Drawing.Size(433, 20);
             this.txtRemoteHubUrl.TabIndex = 0;
-            this.txtRemoteHubUrl.Text = "http://127.0.0.1:4444";
+            this.txtRemoteHubUrl.Text = "http://127.0.0.1:4444/wd/hub";
             // 
             // btnStartWebDriver
             // 
@@ -378,24 +378,24 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
             // 
+            // tvWebElements
+            // 
+            this.tvWebElements.Location = new System.Drawing.Point(6, 17);
+            this.tvWebElements.Name = "tvWebElements";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "Pages";
+            this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            this.tvWebElements.Size = new System.Drawing.Size(225, 158);
+            this.tvWebElements.TabIndex = 2;
+            this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
+            // 
             // propertyGrid1
             // 
             this.propertyGrid1.Location = new System.Drawing.Point(6, 179);
             this.propertyGrid1.Name = "propertyGrid1";
             this.propertyGrid1.Size = new System.Drawing.Size(225, 212);
             this.propertyGrid1.TabIndex = 1;
-            // 
-            // tvWebElements
-            // 
-            this.tvWebElements.Location = new System.Drawing.Point(6, 17);
-            this.tvWebElements.Name = "tvWebElements";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "Pages";
-            this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
-            this.tvWebElements.Size = new System.Drawing.Size(225, 158);
-            this.tvWebElements.TabIndex = 2;
-            this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
             // 
             // SwdMainView
             // 

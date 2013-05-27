@@ -9,6 +9,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.PhantomJS;
+using System.Net;
 
 namespace SwdPageRecorder.WebDriver
 {
@@ -35,7 +36,47 @@ namespace SwdPageRecorder.WebDriver
 
         private static IWebDriver ConnetctToRemoteWebDriver(WebDriverOptions browserOptions)
         {
-            throw new NotImplementedException();
+            DesiredCapabilities caps = null;
+            Uri hubUri = new Uri(browserOptions.RemoteUrl);
+            
+            switch (browserOptions.BrowserName)
+            {
+
+                case WebDriverOptions.browser_Firefox:
+                    caps = DesiredCapabilities.Firefox();
+                    break;
+                case WebDriverOptions.browser_Chrome:
+                    caps = DesiredCapabilities.Chrome();
+                    break;
+                case WebDriverOptions.browser_InternetExplorer:
+                    caps = DesiredCapabilities.InternetExplorer();
+                    break;
+                case WebDriverOptions.browser_PhantomJS:
+                    caps = DesiredCapabilities.PhantomJS();
+                    break;
+                case WebDriverOptions.browser_HtmlUnit:
+                    caps = DesiredCapabilities.HtmlUnit();
+                    break;
+                case WebDriverOptions.browser_HtmlUnitWithJavaScript:
+                    caps = DesiredCapabilities.HtmlUnitWithJavaScript();
+                    break;
+                case WebDriverOptions.browser_Opera:
+                    caps = DesiredCapabilities.Opera();
+                    break;
+                case WebDriverOptions.browser_Safari:
+                    caps = DesiredCapabilities.Safari();
+                    break;
+                case WebDriverOptions.browser_IPhone:
+                    caps = DesiredCapabilities.IPhone();
+                    break;
+                case WebDriverOptions.browser_IPad:
+                    caps = DesiredCapabilities.IPad();
+                    break;
+                case WebDriverOptions.browser_Android:
+                    caps = DesiredCapabilities.Android();
+                    break;
+            }
+            return new RemoteWebDriver(hubUri, caps);
         }
 
         private static IWebDriver StartEmbededWebDriver(WebDriverOptions browserOptions)
