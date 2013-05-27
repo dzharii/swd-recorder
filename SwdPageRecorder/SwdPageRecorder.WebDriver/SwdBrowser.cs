@@ -5,6 +5,10 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Safari;
+using OpenQA.Selenium.PhantomJS;
 
 namespace SwdPageRecorder.WebDriver
 {
@@ -17,14 +21,40 @@ namespace SwdPageRecorder.WebDriver
             return _driver;
         }
 
-        public static void Initialize()
+        public static void Initialize(WebDriverOptions browserOptions)
         {
-            //_driver = new ChromeDriver();
+            if (browserOptions.IsRemote)
+            {
+                _driver = ConnetctToRemoteWebDriver(browserOptions);
+            }
+            else
+            {
+                _driver = StartEmbededWebDriver(browserOptions);
+            }
+        }
 
-            //DesiredCapabilities caps = DesiredCapabilities.Chrome();
-            DesiredCapabilities caps = DesiredCapabilities.HtmlUnitWithJavaScript();
-            _driver = new RemoteWebDriver(caps);
+        private static IWebDriver ConnetctToRemoteWebDriver(WebDriverOptions browserOptions)
+        {
+            throw new NotImplementedException();
+        }
 
+        private static IWebDriver StartEmbededWebDriver(WebDriverOptions browserOptions)
+        {
+            switch (browserOptions.BrowserName)
+            {
+            
+                case WebDriverOptions.browser_Firefox:
+                    return new FirefoxDriver();
+                case WebDriverOptions.browser_Chrome:
+                    return new ChromeDriver();
+                case WebDriverOptions.browser_InternetExplorer:
+                    return new InternetExplorerDriver();
+                case WebDriverOptions.browser_PhantomJS:
+                    return new PhantomJSDriver();
+                case WebDriverOptions.browser_Safari:
+                    return new SafariDriver();
+            }
+            return null;
         }
 
 

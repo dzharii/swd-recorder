@@ -25,9 +25,9 @@ namespace SwdPageRecorder.UI
         }
 
 
-        internal void StartNewBrowser()
+        internal void StartNewBrowser(WebDriverOptions browserOptions)
         {
-            SwdBrowser.Initialize();
+            SwdBrowser.Initialize(browserOptions);
             Driver.Navigate().GoToUrl(@"http://yandex.ru");
         }
 

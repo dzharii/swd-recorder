@@ -36,42 +36,7 @@ namespace SwdPageRecorder.UI
         };
 
 
-        const string browser_Firefox = "Firefox";
-        const string browser_Chrome = "Chrome";
-        const string browser_InternetExplorer = "InternetExplorer";
-        const string browser_PhantomJS = "PhantomJS";
-        const string browser_HtmlUnit = "HtmlUnit";
-        const string browser_HtmlUnitWithJavaScript = "HtmlUnitWithJavaScript";
-        const string browser_Opera = "Opera";
-        const string browser_Safari = "Safari";
-        const string browser_IPhone = "IPhone";
-        const string browser_IPad = "IPad";
-        const string browser_Android = "Android";
 
-
-        string[] allWebdriverBrowsersSupported = new string[]
-        {
-            browser_Firefox,
-            browser_Chrome,
-            browser_InternetExplorer,
-            browser_PhantomJS,
-            browser_HtmlUnit,
-            browser_HtmlUnitWithJavaScript,
-            browser_Opera,
-            browser_Safari,
-            browser_IPhone,
-            browser_IPad,
-            browser_Android,
-        };
-
-        string[] embededWebdriverBrowsersSupported = new string[]
-        {
-            browser_Firefox,
-            browser_Chrome,
-            browser_InternetExplorer,
-            browser_PhantomJS,
-            browser_Safari,
-        };
 
 
         //private System.Windows.Forms.PropertyGrid OptionsPropertyGrid;
@@ -105,12 +70,12 @@ namespace SwdPageRecorder.UI
             string[] addedItems = null;
             if (showAll)
             {
-                addedItems = allWebdriverBrowsersSupported;
+                addedItems = WebDriverOptions.allWebdriverBrowsersSupported;
                 ddlBrowserToStart.Items.AddRange(addedItems);
             }
             else
             {
-                addedItems = embededWebdriverBrowsersSupported;
+                addedItems = WebDriverOptions.embededWebdriverBrowsersSupported;
                 ddlBrowserToStart.Items.AddRange(addedItems);
             }
 
@@ -121,14 +86,17 @@ namespace SwdPageRecorder.UI
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("Hello!");
-        }
 
         private void btnStartWebDriver_Click(object sender, EventArgs e)
         {
-            presenter.StartNewBrowser();            
+            var browserOptions = new WebDriverOptions()
+            {
+                BrowserName = ddlBrowserToStart.SelectedItem as string,
+                IsRemote = chkUseRemoteHub.Checked,
+                RemoteUrl = txtRemoteHubUrl.Text,
+            };
+
+            presenter.StartNewBrowser(browserOptions);            
 
         }
 
@@ -260,7 +228,7 @@ namespace SwdPageRecorder.UI
 
         internal IEnumerable<WebElementDefinition> GetKnownWebElements()
         {
-            foreach (var item in lbWebElements.Items)
+            foreach (var item in tvWebElements.Nodes) // BUG?
             {
                 yield return (item as WebElementDefinition);
             }
@@ -268,23 +236,15 @@ namespace SwdPageRecorder.UI
 
         internal void AddToPageDefinitions(WebElementDefinition element)
         {
-            lbWebElements.Items.Add(element);
+            var newNode = new TreeNode();
+            newNode.Text = element.ToString();
+            newNode.Tag = element;
+
+
+            tvWebElements.Nodes.Add(newNode);
+            
         }
 
-        private void lbWebElements_DoubleClick(object sender, EventArgs e)
-        {
-            // TODO: TEST TEST
-            if (lbWebElements.SelectedItem != null)
-            {
-                var element = lbWebElements.SelectedItem as WebElementDefinition;
-
-                var by = presenter.ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
-
-                SwdBrowser.GetDriver().FindElement(by).Click();
-
-                //element.WebElement.Click();
-            }
-        }
 
         private void HandleRemoteDriverSettingsEnabledStatus()
         {
@@ -304,6 +264,20 @@ namespace SwdPageRecorder.UI
         {
             HandleRemoteDriverSettingsEnabledStatus();
             
+        }
+
+        private void tvWebElements_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+
+            var element = e.Node.Tag as WebElementDefinition;
+
+            var by = presenter.ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
+
+            SwdBrowser.GetDriver().FindElement(by).Click();
+
+
+
         }
 
 
