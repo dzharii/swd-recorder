@@ -96,7 +96,8 @@ namespace SwdPageRecorder.UI
                 RemoteUrl = txtRemoteHubUrl.Text,
             };
 
-            presenter.StartNewBrowser(browserOptions);            
+            presenter.StartNewBrowser(browserOptions);   
+            
 
         }
 
@@ -216,6 +217,18 @@ namespace SwdPageRecorder.UI
 
         private void btnUpdateDeclaration_Click(object sender, EventArgs e)
         {
+
+            bool isValid = true;
+            if (String.IsNullOrWhiteSpace(txtWebElementName.Text))
+            {
+                validationError.SetError(txtWebElementName, @"Please, come up with some name");
+                isValid = false;
+            }
+
+
+            if (!isValid) return;
+
+
             var element = new WebElementDefinition()
             {
                 Name = txtWebElementName.Text,
@@ -241,7 +254,8 @@ namespace SwdPageRecorder.UI
             newNode.Tag = element;
 
 
-            tvWebElements.Nodes.Add(newNode);
+            tvWebElements.Nodes[0].Nodes.Add(newNode);
+            tvWebElements.Nodes[0].Expand();
             
         }
 

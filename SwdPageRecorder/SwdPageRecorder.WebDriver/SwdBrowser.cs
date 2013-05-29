@@ -16,6 +16,7 @@ namespace SwdPageRecorder.WebDriver
     public static class SwdBrowser
     {
         private static IWebDriver _driver = null;
+        private static bool isRemote = false;
         public static IWebDriver GetDriver()
         {
             if (_driver == null) throw new ArgumentNullException("_driver", @"GetDriver was not initialized. Make sure you called Initialize before using Browser.");
@@ -76,6 +77,7 @@ namespace SwdPageRecorder.WebDriver
                     caps = DesiredCapabilities.Android();
                     break;
             }
+            isRemote = true;
             return new RemoteWebDriver(hubUri, caps);
         }
 
@@ -95,33 +97,19 @@ namespace SwdPageRecorder.WebDriver
                 case WebDriverOptions.browser_Safari:
                     return new SafariDriver();
             }
+            isRemote = false;
             return null;
         }
 
-
-        static readonly Finalizer finalizer = new Finalizer();
-        sealed class Finalizer
+        public static void CloseDriver()
         {
-            ~Finalizer()
+            try
             {
 
-                try
-                {
-                    if (_driver != null)
-                    {
-                        _driver.Close();
-                        _driver.Quit();
-                        _driver = null;
-                    }
-                }
-                catch
-                {
-
-                }
+                _driver.Dispose();
             }
+            finally { }
         }
-
-
 
     }
 }
