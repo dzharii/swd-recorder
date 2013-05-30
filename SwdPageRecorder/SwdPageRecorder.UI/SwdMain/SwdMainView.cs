@@ -294,6 +294,30 @@ namespace SwdPageRecorder.UI
 
         }
 
+        private void btnGenerateSourceCode_Click(object sender, EventArgs e)
+        {
+            presenter.GenerateSourceCodeForPageObject();
+        }
 
+
+
+        internal WebElementDefinition[] GetWebElementDefinitionFromTree()
+        {
+            var definitions = new List<WebElementDefinition>();
+
+            foreach (var treeNode in tvWebElements.Nodes[0].Nodes)
+            {
+                var node = treeNode as TreeNode;
+                var elementDefinition = node.Tag as WebElementDefinition;
+                definitions.Add(elementDefinition);
+            }
+
+            return definitions.ToArray();
+        }
+
+        internal void DisplayGeneratedCode(string[] code)
+        {
+            txtSourceCode.Lines = code;
+        }
     }
 }

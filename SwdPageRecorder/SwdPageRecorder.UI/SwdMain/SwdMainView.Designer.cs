@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Pages");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -58,17 +58,20 @@
             this.rbtnXPath = new System.Windows.Forms.RadioButton();
             this.rbtnCssSelector = new System.Windows.Forms.RadioButton();
             this.txtCssSelector = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tvWebElements = new System.Windows.Forms.TreeView();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtSourceCode = new System.Windows.Forms.TextBox();
+            this.btnGenerateSourceCode = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpRemoteConnection.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
@@ -361,6 +364,18 @@
             this.txtCssSelector.TabIndex = 1;
             this.txtCssSelector.Enter += new System.EventHandler(this.txtCssSelector_Enter);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnGenerateSourceCode);
+            this.tabPage3.Controls.Add(this.txtSourceCode);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(570, 397);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Source Code";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.tvWebElements);
@@ -377,10 +392,10 @@
             this.tvWebElements.LabelEdit = true;
             this.tvWebElements.Location = new System.Drawing.Point(6, 19);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode5.Name = "Node0";
-            treeNode5.Text = "Pages";
+            treeNode3.Name = "Node0";
+            treeNode3.Text = "Pages";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode3});
             this.tvWebElements.Size = new System.Drawing.Size(225, 156);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
@@ -396,15 +411,25 @@
             // 
             this.validationError.ContainerControl = this;
             // 
-            // tabPage3
+            // txtSourceCode
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(570, 397);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Source Code";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.txtSourceCode.AcceptsReturn = true;
+            this.txtSourceCode.AcceptsTab = true;
+            this.txtSourceCode.Location = new System.Drawing.Point(6, 29);
+            this.txtSourceCode.Multiline = true;
+            this.txtSourceCode.Name = "txtSourceCode";
+            this.txtSourceCode.Size = new System.Drawing.Size(558, 362);
+            this.txtSourceCode.TabIndex = 0;
+            // 
+            // btnGenerateSourceCode
+            // 
+            this.btnGenerateSourceCode.Location = new System.Drawing.Point(489, 6);
+            this.btnGenerateSourceCode.Name = "btnGenerateSourceCode";
+            this.btnGenerateSourceCode.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerateSourceCode.TabIndex = 1;
+            this.btnGenerateSourceCode.Text = "Generate";
+            this.btnGenerateSourceCode.UseVisualStyleBackColor = true;
+            this.btnGenerateSourceCode.Click += new System.EventHandler(this.btnGenerateSourceCode_Click);
             // 
             // SwdMainView
             // 
@@ -425,6 +450,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
@@ -466,6 +493,8 @@
         private System.Windows.Forms.TreeView tvWebElements;
         private System.Windows.Forms.ErrorProvider validationError;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnGenerateSourceCode;
+        private System.Windows.Forms.TextBox txtSourceCode;
 
     }
 }

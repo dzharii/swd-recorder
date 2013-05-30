@@ -105,5 +105,15 @@ namespace SwdPageRecorder.UI
             view.AddToPageDefinitions(element);
 
         }
+
+        internal void GenerateSourceCodeForPageObject()
+        {
+            var definitions = view.GetWebElementDefinitionFromTree();
+            var generator = new CSharpPageObjectGenerator();
+
+            string[] code = generator.Generate(definitions);
+            view.DisplayGeneratedCode(code);
+
+        }
     }
 }

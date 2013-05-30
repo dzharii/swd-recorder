@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SwdMain\CSharpPageObjectGenerator.cs" />
     <Compile Include="SwdMain\ResultElement.cs" />
     <Compile Include="SwdMain\LocatorSearchMethod.cs" />
     <Compile Include="SwdMain\SwdMainView.cs">
