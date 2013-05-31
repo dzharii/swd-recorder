@@ -1,0 +1,16 @@
+Milestones
+==================================================
+[+] Generate Page Object source code
+[-] Highlight elements
+[-] Implement visual search for element
+
+==================================================
+[-] Code refactoring
+[-] Initial Unit tests
+==================================================
+
+[-] Add support for ReadOnlyCollection IWebElement
+[-] Add  support for Multiple FindsBy
+[-] Advanced HTML editor
+[-] Browser screenshots
+[-] CSharp code integration

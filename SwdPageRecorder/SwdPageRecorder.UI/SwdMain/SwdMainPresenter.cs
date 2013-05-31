@@ -28,7 +28,7 @@ namespace SwdPageRecorder.UI
         internal void StartNewBrowser(WebDriverOptions browserOptions)
         {
             SwdBrowser.Initialize(browserOptions);
-            Driver.Navigate().GoToUrl(@"http://yandex.ru");
+            
         }
 
 
@@ -114,6 +114,27 @@ namespace SwdPageRecorder.UI
             string[] code = generator.Generate(definitions);
             view.DisplayGeneratedCode(code);
 
+        }
+
+        internal void SetBrowserUrl(string browserUrl)
+        {
+            Driver.Navigate().GoToUrl(browserUrl);
+        }
+
+
+
+        internal void DisplayHtmlPageSource()
+        {
+
+            string singleLineSource = Driver.PageSource;
+            string[] htmlLines = SplitSingleLineToMultyLine(singleLineSource);
+            view.FillHtmlCodeBox(htmlLines);
+        }
+
+        private string[] SplitSingleLineToMultyLine(string singleLineSource)
+        {
+            string[] result = singleLineSource.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            return result;
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Pages");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -65,6 +65,11 @@
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtSourceCode = new System.Windows.Forms.TextBox();
             this.btnGenerateSourceCode = new System.Windows.Forms.Button();
+            this.txtBrowserUrl = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnGetHtmlSource = new System.Windows.Forms.Button();
+            this.txtHtmlPageSource = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpRemoteConnection.SuspendLayout();
@@ -74,10 +79,12 @@
             this.tabPage3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtBrowserUrl);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(772, 39);
@@ -90,6 +97,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 57);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -392,10 +400,10 @@
             this.tvWebElements.LabelEdit = true;
             this.tvWebElements.Location = new System.Drawing.Point(6, 19);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode3.Name = "Node0";
-            treeNode3.Text = "Pages";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "Pages";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode2});
             this.tvWebElements.Size = new System.Drawing.Size(225, 156);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
@@ -431,6 +439,46 @@
             this.btnGenerateSourceCode.UseVisualStyleBackColor = true;
             this.btnGenerateSourceCode.Click += new System.EventHandler(this.btnGenerateSourceCode_Click);
             // 
+            // txtBrowserUrl
+            // 
+            this.txtBrowserUrl.Location = new System.Drawing.Point(6, 13);
+            this.txtBrowserUrl.Name = "txtBrowserUrl";
+            this.txtBrowserUrl.Size = new System.Drawing.Size(760, 20);
+            this.txtBrowserUrl.TabIndex = 0;
+            this.txtBrowserUrl.Text = "http://blog.zhariy.com/";
+            this.txtBrowserUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBrowserUrl_KeyUp);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.txtHtmlPageSource);
+            this.tabPage4.Controls.Add(this.btnGetHtmlSource);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(570, 397);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "HTML Source";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnGetHtmlSource
+            // 
+            this.btnGetHtmlSource.Location = new System.Drawing.Point(479, 6);
+            this.btnGetHtmlSource.Name = "btnGetHtmlSource";
+            this.btnGetHtmlSource.Size = new System.Drawing.Size(75, 23);
+            this.btnGetHtmlSource.TabIndex = 0;
+            this.btnGetHtmlSource.Text = "Get HTML";
+            this.btnGetHtmlSource.UseVisualStyleBackColor = true;
+            this.btnGetHtmlSource.Click += new System.EventHandler(this.btnGetHtmlSource_Click);
+            // 
+            // txtHtmlPageSource
+            // 
+            this.txtHtmlPageSource.Location = new System.Drawing.Point(6, 35);
+            this.txtHtmlPageSource.Multiline = true;
+            this.txtHtmlPageSource.Name = "txtHtmlPageSource";
+            this.txtHtmlPageSource.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtHtmlPageSource.Size = new System.Drawing.Size(548, 356);
+            this.txtHtmlPageSource.TabIndex = 1;
+            // 
             // SwdMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,6 +489,8 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "SwdMainView";
             this.Text = "SWD Page Recorder";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -454,6 +504,8 @@
             this.tabPage3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -495,6 +547,10 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnGenerateSourceCode;
         private System.Windows.Forms.TextBox txtSourceCode;
+        private System.Windows.Forms.TextBox txtBrowserUrl;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TextBox txtHtmlPageSource;
+        private System.Windows.Forms.Button btnGetHtmlSource;
 
     }
 }
