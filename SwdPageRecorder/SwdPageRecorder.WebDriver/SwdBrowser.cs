@@ -111,5 +111,22 @@ namespace SwdPageRecorder.WebDriver
             finally { }
         }
 
+
+        public static void HighlightElement(By by)
+        {
+         
+            var element = GetDriver().FindElement(by);
+            IJavaScriptExecutor jsExec = GetDriver() as IJavaScriptExecutor;
+            jsExec.ExecuteScript(
+            @"
+                element = arguments[0];
+                original_style = element.getAttribute('style');
+                element.setAttribute('style', original_style + ""; background: yellow; border: 2px solid red;"");
+                setTimeout(function(){
+                    element.setAttribute('style', original_style);
+                }, 300);
+
+           ", element);
+        }
     }
 }

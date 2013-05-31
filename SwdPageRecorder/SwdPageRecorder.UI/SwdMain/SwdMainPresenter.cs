@@ -136,5 +136,12 @@ namespace SwdPageRecorder.UI
             string[] result = singleLineSource.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             return result;
         }
+
+        internal void HighLightWebElement(WebElementDefinition element)
+        {
+            var by = ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
+            SwdBrowser.HighlightElement(by);
+            
+        }
     }
 }

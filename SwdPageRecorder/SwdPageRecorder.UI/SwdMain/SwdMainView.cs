@@ -283,16 +283,9 @@ namespace SwdPageRecorder.UI
 
         private void tvWebElements_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-
-
             var element = e.Node.Tag as WebElementDefinition;
-
-            var by = presenter.ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
-
-            SwdBrowser.GetDriver().FindElement(by).Click();
-
-
-
+            presenter.HighLightWebElement(element);
+            
         }
 
         private void btnGenerateSourceCode_Click(object sender, EventArgs e)
