@@ -11,6 +11,13 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Firefox;
 using SwdPageRecorder.WebDriver;
 
+using System.Xml;
+using System.Xml.Linq;
+
+using System.Windows.Forms;
+
+
+
 namespace SwdPageRecorder.UI
 {
     public class SwdMainPresenter
@@ -177,6 +184,38 @@ namespace SwdPageRecorder.UI
             visualSearchWorker = new Thread(VisualSearch_UpdateSearchResult);
             visualSearchWorker.IsBackground = true;
             visualSearchWorker.Start();
+        }
+
+        public static IEnumerable<TreeNode> AddRange(TreeNode collection, IEnumerable<TreeNode> nodes)
+        {
+            var items = nodes.ToArray();
+            collection.Nodes.AddRange(items);
+            return new[] { collection };
+        }
+
+        private IEnumerable<TreeNode> GetNodes(TreeNode node, XElement element)
+        {
+            return element.HasElements ?
+                AddRange(node, from item in element.Elements()
+                              let tree = new TreeNode(item.Name.LocalName)
+                              from newNode in GetNodes(tree, item)
+                              select newNode)
+                              :
+                new[] { node };
+        }
+
+        internal void UpdateTestHtmlDocumentView()
+        {
+            XmlDocument doc = SwdBrowser.GetPageSourceXml();
+
+            var xDocument = XDocument.Load(new XmlNodeReader(doc));
+
+            var root = xDocument.Root;
+            var x = GetNodes(new TreeNode(root.Name.LocalName), root).ToArray();
+
+            view.AddTestHtmlNodes(x);
+
+            
         }
     }
 }

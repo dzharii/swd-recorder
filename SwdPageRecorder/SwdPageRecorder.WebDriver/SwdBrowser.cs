@@ -13,6 +13,10 @@ using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.PhantomJS;
 using System.Net;
 
+using System.Xml;
+
+using Sgml;
+
 namespace SwdPageRecorder.WebDriver
 {
     public static class SwdBrowser
@@ -155,6 +159,43 @@ namespace SwdPageRecorder.WebDriver
                 }, 300);
 
            ", element);
+        }
+
+        
+        // TODO: Move to Utility
+        public static Stream GenerateStreamFromString(string s)
+        {
+            MemoryStream stream = new MemoryStream();
+            StreamWriter writer = new StreamWriter(stream);
+            writer.Write(s);
+            writer.Flush();
+            stream.Position = 0;
+            return stream;
+        }
+
+        public static XmlDocument GetPageSourceXml()
+        {
+
+            string currentPageSource = GetDriver().PageSource;
+            XmlDocument doc = new XmlDocument();
+
+            using (Stream pageStream = GenerateStreamFromString(currentPageSource))
+            using (TextReader txtReader = new StreamReader(pageStream))
+            {
+                // setup SgmlReader
+                Sgml.SgmlReader sgmlReader = new Sgml.SgmlReader();
+                sgmlReader.DocType = "HTML";
+                sgmlReader.WhitespaceHandling = WhitespaceHandling.All;
+                sgmlReader.CaseFolding = Sgml.CaseFolding.ToLower;
+
+                sgmlReader.InputStream = txtReader;
+
+                // create document
+                doc.PreserveWhitespace = true;
+                doc.XmlResolver = null;
+                doc.Load(sgmlReader);
+            }
+            return doc;
         }
     }
 }

@@ -106,6 +106,7 @@ namespace SwdPageRecorder.UI
         {
 
             presenter.TestLocators();
+            presenter.UpdateTestHtmlDocumentView();
 
         }
 
@@ -345,6 +346,13 @@ namespace SwdPageRecorder.UI
             {
                 txtVisualSearchResult.Text = xPathAttributeValue;
             });
+        }
+
+        internal void AddTestHtmlNodes(TreeNode[] x)
+        {
+            tvHtmlDoc.Nodes.Clear();
+            tvHtmlDoc.Nodes.AddRange(x);
+
         }
     }
 }

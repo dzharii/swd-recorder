@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -43,14 +43,17 @@
             this.btnStartWebDriver = new System.Windows.Forms.Button();
             this.ddlBrowserToStart = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnStartVisualSearch = new System.Windows.Forms.Button();
+            this.txtVisualSearchResult = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lbElements = new System.Windows.Forms.ListBox();
+            this.btnTestLocator = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnUpdateDeclaration = new System.Windows.Forms.Button();
             this.txtWebElementName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtOtherLocator = new System.Windows.Forms.TextBox();
-            this.btnTestLocator = new System.Windows.Forms.Button();
             this.ddlOtherLocator = new System.Windows.Forms.ComboBox();
             this.rbtnOtherLocator = new System.Windows.Forms.RadioButton();
             this.txtHtmlId = new System.Windows.Forms.TextBox();
@@ -69,21 +72,21 @@
             this.tvWebElements = new System.Windows.Forms.TreeView();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtVisualSearchResult = new System.Windows.Forms.TextBox();
-            this.btnStartVisualSearch = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tvHtmlDoc = new System.Windows.Forms.TreeView();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpRemoteConnection.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
-            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -114,7 +117,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 57);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(578, 423);
+            this.tabControl1.Size = new System.Drawing.Size(658, 423);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -220,18 +223,47 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(570, 397);
+            this.tabPage2.Size = new System.Drawing.Size(650, 397);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Locators";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnStartVisualSearch);
+            this.groupBox5.Controls.Add(this.txtVisualSearchResult);
+            this.groupBox5.Location = new System.Drawing.Point(7, 165);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(637, 66);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Visual Search";
+            // 
+            // btnStartVisualSearch
+            // 
+            this.btnStartVisualSearch.Location = new System.Drawing.Point(462, 27);
+            this.btnStartVisualSearch.Name = "btnStartVisualSearch";
+            this.btnStartVisualSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnStartVisualSearch.TabIndex = 1;
+            this.btnStartVisualSearch.Text = "Start";
+            this.btnStartVisualSearch.UseVisualStyleBackColor = true;
+            this.btnStartVisualSearch.Click += new System.EventHandler(this.btnStartVisualSearch_Click);
+            // 
+            // txtVisualSearchResult
+            // 
+            this.txtVisualSearchResult.Location = new System.Drawing.Point(24, 30);
+            this.txtVisualSearchResult.Name = "txtVisualSearchResult";
+            this.txtVisualSearchResult.Size = new System.Drawing.Size(268, 20);
+            this.txtVisualSearchResult.TabIndex = 0;
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.lbElements);
             this.groupBox3.Controls.Add(this.btnTestLocator);
             this.groupBox3.Location = new System.Drawing.Point(3, 237);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(547, 142);
+            this.groupBox3.Size = new System.Drawing.Size(641, 142);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Result";
@@ -241,9 +273,19 @@
             this.lbElements.FormattingEnabled = true;
             this.lbElements.Location = new System.Drawing.Point(6, 48);
             this.lbElements.Name = "lbElements";
-            this.lbElements.Size = new System.Drawing.Size(260, 82);
+            this.lbElements.Size = new System.Drawing.Size(266, 82);
             this.lbElements.TabIndex = 0;
             this.lbElements.DoubleClick += new System.EventHandler(this.lbElements_DoubleClick);
+            // 
+            // btnTestLocator
+            // 
+            this.btnTestLocator.Location = new System.Drawing.Point(6, 19);
+            this.btnTestLocator.Name = "btnTestLocator";
+            this.btnTestLocator.Size = new System.Drawing.Size(75, 23);
+            this.btnTestLocator.TabIndex = 2;
+            this.btnTestLocator.Text = "Test";
+            this.btnTestLocator.UseVisualStyleBackColor = true;
+            this.btnTestLocator.Click += new System.EventHandler(this.btnTestLocator_Click);
             // 
             // groupBox2
             // 
@@ -261,14 +303,14 @@
             this.groupBox2.Controls.Add(this.txtCssSelector);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(544, 152);
+            this.groupBox2.Size = new System.Drawing.Size(638, 152);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selectors";
             // 
             // btnUpdateDeclaration
             // 
-            this.btnUpdateDeclaration.Location = new System.Drawing.Point(440, 13);
+            this.btnUpdateDeclaration.Location = new System.Drawing.Point(557, 13);
             this.btnUpdateDeclaration.Name = "btnUpdateDeclaration";
             this.btnUpdateDeclaration.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateDeclaration.TabIndex = 13;
@@ -280,7 +322,7 @@
             // 
             this.txtWebElementName.Location = new System.Drawing.Point(132, 13);
             this.txtWebElementName.Name = "txtWebElementName";
-            this.txtWebElementName.Size = new System.Drawing.Size(301, 20);
+            this.txtWebElementName.Size = new System.Drawing.Size(419, 20);
             this.txtWebElementName.TabIndex = 11;
             // 
             // label1
@@ -296,19 +338,9 @@
             // 
             this.txtOtherLocator.Location = new System.Drawing.Point(132, 115);
             this.txtOtherLocator.Name = "txtOtherLocator";
-            this.txtOtherLocator.Size = new System.Drawing.Size(383, 20);
+            this.txtOtherLocator.Size = new System.Drawing.Size(419, 20);
             this.txtOtherLocator.TabIndex = 9;
             this.txtOtherLocator.Enter += new System.EventHandler(this.txtOtherLocator_Enter);
-            // 
-            // btnTestLocator
-            // 
-            this.btnTestLocator.Location = new System.Drawing.Point(6, 19);
-            this.btnTestLocator.Name = "btnTestLocator";
-            this.btnTestLocator.Size = new System.Drawing.Size(75, 23);
-            this.btnTestLocator.TabIndex = 2;
-            this.btnTestLocator.Text = "Test";
-            this.btnTestLocator.UseVisualStyleBackColor = true;
-            this.btnTestLocator.Click += new System.EventHandler(this.btnTestLocator_Click);
             // 
             // ddlOtherLocator
             // 
@@ -334,7 +366,7 @@
             // 
             this.txtHtmlId.Location = new System.Drawing.Point(132, 39);
             this.txtHtmlId.Name = "txtHtmlId";
-            this.txtHtmlId.Size = new System.Drawing.Size(383, 20);
+            this.txtHtmlId.Size = new System.Drawing.Size(419, 20);
             this.txtHtmlId.TabIndex = 6;
             this.txtHtmlId.Enter += new System.EventHandler(this.txtHtmlId_Enter);
             // 
@@ -354,7 +386,7 @@
             // 
             this.txtXPath.Location = new System.Drawing.Point(132, 87);
             this.txtXPath.Name = "txtXPath";
-            this.txtXPath.Size = new System.Drawing.Size(383, 20);
+            this.txtXPath.Size = new System.Drawing.Size(419, 20);
             this.txtXPath.TabIndex = 4;
             this.txtXPath.Enter += new System.EventHandler(this.txtXPath_Enter);
             // 
@@ -382,7 +414,7 @@
             // 
             this.txtCssSelector.Location = new System.Drawing.Point(132, 64);
             this.txtCssSelector.Name = "txtCssSelector";
-            this.txtCssSelector.Size = new System.Drawing.Size(383, 20);
+            this.txtCssSelector.Size = new System.Drawing.Size(419, 20);
             this.txtCssSelector.TabIndex = 1;
             this.txtCssSelector.Enter += new System.EventHandler(this.txtCssSelector_Enter);
             // 
@@ -453,9 +485,9 @@
             // 
             this.groupBox4.Controls.Add(this.tvWebElements);
             this.groupBox4.Controls.Add(this.propertyGrid1);
-            this.groupBox4.Location = new System.Drawing.Point(592, 79);
+            this.groupBox4.Location = new System.Drawing.Point(670, 57);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(237, 397);
+            this.groupBox4.Size = new System.Drawing.Size(237, 419);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Page Object";
@@ -465,10 +497,10 @@
             this.tvWebElements.LabelEdit = true;
             this.tvWebElements.Location = new System.Drawing.Point(6, 19);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "Pages";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "Pages";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.tvWebElements.Size = new System.Drawing.Size(225, 156);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
@@ -484,39 +516,28 @@
             // 
             this.validationError.ContainerControl = this;
             // 
-            // groupBox5
+            // groupBox6
             // 
-            this.groupBox5.Controls.Add(this.btnStartVisualSearch);
-            this.groupBox5.Controls.Add(this.txtVisualSearchResult);
-            this.groupBox5.Location = new System.Drawing.Point(7, 165);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(543, 66);
-            this.groupBox5.TabIndex = 4;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Visual Search";
+            this.groupBox6.Controls.Add(this.tvHtmlDoc);
+            this.groupBox6.Location = new System.Drawing.Point(278, 19);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(357, 117);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "gpHtmlDoc";
             // 
-            // txtVisualSearchResult
+            // tvHtmlDoc
             // 
-            this.txtVisualSearchResult.Location = new System.Drawing.Point(24, 30);
-            this.txtVisualSearchResult.Name = "txtVisualSearchResult";
-            this.txtVisualSearchResult.Size = new System.Drawing.Size(268, 20);
-            this.txtVisualSearchResult.TabIndex = 0;
-            // 
-            // btnStartVisualSearch
-            // 
-            this.btnStartVisualSearch.Location = new System.Drawing.Point(462, 27);
-            this.btnStartVisualSearch.Name = "btnStartVisualSearch";
-            this.btnStartVisualSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnStartVisualSearch.TabIndex = 1;
-            this.btnStartVisualSearch.Text = "Start";
-            this.btnStartVisualSearch.UseVisualStyleBackColor = true;
-            this.btnStartVisualSearch.Click += new System.EventHandler(this.btnStartVisualSearch_Click);
+            this.tvHtmlDoc.Location = new System.Drawing.Point(6, 14);
+            this.tvHtmlDoc.Name = "tvHtmlDoc";
+            this.tvHtmlDoc.Size = new System.Drawing.Size(345, 97);
+            this.tvHtmlDoc.TabIndex = 0;
             // 
             // SwdMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 492);
+            this.ClientSize = new System.Drawing.Size(919, 492);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
@@ -530,6 +551,8 @@
             this.grpRemoteConnection.ResumeLayout(false);
             this.grpRemoteConnection.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -539,8 +562,7 @@
             this.tabPage4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -589,6 +611,8 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Button btnStartVisualSearch;
         private System.Windows.Forms.TextBox txtVisualSearchResult;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TreeView tvHtmlDoc;
 
     }
 }
