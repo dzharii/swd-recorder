@@ -17,6 +17,7 @@ using System.Xml;
 
 using Sgml;
 
+
 namespace SwdPageRecorder.WebDriver
 {
     public static class SwdBrowser
@@ -109,12 +110,11 @@ namespace SwdPageRecorder.WebDriver
 
         public static void CloseDriver()
         {
-            try
-            {
 
+            if (_driver != null)
+            {
                 _driver.Dispose();
             }
-            finally { }
         }
 
 
@@ -197,5 +197,53 @@ namespace SwdPageRecorder.WebDriver
             }
             return doc;
         }
+
+
+        public static string XmlTidy(XmlDocument document)
+        {
+            string result = "";
+
+            
+            using (MemoryStream memStream = new MemoryStream())
+            using (XmlTextWriter writer = new XmlTextWriter(memStream, Encoding.Unicode))
+            {
+                try
+                {
+                    writer.Formatting = Formatting.Indented;
+
+                    // Write the XML into a formatting XmlTextWriter
+                    document.WriteContentTo(writer);
+                    writer.Flush();
+                    memStream.Flush();
+
+                    // Have to rewind the MemoryStream in order to read
+                    // its contents.
+                    memStream.Position = 0;
+
+                    // Read MemoryStream contents into a StreamReader.
+                    StreamReader sReader = new StreamReader(memStream);
+
+                    // Extract the text from the StreamReader.
+                    string formattedXML = sReader.ReadToEnd();
+
+                    result = formattedXML;
+                }
+                catch (XmlException)
+                {
+                }
+            }
+
+            return result;
+        }
+
+
+
+        public static string GetTidyHtml()
+        {
+
+            var xml = GetPageSourceXml();
+            return XmlTidy(xml);
+        }
+
     }
 }

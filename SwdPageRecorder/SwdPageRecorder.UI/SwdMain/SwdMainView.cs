@@ -348,10 +348,10 @@ namespace SwdPageRecorder.UI
             });
         }
 
-        internal void AddTestHtmlNodes(TreeNode[] x)
+        internal void AddTestHtmlNodes(TreeNode x)
         {
             tvHtmlDoc.Nodes.Clear();
-            tvHtmlDoc.Nodes.AddRange(x);
+            tvHtmlDoc.Nodes.Add(x);
 
         }
     }

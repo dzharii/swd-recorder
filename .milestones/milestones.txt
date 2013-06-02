@@ -3,6 +3,7 @@ Milestones
 [+] Generate Page Object source code
 [-] Highlight elements
 [-] Implement visual search for element
+[-] Implement TestBox
 
 ==================================================
 [-] Code refactoring

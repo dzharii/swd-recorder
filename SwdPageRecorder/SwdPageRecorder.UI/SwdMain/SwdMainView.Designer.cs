@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Pages");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -47,6 +47,8 @@
             this.btnStartVisualSearch = new System.Windows.Forms.Button();
             this.txtVisualSearchResult = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.tvHtmlDoc = new System.Windows.Forms.TreeView();
             this.lbElements = new System.Windows.Forms.ListBox();
             this.btnTestLocator = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -72,8 +74,6 @@
             this.tvWebElements = new System.Windows.Forms.TreeView();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.tvHtmlDoc = new System.Windows.Forms.TreeView();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -81,12 +81,12 @@
             this.tabPage2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -130,7 +130,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(570, 397);
+            this.tabPage1.Size = new System.Drawing.Size(650, 397);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Browser Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -266,7 +266,24 @@
             this.groupBox3.Size = new System.Drawing.Size(641, 142);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Result";
+            this.groupBox3.Text = "result";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.tvHtmlDoc);
+            this.groupBox6.Location = new System.Drawing.Point(278, 19);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(357, 117);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Html Document";
+            // 
+            // tvHtmlDoc
+            // 
+            this.tvHtmlDoc.Location = new System.Drawing.Point(6, 14);
+            this.tvHtmlDoc.Name = "tvHtmlDoc";
+            this.tvHtmlDoc.Size = new System.Drawing.Size(345, 97);
+            this.tvHtmlDoc.TabIndex = 0;
             // 
             // lbElements
             // 
@@ -322,7 +339,7 @@
             // 
             this.txtWebElementName.Location = new System.Drawing.Point(132, 13);
             this.txtWebElementName.Name = "txtWebElementName";
-            this.txtWebElementName.Size = new System.Drawing.Size(419, 20);
+            this.txtWebElementName.Size = new System.Drawing.Size(406, 20);
             this.txtWebElementName.TabIndex = 11;
             // 
             // label1
@@ -338,7 +355,7 @@
             // 
             this.txtOtherLocator.Location = new System.Drawing.Point(132, 115);
             this.txtOtherLocator.Name = "txtOtherLocator";
-            this.txtOtherLocator.Size = new System.Drawing.Size(419, 20);
+            this.txtOtherLocator.Size = new System.Drawing.Size(406, 20);
             this.txtOtherLocator.TabIndex = 9;
             this.txtOtherLocator.Enter += new System.EventHandler(this.txtOtherLocator_Enter);
             // 
@@ -366,7 +383,7 @@
             // 
             this.txtHtmlId.Location = new System.Drawing.Point(132, 39);
             this.txtHtmlId.Name = "txtHtmlId";
-            this.txtHtmlId.Size = new System.Drawing.Size(419, 20);
+            this.txtHtmlId.Size = new System.Drawing.Size(406, 20);
             this.txtHtmlId.TabIndex = 6;
             this.txtHtmlId.Enter += new System.EventHandler(this.txtHtmlId_Enter);
             // 
@@ -386,7 +403,7 @@
             // 
             this.txtXPath.Location = new System.Drawing.Point(132, 87);
             this.txtXPath.Name = "txtXPath";
-            this.txtXPath.Size = new System.Drawing.Size(419, 20);
+            this.txtXPath.Size = new System.Drawing.Size(406, 20);
             this.txtXPath.TabIndex = 4;
             this.txtXPath.Enter += new System.EventHandler(this.txtXPath_Enter);
             // 
@@ -414,7 +431,7 @@
             // 
             this.txtCssSelector.Location = new System.Drawing.Point(132, 64);
             this.txtCssSelector.Name = "txtCssSelector";
-            this.txtCssSelector.Size = new System.Drawing.Size(419, 20);
+            this.txtCssSelector.Size = new System.Drawing.Size(406, 20);
             this.txtCssSelector.TabIndex = 1;
             this.txtCssSelector.Enter += new System.EventHandler(this.txtCssSelector_Enter);
             // 
@@ -425,7 +442,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(570, 397);
+            this.tabPage3.Size = new System.Drawing.Size(650, 397);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Source Code";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -457,7 +474,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(570, 397);
+            this.tabPage4.Size = new System.Drawing.Size(650, 397);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "HTML Source";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -467,9 +484,10 @@
             this.txtHtmlPageSource.Location = new System.Drawing.Point(6, 35);
             this.txtHtmlPageSource.Multiline = true;
             this.txtHtmlPageSource.Name = "txtHtmlPageSource";
-            this.txtHtmlPageSource.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtHtmlPageSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtHtmlPageSource.Size = new System.Drawing.Size(548, 356);
             this.txtHtmlPageSource.TabIndex = 1;
+            this.txtHtmlPageSource.WordWrap = false;
             // 
             // btnGetHtmlSource
             // 
@@ -497,10 +515,10 @@
             this.tvWebElements.LabelEdit = true;
             this.tvWebElements.Location = new System.Drawing.Point(6, 19);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Pages";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "Pages";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.tvWebElements.Size = new System.Drawing.Size(225, 156);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
@@ -515,23 +533,6 @@
             // validationError
             // 
             this.validationError.ContainerControl = this;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.tvHtmlDoc);
-            this.groupBox6.Location = new System.Drawing.Point(278, 19);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(357, 117);
-            this.groupBox6.TabIndex = 3;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "gpHtmlDoc";
-            // 
-            // tvHtmlDoc
-            // 
-            this.tvHtmlDoc.Location = new System.Drawing.Point(6, 14);
-            this.tvHtmlDoc.Name = "tvHtmlDoc";
-            this.tvHtmlDoc.Size = new System.Drawing.Size(345, 97);
-            this.tvHtmlDoc.TabIndex = 0;
             // 
             // SwdMainView
             // 
@@ -554,6 +555,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -562,7 +564,6 @@
             this.tabPage4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
-            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

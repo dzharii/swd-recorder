@@ -136,7 +136,7 @@ namespace SwdPageRecorder.UI
         internal void DisplayHtmlPageSource()
         {
 
-            string singleLineSource = Driver.PageSource;
+            string singleLineSource = SwdBrowser.GetTidyHtml();
             string[] htmlLines = SplitSingleLineToMultyLine(singleLineSource);
             view.FillHtmlCodeBox(htmlLines);
         }
@@ -186,36 +186,47 @@ namespace SwdPageRecorder.UI
             visualSearchWorker.Start();
         }
 
-        public static IEnumerable<TreeNode> AddRange(TreeNode collection, IEnumerable<TreeNode> nodes)
-        {
-            var items = nodes.ToArray();
-            collection.Nodes.AddRange(items);
-            return new[] { collection };
-        }
 
-        private IEnumerable<TreeNode> GetNodes(TreeNode node, XElement element)
+        private void ParseXmlNodes(TreeNode tnode, XmlNodeList xmlNodes)
         {
-            return element.HasElements ?
-                AddRange(node, from item in element.Elements()
-                              let tree = new TreeNode(item.Name.LocalName)
-                              from newNode in GetNodes(tree, item)
-                              select newNode)
-                              :
-                new[] { node };
+
+            foreach (XmlNode xmlNode in xmlNodes)
+            {
+                if (xmlNode.Attributes == null) continue;
+                
+                List<string> attributes = new List<string>();
+                                
+                for (int i = 0; i < xmlNode.Attributes.Count; i++)
+                {
+                    var attr=xmlNode.Attributes[i];
+                    attributes.Add(attr.LocalName + "=" + attr.Value);
+                }
+
+                string nodeName = xmlNode.LocalName + " " + String.Join(" ", attributes);
+
+
+                var newNode = new TreeNode(nodeName);
+                tnode.Nodes.Add(newNode);
+
+                if (xmlNode.HasChildNodes)
+                {
+                    ParseXmlNodes(newNode, xmlNode.ChildNodes);
+                }
+            }
+
         }
 
         internal void UpdateTestHtmlDocumentView()
         {
             XmlDocument doc = SwdBrowser.GetPageSourceXml();
 
-            var xDocument = XDocument.Load(new XmlNodeReader(doc));
+            var root = doc.FirstChild;
+            var treeRootNode = new TreeNode(root.LocalName);
+            ParseXmlNodes(treeRootNode, root.ChildNodes);
 
-            var root = xDocument.Root;
-            var x = GetNodes(new TreeNode(root.Name.LocalName), root).ToArray();
+            view.AddTestHtmlNodes(treeRootNode);
 
-            view.AddTestHtmlNodes(x);
 
-            
         }
     }
 }
