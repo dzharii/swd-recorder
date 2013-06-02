@@ -331,5 +331,20 @@ namespace SwdPageRecorder.UI
         {
             txtHtmlPageSource.Lines = htmlLines;
         }
+
+        private void btnStartVisualSearch_Click(object sender, EventArgs e)
+        {
+            presenter.StartVisualSearch();
+        }
+
+
+
+        internal void UpdateVisualSearchResult(string xPathAttributeValue)
+        {
+            this.txtVisualSearchResult.Invoke((MethodInvoker)delegate
+            {
+                txtVisualSearchResult.Text = xPathAttributeValue;
+            });
+        }
     }
 }

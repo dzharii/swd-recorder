@@ -1,49 +1,49 @@
-function addStyle(str){
-    var el= document.createElement('style');
-    if(el.styleSheet) el.styleSheet.cssText= str;
-    else{
-        el.appendChild(document.createTextNode(str));
-    }
-    return document.getElementsByTagName('head')[0].appendChild(el);
-}
-
+(function() {
 // =================== XPATH 
 
-function getPathTo(element) {
-    if (element.id!=='')
-        return 'id("'+element.id+'")';
-    if (element===document.body)
-        return element.tagName;
+   function getPathTo(element) {
+       if (element.id!=='')
+           return 'id("'+element.id+'")';
+       if (element===document.body)
+           return element.tagName;
 
-    var ix= 0;
-    var siblings= element.parentNode.childNodes;
-    for (var i= 0; i<siblings.length; i++) {
-        var sibling= siblings[i];
-        if (sibling===element)
-            return getPathTo(element.parentNode)+'/'+element.tagName+'['+(ix+1)+']';
-        if (sibling.nodeType===1 && sibling.tagName===element.tagName)
-            ix++;
-    }
-}
+       var ix= 0;
+       var siblings= element.parentNode.childNodes;
+       for (var i= 0; i<siblings.length; i++) {
+           var sibling= siblings[i];
+           if (sibling===element)
+               return getPathTo(element.parentNode)+'/'+element.tagName+'['+(ix+1)+']';
+           if (sibling.nodeType===1 && sibling.tagName===element.tagName)
+               ix++;
+       }
+   }
 
-function getPageXY(element) {
-    var x= 0, y= 0;
-    while (element) {
-        x+= element.offsetLeft;
-        y+= element.offsetTop;
-        element= element.offsetParent;
-    }
-    return [x, y];
-}
-
-
-// ==========================
+   function getPageXY(element) {
+       var x= 0, y= 0;
+       while (element) {
+           x+= element.offsetLeft;
+           y+= element.offsetTop;
+           element= element.offsetParent;
+       }
+       return [x, y];
+   }
 
 
-addStyle(".highlight { border: 2px solid red }");
+   // ==========================
+  
+  
+  function addStyle(str){
+      var el= document.createElement('style');
+      if(el.styleSheet) el.styleSheet.cssText= str;
+      else{
+          el.appendChild(document.createTextNode(str));
+      }
+      return document.getElementsByTagName('head')[0].appendChild(el);
+  }  
 
-
-(function() {
+  addStyle(".highlight { background-color:yellow }");
+  //===================================================================
+  
   var prev;
 
   if (document.body.addEventListener) {
@@ -68,9 +68,9 @@ addStyle(".highlight { border: 2px solid red }");
           xpath = "//" + path;
           
 
-          //!!! body.setAttribute("XPATH", xpath);
+          body.setAttribute("XPATH", xpath);
 
-            alert(xpath);
+          alert(xpath);
         //===
         }
     });

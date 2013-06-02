@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Chrome;
@@ -111,6 +113,32 @@ namespace SwdPageRecorder.WebDriver
             finally { }
         }
 
+
+        public static string ReadJavaScriptFromFile(string filePath)
+        {
+            string result = "";
+            string contents = File.ReadAllText(filePath);
+
+
+            // Replace comments
+            contents = Regex.Replace(contents, @"(/\*[^/]+\*/)", @"");
+            contents = Regex.Replace(contents, @"(\s//[^/\n]+)", @"");
+            
+            // Replace newlines
+            result = Regex.Replace(contents, @"\r\n|\n", @" ");
+
+            return result;
+        }
+
+
+        public static void InjectVisualSearch()
+        {
+            string javaScript = ReadJavaScriptFromFile(Path.Combine("JavaScript", "ElementSearch.js"));
+            IJavaScriptExecutor jsExec = GetDriver() as IJavaScriptExecutor;
+
+            jsExec.ExecuteScript(javaScript);
+
+        }
 
         public static void HighlightElement(By by)
         {

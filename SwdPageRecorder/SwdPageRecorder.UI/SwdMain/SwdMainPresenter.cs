@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 using System.Collections.ObjectModel;
 
@@ -16,6 +17,8 @@ namespace SwdPageRecorder.UI
     {
         private SwdMainView view;
         public IWebDriver Driver { get { return SwdBrowser.GetDriver(); } }
+
+        public Thread visualSearchWorker = null;
 
 
 
@@ -142,6 +145,38 @@ namespace SwdPageRecorder.UI
             var by = ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
             SwdBrowser.HighlightElement(by);
             
+        }
+
+
+        public void VisualSearch_UpdateSearchResult()
+        {
+
+            while (true)
+            {
+                var body = SwdBrowser.GetDriver().FindElement(By.TagName(@"body"));
+                string xPathAttributeValue = body.GetAttribute("xpath");
+                if (!String.IsNullOrWhiteSpace(xPathAttributeValue))
+                {
+                    view.UpdateVisualSearchResult(xPathAttributeValue);
+                }
+                Thread.Sleep(100);
+            }
+
+        }
+        
+        internal void StartVisualSearch()
+        {
+            SwdBrowser.InjectVisualSearch();
+
+            if (visualSearchWorker!=null)
+            {
+                visualSearchWorker.Abort();
+                visualSearchWorker = null;
+            }
+
+            visualSearchWorker = new Thread(VisualSearch_UpdateSearchResult);
+            visualSearchWorker.IsBackground = true;
+            visualSearchWorker.Start();
         }
     }
 }

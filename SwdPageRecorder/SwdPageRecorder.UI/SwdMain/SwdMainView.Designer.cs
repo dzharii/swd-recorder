@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Pages");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,16 +60,18 @@
             this.rbtnCssSelector = new System.Windows.Forms.RadioButton();
             this.txtCssSelector = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnGenerateSourceCode = new System.Windows.Forms.Button();
+            this.txtSourceCode = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.txtHtmlPageSource = new System.Windows.Forms.TextBox();
+            this.btnGetHtmlSource = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tvWebElements = new System.Windows.Forms.TreeView();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtSourceCode = new System.Windows.Forms.TextBox();
-            this.btnGenerateSourceCode = new System.Windows.Forms.Button();
-            this.txtBrowserUrl = new System.Windows.Forms.TextBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.btnGetHtmlSource = new System.Windows.Forms.Button();
-            this.txtHtmlPageSource = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtVisualSearchResult = new System.Windows.Forms.TextBox();
+            this.btnStartVisualSearch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -77,9 +80,10 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
-            this.tabPage4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -91,6 +95,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Browser";
+            // 
+            // txtBrowserUrl
+            // 
+            this.txtBrowserUrl.Location = new System.Drawing.Point(6, 13);
+            this.txtBrowserUrl.Name = "txtBrowserUrl";
+            this.txtBrowserUrl.Size = new System.Drawing.Size(760, 20);
+            this.txtBrowserUrl.TabIndex = 0;
+            this.txtBrowserUrl.Text = "http://blog.zhariy.com/";
+            this.txtBrowserUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBrowserUrl_KeyUp);
             // 
             // tabControl1
             // 
@@ -201,6 +214,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -214,9 +228,10 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lbElements);
-            this.groupBox3.Location = new System.Drawing.Point(3, 201);
+            this.groupBox3.Controls.Add(this.btnTestLocator);
+            this.groupBox3.Location = new System.Drawing.Point(3, 237);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(547, 178);
+            this.groupBox3.Size = new System.Drawing.Size(547, 142);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Result";
@@ -224,9 +239,9 @@
             // lbElements
             // 
             this.lbElements.FormattingEnabled = true;
-            this.lbElements.Location = new System.Drawing.Point(7, 33);
+            this.lbElements.Location = new System.Drawing.Point(6, 48);
             this.lbElements.Name = "lbElements";
-            this.lbElements.Size = new System.Drawing.Size(260, 134);
+            this.lbElements.Size = new System.Drawing.Size(260, 82);
             this.lbElements.TabIndex = 0;
             this.lbElements.DoubleClick += new System.EventHandler(this.lbElements_DoubleClick);
             // 
@@ -236,7 +251,6 @@
             this.groupBox2.Controls.Add(this.txtWebElementName);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtOtherLocator);
-            this.groupBox2.Controls.Add(this.btnTestLocator);
             this.groupBox2.Controls.Add(this.ddlOtherLocator);
             this.groupBox2.Controls.Add(this.rbtnOtherLocator);
             this.groupBox2.Controls.Add(this.txtHtmlId);
@@ -247,14 +261,14 @@
             this.groupBox2.Controls.Add(this.txtCssSelector);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(544, 189);
+            this.groupBox2.Size = new System.Drawing.Size(544, 152);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selectors";
             // 
             // btnUpdateDeclaration
             // 
-            this.btnUpdateDeclaration.Location = new System.Drawing.Point(458, 160);
+            this.btnUpdateDeclaration.Location = new System.Drawing.Point(440, 13);
             this.btnUpdateDeclaration.Name = "btnUpdateDeclaration";
             this.btnUpdateDeclaration.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateDeclaration.TabIndex = 13;
@@ -266,7 +280,7 @@
             // 
             this.txtWebElementName.Location = new System.Drawing.Point(132, 13);
             this.txtWebElementName.Name = "txtWebElementName";
-            this.txtWebElementName.Size = new System.Drawing.Size(383, 20);
+            this.txtWebElementName.Size = new System.Drawing.Size(301, 20);
             this.txtWebElementName.TabIndex = 11;
             // 
             // label1
@@ -288,7 +302,7 @@
             // 
             // btnTestLocator
             // 
-            this.btnTestLocator.Location = new System.Drawing.Point(0, 160);
+            this.btnTestLocator.Location = new System.Drawing.Point(6, 19);
             this.btnTestLocator.Name = "btnTestLocator";
             this.btnTestLocator.Size = new System.Drawing.Size(75, 23);
             this.btnTestLocator.TabIndex = 2;
@@ -384,6 +398,57 @@
             this.tabPage3.Text = "Source Code";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnGenerateSourceCode
+            // 
+            this.btnGenerateSourceCode.Location = new System.Drawing.Point(489, 6);
+            this.btnGenerateSourceCode.Name = "btnGenerateSourceCode";
+            this.btnGenerateSourceCode.Size = new System.Drawing.Size(75, 23);
+            this.btnGenerateSourceCode.TabIndex = 1;
+            this.btnGenerateSourceCode.Text = "Generate";
+            this.btnGenerateSourceCode.UseVisualStyleBackColor = true;
+            this.btnGenerateSourceCode.Click += new System.EventHandler(this.btnGenerateSourceCode_Click);
+            // 
+            // txtSourceCode
+            // 
+            this.txtSourceCode.AcceptsReturn = true;
+            this.txtSourceCode.AcceptsTab = true;
+            this.txtSourceCode.Location = new System.Drawing.Point(6, 29);
+            this.txtSourceCode.Multiline = true;
+            this.txtSourceCode.Name = "txtSourceCode";
+            this.txtSourceCode.Size = new System.Drawing.Size(558, 362);
+            this.txtSourceCode.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.txtHtmlPageSource);
+            this.tabPage4.Controls.Add(this.btnGetHtmlSource);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(570, 397);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "HTML Source";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // txtHtmlPageSource
+            // 
+            this.txtHtmlPageSource.Location = new System.Drawing.Point(6, 35);
+            this.txtHtmlPageSource.Multiline = true;
+            this.txtHtmlPageSource.Name = "txtHtmlPageSource";
+            this.txtHtmlPageSource.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtHtmlPageSource.Size = new System.Drawing.Size(548, 356);
+            this.txtHtmlPageSource.TabIndex = 1;
+            // 
+            // btnGetHtmlSource
+            // 
+            this.btnGetHtmlSource.Location = new System.Drawing.Point(479, 6);
+            this.btnGetHtmlSource.Name = "btnGetHtmlSource";
+            this.btnGetHtmlSource.Size = new System.Drawing.Size(75, 23);
+            this.btnGetHtmlSource.TabIndex = 0;
+            this.btnGetHtmlSource.Text = "Get HTML";
+            this.btnGetHtmlSource.UseVisualStyleBackColor = true;
+            this.btnGetHtmlSource.Click += new System.EventHandler(this.btnGetHtmlSource_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.tvWebElements);
@@ -419,65 +484,33 @@
             // 
             this.validationError.ContainerControl = this;
             // 
-            // txtSourceCode
+            // groupBox5
             // 
-            this.txtSourceCode.AcceptsReturn = true;
-            this.txtSourceCode.AcceptsTab = true;
-            this.txtSourceCode.Location = new System.Drawing.Point(6, 29);
-            this.txtSourceCode.Multiline = true;
-            this.txtSourceCode.Name = "txtSourceCode";
-            this.txtSourceCode.Size = new System.Drawing.Size(558, 362);
-            this.txtSourceCode.TabIndex = 0;
+            this.groupBox5.Controls.Add(this.btnStartVisualSearch);
+            this.groupBox5.Controls.Add(this.txtVisualSearchResult);
+            this.groupBox5.Location = new System.Drawing.Point(7, 165);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(543, 66);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Visual Search";
             // 
-            // btnGenerateSourceCode
+            // txtVisualSearchResult
             // 
-            this.btnGenerateSourceCode.Location = new System.Drawing.Point(489, 6);
-            this.btnGenerateSourceCode.Name = "btnGenerateSourceCode";
-            this.btnGenerateSourceCode.Size = new System.Drawing.Size(75, 23);
-            this.btnGenerateSourceCode.TabIndex = 1;
-            this.btnGenerateSourceCode.Text = "Generate";
-            this.btnGenerateSourceCode.UseVisualStyleBackColor = true;
-            this.btnGenerateSourceCode.Click += new System.EventHandler(this.btnGenerateSourceCode_Click);
+            this.txtVisualSearchResult.Location = new System.Drawing.Point(24, 30);
+            this.txtVisualSearchResult.Name = "txtVisualSearchResult";
+            this.txtVisualSearchResult.Size = new System.Drawing.Size(268, 20);
+            this.txtVisualSearchResult.TabIndex = 0;
             // 
-            // txtBrowserUrl
+            // btnStartVisualSearch
             // 
-            this.txtBrowserUrl.Location = new System.Drawing.Point(6, 13);
-            this.txtBrowserUrl.Name = "txtBrowserUrl";
-            this.txtBrowserUrl.Size = new System.Drawing.Size(760, 20);
-            this.txtBrowserUrl.TabIndex = 0;
-            this.txtBrowserUrl.Text = "http://blog.zhariy.com/";
-            this.txtBrowserUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBrowserUrl_KeyUp);
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.txtHtmlPageSource);
-            this.tabPage4.Controls.Add(this.btnGetHtmlSource);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(570, 397);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "HTML Source";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // btnGetHtmlSource
-            // 
-            this.btnGetHtmlSource.Location = new System.Drawing.Point(479, 6);
-            this.btnGetHtmlSource.Name = "btnGetHtmlSource";
-            this.btnGetHtmlSource.Size = new System.Drawing.Size(75, 23);
-            this.btnGetHtmlSource.TabIndex = 0;
-            this.btnGetHtmlSource.Text = "Get HTML";
-            this.btnGetHtmlSource.UseVisualStyleBackColor = true;
-            this.btnGetHtmlSource.Click += new System.EventHandler(this.btnGetHtmlSource_Click);
-            // 
-            // txtHtmlPageSource
-            // 
-            this.txtHtmlPageSource.Location = new System.Drawing.Point(6, 35);
-            this.txtHtmlPageSource.Multiline = true;
-            this.txtHtmlPageSource.Name = "txtHtmlPageSource";
-            this.txtHtmlPageSource.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtHtmlPageSource.Size = new System.Drawing.Size(548, 356);
-            this.txtHtmlPageSource.TabIndex = 1;
+            this.btnStartVisualSearch.Location = new System.Drawing.Point(462, 27);
+            this.btnStartVisualSearch.Name = "btnStartVisualSearch";
+            this.btnStartVisualSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnStartVisualSearch.TabIndex = 1;
+            this.btnStartVisualSearch.Text = "Start";
+            this.btnStartVisualSearch.UseVisualStyleBackColor = true;
+            this.btnStartVisualSearch.Click += new System.EventHandler(this.btnStartVisualSearch_Click);
             // 
             // SwdMainView
             // 
@@ -502,10 +535,12 @@
             this.groupBox2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -551,6 +586,9 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TextBox txtHtmlPageSource;
         private System.Windows.Forms.Button btnGetHtmlSource;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnStartVisualSearch;
+        private System.Windows.Forms.TextBox txtVisualSearchResult;
 
     }
 }
