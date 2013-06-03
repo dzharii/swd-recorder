@@ -255,6 +255,10 @@ namespace SwdPageRecorder.UI
             newNode.Text = element.ToString();
             newNode.Tag = element;
 
+            var locatorInfo = new TreeNode();
+            locatorInfo.Text = String.Format("> {0}={1}", element.HowToSearch.ToString(), element.Locator);
+
+            newNode.Nodes.Add(locatorInfo);
 
             tvWebElements.Nodes[0].Nodes.Add(newNode);
             tvWebElements.Nodes[0].Expand();
@@ -342,10 +346,20 @@ namespace SwdPageRecorder.UI
 
         internal void UpdateVisualSearchResult(string xPathAttributeValue)
         {
-            this.txtVisualSearchResult.Invoke((MethodInvoker)delegate
+
+            var action = (MethodInvoker)delegate
             {
                 txtVisualSearchResult.Text = xPathAttributeValue;
-            });
+            };
+
+            if (txtVisualSearchResult.InvokeRequired)
+            {
+                txtVisualSearchResult.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
         }
 
         internal void AddTestHtmlNodes(TreeNode x)

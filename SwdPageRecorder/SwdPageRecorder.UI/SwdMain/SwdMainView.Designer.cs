@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -72,7 +72,6 @@
             this.btnGetHtmlSource = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tvWebElements = new System.Windows.Forms.TreeView();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -502,7 +501,6 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.tvWebElements);
-            this.groupBox4.Controls.Add(this.propertyGrid1);
             this.groupBox4.Location = new System.Drawing.Point(670, 57);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(237, 419);
@@ -515,20 +513,13 @@
             this.tvWebElements.LabelEdit = true;
             this.tvWebElements.Location = new System.Drawing.Point(6, 19);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "Pages";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "Pages";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
-            this.tvWebElements.Size = new System.Drawing.Size(225, 156);
+            treeNode1});
+            this.tvWebElements.Size = new System.Drawing.Size(225, 186);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Location = new System.Drawing.Point(6, 179);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(225, 212);
-            this.propertyGrid1.TabIndex = 1;
             // 
             // validationError
             // 
@@ -590,7 +581,6 @@
         private System.Windows.Forms.RadioButton rbtnOtherLocator;
         private System.Windows.Forms.TextBox txtOtherLocator;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.PropertyGrid propertyGrid1;
         private System.Windows.Forms.TextBox txtWebElementName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnUpdateDeclaration;

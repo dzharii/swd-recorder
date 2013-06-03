@@ -49,7 +49,7 @@
     if (document.body.addEventListener) {
         document.body.addEventListener('mouseover', handler, false);
         document.addEventListener("mousedown", function (event) {
-            if (event.ctrlKey || event.button == 2) {
+            if (event.ctrlKey && event.button == 0) {
                 // =====================
 
                 if (event === undefined) event = window.event;                     // IE hack
@@ -65,9 +65,10 @@
                 // xpath = 'Clicked element '+path+' offset '+(mxy[0]-txy[0])+', '+(mxy[1]-txy[1]);
 
                 var body = document.getElementsByTagName('body')[0];
-                xpath = "//" + path;
+                var xpath = path;
 
                 body.setAttribute("xpath", xpath);
+                return false;
 
             }
         });
