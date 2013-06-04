@@ -1,18 +1,29 @@
 ﻿(function () {
     // =================== XPATH 
 
+    function pseudoGuid() {
+        var result = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+        result = result.replace(/[xy]/g, function(c) 
+                 {
+                     var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+                     return v.toString(16);
+                 });
+
+        return result;
+    }
+
     function getPathTo(element) {
         if (element.id !== '')
             return 'id("' + element.id + '")';
         if (element === document.body)
-            return element.tagName;
+            return element.tagName.toLowerCase();
 
         var ix = 0;
         var siblings = element.parentNode.childNodes;
         for (var i = 0; i < siblings.length; i++) {
             var sibling = siblings[i];
             if (sibling === element)
-                return getPathTo(element.parentNode) + '/' + element.tagName + '[' + (ix + 1) + ']';
+                return getPathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
             if (sibling.nodeType === 1 && sibling.tagName === element.tagName)
                 ix++;
         }
@@ -31,6 +42,88 @@
 
     // ==========================
 
+    // ====== SHOW DIV Coords==============
+
+    function showPos(event, xpath) {
+        
+        var el, x, y;
+
+        el = document.getElementById('SwdPR_PopUp');
+        
+        if (window.event) {
+            x = window.event.clientX + document.documentElement.scrollLeft + document.body.scrollLeft;
+            y = window.event.clientY + document.documentElement.scrollTop + document.body.scrollTop;
+        }
+        else {
+            x = event.clientX + window.scrollX;
+            y = event.clientY + window.scrollY;
+        }
+        x -= 2; y -= 2;
+        y = y+15
+
+        el.style.position = "absolute";
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+        el.style.display = "block";
+        
+        
+        
+        document.getElementById("SwdPR_PopUp_XPathLocator").innerHTML = xpath;
+        document.getElementById("SwdPR_PopUp_ElementText").innerHTML = pseudoGuid();
+        
+
+        console.log(x + ";" + y);
+    }
+
+    // ================= ADD button
+    function addButton(container) {
+        //Create an input type dynamically.   
+        var element = document.createElement("input");
+        //Assign different attributes to the element. 
+        element.type = 'button';
+        element.value = 'Click Me'; 
+        element.name = '';  
+        element.onclick = function() { // Note this is a function
+            alert("blabla");
+        };
+
+        container.appendChild(element);
+    }
+
+    function createElementForm() {
+        //Create an input type dynamically.   
+        var element = document.createElement("div");
+        //Assign different attributes to the element. 
+        element.id = 'SwdPR_PopUp';
+        element.style = 'display: block; position: absolute; left: 100px; top: 50px; border: solid black 1px; padding: 10px; background-color: rgb(200,100,100); text-align: justify; font-size: 12px; width: 135px;';
+        element.name = '';  
+        document.getElementsByTagName('body')[0].appendChild(element);
+
+        element.innerHTML = 
+        ' <table id="SWDTable">' +
+        '   <tr>' +
+        '     <td>Code identifier</td>' +
+        '     <td><span id="SwdPR_PopUp_CodeID"><input type="text" id="SwdPR_PopUp_CodeIDText"></span></td>' +
+        '   </tr>' +
+        '   <tr>' +
+        '     <td>Element</td>' +
+        '     <td><span id="SwdPR_PopUp_ElementName">Element</span></td>' +
+        '   </tr>' +
+        '   <tr>' +
+        '     <td>Text:</td>' +
+        '     <td><span id="SwdPR_PopUp_ElementText">Element</span></td>' +
+        '   </tr>' +
+        '   <tr>' +
+        '     <td>XPathLocator</td>' +
+        '     <td><span id="SwdPR_PopUp_XPathLocator">Element</span></td>' +
+        '   </tr>' +
+        '   </table>';
+
+    }
+
+
+    //===========================
+
 
     function addStyle(str) {
         var el = document.createElement('style');
@@ -40,8 +133,11 @@
         }
         return document.getElementsByTagName('head')[0].appendChild(el);
     }
+    // ========== MAIN !!!!!! ============================
+    addStyle(".highlight { background-color:silver !important}");
+    addStyle("table#SWDTable { background-color:white; border-collapse:collapse; } table#SWDTable,table#SWDTable th, table#SWDTable td { border: 1px solid black; }");
 
-    addStyle(".highlight { background-color:yellow }");
+    createElementForm();
     //===================================================================
 
     var prev;
@@ -68,6 +164,13 @@
                 var xpath = path;
 
                 body.setAttribute("xpath", xpath);
+
+                // !!! Add button
+
+                // addButton(event.target);
+
+                showPos(event, xpath);
+
                 return false;
 
             }
@@ -83,6 +186,7 @@
     }
 
     function handler(event) {
+        
         if (event.target === document.body ||
             (prev && prev === event.target)) {
             return;
@@ -91,7 +195,7 @@
             prev.className = prev.className.replace(/\bhighlight\b/, '');
             prev = undefined;
         }
-        if (event.target) {
+        if (event.target && event.ctrlKey) {
             prev = event.target;
             prev.className += " highlight";
         }

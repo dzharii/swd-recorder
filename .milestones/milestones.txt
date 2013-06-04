@@ -1,9 +1,12 @@
 Milestones
 ==================================================
 [+] Generate Page Object source code
-[-] Highlight elements
+[+] Highlight elements
 [-] Implement visual search for element
+    [-] Implement DOM box
+    [-] Implement 2 sides communication (via JSON serialization) (http://www.sitepoint.com/javascript-json-serialization/)
 [-] Implement TestBox
+
 
 ==================================================
 [-] Code refactoring
@@ -15,3 +18,15 @@ Milestones
 [-] Advanced HTML editor
 [-] Browser screenshots
 [-] CSharp code integration
+
+==================================================
+More Ideas
+==================================================
+
+* Allow leaving comments on the page in order to
+  notify developers about ugly locatord
+  
+  Given I am automation engeneer
+  And I see ugly XPATH locator
+  When I click on the locator
+  It should be marked, so the developer can see this sight and fix the locator
