@@ -10,6 +10,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Firefox;
 using SwdPageRecorder.WebDriver;
+using SwdPageRecorder.WebDriver.JsCommand;
 
 using System.Xml;
 using System.Xml.Linq;
@@ -160,11 +161,25 @@ namespace SwdPageRecorder.UI
 
             while (true)
             {
-                var body = SwdBrowser.GetDriver().FindElement(By.TagName(@"body"));
-                string xPathAttributeValue = body.GetAttribute("xpath");
-                if (!String.IsNullOrWhiteSpace(xPathAttributeValue))
+
+                var command = SwdBrowser.GetNextCommand();
+                if (command is GetXPathFromElement)
                 {
-                    view.UpdateVisualSearchResult(xPathAttributeValue);
+                    var getXPathCommand = command as GetXPathFromElement;
+                    view.UpdateVisualSearchResult(getXPathCommand.XPathValue);
+                }
+                else if (command is AddElement)
+                {
+                    var addElementCommand = command as AddElement;
+
+                    var element = new WebElementDefinition()
+                    {
+                        Name = addElementCommand.ElementCodeName,
+                        HowToSearch = LocatorSearchMethod.XPath,
+                        Locator = addElementCommand.ElementXPath,
+                    };
+
+                    UpdatePageDefinition(element);
                 }
                 Thread.Sleep(100);
             }

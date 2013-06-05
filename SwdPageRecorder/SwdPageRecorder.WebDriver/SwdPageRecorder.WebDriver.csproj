@@ -35,6 +35,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SgmlReaderDll">
       <HintPath>..\packages\SgmlReader.1.8.11\lib\4.0\SgmlReaderDll.dll</HintPath>
     </Reference>
@@ -54,6 +57,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JsCommand\AddElement.cs" />
+    <Compile Include="JsCommand\BrowserCommand.cs" />
+    <Compile Include="JsCommand\BrowserCommandParser.cs" />
+    <Compile Include="JsCommand\GetXPathFromElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwdBrowser.cs" />
     <Compile Include="WebDriverOptions.cs" />

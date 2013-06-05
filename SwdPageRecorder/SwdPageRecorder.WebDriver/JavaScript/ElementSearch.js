@@ -59,7 +59,7 @@
             y = event.clientY + window.scrollY;
         }
         x -= 2; y -= 2;
-        y = y+15
+        y = y+15;
 
         el.style.position = "absolute";
         el.style.left = x + "px";
@@ -117,9 +117,33 @@
         '     <td>XPathLocator</td>' +
         '     <td><span id="SwdPR_PopUp_XPathLocator">Element</span></td>' +
         '   </tr>' +
-        '   </table>';
+        '   </table>' + 
+        '<input type="button" value="Add element" onclick="window.Swd_addElement()">' + 
+        '' + 
+        '' + 
+        '' + 
+        ''; 
 
     }
+
+    window.Swd_addElement = function addElement() {
+        var JsonData = {
+            "Command": "AddElement",
+            "Caller": "addElement",
+            "CommandId": pseudoGuid(),
+
+            "ElementCodeName" : document.getElementById("SwdPR_PopUp_CodeIDText").value,
+            "ElementXPath"    : document.getElementById("SwdPR_PopUp_XPathLocator").firstChild.nodeValue,
+
+        };
+
+        var myJSONText = JSON.stringify(JsonData, null, 2);
+
+        // TODO: Reduce this copy-paste
+        var body = document.getElementsByTagName('body')[0];
+        body.setAttribute("swdpr_command", myJSONText);        
+
+    };
 
 
     //===========================
@@ -133,6 +157,8 @@
         }
         return document.getElementsByTagName('head')[0].appendChild(el);
     }
+
+
     // ========== MAIN !!!!!! ============================
     addStyle(".highlight { background-color:silver !important}");
     addStyle("table#SWDTable { background-color:white; border-collapse:collapse; } table#SWDTable,table#SWDTable th, table#SWDTable td { border: 1px solid black; }");
@@ -163,7 +189,17 @@
                 var body = document.getElementsByTagName('body')[0];
                 var xpath = path;
 
-                body.setAttribute("xpath", xpath);
+                var JsonData = {
+                    "Command": "GetXPathFromElement",
+                    "Caller": "EventListener : mousedown",
+                    "CommandId": pseudoGuid(),
+                    "XPathValue" : xpath,
+
+                };
+
+                var myJSONText = JSON.stringify(JsonData, null, 2);
+
+                body.setAttribute("swdpr_command", myJSONText);
 
                 // !!! Add button
 

@@ -12,6 +12,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.PhantomJS;
 using System.Net;
+using SwdPageRecorder.WebDriver.JsCommand;
 
 using System.Xml;
 
@@ -243,6 +244,46 @@ namespace SwdPageRecorder.WebDriver
 
             var xml = GetPageSourceXml();
             return XmlTidy(xml);
+        }
+
+        private static string lastCommandId = null;
+        public static BrowserCommand GetNextCommand() // Returns null if no new commands received
+        {
+            BrowserCommand result = null;
+
+            IWebElement body = null;
+
+            try
+            {
+                body = SwdBrowser.GetDriver().FindElement(By.TagName(@"body"));
+            }
+            catch { }
+
+            if (body == null) return null;
+
+            string jsonCommand = body.GetAttribute("swdpr_command");
+
+            if (!String.IsNullOrWhiteSpace(jsonCommand))
+            {
+
+                var unknownCommand = BrowserCommandParser.ParseCommand<BrowserCommand>(jsonCommand);
+
+                if (lastCommandId == unknownCommand.CommandId) return null;
+
+                if (unknownCommand.Command == @"GetXPathFromElement")
+                {
+                    result = BrowserCommandParser.ParseCommand<GetXPathFromElement>(jsonCommand);
+                }
+                else if ((unknownCommand.Command == @"AddElement"))
+                {
+                    result = BrowserCommandParser.ParseCommand<AddElement>(jsonCommand);
+                }
+                lastCommandId = unknownCommand.CommandId;
+            }
+
+
+            return result;
+
         }
 
     }

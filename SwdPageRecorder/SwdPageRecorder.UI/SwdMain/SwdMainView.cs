@@ -251,17 +251,33 @@ namespace SwdPageRecorder.UI
 
         internal void AddToPageDefinitions(WebElementDefinition element)
         {
-            var newNode = new TreeNode();
-            newNode.Text = element.ToString();
-            newNode.Tag = element;
+            var action = (MethodInvoker)delegate
+            {
+                var newNode = new TreeNode();
+                newNode.Text = element.ToString();
+                newNode.Tag = element;
 
-            var locatorInfo = new TreeNode();
-            locatorInfo.Text = String.Format("> {0}={1}", element.HowToSearch.ToString(), element.Locator);
+                var locatorInfo = new TreeNode();
+                locatorInfo.Text = String.Format("> {0}={1}", element.HowToSearch.ToString(), element.Locator);
 
-            newNode.Nodes.Add(locatorInfo);
+                newNode.Nodes.Add(locatorInfo);
 
-            tvWebElements.Nodes[0].Nodes.Add(newNode);
-            tvWebElements.Nodes[0].Expand();
+                tvWebElements.Nodes[0].Nodes.Add(newNode);
+                tvWebElements.Nodes[0].Expand();
+            };
+
+            if (tvWebElements.InvokeRequired)
+            {
+                tvWebElements.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
+
+            
+            
+
             
         }
 
