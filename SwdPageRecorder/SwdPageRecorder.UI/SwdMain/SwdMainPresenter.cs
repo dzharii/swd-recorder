@@ -16,6 +16,7 @@ using System.Xml;
 using System.Xml.Linq;
 
 using System.Windows.Forms;
+using System.Diagnostics;
 
 
 
@@ -94,8 +95,13 @@ namespace SwdPageRecorder.UI
 
             var searchMethod = view.GetLocatorSearchMethod();
             var locator = view.GetLocatorText();
-            
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             var elements = FindElements(searchMethod, locator);
+            sw.Stop();
+
+            view.UpdateLastCallStat(sw.ElapsedMilliseconds.ToString() + " ms");
 
             List<ResultElement> displayList = new List<ResultElement>();
             foreach (var el in elements)
@@ -114,7 +120,6 @@ namespace SwdPageRecorder.UI
         internal void UpdatePageDefinition(WebElementDefinition element)
         {
             view.AddToPageDefinitions(element);
-
         }
 
         internal void GenerateSourceCodeForPageObject()
@@ -242,6 +247,13 @@ namespace SwdPageRecorder.UI
             view.AddTestHtmlNodes(treeRootNode);
 
 
+        }
+
+        internal void ShowElementInTree(ResultElement element)
+        {
+            IWebElement webElement = element.WebElement;
+            string xPath = SwdBrowser.GetElementXPath(webElement);
+            view.FindAndHighlightElementInTree(xPath);
         }
     }
 }

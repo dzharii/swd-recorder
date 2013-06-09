@@ -16,7 +16,7 @@
         if (element.id !== '')
             return 'id("' + element.id + '")';
         if (element === document.body)
-            return element.tagName.toLowerCase();
+            return '/html/' + element.tagName.toLowerCase();
 
         var ix = 0;
         var siblings = element.parentNode.childNodes;

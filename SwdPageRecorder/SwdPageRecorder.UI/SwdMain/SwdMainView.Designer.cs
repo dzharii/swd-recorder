@@ -73,6 +73,9 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tvWebElements = new System.Windows.Forms.TreeView();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblLastCallTime = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -86,6 +89,7 @@
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -240,7 +244,7 @@
             // 
             // btnStartVisualSearch
             // 
-            this.btnStartVisualSearch.Location = new System.Drawing.Point(462, 27);
+            this.btnStartVisualSearch.Location = new System.Drawing.Point(298, 27);
             this.btnStartVisualSearch.Name = "btnStartVisualSearch";
             this.btnStartVisualSearch.Size = new System.Drawing.Size(75, 23);
             this.btnStartVisualSearch.TabIndex = 1;
@@ -500,6 +504,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Controls.Add(this.tvWebElements);
             this.groupBox4.Location = new System.Drawing.Point(670, 57);
             this.groupBox4.Name = "groupBox4";
@@ -524,6 +529,35 @@
             // validationError
             // 
             this.validationError.ContainerControl = this;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.lblLastCallTime);
+            this.groupBox7.Controls.Add(this.label4);
+            this.groupBox7.Location = new System.Drawing.Point(6, 259);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(225, 154);
+            this.groupBox7.TabIndex = 3;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Stats";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Call time:";
+            // 
+            // lblLastCallTime
+            // 
+            this.lblLastCallTime.AutoSize = true;
+            this.lblLastCallTime.Location = new System.Drawing.Point(62, 28);
+            this.lblLastCallTime.Name = "lblLastCallTime";
+            this.lblLastCallTime.Size = new System.Drawing.Size(26, 13);
+            this.lblLastCallTime.TabIndex = 1;
+            this.lblLastCallTime.Text = "0ms";
             // 
             // SwdMainView
             // 
@@ -555,6 +589,8 @@
             this.tabPage4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -604,6 +640,9 @@
         private System.Windows.Forms.TextBox txtVisualSearchResult;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TreeView tvHtmlDoc;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label lblLastCallTime;
+        private System.Windows.Forms.Label label4;
 
     }
 }

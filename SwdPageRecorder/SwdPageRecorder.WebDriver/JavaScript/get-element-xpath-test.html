@@ -1,0 +1,35 @@
+<html>
+
+
+<body>
+
+<div> <span> <b id="hello">Hello</b></span></div>
+
+<div id="result">...</div>
+
+<script language="javascript">
+function getPathTo(element) {
+    if (element === document.body)
+        return '/html/' + element.tagName.toLowerCase();
+
+    var ix = 0;
+    var siblings = element.parentNode.childNodes;
+    for (var i = 0; i < siblings.length; i++) {
+        var sibling = siblings[i];
+        if (sibling === element)
+            return getPathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
+        if (sibling.nodeType === 1 && sibling.tagName === element.tagName)
+            ix++;
+    }
+}
+
+var helloElement = document.getElementById('hello');
+var xpath = getPathTo(helloElement);
+
+var res = document.getElementById('result');
+res.innerHTML = xpath;
+
+</script>
+</body>
+
+</html>

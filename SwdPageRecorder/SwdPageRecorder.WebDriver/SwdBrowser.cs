@@ -25,10 +25,16 @@ namespace SwdPageRecorder.WebDriver
     {
         private static IWebDriver _driver = null;
         private static bool isRemote = false;
+
+
+        private static object lockObject = new object();
         public static IWebDriver GetDriver()
         {
-            if (_driver == null) throw new ArgumentNullException("_driver", @"GetDriver was not initialized. Make sure you called Initialize before using Browser.");
-            return _driver;
+            lock (lockObject)
+            {
+                if (_driver == null) throw new ArgumentNullException("_driver", @"GetDriver was not initialized. Make sure you called Initialize before using Browser.");
+                return _driver;
+            }
         }
 
         public static void Initialize(WebDriverOptions browserOptions)
@@ -286,5 +292,31 @@ namespace SwdPageRecorder.WebDriver
 
         }
 
+
+        public static string GetElementXPath(IWebElement webElement)
+        {
+            IJavaScriptExecutor jsExec = GetDriver() as IJavaScriptExecutor;
+            return (string)jsExec.ExecuteScript(
+@"
+function getPathTo(element) {
+    if (element === document.body)
+        return '/html/' + element.tagName.toLowerCase();
+
+    var ix = 0;
+    var siblings = element.parentNode.childNodes;
+    for (var i = 0; i < siblings.length; i++) {
+        var sibling = siblings[i];
+        if (sibling === element)
+            return getPathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
+        if (sibling.nodeType === 1 && sibling.tagName === element.tagName)
+            ix++;
+    }
+}
+
+var element = arguments[0];
+return getPathTo(element);
+
+", webElement);
+        }
     }
 }

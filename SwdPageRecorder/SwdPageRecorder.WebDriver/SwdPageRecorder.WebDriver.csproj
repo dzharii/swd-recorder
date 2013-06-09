@@ -72,6 +72,9 @@
     <Content Include="chromedriver.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="IEDriverServer.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="JavaScript\ElementSearch.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

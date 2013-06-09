@@ -9,8 +9,10 @@ Milestones
 
 
 ==================================================
-[-] Code refactoring
-[-] Initial Unit tests
+[!] Code refactoring
+   [!] JavaScript code clean up
+   [!] Create a reusable functions (getXPath!)
+[!] Initial Unit tests
 ==================================================
 
 [-] Add support for ReadOnlyCollection IWebElement
@@ -19,6 +21,13 @@ Milestones
 [-] Browser screenshots
 [-] CSharp code integration
 
+==================================================
+WebDriver limitations
+==================================================
+[!] Reduce Webdriver calls: According to JSON-wired implementation, 
+    Webdriver makes http call each time the client request an webelement 
+    property. That’s slows down the Test Locators feature. 
+    Possible solution: make a javascript search avoiding webdriver’s one
 ==================================================
 More Ideas
 ==================================================

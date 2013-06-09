@@ -175,11 +175,9 @@ namespace SwdPageRecorder.UI
 
         public void DisplaySearchResults(List<ResultElement> displayList)
         {
+            
             lbElements.Items.Clear();
-            foreach (var displayItem in displayList)
-            {
-                lbElements.Items.Add(displayItem);
-            }
+            lbElements.Items.AddRange(displayList.ToArray());
         }
 
         private void lbElements_DoubleClick(object sender, EventArgs e)
@@ -188,7 +186,7 @@ namespace SwdPageRecorder.UI
             if (lbElements.SelectedItem != null)
             {
                 var element = lbElements.SelectedItem as ResultElement;
-                element.WebElement.Click();
+                presenter.ShowElementInTree(element);
             }
         }
 
@@ -383,6 +381,16 @@ namespace SwdPageRecorder.UI
             tvHtmlDoc.Nodes.Clear();
             tvHtmlDoc.Nodes.Add(x);
 
+        }
+
+        internal void UpdateLastCallStat(string elapsedTime)
+        {
+            lblLastCallTime.Text = elapsedTime;
+        }
+
+        internal void FindAndHighlightElementInTree(string xPath)
+        {
+            MessageBox.Show(xPath);
         }
     }
 }
