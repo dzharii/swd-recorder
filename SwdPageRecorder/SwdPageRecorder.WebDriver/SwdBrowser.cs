@@ -198,7 +198,7 @@ namespace SwdPageRecorder.WebDriver
                 sgmlReader.InputStream = txtReader;
 
                 // create document
-                doc.PreserveWhitespace = true;
+                doc.PreserveWhitespace = false;
                 doc.XmlResolver = null;
                 doc.Load(sgmlReader);
             }

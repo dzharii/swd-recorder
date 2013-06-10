@@ -65,6 +65,7 @@
         el.style.left = x + "px";
         el.style.top = y + "px";
         el.style.display = "block";
+        el.style.zIndex = 2147483647;
         
         
         

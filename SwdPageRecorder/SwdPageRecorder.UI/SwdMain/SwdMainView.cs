@@ -255,13 +255,9 @@ namespace SwdPageRecorder.UI
                 newNode.Text = element.ToString();
                 newNode.Tag = element;
 
-                var locatorInfo = new TreeNode();
-                locatorInfo.Text = String.Format("> {0}={1}", element.HowToSearch.ToString(), element.Locator);
-
-                newNode.Nodes.Add(locatorInfo);
 
                 tvWebElements.Nodes[0].Nodes.Add(newNode);
-                tvWebElements.Nodes[0].Expand();
+                newNode.EnsureVisible();
             };
 
             if (tvWebElements.InvokeRequired)
@@ -388,9 +384,49 @@ namespace SwdPageRecorder.UI
             lblLastCallTime.Text = elapsedTime;
         }
 
-        internal void FindAndHighlightElementInTree(string xPath)
+
+        internal TreeNode FindTreeNode(List<TravelNode> travelNodes)
         {
-            MessageBox.Show(xPath);
+            var searchNodes = tvHtmlDoc.Nodes;
+            TreeNode result = null;
+            for (var i = 0; i < travelNodes.Count; i++)
+            {
+                bool isLastTravelNode = (i == travelNodes.Count - 1);
+
+                var travelNode = travelNodes[i];
+                var targetNodeIndex = -1;
+                foreach (TreeNode treeNode in searchNodes)
+                {
+                    if (treeNode.Name == travelNode.NodeName)
+                    {
+                        targetNodeIndex++;
+
+                        if (targetNodeIndex == travelNode.NodeIndex)
+                        {
+                            if (isLastTravelNode)
+                            {
+                                return treeNode;
+                            }
+                            else
+                            {
+                                searchNodes = treeNode.Nodes;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+
+        
+        internal void FindAndHighlightElementInTree(List<TravelNode> travelNodes)
+        {
+            var htmlNode = FindTreeNode(travelNodes);
+            tvHtmlDoc.SelectedNode = htmlNode;
+            tvHtmlDoc.Focus();
+            htmlNode.EnsureVisible();
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 
 using System.Collections.ObjectModel;
@@ -207,6 +208,8 @@ namespace SwdPageRecorder.UI
         }
 
 
+
+
         private void ParseXmlNodes(TreeNode tnode, XmlNodeList xmlNodes)
         {
 
@@ -219,13 +222,15 @@ namespace SwdPageRecorder.UI
                 for (int i = 0; i < xmlNode.Attributes.Count; i++)
                 {
                     var attr=xmlNode.Attributes[i];
-                    attributes.Add(attr.LocalName + "=" + attr.Value);
+                    attributes.Add(attr.LocalName + "= \"" + attr.Value + "\"");
                 }
 
                 string nodeName = xmlNode.LocalName + " " + String.Join(" ", attributes);
 
 
                 var newNode = new TreeNode(nodeName);
+                newNode.Name = xmlNode.LocalName.ToLower();
+                //xmlNode.Get
                 tnode.Nodes.Add(newNode);
 
                 if (xmlNode.HasChildNodes)
@@ -242,6 +247,7 @@ namespace SwdPageRecorder.UI
 
             var root = doc.FirstChild;
             var treeRootNode = new TreeNode(root.LocalName);
+            treeRootNode.Name = root.LocalName.ToLower();
             ParseXmlNodes(treeRootNode, root.ChildNodes);
 
             view.AddTestHtmlNodes(treeRootNode);
@@ -249,11 +255,37 @@ namespace SwdPageRecorder.UI
 
         }
 
+
+        private static List<TravelNode> GetTreeTravelDataFromXPath(string xpath)
+        {
+            var result = new List<TravelNode>();
+            var selectors = xpath.Split('/').Skip(1);
+            foreach (var selector in selectors)
+            {
+
+                Match match = Regex.Match(selector, @"^(\w+)(?:\[(\d+)\])?", RegexOptions.IgnoreCase);
+                var nodeName = match.Groups[1].Value;
+
+                var nodelIndexString = match.Groups[2].Value;
+                nodelIndexString = String.IsNullOrWhiteSpace(nodelIndexString) ? "1" : nodelIndexString;
+
+                var nodeIndex = Convert.ToInt32(nodelIndexString);
+                nodeIndex--;
+
+                result.Add(new TravelNode() { NodeName = nodeName, NodeIndex = nodeIndex });
+            }
+
+            return result;
+        }
+
         internal void ShowElementInTree(ResultElement element)
         {
             IWebElement webElement = element.WebElement;
             string xPath = SwdBrowser.GetElementXPath(webElement);
-            view.FindAndHighlightElementInTree(xPath);
+
+            var travelNodes = GetTreeTravelDataFromXPath(xPath);
+
+            view.FindAndHighlightElementInTree(travelNodes);
         }
     }
 }
