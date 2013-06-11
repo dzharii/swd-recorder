@@ -208,8 +208,9 @@
 
                 showPos(event, xpath);
 
+                if (event.preventDefault) event.preventDefault();
+                event.returnValue = false;
                 return false;
-
             }
         });
     }

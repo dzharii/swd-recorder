@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Pages");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -71,11 +71,14 @@
             this.txtHtmlPageSource = new System.Windows.Forms.TextBox();
             this.btnGetHtmlSource = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.lblLastCallTime = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.tvWebElements = new System.Windows.Forms.TreeView();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblLastCallTime = new System.Windows.Forms.Label();
+            this.btnNewWebElement = new System.Windows.Forms.Button();
+            this.btnHighlightWebElementInBrowser = new System.Windows.Forms.Button();
+            this.btnCopyWebElement = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -88,8 +91,8 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -309,6 +312,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnCopyWebElement);
+            this.groupBox2.Controls.Add(this.btnHighlightWebElementInBrowser);
+            this.groupBox2.Controls.Add(this.btnNewWebElement);
             this.groupBox2.Controls.Add(this.btnUpdateDeclaration);
             this.groupBox2.Controls.Add(this.txtWebElementName);
             this.groupBox2.Controls.Add(this.label1);
@@ -330,7 +336,7 @@
             // 
             // btnUpdateDeclaration
             // 
-            this.btnUpdateDeclaration.Location = new System.Drawing.Point(557, 13);
+            this.btnUpdateDeclaration.Location = new System.Drawing.Point(563, 119);
             this.btnUpdateDeclaration.Name = "btnUpdateDeclaration";
             this.btnUpdateDeclaration.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateDeclaration.TabIndex = 13;
@@ -513,23 +519,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Page Object";
             // 
-            // tvWebElements
-            // 
-            this.tvWebElements.LabelEdit = true;
-            this.tvWebElements.Location = new System.Drawing.Point(6, 19);
-            this.tvWebElements.Name = "tvWebElements";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Pages";
-            this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.tvWebElements.Size = new System.Drawing.Size(225, 186);
-            this.tvWebElements.TabIndex = 2;
-            this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
-            // 
-            // validationError
-            // 
-            this.validationError.ContainerControl = this;
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.lblLastCallTime);
@@ -541,6 +530,15 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Stats";
             // 
+            // lblLastCallTime
+            // 
+            this.lblLastCallTime.AutoSize = true;
+            this.lblLastCallTime.Location = new System.Drawing.Point(62, 28);
+            this.lblLastCallTime.Name = "lblLastCallTime";
+            this.lblLastCallTime.Size = new System.Drawing.Size(26, 13);
+            this.lblLastCallTime.TabIndex = 1;
+            this.lblLastCallTime.Text = "0ms";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -550,14 +548,52 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Call time:";
             // 
-            // lblLastCallTime
+            // tvWebElements
             // 
-            this.lblLastCallTime.AutoSize = true;
-            this.lblLastCallTime.Location = new System.Drawing.Point(62, 28);
-            this.lblLastCallTime.Name = "lblLastCallTime";
-            this.lblLastCallTime.Size = new System.Drawing.Size(26, 13);
-            this.lblLastCallTime.TabIndex = 1;
-            this.lblLastCallTime.Text = "0ms";
+            this.tvWebElements.LabelEdit = true;
+            this.tvWebElements.Location = new System.Drawing.Point(6, 19);
+            this.tvWebElements.Name = "tvWebElements";
+            treeNode4.Name = "Node0";
+            treeNode4.Text = "Pages";
+            this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4});
+            this.tvWebElements.Size = new System.Drawing.Size(225, 186);
+            this.tvWebElements.TabIndex = 2;
+            this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
+            // 
+            // validationError
+            // 
+            this.validationError.ContainerControl = this;
+            // 
+            // btnNewWebElement
+            // 
+            this.btnNewWebElement.Location = new System.Drawing.Point(563, 10);
+            this.btnNewWebElement.Name = "btnNewWebElement";
+            this.btnNewWebElement.Size = new System.Drawing.Size(75, 23);
+            this.btnNewWebElement.TabIndex = 14;
+            this.btnNewWebElement.Text = "New";
+            this.btnNewWebElement.UseVisualStyleBackColor = true;
+            this.btnNewWebElement.Click += new System.EventHandler(this.btnNewWebElement_Click);
+            // 
+            // btnHighlightWebElementInBrowser
+            // 
+            this.btnHighlightWebElementInBrowser.Location = new System.Drawing.Point(563, 87);
+            this.btnHighlightWebElementInBrowser.Name = "btnHighlightWebElementInBrowser";
+            this.btnHighlightWebElementInBrowser.Size = new System.Drawing.Size(75, 23);
+            this.btnHighlightWebElementInBrowser.TabIndex = 15;
+            this.btnHighlightWebElementInBrowser.Text = "Highlight";
+            this.btnHighlightWebElementInBrowser.UseVisualStyleBackColor = true;
+            this.btnHighlightWebElementInBrowser.Click += new System.EventHandler(this.btnHighlightWebElementInBrowser_Click);
+            // 
+            // btnCopyWebElement
+            // 
+            this.btnCopyWebElement.Location = new System.Drawing.Point(563, 39);
+            this.btnCopyWebElement.Name = "btnCopyWebElement";
+            this.btnCopyWebElement.Size = new System.Drawing.Size(75, 23);
+            this.btnCopyWebElement.TabIndex = 16;
+            this.btnCopyWebElement.Text = "Copy";
+            this.btnCopyWebElement.UseVisualStyleBackColor = true;
+            this.btnCopyWebElement.Click += new System.EventHandler(this.btnCopyWebElement_Click);
             // 
             // SwdMainView
             // 
@@ -588,9 +624,9 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -643,6 +679,9 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label lblLastCallTime;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnNewWebElement;
+        private System.Windows.Forms.Button btnCopyWebElement;
+        private System.Windows.Forms.Button btnHighlightWebElementInBrowser;
 
     }
 }

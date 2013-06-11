@@ -30,6 +30,9 @@ namespace SwdPageRecorder.UI
 
         public Thread visualSearchWorker = null;
 
+        private bool _isEditingExistingNode = false;
+        private TreeNode _currentEditingNode = null;
+
 
 
         public SwdMainPresenter(SwdMainView view)
@@ -120,7 +123,15 @@ namespace SwdPageRecorder.UI
 
         internal void UpdatePageDefinition(WebElementDefinition element)
         {
-            view.AddToPageDefinitions(element);
+            if (_isEditingExistingNode)
+            {
+                view.UpdateExistingPageDefinition(_currentEditingNode, element);
+            }
+            else
+            {
+                _isEditingExistingNode = true;
+                _currentEditingNode = view.AddToPageDefinitions(element);
+            }
         }
 
         internal void GenerateSourceCodeForPageObject()
@@ -286,6 +297,28 @@ namespace SwdPageRecorder.UI
             var travelNodes = GetTreeTravelDataFromXPath(xPath);
 
             view.FindAndHighlightElementInTree(travelNodes);
+        }
+
+        internal void OpenExistingNodeForEdit(TreeNode treeNode)
+        {
+            _isEditingExistingNode = true;
+            _currentEditingNode = treeNode;
+            var webElementFormData = treeNode.Tag as WebElementDefinition;
+            view.UpdateWebElementForm(webElementFormData);
+        }
+
+        internal void NewWebElement()
+        {
+            _isEditingExistingNode = false;
+            _currentEditingNode = null;
+            view.ClearWebElementForm();
+        }
+
+        internal void CopyWebElement()
+        {
+            _isEditingExistingNode = false;
+            _currentEditingNode = null;
+            view.AppendWebElementNameWith("__Copy");
         }
     }
 }

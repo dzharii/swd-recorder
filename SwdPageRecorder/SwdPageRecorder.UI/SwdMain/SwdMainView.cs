@@ -215,6 +215,18 @@ namespace SwdPageRecorder.UI
             rbtnHtmlId.Checked = true;
         }
 
+
+        private WebElementDefinition GetWebElementDefinitionFromForm()
+        {
+            var element = new WebElementDefinition()
+            {
+                Name = txtWebElementName.Text,
+                HowToSearch = GetLocatorSearchMethod(),
+                Locator = GetLocatorText(),
+            };
+            return element;
+        }
+
         private void btnUpdateDeclaration_Click(object sender, EventArgs e)
         {
 
@@ -225,16 +237,9 @@ namespace SwdPageRecorder.UI
                 isValid = false;
             }
 
-
             if (!isValid) return;
 
-
-            var element = new WebElementDefinition()
-            {
-                Name = txtWebElementName.Text,
-                HowToSearch = GetLocatorSearchMethod(),
-                Locator = GetLocatorText(),
-            };
+            var element = GetWebElementDefinitionFromForm();
 
             presenter.UpdatePageDefinition(element);
         }
@@ -247,14 +252,14 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        internal void AddToPageDefinitions(WebElementDefinition element)
+        internal TreeNode AddToPageDefinitions(WebElementDefinition element)
         {
+            var newNode = new TreeNode();
+            newNode.Text = element.ToString();
+            newNode.Tag = element;
+            
             var action = (MethodInvoker)delegate
             {
-                var newNode = new TreeNode();
-                newNode.Text = element.ToString();
-                newNode.Tag = element;
-
 
                 tvWebElements.Nodes[0].Nodes.Add(newNode);
                 newNode.EnsureVisible();
@@ -269,10 +274,7 @@ namespace SwdPageRecorder.UI
                 action();
             }
 
-            
-            
-
-            
+            return newNode;
         }
 
 
@@ -298,9 +300,7 @@ namespace SwdPageRecorder.UI
 
         private void tvWebElements_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            var element = e.Node.Tag as WebElementDefinition;
-            presenter.HighLightWebElement(element);
-            
+            presenter.OpenExistingNodeForEdit(e.Node);
         }
 
         private void btnGenerateSourceCode_Click(object sender, EventArgs e)
@@ -427,6 +427,98 @@ namespace SwdPageRecorder.UI
             tvHtmlDoc.SelectedNode = htmlNode;
             tvHtmlDoc.Focus();
             htmlNode.EnsureVisible();
+        }
+
+        private void btnHighlightWebElementInBrowser_Click(object sender, EventArgs e)
+        {
+            var element = GetWebElementDefinitionFromForm();
+            presenter.HighLightWebElement(element);
+        }
+
+
+
+        internal void UpdateWebElementForm(WebElementDefinition formData)
+        {
+            ClearWebElementForm();
+            txtWebElementName.Text = formData.Name;
+
+
+
+            switch (formData.HowToSearch)
+            {
+                case LocatorSearchMethod.Id:
+                    txtHtmlId.Text = formData.Locator;
+                    rbtnHtmlId.Checked = true;
+                    break;
+                case LocatorSearchMethod.CssSelector:
+                    txtCssSelector.Text = formData.Locator;
+                    rbtnCssSelector.Checked = true;
+                    break;
+                case LocatorSearchMethod.XPath:
+                    txtXPath.Text = formData.Locator;
+                    rbtnXPath.Checked = true;
+                    break;
+                default:
+                    string itemToSelect = "";
+                    switch (formData.HowToSearch)
+                    {
+                        case LocatorSearchMethod.Name: itemToSelect = otherLocator_Name; break;
+                        case LocatorSearchMethod.TagName: itemToSelect = otherLocator_TagName; break;
+                        case LocatorSearchMethod.ClassName: itemToSelect = otherLocator_ClassName; break;
+                        case LocatorSearchMethod.LinkText: itemToSelect = otherLocator_LinkText; break;
+                        case LocatorSearchMethod.PartialLinkText: itemToSelect = otherLocator_PartialLinkText; break;
+                    }
+                    if (!String.IsNullOrEmpty(itemToSelect))
+                    {
+                        txtOtherLocator.Text = formData.Locator;
+                        rbtnOtherLocator.Checked = true;
+                        ddlOtherLocator.SelectedIndex = Array.IndexOf(otherLocatorListItems, itemToSelect);
+                    }
+                    break;
+            }
+        }
+
+        private void btnNewWebElement_Click(object sender, EventArgs e)
+        {
+            presenter.NewWebElement();
+        }
+
+        internal void ClearWebElementForm()
+        {
+            txtWebElementName.Clear();
+            txtHtmlId.Clear();
+            txtCssSelector.Clear();
+            txtXPath.Clear();
+            txtOtherLocator.Clear();
+        }
+
+        private void btnCopyWebElement_Click(object sender, EventArgs e)
+        {
+            presenter.CopyWebElement();
+        }
+
+        internal void AppendWebElementNameWith(string appendWithStr)
+        {
+            txtWebElementName.Text += appendWithStr;
+        }
+
+        internal void UpdateExistingPageDefinition(TreeNode existingNode, WebElementDefinition element)
+        {
+            var action = (MethodInvoker)delegate
+            {
+                existingNode.Text = element.ToString();
+                existingNode.Tag = element;
+                existingNode.EnsureVisible();
+            };
+
+            if (tvWebElements.InvokeRequired)
+            {
+                tvWebElements.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
         }
     }
 }
