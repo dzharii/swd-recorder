@@ -520,5 +520,45 @@ namespace SwdPageRecorder.UI
                 action();
             }
         }
+
+        private void tvHtmlDoc_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            presenter.UpdateHtmlPropertiesForSelectedNode(e.Node);
+        }
+
+        internal void UpdateHtmlProperties(List<string> attributes)
+        {
+            txtHtmlNodeProperties.Text = String.Join(Environment.NewLine, attributes);
+        }
+
+
+        // Prevent Expand on double click
+        private void tvHtmlDoc_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            presenter.HighLightElementFromNode(e.Node);
+        }
+
+        private bool _shouldPreventExpandCollapse = false;
+        private DateTime _lastMouseDown = DateTime.Now;
+
+        private void tvHtmlDoc_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            e.Cancel = _shouldPreventExpandCollapse;
+            _shouldPreventExpandCollapse = false;
+        }
+
+        private void tvHtmlDoc_MouseDown(object sender, MouseEventArgs e)
+        {
+            int delta = (int)DateTime.Now.Subtract(_lastMouseDown).TotalMilliseconds;
+            _shouldPreventExpandCollapse = (delta < SystemInformation.DoubleClickTime);
+            _lastMouseDown = DateTime.Now;
+        }
+
+        private void tvHtmlDoc_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
+        {
+            e.Cancel = _shouldPreventExpandCollapse;
+            _shouldPreventExpandCollapse = false;
+        }
+        // =====================================
     }
 }

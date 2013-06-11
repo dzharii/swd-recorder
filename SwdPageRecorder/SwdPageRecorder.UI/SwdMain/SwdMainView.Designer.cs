@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwdMainView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -47,11 +48,18 @@
             this.btnStartVisualSearch = new System.Windows.Forms.Button();
             this.txtVisualSearchResult = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.lbElements = new System.Windows.Forms.ListBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.txtHtmlNodeProperties = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tvHtmlDoc = new System.Windows.Forms.TreeView();
-            this.lbElements = new System.Windows.Forms.ListBox();
             this.btnTestLocator = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCopyWebElement = new System.Windows.Forms.Button();
+            this.btnHighlightWebElementInBrowser = new System.Windows.Forms.Button();
+            this.btnNewWebElement = new System.Windows.Forms.Button();
             this.btnUpdateDeclaration = new System.Windows.Forms.Button();
             this.txtWebElementName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -76,9 +84,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tvWebElements = new System.Windows.Forms.TreeView();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnNewWebElement = new System.Windows.Forms.Button();
-            this.btnHighlightWebElementInBrowser = new System.Windows.Forms.Button();
-            this.btnCopyWebElement = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -86,6 +91,9 @@
             this.tabPage2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -123,7 +131,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 57);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(658, 423);
+            this.tabControl1.Size = new System.Drawing.Size(752, 482);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -136,7 +144,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(650, 397);
+            this.tabPage1.Size = new System.Drawing.Size(744, 456);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Browser Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -229,7 +237,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(650, 397);
+            this.tabPage2.Size = new System.Drawing.Size(744, 456);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Locators";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -240,14 +248,14 @@
             this.groupBox5.Controls.Add(this.txtVisualSearchResult);
             this.groupBox5.Location = new System.Drawing.Point(7, 165);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(637, 66);
+            this.groupBox5.Size = new System.Drawing.Size(731, 51);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Visual Search";
             // 
             // btnStartVisualSearch
             // 
-            this.btnStartVisualSearch.Location = new System.Drawing.Point(298, 27);
+            this.btnStartVisualSearch.Location = new System.Drawing.Point(644, 16);
             this.btnStartVisualSearch.Name = "btnStartVisualSearch";
             this.btnStartVisualSearch.Size = new System.Drawing.Size(75, 23);
             this.btnStartVisualSearch.TabIndex = 1;
@@ -257,52 +265,97 @@
             // 
             // txtVisualSearchResult
             // 
-            this.txtVisualSearchResult.Location = new System.Drawing.Point(24, 30);
+            this.txtVisualSearchResult.Location = new System.Drawing.Point(6, 19);
             this.txtVisualSearchResult.Name = "txtVisualSearchResult";
-            this.txtVisualSearchResult.Size = new System.Drawing.Size(268, 20);
+            this.txtVisualSearchResult.Size = new System.Drawing.Size(606, 20);
             this.txtVisualSearchResult.TabIndex = 0;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.tabControl2);
             this.groupBox3.Controls.Add(this.groupBox6);
-            this.groupBox3.Controls.Add(this.lbElements);
             this.groupBox3.Controls.Add(this.btnTestLocator);
             this.groupBox3.Location = new System.Drawing.Point(3, 237);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(641, 142);
+            this.groupBox3.Size = new System.Drawing.Size(735, 214);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "result";
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Location = new System.Drawing.Point(451, 48);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(278, 160);
+            this.tabControl2.TabIndex = 4;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.lbElements);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(270, 134);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "WebElements";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // lbElements
+            // 
+            this.lbElements.FormattingEnabled = true;
+            this.lbElements.Location = new System.Drawing.Point(3, 6);
+            this.lbElements.Name = "lbElements";
+            this.lbElements.Size = new System.Drawing.Size(261, 121);
+            this.lbElements.TabIndex = 0;
+            this.lbElements.DoubleClick += new System.EventHandler(this.lbElements_DoubleClick);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.txtHtmlNodeProperties);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(270, 134);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "HTML Property";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // txtHtmlNodeProperties
+            // 
+            this.txtHtmlNodeProperties.Location = new System.Drawing.Point(6, 6);
+            this.txtHtmlNodeProperties.Multiline = true;
+            this.txtHtmlNodeProperties.Name = "txtHtmlNodeProperties";
+            this.txtHtmlNodeProperties.Size = new System.Drawing.Size(258, 122);
+            this.txtHtmlNodeProperties.TabIndex = 0;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.tvHtmlDoc);
-            this.groupBox6.Location = new System.Drawing.Point(278, 19);
+            this.groupBox6.Location = new System.Drawing.Point(6, 19);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(357, 117);
+            this.groupBox6.Size = new System.Drawing.Size(445, 189);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Html Document";
             // 
             // tvHtmlDoc
             // 
-            this.tvHtmlDoc.Location = new System.Drawing.Point(6, 14);
+            this.tvHtmlDoc.Location = new System.Drawing.Point(6, 16);
             this.tvHtmlDoc.Name = "tvHtmlDoc";
-            this.tvHtmlDoc.Size = new System.Drawing.Size(345, 97);
+            this.tvHtmlDoc.Size = new System.Drawing.Size(433, 173);
             this.tvHtmlDoc.TabIndex = 0;
-            // 
-            // lbElements
-            // 
-            this.lbElements.FormattingEnabled = true;
-            this.lbElements.Location = new System.Drawing.Point(6, 48);
-            this.lbElements.Name = "lbElements";
-            this.lbElements.Size = new System.Drawing.Size(266, 82);
-            this.lbElements.TabIndex = 0;
-            this.lbElements.DoubleClick += new System.EventHandler(this.lbElements_DoubleClick);
+            this.tvHtmlDoc.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvHtmlDoc_BeforeCollapse);
+            this.tvHtmlDoc.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvHtmlDoc_BeforeExpand);
+            this.tvHtmlDoc.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvHtmlDoc_AfterSelect);
+            this.tvHtmlDoc.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvHtmlDoc_NodeMouseDoubleClick);
+            this.tvHtmlDoc.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tvHtmlDoc_MouseDown);
             // 
             // btnTestLocator
             // 
-            this.btnTestLocator.Location = new System.Drawing.Point(6, 19);
+            this.btnTestLocator.Location = new System.Drawing.Point(648, 19);
             this.btnTestLocator.Name = "btnTestLocator";
             this.btnTestLocator.Size = new System.Drawing.Size(75, 23);
             this.btnTestLocator.TabIndex = 2;
@@ -329,14 +382,44 @@
             this.groupBox2.Controls.Add(this.txtCssSelector);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(638, 152);
+            this.groupBox2.Size = new System.Drawing.Size(732, 152);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Selectors";
             // 
+            // btnCopyWebElement
+            // 
+            this.btnCopyWebElement.Location = new System.Drawing.Point(645, 43);
+            this.btnCopyWebElement.Name = "btnCopyWebElement";
+            this.btnCopyWebElement.Size = new System.Drawing.Size(75, 23);
+            this.btnCopyWebElement.TabIndex = 16;
+            this.btnCopyWebElement.Text = "Copy";
+            this.btnCopyWebElement.UseVisualStyleBackColor = true;
+            this.btnCopyWebElement.Click += new System.EventHandler(this.btnCopyWebElement_Click);
+            // 
+            // btnHighlightWebElementInBrowser
+            // 
+            this.btnHighlightWebElementInBrowser.Location = new System.Drawing.Point(645, 87);
+            this.btnHighlightWebElementInBrowser.Name = "btnHighlightWebElementInBrowser";
+            this.btnHighlightWebElementInBrowser.Size = new System.Drawing.Size(75, 23);
+            this.btnHighlightWebElementInBrowser.TabIndex = 15;
+            this.btnHighlightWebElementInBrowser.Text = "Highlight";
+            this.btnHighlightWebElementInBrowser.UseVisualStyleBackColor = true;
+            this.btnHighlightWebElementInBrowser.Click += new System.EventHandler(this.btnHighlightWebElementInBrowser_Click);
+            // 
+            // btnNewWebElement
+            // 
+            this.btnNewWebElement.Location = new System.Drawing.Point(645, 14);
+            this.btnNewWebElement.Name = "btnNewWebElement";
+            this.btnNewWebElement.Size = new System.Drawing.Size(75, 23);
+            this.btnNewWebElement.TabIndex = 14;
+            this.btnNewWebElement.Text = "New";
+            this.btnNewWebElement.UseVisualStyleBackColor = true;
+            this.btnNewWebElement.Click += new System.EventHandler(this.btnNewWebElement_Click);
+            // 
             // btnUpdateDeclaration
             // 
-            this.btnUpdateDeclaration.Location = new System.Drawing.Point(563, 119);
+            this.btnUpdateDeclaration.Location = new System.Drawing.Point(645, 119);
             this.btnUpdateDeclaration.Name = "btnUpdateDeclaration";
             this.btnUpdateDeclaration.Size = new System.Drawing.Size(75, 23);
             this.btnUpdateDeclaration.TabIndex = 13;
@@ -348,7 +431,7 @@
             // 
             this.txtWebElementName.Location = new System.Drawing.Point(132, 13);
             this.txtWebElementName.Name = "txtWebElementName";
-            this.txtWebElementName.Size = new System.Drawing.Size(406, 20);
+            this.txtWebElementName.Size = new System.Drawing.Size(481, 20);
             this.txtWebElementName.TabIndex = 11;
             // 
             // label1
@@ -364,7 +447,7 @@
             // 
             this.txtOtherLocator.Location = new System.Drawing.Point(132, 115);
             this.txtOtherLocator.Name = "txtOtherLocator";
-            this.txtOtherLocator.Size = new System.Drawing.Size(406, 20);
+            this.txtOtherLocator.Size = new System.Drawing.Size(481, 20);
             this.txtOtherLocator.TabIndex = 9;
             this.txtOtherLocator.Enter += new System.EventHandler(this.txtOtherLocator_Enter);
             // 
@@ -392,7 +475,7 @@
             // 
             this.txtHtmlId.Location = new System.Drawing.Point(132, 39);
             this.txtHtmlId.Name = "txtHtmlId";
-            this.txtHtmlId.Size = new System.Drawing.Size(406, 20);
+            this.txtHtmlId.Size = new System.Drawing.Size(481, 20);
             this.txtHtmlId.TabIndex = 6;
             this.txtHtmlId.Enter += new System.EventHandler(this.txtHtmlId_Enter);
             // 
@@ -412,7 +495,7 @@
             // 
             this.txtXPath.Location = new System.Drawing.Point(132, 87);
             this.txtXPath.Name = "txtXPath";
-            this.txtXPath.Size = new System.Drawing.Size(406, 20);
+            this.txtXPath.Size = new System.Drawing.Size(481, 20);
             this.txtXPath.TabIndex = 4;
             this.txtXPath.Enter += new System.EventHandler(this.txtXPath_Enter);
             // 
@@ -440,7 +523,7 @@
             // 
             this.txtCssSelector.Location = new System.Drawing.Point(132, 64);
             this.txtCssSelector.Name = "txtCssSelector";
-            this.txtCssSelector.Size = new System.Drawing.Size(406, 20);
+            this.txtCssSelector.Size = new System.Drawing.Size(481, 20);
             this.txtCssSelector.TabIndex = 1;
             this.txtCssSelector.Enter += new System.EventHandler(this.txtCssSelector_Enter);
             // 
@@ -451,7 +534,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(650, 397);
+            this.tabPage3.Size = new System.Drawing.Size(744, 456);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Source Code";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -483,7 +566,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(650, 397);
+            this.tabPage4.Size = new System.Drawing.Size(744, 456);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "HTML Source";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -512,9 +595,9 @@
             // 
             this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Controls.Add(this.tvWebElements);
-            this.groupBox4.Location = new System.Drawing.Point(670, 57);
+            this.groupBox4.Location = new System.Drawing.Point(764, 57);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(237, 419);
+            this.groupBox4.Size = new System.Drawing.Size(238, 475);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Page Object";
@@ -523,7 +606,7 @@
             // 
             this.groupBox7.Controls.Add(this.lblLastCallTime);
             this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Location = new System.Drawing.Point(6, 259);
+            this.groupBox7.Location = new System.Drawing.Point(6, 235);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(225, 154);
             this.groupBox7.TabIndex = 3;
@@ -553,10 +636,10 @@
             this.tvWebElements.LabelEdit = true;
             this.tvWebElements.Location = new System.Drawing.Point(6, 19);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode4.Name = "Node0";
-            treeNode4.Text = "Pages";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "Pages";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode1});
             this.tvWebElements.Size = new System.Drawing.Size(225, 186);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
@@ -565,44 +648,15 @@
             // 
             this.validationError.ContainerControl = this;
             // 
-            // btnNewWebElement
-            // 
-            this.btnNewWebElement.Location = new System.Drawing.Point(563, 10);
-            this.btnNewWebElement.Name = "btnNewWebElement";
-            this.btnNewWebElement.Size = new System.Drawing.Size(75, 23);
-            this.btnNewWebElement.TabIndex = 14;
-            this.btnNewWebElement.Text = "New";
-            this.btnNewWebElement.UseVisualStyleBackColor = true;
-            this.btnNewWebElement.Click += new System.EventHandler(this.btnNewWebElement_Click);
-            // 
-            // btnHighlightWebElementInBrowser
-            // 
-            this.btnHighlightWebElementInBrowser.Location = new System.Drawing.Point(563, 87);
-            this.btnHighlightWebElementInBrowser.Name = "btnHighlightWebElementInBrowser";
-            this.btnHighlightWebElementInBrowser.Size = new System.Drawing.Size(75, 23);
-            this.btnHighlightWebElementInBrowser.TabIndex = 15;
-            this.btnHighlightWebElementInBrowser.Text = "Highlight";
-            this.btnHighlightWebElementInBrowser.UseVisualStyleBackColor = true;
-            this.btnHighlightWebElementInBrowser.Click += new System.EventHandler(this.btnHighlightWebElementInBrowser_Click);
-            // 
-            // btnCopyWebElement
-            // 
-            this.btnCopyWebElement.Location = new System.Drawing.Point(563, 39);
-            this.btnCopyWebElement.Name = "btnCopyWebElement";
-            this.btnCopyWebElement.Size = new System.Drawing.Size(75, 23);
-            this.btnCopyWebElement.TabIndex = 16;
-            this.btnCopyWebElement.Text = "Copy";
-            this.btnCopyWebElement.UseVisualStyleBackColor = true;
-            this.btnCopyWebElement.Click += new System.EventHandler(this.btnCopyWebElement_Click);
-            // 
             // SwdMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 492);
+            this.ClientSize = new System.Drawing.Size(1014, 542);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SwdMainView";
             this.Text = "SWD Page Recorder";
             this.groupBox1.ResumeLayout(false);
@@ -616,6 +670,10 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -682,6 +740,10 @@
         private System.Windows.Forms.Button btnNewWebElement;
         private System.Windows.Forms.Button btnCopyWebElement;
         private System.Windows.Forms.Button btnHighlightWebElementInBrowser;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TextBox txtHtmlNodeProperties;
 
     }
 }

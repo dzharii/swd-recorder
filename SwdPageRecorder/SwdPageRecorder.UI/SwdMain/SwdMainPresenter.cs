@@ -111,7 +111,23 @@ namespace SwdPageRecorder.UI
             foreach (var el in elements)
             {
                 ResultElement displayItem = new ResultElement();
-                displayItem.DisplayString = el.TagName + " " + el.Text;
+
+                string tagName = el.TagName;
+                string elementId = el.GetAttribute("id") ?? "n/a";
+                string elementName = el.GetAttribute("name") ?? "n/a";
+
+                if (tagName == "input")
+                {
+                    var elementType = el.GetAttribute("type") ?? "n/a";
+                    var elementValue = el.GetAttribute("value") ?? "n/a";
+                    displayItem.DisplayString = String.Format("{0}[type=\'{4}\'] id=\"{1}\"; name=\"{2}\"; value=\"{3}\"", el.TagName, elementId, elementName, elementValue, elementType);
+                }
+                else
+                {
+                    string elementText = el.Text ?? "n/a";
+                    displayItem.DisplayString = String.Format("{0} id=\"{1}\"; name=\"{2}\"; text(\"{3}\")", el.TagName, elementId, elementName, elementText);
+                }
+
                 displayItem.WebElement = el;
                 displayList.Add(displayItem);
             }
@@ -120,9 +136,19 @@ namespace SwdPageRecorder.UI
         }
 
 
-
         internal void UpdatePageDefinition(WebElementDefinition element)
         {
+            UpdatePageDefinition(element, false);
+        }
+        internal void UpdatePageDefinition(WebElementDefinition element, bool forceAddNew)
+        {
+
+            if (forceAddNew)
+            {
+                view.AddToPageDefinitions(element);
+                return;
+            }
+            
             if (_isEditingExistingNode)
             {
                 view.UpdateExistingPageDefinition(_currentEditingNode, element);
@@ -195,8 +221,8 @@ namespace SwdPageRecorder.UI
                         HowToSearch = LocatorSearchMethod.XPath,
                         Locator = addElementCommand.ElementXPath,
                     };
-
-                    UpdatePageDefinition(element);
+                    bool addNew = true;
+                    UpdatePageDefinition(element, addNew);
                 }
                 Thread.Sleep(100);
             }
@@ -221,32 +247,57 @@ namespace SwdPageRecorder.UI
 
 
 
-        private void ParseXmlNodes(TreeNode tnode, XmlNodeList xmlNodes)
+        private void ParseXmlNodes(TreeNode tnode, XmlNodeList xmlNodes, string parentXPath)
         {
+
+            var childrenCount = new Dictionary<string, int>();
 
             foreach (XmlNode xmlNode in xmlNodes)
             {
+
+                var currentNodeName = xmlNode.LocalName.ToLower();
+                if (childrenCount.ContainsKey(currentNodeName))
+                {
+                    childrenCount[currentNodeName]++;
+                }
+                else
+                {
+                    childrenCount[currentNodeName] = 1;
+                }
+
+                var currentNodeXPath = parentXPath;
+                currentNodeXPath += String.Format("/{0}[{1}]", currentNodeName, childrenCount[currentNodeName]);
+                
+                
                 if (xmlNode.Attributes == null) continue;
                 
-                List<string> attributes = new List<string>();
+                var attributes = new List<string>();
                                 
                 for (int i = 0; i < xmlNode.Attributes.Count; i++)
                 {
-                    var attr=xmlNode.Attributes[i];
+                    var attr = xmlNode.Attributes[i];
                     attributes.Add(attr.LocalName + "= \"" + attr.Value + "\"");
                 }
 
-                string nodeName = xmlNode.LocalName + " " + String.Join(" ", attributes);
+                string nodeDisplayName = currentNodeName + " " + String.Join(" ", attributes);
 
 
-                var newNode = new TreeNode(nodeName);
-                newNode.Name = xmlNode.LocalName.ToLower();
-                //xmlNode.Get
+                var newNode = new TreeNode(nodeDisplayName);
+                newNode.Name = currentNodeName;
+
+
+                newNode.Tag = new HtmlTreeNodeData()
+                    {
+                        OriginalXmlNode = xmlNode,
+                        nodeXPath = currentNodeXPath,
+                    };
+
                 tnode.Nodes.Add(newNode);
 
                 if (xmlNode.HasChildNodes)
                 {
-                    ParseXmlNodes(newNode, xmlNode.ChildNodes);
+
+                    ParseXmlNodes(newNode, xmlNode.ChildNodes, currentNodeXPath);
                 }
             }
 
@@ -259,7 +310,12 @@ namespace SwdPageRecorder.UI
             var root = doc.FirstChild;
             var treeRootNode = new TreeNode(root.LocalName);
             treeRootNode.Name = root.LocalName.ToLower();
-            ParseXmlNodes(treeRootNode, root.ChildNodes);
+            treeRootNode.Tag = new HtmlTreeNodeData() 
+            {
+                nodeXPath = "/html",
+                OriginalXmlNode = root,
+            };
+            ParseXmlNodes(treeRootNode, root.ChildNodes, "/html[1]");
 
             view.AddTestHtmlNodes(treeRootNode);
 
@@ -319,6 +375,38 @@ namespace SwdPageRecorder.UI
             _isEditingExistingNode = false;
             _currentEditingNode = null;
             view.AppendWebElementNameWith("__Copy");
+        }
+
+        internal void UpdateHtmlPropertiesForSelectedNode(TreeNode htmlTreeNode)
+        {
+            var xmlNode = (htmlTreeNode.Tag as HtmlTreeNodeData).OriginalXmlNode;
+
+            List<string> attributes = new List<string>();
+
+            if (xmlNode.Attributes != null)
+            {
+                for (int i = 0; i < xmlNode.Attributes.Count; i++)
+                {
+                    var attr = xmlNode.Attributes[i];
+                    attributes.Add(attr.LocalName + "= \"" + attr.Value + "\"");
+                }
+            }
+
+            view.UpdateHtmlProperties(attributes);
+
+        }
+
+        internal void HighLightElementFromNode(TreeNode treeNode)
+        {
+            string xpath = GetXPathFromTreeNode(treeNode);
+            var by = ByFromLocatorSearchMethod(LocatorSearchMethod.XPath, xpath);
+            SwdBrowser.HighlightElement(by);
+        }
+
+        private string GetXPathFromTreeNode(TreeNode treeNode)
+        {
+            HtmlTreeNodeData nodeData = treeNode.Tag as HtmlTreeNodeData;
+            return nodeData.nodeXPath;
         }
     }
 }
