@@ -1,10 +1,16 @@
 Milestones
 ==================================================
 [+] Generate Page Object source code
+[-] Read/Save application settings/PageObjects
+[ ] Existing items:
+    [+] Existing items edit/update
+    [-] Existing items delete
+    [-] Existing items change order in tree
 [+] Highlight elements
-[-] Implement visual search for element
-    [-] Implement DOM box
-    [-] Implement 2 sides communication (via JSON serialization) (http://www.sitepoint.com/javascript-json-serialization/)
+[+] Implement visual search for element
+    [+] Implement DOM box
+    [+] Implement 2 sides communication (via JSON serialization) (http://www.sitepoint.com/javascript-json-serialization/)
+    [-] Make it user friendly
 [-] Implement TestBox
 
 
