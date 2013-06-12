@@ -14,10 +14,8 @@ using FormKeys = System.Windows.Forms.Keys;
 
 namespace SwdPageRecorder.UI
 {
-    public partial class SwdMainView : Form
+    public partial class SwdMainView : SwdMainViewBase
     {
-
-
         public SwdMainPresenter presenter = null;
 
         const string otherLocator_Name            = "Name";
@@ -36,10 +34,6 @@ namespace SwdPageRecorder.UI
             otherLocator_PartialLinkText,
         };
 
-
-
-
-
         //private System.Windows.Forms.PropertyGrid OptionsPropertyGrid;
         // http://msdn.microsoft.com/en-us/library/aa302326.aspx
 
@@ -48,12 +42,15 @@ namespace SwdPageRecorder.UI
             InitializeComponent();
             presenter = new SwdMainPresenter(this);
 
-            ddlOtherLocator.Items.AddRange(otherLocatorListItems);
-            ddlOtherLocator.SelectedIndex = ddlOtherLocator.FindString(otherLocator_LinkText);
-
+            InitWebdriverSelectionDropDownList();
             HandleRemoteDriverSettingsEnabledStatus();
 
+        }
 
+        private void InitWebdriverSelectionDropDownList()
+        {
+            ddlOtherLocator.Items.AddRange(otherLocatorListItems);
+            ddlOtherLocator.SelectedIndex = ddlOtherLocator.FindString(otherLocator_LinkText);
         }
 
         private void ChangeBrowsersList(bool showAll)
@@ -182,7 +179,6 @@ namespace SwdPageRecorder.UI
 
         private void lbElements_DoubleClick(object sender, EventArgs e)
         {
-            // TODO: TEST TEST
             if (lbElements.SelectedItem != null)
             {
                 var element = lbElements.SelectedItem as ResultElement;
@@ -560,5 +556,13 @@ namespace SwdPageRecorder.UI
             _shouldPreventExpandCollapse = false;
         }
         // =====================================
+
+
+        private void btnBrowser_Go_Click(object sender, EventArgs e)
+        {
+            presenter.SetBrowserUrl(txtBrowserUrl.Text);
+
+        }
+        
     }
 }

@@ -32,6 +32,7 @@
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwdMainView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBrowser_Go = new System.Windows.Forms.Button();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -105,21 +106,32 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnBrowser_Go);
             this.groupBox1.Controls.Add(this.txtBrowserUrl);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(772, 39);
+            this.groupBox1.Size = new System.Drawing.Size(990, 39);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Browser";
+            // 
+            // btnBrowser_Go
+            // 
+            this.btnBrowser_Go.Location = new System.Drawing.Point(650, 13);
+            this.btnBrowser_Go.Name = "btnBrowser_Go";
+            this.btnBrowser_Go.Size = new System.Drawing.Size(46, 23);
+            this.btnBrowser_Go.TabIndex = 1;
+            this.btnBrowser_Go.Text = "Go >";
+            this.btnBrowser_Go.UseVisualStyleBackColor = true;
+            this.btnBrowser_Go.Click += new System.EventHandler(this.btnBrowser_Go_Click);
             // 
             // txtBrowserUrl
             // 
             this.txtBrowserUrl.Location = new System.Drawing.Point(6, 13);
             this.txtBrowserUrl.Name = "txtBrowserUrl";
-            this.txtBrowserUrl.Size = new System.Drawing.Size(760, 20);
+            this.txtBrowserUrl.Size = new System.Drawing.Size(637, 20);
             this.txtBrowserUrl.TabIndex = 0;
-            this.txtBrowserUrl.Text = "http://blog.zhariy.com/";
+            this.txtBrowserUrl.Text = "http://yandex.ru";
             this.txtBrowserUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBrowserUrl_KeyUp);
             // 
             // tabControl1
@@ -691,59 +703,60 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ComboBox ddlBrowserToStart;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button btnStartWebDriver;
-        private System.Windows.Forms.Button btnTestLocator;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtHtmlId;
-        private System.Windows.Forms.RadioButton rbtnHtmlId;
-        private System.Windows.Forms.TextBox txtXPath;
-        private System.Windows.Forms.RadioButton rbtnXPath;
-        private System.Windows.Forms.RadioButton rbtnCssSelector;
-        private System.Windows.Forms.TextBox txtCssSelector;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListBox lbElements;
-        private System.Windows.Forms.ComboBox ddlOtherLocator;
-        private System.Windows.Forms.RadioButton rbtnOtherLocator;
-        private System.Windows.Forms.TextBox txtOtherLocator;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox txtWebElementName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnUpdateDeclaration;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox chkUseRemoteHub;
-        private System.Windows.Forms.GroupBox grpRemoteConnection;
-        private System.Windows.Forms.Label lblHubConnectionStatus;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtRemoteHubUrl;
-        private System.Windows.Forms.TreeView tvWebElements;
-        private System.Windows.Forms.ErrorProvider validationError;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button btnGenerateSourceCode;
-        private System.Windows.Forms.TextBox txtSourceCode;
-        private System.Windows.Forms.TextBox txtBrowserUrl;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TextBox txtHtmlPageSource;
-        private System.Windows.Forms.Button btnGetHtmlSource;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button btnStartVisualSearch;
-        private System.Windows.Forms.TextBox txtVisualSearchResult;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TreeView tvHtmlDoc;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label lblLastCallTime;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnNewWebElement;
-        private System.Windows.Forms.Button btnCopyWebElement;
-        private System.Windows.Forms.Button btnHighlightWebElementInBrowser;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.TextBox txtHtmlNodeProperties;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.ComboBox ddlBrowserToStart;
+        public System.Windows.Forms.TabPage tabPage2;
+        public System.Windows.Forms.Button btnStartWebDriver;
+        public System.Windows.Forms.Button btnTestLocator;
+        public System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.TextBox txtHtmlId;
+        public System.Windows.Forms.RadioButton rbtnHtmlId;
+        public System.Windows.Forms.TextBox txtXPath;
+        public System.Windows.Forms.RadioButton rbtnXPath;
+        public System.Windows.Forms.RadioButton rbtnCssSelector;
+        public System.Windows.Forms.TextBox txtCssSelector;
+        public System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.ListBox lbElements;
+        public System.Windows.Forms.ComboBox ddlOtherLocator;
+        public System.Windows.Forms.RadioButton rbtnOtherLocator;
+        public System.Windows.Forms.TextBox txtOtherLocator;
+        public System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.TextBox txtWebElementName;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnUpdateDeclaration;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.CheckBox chkUseRemoteHub;
+        public System.Windows.Forms.GroupBox grpRemoteConnection;
+        public System.Windows.Forms.Label lblHubConnectionStatus;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TreeView tvWebElements;
+        public System.Windows.Forms.ErrorProvider validationError;
+        public System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.Button btnGenerateSourceCode;
+        public System.Windows.Forms.TextBox txtSourceCode;
+        public System.Windows.Forms.TextBox txtBrowserUrl;
+        public System.Windows.Forms.TabPage tabPage4;
+        public System.Windows.Forms.TextBox txtHtmlPageSource;
+        public System.Windows.Forms.Button btnGetHtmlSource;
+        public System.Windows.Forms.GroupBox groupBox5;
+        public System.Windows.Forms.Button btnStartVisualSearch;
+        public System.Windows.Forms.TextBox txtVisualSearchResult;
+        public System.Windows.Forms.GroupBox groupBox6;
+        public System.Windows.Forms.TreeView tvHtmlDoc;
+        public System.Windows.Forms.GroupBox groupBox7;
+        public System.Windows.Forms.Label lblLastCallTime;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Button btnNewWebElement;
+        public System.Windows.Forms.Button btnCopyWebElement;
+        public System.Windows.Forms.Button btnHighlightWebElementInBrowser;
+        public System.Windows.Forms.TabControl tabControl2;
+        public System.Windows.Forms.TabPage tabPage5;
+        public System.Windows.Forms.TabPage tabPage6;
+        public System.Windows.Forms.TextBox txtHtmlNodeProperties;
+        public System.Windows.Forms.Button btnBrowser_Go;
+        public System.Windows.Forms.TextBox txtRemoteHubUrl;
 
     }
 }
