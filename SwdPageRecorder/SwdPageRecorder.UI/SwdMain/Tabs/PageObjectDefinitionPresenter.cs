@@ -5,6 +5,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 
+using System.ComponentModel.DataAnnotations;
+
 using System.Collections.ObjectModel;
 
 using OpenQA.Selenium;
@@ -35,6 +37,7 @@ namespace SwdPageRecorder.UI
         }
 
 
+
         internal void UpdatePageDefinition(WebElementDefinition element)
         {
             UpdatePageDefinition(element, false);
@@ -42,6 +45,17 @@ namespace SwdPageRecorder.UI
 
         internal void UpdatePageDefinition(WebElementDefinition element, bool forceAddNew)
         {
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(element, null, null);
+
+            bool isValid = Validator.TryValidateObject(element, context, results, true);
+            if (!isValid)
+            {
+                var validationMessage = String.Join("\n", results.Select(t => String.Format("- {0}", t.ErrorMessage)));
+                view.DisplayMessage("Validation Error", validationMessage);
+                return;
+            }
 
             if (forceAddNew)
             {

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCopyWebElement = new System.Windows.Forms.Button();
             this.btnHighlightWebElementInBrowser = new System.Windows.Forms.Button();
@@ -45,9 +44,7 @@
             this.rbtnXPath = new System.Windows.Forms.RadioButton();
             this.rbtnCssSelector = new System.Windows.Forms.RadioButton();
             this.txtCssSelector = new System.Windows.Forms.TextBox();
-            this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -213,10 +210,6 @@
             this.txtCssSelector.TabIndex = 1;
             this.txtCssSelector.Enter += new System.EventHandler(this.txtCssSelector_Enter);
             // 
-            // validationError
-            // 
-            this.validationError.ContainerControl = this;
-            // 
             // SelectorsEditView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,7 +219,6 @@
             this.Size = new System.Drawing.Size(736, 157);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,6 +241,5 @@
         public System.Windows.Forms.RadioButton rbtnXPath;
         public System.Windows.Forms.RadioButton rbtnCssSelector;
         public System.Windows.Forms.TextBox txtCssSelector;
-        public System.Windows.Forms.ErrorProvider validationError;
     }
 }

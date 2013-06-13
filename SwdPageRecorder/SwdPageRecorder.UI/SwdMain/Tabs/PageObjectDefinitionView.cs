@@ -25,7 +25,10 @@ namespace SwdPageRecorder.UI
             presenter.InitView(this);
         }
 
-
+        public void DisplayMessage(string title, string message)
+        {
+            MessageBox.Show(message, title);
+        }
 
         private void tvWebElements_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {

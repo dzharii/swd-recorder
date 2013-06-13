@@ -84,18 +84,7 @@ namespace SwdPageRecorder.UI
 
         private void btnUpdateDeclaration_Click(object sender, EventArgs e)
         {
-
-            bool isValid = true;
-            if (String.IsNullOrWhiteSpace(txtWebElementName.Text))
-            {
-                validationError.SetError(txtWebElementName, @"Please, come up with some name");
-                isValid = false;
-            }
-
-            if (!isValid) return;
-
             var element = GetWebElementDefinitionFromForm();
-
             Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element);
         }
 
