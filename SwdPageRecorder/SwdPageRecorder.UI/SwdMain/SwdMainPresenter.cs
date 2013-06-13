@@ -30,10 +30,6 @@ namespace SwdPageRecorder.UI
 
         public Thread visualSearchWorker = null;
 
-        private bool _isEditingExistingNode = false;
-        private TreeNode _currentEditingNode = null;
-
-
 
         public SwdMainPresenter(SwdMainView view)
         {
@@ -98,7 +94,7 @@ namespace SwdPageRecorder.UI
             var elements = FindElements(searchMethod, locator);
             sw.Stop();
 
-            view.UpdateLastCallStat(sw.ElapsedMilliseconds.ToString() + " ms");
+            view.pageObjectDefinitionView.UpdateLastCallStat(sw.ElapsedMilliseconds.ToString() + " ms");
 
             List<ResultElement> displayList = new List<ResultElement>();
             foreach (var el in elements)
@@ -129,33 +125,13 @@ namespace SwdPageRecorder.UI
         }
 
 
-        internal void UpdatePageDefinition(WebElementDefinition element)
-        {
-            UpdatePageDefinition(element, false);
-        }
-        internal void UpdatePageDefinition(WebElementDefinition element, bool forceAddNew)
-        {
 
-            if (forceAddNew)
-            {
-                view.AddToPageDefinitions(element);
-                return;
-            }
-            
-            if (_isEditingExistingNode)
-            {
-                view.UpdateExistingPageDefinition(_currentEditingNode, element);
-            }
-            else
-            {
-                _isEditingExistingNode = true;
-                _currentEditingNode = view.AddToPageDefinitions(element);
-            }
-        }
+
+
 
         internal void GenerateSourceCodeForPageObject()
         {
-            var definitions = view.GetWebElementDefinitionFromTree();
+            var definitions = view.pageObjectDefinitionView.GetWebElementDefinitionFromTree();
             var generator = new CSharpPageObjectGenerator();
 
             string[] code = generator.Generate(definitions);
@@ -215,7 +191,8 @@ namespace SwdPageRecorder.UI
                         Locator = addElementCommand.ElementXPath,
                     };
                     bool addNew = true;
-                    UpdatePageDefinition(element, addNew);
+                    var poDefPresenter = view.pageObjectDefinitionView.Presenter;
+                    poDefPresenter.UpdatePageDefinition(element, addNew);
                 }
                 Thread.Sleep(100);
             }
@@ -350,23 +327,23 @@ namespace SwdPageRecorder.UI
 
         internal void OpenExistingNodeForEdit(TreeNode treeNode)
         {
-            _isEditingExistingNode = true;
-            _currentEditingNode = treeNode;
+            view.pageObjectDefinitionView.Presenter._isEditingExistingNode = true;
+            view.pageObjectDefinitionView.Presenter._currentEditingNode = treeNode;
             var webElementFormData = treeNode.Tag as WebElementDefinition;
             view.UpdateWebElementForm(webElementFormData);
         }
 
         internal void NewWebElement()
         {
-            _isEditingExistingNode = false;
-            _currentEditingNode = null;
+            view.pageObjectDefinitionView.Presenter._isEditingExistingNode = false;
+            view.pageObjectDefinitionView.Presenter._currentEditingNode = null;
             view.ClearWebElementForm();
         }
 
         internal void CopyWebElement()
         {
-            _isEditingExistingNode = false;
-            _currentEditingNode = null;
+            view.pageObjectDefinitionView.Presenter._isEditingExistingNode = false;
+            view.pageObjectDefinitionView.Presenter._currentEditingNode = null;
             view.AppendWebElementNameWith("__Copy");
         }
 

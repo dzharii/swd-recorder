@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwdMainView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBrowser_Go = new System.Windows.Forms.Button();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTab();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnStartVisualSearch = new System.Windows.Forms.Button();
@@ -71,13 +71,8 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.txtHtmlPageSource = new System.Windows.Forms.TextBox();
             this.btnGetHtmlSource = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.lblLastCallTime = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tvWebElements = new System.Windows.Forms.TreeView();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTab();
+            this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinition();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -91,8 +86,6 @@
             this.groupBox2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,6 +142,13 @@
             this.tabPage1.Text = "Browser Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // browserSettingsTab1
+            // 
+            this.browserSettingsTab1.Location = new System.Drawing.Point(6, 6);
+            this.browserSettingsTab1.Name = "browserSettingsTab1";
+            this.browserSettingsTab1.Size = new System.Drawing.Size(672, 248);
+            this.browserSettingsTab1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox5);
@@ -200,7 +200,7 @@
             this.groupBox3.Size = new System.Drawing.Size(735, 214);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "result";
+            this.groupBox3.Text = "Test result";
             // 
             // tabControl2
             // 
@@ -511,76 +511,23 @@
             this.btnGetHtmlSource.UseVisualStyleBackColor = true;
             this.btnGetHtmlSource.Click += new System.EventHandler(this.btnGetHtmlSource_Click);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.groupBox7);
-            this.groupBox4.Controls.Add(this.tvWebElements);
-            this.groupBox4.Location = new System.Drawing.Point(764, 57);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(238, 475);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Page Object";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.lblLastCallTime);
-            this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Location = new System.Drawing.Point(6, 235);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(225, 154);
-            this.groupBox7.TabIndex = 3;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Stats";
-            // 
-            // lblLastCallTime
-            // 
-            this.lblLastCallTime.AutoSize = true;
-            this.lblLastCallTime.Location = new System.Drawing.Point(62, 28);
-            this.lblLastCallTime.Name = "lblLastCallTime";
-            this.lblLastCallTime.Size = new System.Drawing.Size(26, 13);
-            this.lblLastCallTime.TabIndex = 1;
-            this.lblLastCallTime.Text = "0ms";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Call time:";
-            // 
-            // tvWebElements
-            // 
-            this.tvWebElements.LabelEdit = true;
-            this.tvWebElements.Location = new System.Drawing.Point(6, 19);
-            this.tvWebElements.Name = "tvWebElements";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Pages";
-            this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.tvWebElements.Size = new System.Drawing.Size(225, 186);
-            this.tvWebElements.TabIndex = 2;
-            this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
-            // 
             // validationError
             // 
             this.validationError.ContainerControl = this;
             // 
-            // browserSettingsTab1
+            // pageObjectDefinitionView
             // 
-            this.browserSettingsTab1.Location = new System.Drawing.Point(6, 6);
-            this.browserSettingsTab1.Name = "browserSettingsTab1";
-            this.browserSettingsTab1.Size = new System.Drawing.Size(672, 248);
-            this.browserSettingsTab1.TabIndex = 0;
+            this.pageObjectDefinitionView.Location = new System.Drawing.Point(766, 57);
+            this.pageObjectDefinitionView.Name = "pageObjectDefinitionView";
+            this.pageObjectDefinitionView.Size = new System.Drawing.Size(246, 482);
+            this.pageObjectDefinitionView.TabIndex = 2;
             // 
             // SwdMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1014, 542);
-            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.pageObjectDefinitionView);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -605,9 +552,6 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
 
@@ -632,11 +576,9 @@
         public System.Windows.Forms.ComboBox ddlOtherLocator;
         public System.Windows.Forms.RadioButton rbtnOtherLocator;
         public System.Windows.Forms.TextBox txtOtherLocator;
-        public System.Windows.Forms.GroupBox groupBox4;
         public System.Windows.Forms.TextBox txtWebElementName;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnUpdateDeclaration;
-        public System.Windows.Forms.TreeView tvWebElements;
         public System.Windows.Forms.ErrorProvider validationError;
         public System.Windows.Forms.TabPage tabPage3;
         public System.Windows.Forms.Button btnGenerateSourceCode;
@@ -650,9 +592,6 @@
         public System.Windows.Forms.TextBox txtVisualSearchResult;
         public System.Windows.Forms.GroupBox groupBox6;
         public System.Windows.Forms.TreeView tvHtmlDoc;
-        public System.Windows.Forms.GroupBox groupBox7;
-        public System.Windows.Forms.Label lblLastCallTime;
-        public System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button btnNewWebElement;
         public System.Windows.Forms.Button btnCopyWebElement;
         public System.Windows.Forms.Button btnHighlightWebElementInBrowser;
@@ -662,6 +601,8 @@
         public System.Windows.Forms.TextBox txtHtmlNodeProperties;
         public System.Windows.Forms.Button btnBrowser_Go;
         private BrowserSettingsTab browserSettingsTab1;
+        public PageObjectDefinition pageObjectDefinitionView;
+        
 
     }
 }

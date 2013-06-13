@@ -34,9 +34,7 @@ namespace SwdPageRecorder.UI
             otherLocator_PartialLinkText,
         };
 
-        //private System.Windows.Forms.PropertyGrid OptionsPropertyGrid;
-        // http://msdn.microsoft.com/en-us/library/aa302326.aspx
-
+        
         public SwdMainView()
         {
             InitializeComponent();
@@ -191,47 +189,12 @@ namespace SwdPageRecorder.UI
 
             var element = GetWebElementDefinitionFromForm();
 
-            presenter.UpdatePageDefinition(element);
-        }
-
-        internal IEnumerable<WebElementDefinition> GetKnownWebElements()
-        {
-            foreach (var item in tvWebElements.Nodes) // BUG?
-            {
-                yield return (item as WebElementDefinition);
-            }
-        }
-
-        internal TreeNode AddToPageDefinitions(WebElementDefinition element)
-        {
-            var newNode = new TreeNode();
-            newNode.Text = element.ToString();
-            newNode.Tag = element;
-            
-            var action = (MethodInvoker)delegate
-            {
-
-                tvWebElements.Nodes[0].Nodes.Add(newNode);
-                newNode.EnsureVisible();
-            };
-
-            if (tvWebElements.InvokeRequired)
-            {
-                tvWebElements.Invoke(action);
-            }
-            else
-            {
-                action();
-            }
-
-            return newNode;
+            pageObjectDefinitionView.Presenter.UpdatePageDefinition(element);
         }
 
 
-        private void tvWebElements_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            presenter.OpenExistingNodeForEdit(e.Node);
-        }
+
+
 
         private void btnGenerateSourceCode_Click(object sender, EventArgs e)
         {
@@ -240,19 +203,7 @@ namespace SwdPageRecorder.UI
 
 
 
-        internal WebElementDefinition[] GetWebElementDefinitionFromTree()
-        {
-            var definitions = new List<WebElementDefinition>();
 
-            foreach (var treeNode in tvWebElements.Nodes[0].Nodes)
-            {
-                var node = treeNode as TreeNode;
-                var elementDefinition = node.Tag as WebElementDefinition;
-                definitions.Add(elementDefinition);
-            }
-
-            return definitions.ToArray();
-        }
 
         internal void DisplayGeneratedCode(string[] code)
         {
@@ -309,10 +260,6 @@ namespace SwdPageRecorder.UI
 
         }
 
-        internal void UpdateLastCallStat(string elapsedTime)
-        {
-            lblLastCallTime.Text = elapsedTime;
-        }
 
 
         internal TreeNode FindTreeNode(List<TravelNode> travelNodes)
@@ -432,24 +379,7 @@ namespace SwdPageRecorder.UI
             txtWebElementName.Text += appendWithStr;
         }
 
-        internal void UpdateExistingPageDefinition(TreeNode existingNode, WebElementDefinition element)
-        {
-            var action = (MethodInvoker)delegate
-            {
-                existingNode.Text = element.ToString();
-                existingNode.Tag = element;
-                existingNode.EnsureVisible();
-            };
 
-            if (tvWebElements.InvokeRequired)
-            {
-                tvWebElements.Invoke(action);
-            }
-            else
-            {
-                action();
-            }
-        }
 
         private void tvHtmlDoc_AfterSelect(object sender, TreeViewEventArgs e)
         {
