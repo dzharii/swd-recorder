@@ -28,7 +28,7 @@ namespace SwdPageRecorder.UI
         public TreeNode _currentEditingNode = null;
 
 
-        public PageObjectDefinitionPresenter(PageObjectDefinition view)
+        public void InitView(PageObjectDefinition view)
         {
 
             this.view = view;
@@ -60,5 +60,10 @@ namespace SwdPageRecorder.UI
             }
         }
 
+
+        internal void OpenExistingNodeForEdit(TreeNode treeNode)
+        {
+            Presenters.SwdMainPresenter.OpenExistingNodeForEdit(treeNode);
+        }
     }
 }

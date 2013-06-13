@@ -30,8 +30,7 @@ namespace SwdPageRecorder.UI
 
         public Thread visualSearchWorker = null;
 
-
-        public SwdMainPresenter(SwdMainView view)
+        public void InitView(SwdMainView view)
         {
             this.view = view;
         }
@@ -191,8 +190,8 @@ namespace SwdPageRecorder.UI
                         Locator = addElementCommand.ElementXPath,
                     };
                     bool addNew = true;
-                    var poDefPresenter = view.pageObjectDefinitionView.Presenter;
-                    poDefPresenter.UpdatePageDefinition(element, addNew);
+                    
+                    Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element, addNew);
                 }
                 Thread.Sleep(100);
             }
@@ -327,23 +326,23 @@ namespace SwdPageRecorder.UI
 
         internal void OpenExistingNodeForEdit(TreeNode treeNode)
         {
-            view.pageObjectDefinitionView.Presenter._isEditingExistingNode = true;
-            view.pageObjectDefinitionView.Presenter._currentEditingNode = treeNode;
+            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = true;
+            Presenters.PageObjectDefinitionPresenter._currentEditingNode = treeNode;
             var webElementFormData = treeNode.Tag as WebElementDefinition;
             view.UpdateWebElementForm(webElementFormData);
         }
 
         internal void NewWebElement()
         {
-            view.pageObjectDefinitionView.Presenter._isEditingExistingNode = false;
-            view.pageObjectDefinitionView.Presenter._currentEditingNode = null;
+            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
+            Presenters.PageObjectDefinitionPresenter._currentEditingNode = null;
             view.ClearWebElementForm();
         }
 
         internal void CopyWebElement()
         {
-            view.pageObjectDefinitionView.Presenter._isEditingExistingNode = false;
-            view.pageObjectDefinitionView.Presenter._currentEditingNode = null;
+            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
+            Presenters.PageObjectDefinitionPresenter._currentEditingNode = null;
             view.AppendWebElementNameWith("__Copy");
         }
 

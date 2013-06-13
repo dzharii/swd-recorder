@@ -16,7 +16,7 @@ namespace SwdPageRecorder.UI
 {
     public partial class SwdMainView : Form
     {
-        public SwdMainPresenter presenter = null;
+        private SwdMainPresenter presenter = null;
 
         const string otherLocator_Name            = "Name";
         const string otherLocator_TagName         = "Tag Name";
@@ -38,8 +38,8 @@ namespace SwdPageRecorder.UI
         public SwdMainView()
         {
             InitializeComponent();
-            presenter = new SwdMainPresenter(this);
-
+            presenter = Presenters.SwdMainPresenter;
+            presenter.InitView(this);
             InitOtherLocatorDropDown();
 
         }
@@ -189,7 +189,7 @@ namespace SwdPageRecorder.UI
 
             var element = GetWebElementDefinitionFromForm();
 
-            pageObjectDefinitionView.Presenter.UpdatePageDefinition(element);
+            Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element);
         }
 
 

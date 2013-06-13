@@ -15,21 +15,21 @@ namespace SwdPageRecorder.UI
 {
     public partial class PageObjectDefinition : UserControl
     {
-        public PageObjectDefinitionPresenter Presenter {get; private set;}
+        private PageObjectDefinitionPresenter presenter = null;
         
         public PageObjectDefinition()
         {
             InitializeComponent();
 
-            Presenter = new PageObjectDefinitionPresenter(this);
-
+            presenter = Presenters.PageObjectDefinitionPresenter;
+            presenter.InitView(this);
         }
 
 
 
         private void tvWebElements_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            //Presenter.OpenExistingNodeForEdit(e.Node);
+            presenter.OpenExistingNodeForEdit(e.Node);
         }
 
         internal IEnumerable<WebElementDefinition> GetKnownWebElements()

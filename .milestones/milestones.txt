@@ -1,5 +1,8 @@
 Milestones
 ==================================================
+--------------------------------------------------
+RELESE 0.1
+--------------------------------------------------
 [+] Generate Page Object source code
 [-] Read/Save application settings/PageObjects
 [ ] Existing items:
@@ -11,16 +14,27 @@ Milestones
     [+] Implement DOM box
     [+] Implement 2 sides communication (via JSON serialization) (http://www.sitepoint.com/javascript-json-serialization/)
     [-] Make it user friendly
-[-] Implement TestBox
+--------------------------------------------------
+RELESE 0.2
+--------------------------------------------------
+[-] Implement TestBox for element with click/sendkeys, etc
+[-] PageObject loading/source code integration
 
 
 ==================================================
+--------------------------------------------------
+RELESE 0.1
+--------------------------------------------------
 [!] Code refactoring
+   [!] MVP pattern
    [!] JavaScript code clean up
    [!] Create a reusable functions (getXPath!)
 [!] Initial Unit tests
 ==================================================
 
+--------------------------------------------------
+RELESE 0.2
+--------------------------------------------------
 [-] Add support for ReadOnlyCollection IWebElement
 [-] Add  support for Multiple FindsBy
 [-] Advanced HTML editor

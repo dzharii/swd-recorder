@@ -15,8 +15,6 @@ namespace SwdPageRecorder.UI
         [STAThread]
         static void Main()
         {
-            //GlobalProxySelection.Select = new  WebProxy("127.0.0.1", 8888);
-            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
