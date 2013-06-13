@@ -46,8 +46,8 @@ namespace SwdPageRecorder.UI
         internal void TestLocators()
         {
 
-            var searchMethod = view.GetLocatorSearchMethod();
-            var locator = view.GetLocatorText();
+            var searchMethod = Presenters.SelectorsEditPresenter.GetLocatorSearchMethod();
+            var locator = Presenters.SelectorsEditPresenter.GetLocatorText();
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -120,13 +120,7 @@ namespace SwdPageRecorder.UI
             return result;
         }
 
-        // REMOVE
-        internal void HighLightWebElement(WebElementDefinition element)
-        {
-            var by = Utils.ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
-            SwdBrowser.HighlightElement(by);
-            
-        }
+
 
 
         public void VisualSearch_UpdateSearchResult()
@@ -286,29 +280,7 @@ namespace SwdPageRecorder.UI
             view.FindAndHighlightElementInTree(travelNodes);
         }
 
-        internal void OpenExistingNodeForEdit(TreeNode treeNode)
-        {
-            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = true;
-            Presenters.PageObjectDefinitionPresenter._currentEditingNode = treeNode;
-            var webElementFormData = treeNode.Tag as WebElementDefinition;
-            view.UpdateWebElementForm(webElementFormData);
-        }
 
-        // REMOVE
-        internal void NewWebElement()
-        {
-            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
-            Presenters.PageObjectDefinitionPresenter._currentEditingNode = null;
-            view.ClearWebElementForm();
-        }
-
-        // REMOVE
-        internal void CopyWebElement()
-        {
-            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
-            Presenters.PageObjectDefinitionPresenter._currentEditingNode = null;
-            view.AppendWebElementNameWith("__Copy");
-        }
 
         internal void UpdateHtmlPropertiesForSelectedNode(TreeNode htmlTreeNode)
         {

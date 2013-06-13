@@ -189,6 +189,47 @@ namespace SwdPageRecorder.UI
             return locatorText;
         }
 
+        internal void UpdateWebElementForm(WebElementDefinition formData)
+        {
+            ClearWebElementForm();
+            txtWebElementName.Text = formData.Name;
+
+
+
+            switch (formData.HowToSearch)
+            {
+                case LocatorSearchMethod.Id:
+                    txtHtmlId.Text = formData.Locator;
+                    rbtnHtmlId.Checked = true;
+                    break;
+                case LocatorSearchMethod.CssSelector:
+                    txtCssSelector.Text = formData.Locator;
+                    rbtnCssSelector.Checked = true;
+                    break;
+                case LocatorSearchMethod.XPath:
+                    txtXPath.Text = formData.Locator;
+                    rbtnXPath.Checked = true;
+                    break;
+                default:
+                    string itemToSelect = "";
+                    switch (formData.HowToSearch)
+                    {
+                        case LocatorSearchMethod.Name: itemToSelect = otherLocator_Name; break;
+                        case LocatorSearchMethod.TagName: itemToSelect = otherLocator_TagName; break;
+                        case LocatorSearchMethod.ClassName: itemToSelect = otherLocator_ClassName; break;
+                        case LocatorSearchMethod.LinkText: itemToSelect = otherLocator_LinkText; break;
+                        case LocatorSearchMethod.PartialLinkText: itemToSelect = otherLocator_PartialLinkText; break;
+                    }
+                    if (!String.IsNullOrEmpty(itemToSelect))
+                    {
+                        txtOtherLocator.Text = formData.Locator;
+                        rbtnOtherLocator.Checked = true;
+                        ddlOtherLocator.SelectedIndex = Array.IndexOf(otherLocatorListItems, itemToSelect);
+                    }
+                    break;
+            }
+        }
+
 
     }
 }

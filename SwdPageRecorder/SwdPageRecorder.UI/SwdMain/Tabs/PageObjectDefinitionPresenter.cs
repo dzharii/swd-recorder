@@ -63,7 +63,7 @@ namespace SwdPageRecorder.UI
 
         internal void OpenExistingNodeForEdit(TreeNode treeNode)
         {
-            Presenters.SwdMainPresenter.OpenExistingNodeForEdit(treeNode);
+            Presenters.SelectorsEditPresenter.OpenExistingNodeForEdit(treeNode);
         }
     }
 }

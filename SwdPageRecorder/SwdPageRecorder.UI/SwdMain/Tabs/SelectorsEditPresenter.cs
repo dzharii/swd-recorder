@@ -50,5 +50,23 @@ namespace SwdPageRecorder.UI
             SwdBrowser.HighlightElement(by);
 
         }
+
+        internal void OpenExistingNodeForEdit(TreeNode treeNode)
+        {
+            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = true;
+            Presenters.PageObjectDefinitionPresenter._currentEditingNode = treeNode;
+            var webElementFormData = treeNode.Tag as WebElementDefinition;
+            view.UpdateWebElementForm(webElementFormData);
+        }
+
+        internal LocatorSearchMethod GetLocatorSearchMethod()
+        {
+            return view.GetLocatorSearchMethod();
+        }
+
+        internal string GetLocatorText()
+        {
+            return view.GetLocatorText();
+        }
     }
 }
