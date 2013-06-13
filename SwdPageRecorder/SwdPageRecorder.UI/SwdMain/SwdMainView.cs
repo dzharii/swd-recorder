@@ -40,15 +40,11 @@ namespace SwdPageRecorder.UI
             InitializeComponent();
             presenter = Presenters.SwdMainPresenter;
             presenter.InitView(this);
-            InitOtherLocatorDropDown();
+            // InitOtherLocatorDropDown();
 
         }
 
-        private void InitOtherLocatorDropDown()
-        {
-            ddlOtherLocator.Items.AddRange(otherLocatorListItems);
-            ddlOtherLocator.SelectedIndex = ddlOtherLocator.FindString(otherLocator_LinkText);
-        }
+
 
 
         private void btnTestLocator_Click(object sender, EventArgs e)
@@ -59,6 +55,8 @@ namespace SwdPageRecorder.UI
 
         }
 
+
+        //REMOVE
         internal LocatorSearchMethod GetLocatorSearchMethod()
         {
             var searchMethod = LocatorSearchMethod.NotSet;
@@ -100,6 +98,7 @@ namespace SwdPageRecorder.UI
             return searchMethod;
         }
 
+        // REMOVE
         public string GetLocatorText()
         {
             string locatorText = "";
@@ -164,6 +163,7 @@ namespace SwdPageRecorder.UI
         }
 
 
+        // REMOVE
         private WebElementDefinition GetWebElementDefinitionFromForm()
         {
             var element = new WebElementDefinition()
@@ -175,6 +175,7 @@ namespace SwdPageRecorder.UI
             return element;
         }
 
+        // REMOVE
         private void btnUpdateDeclaration_Click(object sender, EventArgs e)
         {
 
@@ -306,6 +307,7 @@ namespace SwdPageRecorder.UI
             htmlNode.EnsureVisible();
         }
 
+        // REMOVE
         private void btnHighlightWebElementInBrowser_Click(object sender, EventArgs e)
         {
             var element = GetWebElementDefinitionFromForm();
@@ -355,11 +357,14 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        //REMOVE!
         private void btnNewWebElement_Click(object sender, EventArgs e)
         {
             presenter.NewWebElement();
         }
 
+        
+        //REMOVE
         internal void ClearWebElementForm()
         {
             txtWebElementName.Clear();
@@ -369,11 +374,13 @@ namespace SwdPageRecorder.UI
             txtOtherLocator.Clear();
         }
 
+        // REMOVE
         private void btnCopyWebElement_Click(object sender, EventArgs e)
         {
             presenter.CopyWebElement();
         }
 
+        // REMOVE
         internal void AppendWebElementNameWith(string appendWithStr)
         {
             txtWebElementName.Text += appendWithStr;

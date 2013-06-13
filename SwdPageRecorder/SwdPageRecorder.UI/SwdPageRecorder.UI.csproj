@@ -77,23 +77,34 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwdMain\SwdMainPresenter.cs" />
-    <Compile Include="SwdMain\Tabs\PageObjectDefinition.cs">
+    <Compile Include="SwdMain\Tabs\PageObjectDefinitionView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SwdMain\Tabs\PageObjectDefinition.Designer.cs">
-      <DependentUpon>PageObjectDefinition.cs</DependentUpon>
+    <Compile Include="SwdMain\Tabs\PageObjectDefinitionView.Designer.cs">
+      <DependentUpon>PageObjectDefinitionView.cs</DependentUpon>
     </Compile>
     <Compile Include="SwdMain\Tabs\PageObjectDefinitionPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\SelectorsEditPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\SelectorsEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\SelectorsEditView.Designer.cs">
+      <DependentUpon>SelectorsEditView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SwdMain\TravelNode.cs" />
     <Compile Include="SwdMain\WebElementDefinition.cs" />
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="SwdMain\Tabs\BrowserSettingsTab.resx">
       <DependentUpon>BrowserSettingsTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\SwdMainView.resx">
       <DependentUpon>SwdMainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SwdMain\Tabs\PageObjectDefinition.resx">
-      <DependentUpon>PageObjectDefinition.cs</DependentUpon>
+    <EmbeddedResource Include="SwdMain\Tabs\PageObjectDefinitionView.resx">
+      <DependentUpon>PageObjectDefinitionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\SelectorsEditView.resx">
+      <DependentUpon>SelectorsEditView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

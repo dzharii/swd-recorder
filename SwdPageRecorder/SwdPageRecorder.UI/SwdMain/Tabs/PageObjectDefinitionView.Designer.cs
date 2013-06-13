@@ -1,6 +1,6 @@
 ﻿namespace SwdPageRecorder.UI
 {
-    partial class PageObjectDefinition
+    partial class PageObjectDefinitionView
     {
         /// <summary> 
         /// Required designer variable.
@@ -91,12 +91,12 @@
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
             // 
-            // PageObjectDefinition
+            // PageObjectDefinitionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox4);
-            this.Name = "PageObjectDefinition";
+            this.Name = "PageObjectDefinitionView";
             this.Size = new System.Drawing.Size(246, 486);
             this.groupBox4.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);

@@ -35,7 +35,6 @@
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTab();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnStartVisualSearch = new System.Windows.Forms.Button();
@@ -72,7 +71,8 @@
             this.txtHtmlPageSource = new System.Windows.Forms.TextBox();
             this.btnGetHtmlSource = new System.Windows.Forms.Button();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinition();
+            this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinitionView();
+            this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTab();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -141,13 +141,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Browser Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // browserSettingsTab1
-            // 
-            this.browserSettingsTab1.Location = new System.Drawing.Point(6, 6);
-            this.browserSettingsTab1.Name = "browserSettingsTab1";
-            this.browserSettingsTab1.Size = new System.Drawing.Size(672, 248);
-            this.browserSettingsTab1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -522,6 +515,13 @@
             this.pageObjectDefinitionView.Size = new System.Drawing.Size(246, 482);
             this.pageObjectDefinitionView.TabIndex = 2;
             // 
+            // browserSettingsTab1
+            // 
+            this.browserSettingsTab1.Location = new System.Drawing.Point(6, 6);
+            this.browserSettingsTab1.Name = "browserSettingsTab1";
+            this.browserSettingsTab1.Size = new System.Drawing.Size(672, 248);
+            this.browserSettingsTab1.TabIndex = 0;
+            // 
             // SwdMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,7 +601,7 @@
         public System.Windows.Forms.TextBox txtHtmlNodeProperties;
         public System.Windows.Forms.Button btnBrowser_Go;
         private BrowserSettingsTab browserSettingsTab1;
-        public PageObjectDefinition pageObjectDefinitionView;
+        public PageObjectDefinitionView pageObjectDefinitionView;
         
 
     }

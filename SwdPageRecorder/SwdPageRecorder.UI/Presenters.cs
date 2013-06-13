@@ -33,6 +33,18 @@ namespace SwdPageRecorder.UI
                 return (_pageObjectDefinitionPresenter = _pageObjectDefinitionPresenter ?? new PageObjectDefinitionPresenter());
             }
         }
+
+        private static SelectorsEditPresenter _selectorsEditPresenter = null;
+        public static SelectorsEditPresenter SelectorsEditPresenter
+        {
+            get
+            {
+                return (_selectorsEditPresenter = _selectorsEditPresenter ?? new SelectorsEditPresenter());
+            }
+        }
+
+
+        
         
 
     }

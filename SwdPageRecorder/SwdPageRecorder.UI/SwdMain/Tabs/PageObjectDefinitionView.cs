@@ -13,11 +13,11 @@ using FormKeys = System.Windows.Forms.Keys;
 
 namespace SwdPageRecorder.UI
 {
-    public partial class PageObjectDefinition : UserControl
+    public partial class PageObjectDefinitionView : UserControl
     {
         private PageObjectDefinitionPresenter presenter = null;
         
-        public PageObjectDefinition()
+        public PageObjectDefinitionView()
         {
             InitializeComponent();
 

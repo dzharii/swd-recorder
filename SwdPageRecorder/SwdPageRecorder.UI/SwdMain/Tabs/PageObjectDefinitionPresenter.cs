@@ -23,12 +23,12 @@ namespace SwdPageRecorder.UI
 {
     public class PageObjectDefinitionPresenter
     {
-        private PageObjectDefinition view;
+        private PageObjectDefinitionView view;
         public bool _isEditingExistingNode = false;
         public TreeNode _currentEditingNode = null;
 
 
-        public void InitView(PageObjectDefinition view)
+        public void InitView(PageObjectDefinitionView view)
         {
 
             this.view = view;

@@ -36,49 +36,10 @@ namespace SwdPageRecorder.UI
         }
 
 
-        public By ByFromLocatorSearchMethod(LocatorSearchMethod searchMethod, string locator)
-        {
-            By by = null;
-            switch (searchMethod)
-            {
-                case LocatorSearchMethod.Id:
-                    by = By.Id(locator);
-                    break;
-                case LocatorSearchMethod.CssSelector:
-                    by = By.CssSelector(locator);
-                    break;
-                case LocatorSearchMethod.XPath:
-                    by = By.XPath(locator);
-                    break;
-
-                case LocatorSearchMethod.Name:
-                    by = By.Name(locator);
-                    break;
-
-                case LocatorSearchMethod.TagName:
-                    by = By.TagName(locator);
-                    break;
-
-                case LocatorSearchMethod.ClassName:
-                    by = By.ClassName(locator);
-                    break;
-
-                case LocatorSearchMethod.LinkText:
-                    by = By.LinkText(locator);
-                    break;
-
-                case LocatorSearchMethod.PartialLinkText:
-                    by = By.PartialLinkText(locator);
-                    break;
-            }
-            return by;
-        }
-
-
         public ReadOnlyCollection<IWebElement>  FindElements(LocatorSearchMethod searchMethod, string locator)
         {
 
-            var by = ByFromLocatorSearchMethod(searchMethod, locator);
+            var by = Utils.ByFromLocatorSearchMethod(searchMethod, locator);
             return Driver.FindElements(by);
         }
 
@@ -159,9 +120,10 @@ namespace SwdPageRecorder.UI
             return result;
         }
 
+        // REMOVE
         internal void HighLightWebElement(WebElementDefinition element)
         {
-            var by = ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
+            var by = Utils.ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
             SwdBrowser.HighlightElement(by);
             
         }
@@ -332,6 +294,7 @@ namespace SwdPageRecorder.UI
             view.UpdateWebElementForm(webElementFormData);
         }
 
+        // REMOVE
         internal void NewWebElement()
         {
             Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
@@ -339,6 +302,7 @@ namespace SwdPageRecorder.UI
             view.ClearWebElementForm();
         }
 
+        // REMOVE
         internal void CopyWebElement()
         {
             Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
@@ -368,7 +332,7 @@ namespace SwdPageRecorder.UI
         internal void HighLightElementFromNode(TreeNode treeNode)
         {
             string xpath = GetXPathFromTreeNode(treeNode);
-            var by = ByFromLocatorSearchMethod(LocatorSearchMethod.XPath, xpath);
+            var by = Utils.ByFromLocatorSearchMethod(LocatorSearchMethod.XPath, xpath);
             SwdBrowser.HighlightElement(by);
         }
 
