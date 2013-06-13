@@ -36,14 +36,6 @@
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.chkUseRemoteHub = new System.Windows.Forms.CheckBox();
-            this.grpRemoteConnection = new System.Windows.Forms.GroupBox();
-            this.lblHubConnectionStatus = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtRemoteHubUrl = new System.Windows.Forms.TextBox();
-            this.btnStartWebDriver = new System.Windows.Forms.Button();
-            this.ddlBrowserToStart = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnStartVisualSearch = new System.Windows.Forms.Button();
@@ -85,10 +77,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tvWebElements = new System.Windows.Forms.TreeView();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTab();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.grpRemoteConnection.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -148,11 +140,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.chkUseRemoteHub);
-            this.tabPage1.Controls.Add(this.grpRemoteConnection);
-            this.tabPage1.Controls.Add(this.btnStartWebDriver);
-            this.tabPage1.Controls.Add(this.ddlBrowserToStart);
+            this.tabPage1.Controls.Add(this.browserSettingsTab1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -160,86 +148,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Browser Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 155);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Browser:";
-            // 
-            // chkUseRemoteHub
-            // 
-            this.chkUseRemoteHub.AutoSize = true;
-            this.chkUseRemoteHub.Location = new System.Drawing.Point(6, 19);
-            this.chkUseRemoteHub.Name = "chkUseRemoteHub";
-            this.chkUseRemoteHub.Size = new System.Drawing.Size(164, 17);
-            this.chkUseRemoteHub.TabIndex = 3;
-            this.chkUseRemoteHub.Text = "Use Remote Hub connection";
-            this.chkUseRemoteHub.UseVisualStyleBackColor = true;
-            this.chkUseRemoteHub.CheckedChanged += new System.EventHandler(this.chkUseRemoteHub_CheckedChanged);
-            // 
-            // grpRemoteConnection
-            // 
-            this.grpRemoteConnection.Controls.Add(this.lblHubConnectionStatus);
-            this.grpRemoteConnection.Controls.Add(this.label2);
-            this.grpRemoteConnection.Controls.Add(this.txtRemoteHubUrl);
-            this.grpRemoteConnection.Location = new System.Drawing.Point(6, 42);
-            this.grpRemoteConnection.Name = "grpRemoteConnection";
-            this.grpRemoteConnection.Size = new System.Drawing.Size(558, 100);
-            this.grpRemoteConnection.TabIndex = 2;
-            this.grpRemoteConnection.TabStop = false;
-            this.grpRemoteConnection.Text = "Remote Driver Configuration";
-            // 
-            // lblHubConnectionStatus
-            // 
-            this.lblHubConnectionStatus.AutoSize = true;
-            this.lblHubConnectionStatus.Location = new System.Drawing.Point(508, 31);
-            this.lblHubConnectionStatus.Name = "lblHubConnectionStatus";
-            this.lblHubConnectionStatus.Size = new System.Drawing.Size(37, 13);
-            this.lblHubConnectionStatus.TabIndex = 2;
-            this.lblHubConnectionStatus.Text = "Status";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Hub URL:";
-            // 
-            // txtRemoteHubUrl
-            // 
-            this.txtRemoteHubUrl.Location = new System.Drawing.Point(69, 28);
-            this.txtRemoteHubUrl.Name = "txtRemoteHubUrl";
-            this.txtRemoteHubUrl.Size = new System.Drawing.Size(433, 20);
-            this.txtRemoteHubUrl.TabIndex = 0;
-            this.txtRemoteHubUrl.Text = "http://127.0.0.1:4444/wd/hub";
-            // 
-            // btnStartWebDriver
-            // 
-            this.btnStartWebDriver.Location = new System.Drawing.Point(187, 152);
-            this.btnStartWebDriver.Name = "btnStartWebDriver";
-            this.btnStartWebDriver.Size = new System.Drawing.Size(75, 23);
-            this.btnStartWebDriver.TabIndex = 1;
-            this.btnStartWebDriver.Text = "Start";
-            this.btnStartWebDriver.UseVisualStyleBackColor = true;
-            this.btnStartWebDriver.Click += new System.EventHandler(this.btnStartWebDriver_Click);
-            // 
-            // ddlBrowserToStart
-            // 
-            this.ddlBrowserToStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlBrowserToStart.FormattingEnabled = true;
-            this.ddlBrowserToStart.Items.AddRange(new object[] {
-            "FireFox",
-            "Internet Explorer"});
-            this.ddlBrowserToStart.Location = new System.Drawing.Point(60, 152);
-            this.ddlBrowserToStart.Name = "ddlBrowserToStart";
-            this.ddlBrowserToStart.Size = new System.Drawing.Size(121, 21);
-            this.ddlBrowserToStart.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -660,6 +568,13 @@
             // 
             this.validationError.ContainerControl = this;
             // 
+            // browserSettingsTab1
+            // 
+            this.browserSettingsTab1.Location = new System.Drawing.Point(6, 6);
+            this.browserSettingsTab1.Name = "browserSettingsTab1";
+            this.browserSettingsTab1.Size = new System.Drawing.Size(672, 248);
+            this.browserSettingsTab1.TabIndex = 0;
+            // 
             // SwdMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -675,9 +590,6 @@
             this.groupBox1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.grpRemoteConnection.ResumeLayout(false);
-            this.grpRemoteConnection.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -706,9 +618,7 @@
         public System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.TabPage tabPage1;
-        public System.Windows.Forms.ComboBox ddlBrowserToStart;
         public System.Windows.Forms.TabPage tabPage2;
-        public System.Windows.Forms.Button btnStartWebDriver;
         public System.Windows.Forms.Button btnTestLocator;
         public System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.TextBox txtHtmlId;
@@ -726,11 +636,6 @@
         public System.Windows.Forms.TextBox txtWebElementName;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnUpdateDeclaration;
-        public System.Windows.Forms.Label label3;
-        public System.Windows.Forms.CheckBox chkUseRemoteHub;
-        public System.Windows.Forms.GroupBox grpRemoteConnection;
-        public System.Windows.Forms.Label lblHubConnectionStatus;
-        public System.Windows.Forms.Label label2;
         public System.Windows.Forms.TreeView tvWebElements;
         public System.Windows.Forms.ErrorProvider validationError;
         public System.Windows.Forms.TabPage tabPage3;
@@ -756,7 +661,7 @@
         public System.Windows.Forms.TabPage tabPage6;
         public System.Windows.Forms.TextBox txtHtmlNodeProperties;
         public System.Windows.Forms.Button btnBrowser_Go;
-        public System.Windows.Forms.TextBox txtRemoteHubUrl;
+        private BrowserSettingsTab browserSettingsTab1;
 
     }
 }

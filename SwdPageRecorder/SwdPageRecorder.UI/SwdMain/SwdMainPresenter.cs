@@ -41,13 +41,6 @@ namespace SwdPageRecorder.UI
         }
 
 
-        internal void StartNewBrowser(WebDriverOptions browserOptions)
-        {
-            SwdBrowser.Initialize(browserOptions);
-            
-        }
-
-
         public By ByFromLocatorSearchMethod(LocatorSearchMethod searchMethod, string locator)
         {
             By by = null;

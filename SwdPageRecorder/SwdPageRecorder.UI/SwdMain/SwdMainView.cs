@@ -14,7 +14,7 @@ using FormKeys = System.Windows.Forms.Keys;
 
 namespace SwdPageRecorder.UI
 {
-    public partial class SwdMainView : SwdMainViewBase
+    public partial class SwdMainView : Form
     {
         public SwdMainPresenter presenter = null;
 
@@ -42,62 +42,16 @@ namespace SwdPageRecorder.UI
             InitializeComponent();
             presenter = new SwdMainPresenter(this);
 
-            InitWebdriverSelectionDropDownList();
-            HandleRemoteDriverSettingsEnabledStatus();
+            InitOtherLocatorDropDown();
 
         }
 
-        private void InitWebdriverSelectionDropDownList()
+        private void InitOtherLocatorDropDown()
         {
             ddlOtherLocator.Items.AddRange(otherLocatorListItems);
             ddlOtherLocator.SelectedIndex = ddlOtherLocator.FindString(otherLocator_LinkText);
         }
 
-        private void ChangeBrowsersList(bool showAll)
-        {
-            var selectedItem = ddlBrowserToStart.SelectedItem;
-            string previousValue = "";
-            
-            if (selectedItem != null)
-            {
-                previousValue = ddlBrowserToStart.SelectedItem as string;
-            }
-
-            ddlBrowserToStart.Items.Clear();
-
-            string[] addedItems = null;
-            if (showAll)
-            {
-                addedItems = WebDriverOptions.allWebdriverBrowsersSupported;
-                ddlBrowserToStart.Items.AddRange(addedItems);
-            }
-            else
-            {
-                addedItems = WebDriverOptions.embededWebdriverBrowsersSupported;
-                ddlBrowserToStart.Items.AddRange(addedItems);
-            }
-
-            int index = Array.IndexOf(addedItems, previousValue);
-            index = index >= 0 ? index : 0;
-            ddlBrowserToStart.SelectedIndex = index;
-
-        }
-
-
-
-        private void btnStartWebDriver_Click(object sender, EventArgs e)
-        {
-            var browserOptions = new WebDriverOptions()
-            {
-                BrowserName = ddlBrowserToStart.SelectedItem as string,
-                IsRemote = chkUseRemoteHub.Checked,
-                RemoteUrl = txtRemoteHubUrl.Text,
-            };
-
-            presenter.StartNewBrowser(browserOptions);   
-            
-
-        }
 
         private void btnTestLocator_Click(object sender, EventArgs e)
         {
@@ -273,26 +227,6 @@ namespace SwdPageRecorder.UI
             return newNode;
         }
 
-
-        private void HandleRemoteDriverSettingsEnabledStatus()
-        {
-            if (chkUseRemoteHub.Checked)
-            {
-                grpRemoteConnection.Enabled = true;
-            }
-            else
-            {
-                grpRemoteConnection.Enabled = false;
-            }
-
-            ChangeBrowsersList(chkUseRemoteHub.Checked);
-        }
-        
-        private void chkUseRemoteHub_CheckedChanged(object sender, EventArgs e)
-        {
-            HandleRemoteDriverSettingsEnabledStatus();
-            
-        }
 
         private void tvWebElements_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {

@@ -56,6 +56,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SwdMain\Tabs\BrowserSettingsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\BrowserSettingsTab.Designer.cs">
+      <DependentUpon>BrowserSettingsTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\BrowserSettingsTabPresenter.cs" />
     <Compile Include="SwdMain\CSharpPageObjectGenerator.cs" />
     <Compile Include="SwdMain\HtmlTreeNodeData.cs" />
     <Compile Include="SwdMain\ResultElement.cs" />
@@ -69,11 +76,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwdMain\SwdMainPresenter.cs" />
-    <Compile Include="SwdMain\SwdMainViewBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="SwdMain\TravelNode.cs" />
     <Compile Include="SwdMain\WebElementDefinition.cs" />
+    <EmbeddedResource Include="SwdMain\Tabs\BrowserSettingsTab.resx">
+      <DependentUpon>BrowserSettingsTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\SwdMainView.resx">
       <DependentUpon>SwdMainView.cs</DependentUpon>
     </EmbeddedResource>
