@@ -21,19 +21,13 @@ using System.Diagnostics;
 
 namespace SwdPageRecorder.UI
 {
-    public class BrowserSettingsTabPresenter : IPresenter<BrowserSettingsTabView>
+    public class HtmlDomTesterPresenter : IPresenter<HtmlDomTesterView>
     {
-        private BrowserSettingsTabView view = null;
-        
-        public void InitView(BrowserSettingsTabView view)
+        private HtmlDomTesterView view;
+
+        public void InitView(HtmlDomTesterView view)
         {
             this.view = view;
-        }
-
-        internal void StartNewBrowser(WebDriverOptions browserOptions)
-        {
-            SwdBrowser.Initialize(browserOptions);
-
         }
     }
 }

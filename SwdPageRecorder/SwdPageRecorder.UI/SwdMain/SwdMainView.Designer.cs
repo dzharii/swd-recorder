@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwdMainView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBrowser_Go = new System.Windows.Forms.Button();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTabView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.selectorsEditView = new SwdPageRecorder.UI.SelectorsEditView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnStartVisualSearch = new System.Windows.Forms.Button();
             this.txtVisualSearchResult = new System.Windows.Forms.TextBox();
@@ -56,8 +57,6 @@
             this.btnGetHtmlSource = new System.Windows.Forms.Button();
             this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
             this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinitionView();
-            this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTab();
-            this.selectorsEditView = new SwdPageRecorder.UI.SelectorsEditView();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -126,6 +125,13 @@
             this.tabPage1.Text = "Browser Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // browserSettingsTab1
+            // 
+            this.browserSettingsTab1.Location = new System.Drawing.Point(6, 6);
+            this.browserSettingsTab1.Name = "browserSettingsTab1";
+            this.browserSettingsTab1.Size = new System.Drawing.Size(672, 248);
+            this.browserSettingsTab1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.selectorsEditView);
@@ -138,6 +144,13 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Locators";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // selectorsEditView
+            // 
+            this.selectorsEditView.Location = new System.Drawing.Point(4, 3);
+            this.selectorsEditView.Name = "selectorsEditView";
+            this.selectorsEditView.Size = new System.Drawing.Size(736, 157);
+            this.selectorsEditView.TabIndex = 2;
             // 
             // groupBox5
             // 
@@ -335,20 +348,6 @@
             this.pageObjectDefinitionView.Size = new System.Drawing.Size(246, 482);
             this.pageObjectDefinitionView.TabIndex = 2;
             // 
-            // browserSettingsTab1
-            // 
-            this.browserSettingsTab1.Location = new System.Drawing.Point(6, 6);
-            this.browserSettingsTab1.Name = "browserSettingsTab1";
-            this.browserSettingsTab1.Size = new System.Drawing.Size(672, 248);
-            this.browserSettingsTab1.TabIndex = 0;
-            // 
-            // selectorsEditView
-            // 
-            this.selectorsEditView.Location = new System.Drawing.Point(4, 3);
-            this.selectorsEditView.Name = "selectorsEditView";
-            this.selectorsEditView.Size = new System.Drawing.Size(736, 157);
-            this.selectorsEditView.TabIndex = 2;
-            // 
             // SwdMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,7 +356,6 @@
             this.Controls.Add(this.pageObjectDefinitionView);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SwdMainView";
             this.Text = "SWD Page Recorder";
             this.groupBox1.ResumeLayout(false);
@@ -409,7 +407,7 @@
         public System.Windows.Forms.TabPage tabPage6;
         public System.Windows.Forms.TextBox txtHtmlNodeProperties;
         public System.Windows.Forms.Button btnBrowser_Go;
-        private BrowserSettingsTab browserSettingsTab1;
+        private BrowserSettingsTabView browserSettingsTab1;
         public PageObjectDefinitionView pageObjectDefinitionView;
         private SelectorsEditView selectorsEditView;
         

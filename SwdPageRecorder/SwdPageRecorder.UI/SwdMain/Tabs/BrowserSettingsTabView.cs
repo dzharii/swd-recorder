@@ -13,11 +13,11 @@ using FormKeys = System.Windows.Forms.Keys;
 
 namespace SwdPageRecorder.UI
 {
-    public partial class BrowserSettingsTab : UserControl
+    public partial class BrowserSettingsTabView : UserControl, IView
     {
         public BrowserSettingsTabPresenter presenter = null;
                 
-        public BrowserSettingsTab()
+        public BrowserSettingsTabView()
         {
             InitializeComponent();
             presenter = Presenters.BrowserSettingsTabPresenter;

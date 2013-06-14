@@ -19,7 +19,13 @@ RELESE 0.2
 --------------------------------------------------
 [-] Implement TestBox for element with click/sendkeys, etc
 [-] PageObject loading/source code integration
-
+[-] WebDriver proxy: Use SWDPR as a proxy that allows to reconnect to 
+    existing Browser instance. Use Fiddler-core to implement proxy
+[-] Implement Cpapbility settings
+[-] JavaScript support
+    [-] FindBy JavaScript
+    [-] Allow JavaScript snippets
+    [?] Integration with Chrome/IE console????
 
 ==================================================
 --------------------------------------------------

@@ -23,7 +23,7 @@ using System.Diagnostics;
 
 namespace SwdPageRecorder.UI
 {
-    public class PageObjectDefinitionPresenter
+    public class PageObjectDefinitionPresenter : IPresenter<PageObjectDefinitionView>
     {
         private PageObjectDefinitionView view;
         public bool _isEditingExistingNode = false;

@@ -14,7 +14,7 @@ using FormKeys = System.Windows.Forms.Keys;
 
 namespace SwdPageRecorder.UI
 {
-    public partial class SwdMainView : Form
+    public partial class SwdMainView : Form, IView
     {
         private SwdMainPresenter presenter = null;
         

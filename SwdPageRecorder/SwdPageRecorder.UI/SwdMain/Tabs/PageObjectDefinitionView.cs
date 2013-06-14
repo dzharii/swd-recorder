@@ -13,7 +13,7 @@ using FormKeys = System.Windows.Forms.Keys;
 
 namespace SwdPageRecorder.UI
 {
-    public partial class PageObjectDefinitionView : UserControl
+    public partial class PageObjectDefinitionView : UserControl, IView
     {
         private PageObjectDefinitionPresenter presenter = null;
         

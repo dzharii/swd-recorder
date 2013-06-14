@@ -43,6 +43,15 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        private static HtmlDomTesterPresenter _htmlDomTesterPresenter = null;
+        public static HtmlDomTesterPresenter HtmlDomTesterPresenter
+        {
+            get
+            {
+                return (_htmlDomTesterPresenter = _htmlDomTesterPresenter ?? new HtmlDomTesterPresenter());
+            }
+        }
+
 
         
         

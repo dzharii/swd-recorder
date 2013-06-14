@@ -1,6 +1,6 @@
 ﻿namespace SwdPageRecorder.UI
 {
-    partial class BrowserSettingsTab
+    partial class BrowserSettingsTabView
     {
         /// <summary> 
         /// Required designer variable.
@@ -119,7 +119,7 @@
             this.ddlBrowserToStart.Size = new System.Drawing.Size(121, 21);
             this.ddlBrowserToStart.TabIndex = 5;
             // 
-            // BrowserSettingsTab
+            // BrowserSettingsTabView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -128,7 +128,7 @@
             this.Controls.Add(this.grpRemoteConnection);
             this.Controls.Add(this.btnStartWebDriver);
             this.Controls.Add(this.ddlBrowserToStart);
-            this.Name = "BrowserSettingsTab";
+            this.Name = "BrowserSettingsTabView";
             this.Size = new System.Drawing.Size(572, 193);
             this.grpRemoteConnection.ResumeLayout(false);
             this.grpRemoteConnection.PerformLayout();

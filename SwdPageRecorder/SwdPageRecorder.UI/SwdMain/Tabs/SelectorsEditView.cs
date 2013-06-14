@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace SwdPageRecorder.UI
 {
-    public partial class SelectorsEditView : UserControl
+    public partial class SelectorsEditView : UserControl, IView
     {
         private SelectorsEditPresenter presenter;
 

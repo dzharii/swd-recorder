@@ -21,7 +21,7 @@ using System.Diagnostics;
 
 namespace SwdPageRecorder.UI
 {
-    public class SelectorsEditPresenter
+    public class SelectorsEditPresenter : IPresenter<SelectorsEditView>
     {
         private SelectorsEditView view;
 
