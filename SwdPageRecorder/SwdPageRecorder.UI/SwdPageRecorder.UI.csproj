@@ -104,6 +104,9 @@
     <Compile Include="SwdMain\TravelNode.cs" />
     <Compile Include="SwdMain\WebElementDefinition.cs" />
     <Compile Include="Utils.cs" />
+    <EmbeddedResource Include="SwdMain\SwdMainView.resx">
+      <DependentUpon>SwdMainView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\Tabs\BrowserSettingsTabView.resx">
       <DependentUpon>BrowserSettingsTabView.cs</DependentUpon>
     </EmbeddedResource>

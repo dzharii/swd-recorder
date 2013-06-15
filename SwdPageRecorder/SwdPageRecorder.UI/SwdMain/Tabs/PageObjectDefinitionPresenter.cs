@@ -79,5 +79,10 @@ namespace SwdPageRecorder.UI
         {
             Presenters.SelectorsEditPresenter.OpenExistingNodeForEdit(treeNode);
         }
+
+        internal void UpdateLastCallStat(string statText)
+        {
+            view.UpdateLastCallStat(statText);
+        }
     }
 }
