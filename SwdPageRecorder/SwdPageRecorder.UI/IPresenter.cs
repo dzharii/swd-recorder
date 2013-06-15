@@ -8,6 +8,6 @@ namespace SwdPageRecorder.UI
 {
     public interface IPresenter<T>  where T : IView
     {
-        void InitView(T view);
+        void InitWithView(T view);
     }
 }

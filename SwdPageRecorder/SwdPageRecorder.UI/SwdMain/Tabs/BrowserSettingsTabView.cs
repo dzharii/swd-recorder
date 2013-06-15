@@ -21,7 +21,7 @@ namespace SwdPageRecorder.UI
         {
             InitializeComponent();
             presenter = Presenters.BrowserSettingsTabPresenter;
-            presenter.InitView(this);
+            presenter.InitWithView(this);
                         
             HandleRemoteDriverSettingsEnabledStatus();
         }

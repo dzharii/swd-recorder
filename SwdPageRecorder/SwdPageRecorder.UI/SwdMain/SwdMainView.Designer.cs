@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBrowser_Go = new System.Windows.Forms.Button();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
@@ -36,19 +35,16 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTabView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.htmlDomTesterView1 = new SwdPageRecorder.UI.HtmlDomTesterView();
             this.selectorsEditView = new SwdPageRecorder.UI.SelectorsEditView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnStartVisualSearch = new System.Windows.Forms.Button();
             this.txtVisualSearchResult = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnGenerateSourceCode = new System.Windows.Forms.Button();
-            this.txtSourceCode = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.txtHtmlPageSource = new System.Windows.Forms.TextBox();
-            this.btnGetHtmlSource = new System.Windows.Forms.Button();
-            this.validationError = new System.Windows.Forms.ErrorProvider(this.components);
             this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinitionView();
-            this.htmlDomTesterView1 = new SwdPageRecorder.UI.HtmlDomTesterView();
+            this.fullHtmlSourceTabView1 = new SwdPageRecorder.UI.FullHtmlSourceTabView();
+            this.pageObjectSourceCodeView1 = new SwdPageRecorder.UI.PageObjectSourceCodeView();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -56,7 +52,6 @@
             this.groupBox5.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.validationError)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -132,6 +127,13 @@
             this.tabPage2.Text = "Locators";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // htmlDomTesterView1
+            // 
+            this.htmlDomTesterView1.Location = new System.Drawing.Point(2, 234);
+            this.htmlDomTesterView1.Name = "htmlDomTesterView1";
+            this.htmlDomTesterView1.Size = new System.Drawing.Size(743, 222);
+            this.htmlDomTesterView1.TabIndex = 5;
+            // 
             // selectorsEditView
             // 
             this.selectorsEditView.Location = new System.Drawing.Point(4, 3);
@@ -169,8 +171,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.btnGenerateSourceCode);
-            this.tabPage3.Controls.Add(this.txtSourceCode);
+            this.tabPage3.Controls.Add(this.pageObjectSourceCodeView1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -179,30 +180,9 @@
             this.tabPage3.Text = "Source Code";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnGenerateSourceCode
-            // 
-            this.btnGenerateSourceCode.Location = new System.Drawing.Point(489, 6);
-            this.btnGenerateSourceCode.Name = "btnGenerateSourceCode";
-            this.btnGenerateSourceCode.Size = new System.Drawing.Size(75, 23);
-            this.btnGenerateSourceCode.TabIndex = 1;
-            this.btnGenerateSourceCode.Text = "Generate";
-            this.btnGenerateSourceCode.UseVisualStyleBackColor = true;
-            this.btnGenerateSourceCode.Click += new System.EventHandler(this.btnGenerateSourceCode_Click);
-            // 
-            // txtSourceCode
-            // 
-            this.txtSourceCode.AcceptsReturn = true;
-            this.txtSourceCode.AcceptsTab = true;
-            this.txtSourceCode.Location = new System.Drawing.Point(6, 29);
-            this.txtSourceCode.Multiline = true;
-            this.txtSourceCode.Name = "txtSourceCode";
-            this.txtSourceCode.Size = new System.Drawing.Size(558, 362);
-            this.txtSourceCode.TabIndex = 0;
-            // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.txtHtmlPageSource);
-            this.tabPage4.Controls.Add(this.btnGetHtmlSource);
+            this.tabPage4.Controls.Add(this.fullHtmlSourceTabView1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -211,30 +191,6 @@
             this.tabPage4.Text = "HTML Source";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // txtHtmlPageSource
-            // 
-            this.txtHtmlPageSource.Location = new System.Drawing.Point(6, 35);
-            this.txtHtmlPageSource.Multiline = true;
-            this.txtHtmlPageSource.Name = "txtHtmlPageSource";
-            this.txtHtmlPageSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtHtmlPageSource.Size = new System.Drawing.Size(548, 356);
-            this.txtHtmlPageSource.TabIndex = 1;
-            this.txtHtmlPageSource.WordWrap = false;
-            // 
-            // btnGetHtmlSource
-            // 
-            this.btnGetHtmlSource.Location = new System.Drawing.Point(479, 6);
-            this.btnGetHtmlSource.Name = "btnGetHtmlSource";
-            this.btnGetHtmlSource.Size = new System.Drawing.Size(75, 23);
-            this.btnGetHtmlSource.TabIndex = 0;
-            this.btnGetHtmlSource.Text = "Get HTML";
-            this.btnGetHtmlSource.UseVisualStyleBackColor = true;
-            this.btnGetHtmlSource.Click += new System.EventHandler(this.btnGetHtmlSource_Click);
-            // 
-            // validationError
-            // 
-            this.validationError.ContainerControl = this;
-            // 
             // pageObjectDefinitionView
             // 
             this.pageObjectDefinitionView.Location = new System.Drawing.Point(766, 57);
@@ -242,12 +198,19 @@
             this.pageObjectDefinitionView.Size = new System.Drawing.Size(246, 482);
             this.pageObjectDefinitionView.TabIndex = 2;
             // 
-            // htmlDomTesterView1
+            // fullHtmlSourceTabView1
             // 
-            this.htmlDomTesterView1.Location = new System.Drawing.Point(2, 234);
-            this.htmlDomTesterView1.Name = "htmlDomTesterView1";
-            this.htmlDomTesterView1.Size = new System.Drawing.Size(743, 222);
-            this.htmlDomTesterView1.TabIndex = 5;
+            this.fullHtmlSourceTabView1.Location = new System.Drawing.Point(6, 6);
+            this.fullHtmlSourceTabView1.Name = "fullHtmlSourceTabView1";
+            this.fullHtmlSourceTabView1.Size = new System.Drawing.Size(552, 389);
+            this.fullHtmlSourceTabView1.TabIndex = 0;
+            // 
+            // pageObjectSourceCodeView1
+            // 
+            this.pageObjectSourceCodeView1.Location = new System.Drawing.Point(2, 0);
+            this.pageObjectSourceCodeView1.Name = "pageObjectSourceCodeView1";
+            this.pageObjectSourceCodeView1.Size = new System.Drawing.Size(567, 392);
+            this.pageObjectSourceCodeView1.TabIndex = 0;
             // 
             // SwdMainView
             // 
@@ -267,10 +230,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.validationError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -281,14 +241,9 @@
         public System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.TabPage tabPage2;
-        public System.Windows.Forms.ErrorProvider validationError;
         public System.Windows.Forms.TabPage tabPage3;
-        public System.Windows.Forms.Button btnGenerateSourceCode;
-        public System.Windows.Forms.TextBox txtSourceCode;
         public System.Windows.Forms.TextBox txtBrowserUrl;
         public System.Windows.Forms.TabPage tabPage4;
-        public System.Windows.Forms.TextBox txtHtmlPageSource;
-        public System.Windows.Forms.Button btnGetHtmlSource;
         public System.Windows.Forms.GroupBox groupBox5;
         public System.Windows.Forms.Button btnStartVisualSearch;
         public System.Windows.Forms.TextBox txtVisualSearchResult;
@@ -297,6 +252,8 @@
         public PageObjectDefinitionView pageObjectDefinitionView;
         private SelectorsEditView selectorsEditView;
         private HtmlDomTesterView htmlDomTesterView1;
+        private PageObjectSourceCodeView pageObjectSourceCodeView1;
+        private FullHtmlSourceTabView fullHtmlSourceTabView1;
         
 
     }

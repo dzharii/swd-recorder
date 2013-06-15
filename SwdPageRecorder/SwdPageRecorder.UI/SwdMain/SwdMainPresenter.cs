@@ -36,38 +36,10 @@ namespace SwdPageRecorder.UI
         }
 
 
-        internal void GenerateSourceCodeForPageObject()
-        {
-            var definitions = view.pageObjectDefinitionView.GetWebElementDefinitionFromTree();
-            var generator = new CSharpPageObjectGenerator();
-
-            string[] code = generator.Generate(definitions);
-            view.DisplayGeneratedCode(code);
-
-        }
-
         internal void SetBrowserUrl(string browserUrl)
         {
             Driver.Navigate().GoToUrl(browserUrl);
         }
-
-
-
-        internal void DisplayHtmlPageSource()
-        {
-
-            string singleLineSource = SwdBrowser.GetTidyHtml();
-            string[] htmlLines = SplitSingleLineToMultyLine(singleLineSource);
-            view.FillHtmlCodeBox(htmlLines);
-        }
-
-        private string[] SplitSingleLineToMultyLine(string singleLineSource)
-        {
-            string[] result = singleLineSource.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            return result;
-        }
-
-
 
 
         public void VisualSearch_UpdateSearchResult()

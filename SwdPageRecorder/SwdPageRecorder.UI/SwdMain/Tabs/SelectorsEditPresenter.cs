@@ -25,7 +25,7 @@ namespace SwdPageRecorder.UI
     {
         private SelectorsEditView view;
 
-        public void InitView(SelectorsEditView view)
+        public void InitWithView(SelectorsEditView view)
         {
             this.view = view;
         }

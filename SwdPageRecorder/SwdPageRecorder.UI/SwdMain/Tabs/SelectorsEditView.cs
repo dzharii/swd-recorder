@@ -36,7 +36,7 @@ namespace SwdPageRecorder.UI
         {
             InitializeComponent();
             this.presenter = Presenters.SelectorsEditPresenter;
-            presenter.InitView(this);
+            presenter.InitWithView(this);
             InitOtherLocatorDropDown();
         }
 

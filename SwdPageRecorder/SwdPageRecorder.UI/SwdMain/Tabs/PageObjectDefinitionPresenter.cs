@@ -30,7 +30,7 @@ namespace SwdPageRecorder.UI
         public TreeNode _currentEditingNode = null;
 
 
-        public void InitView(PageObjectDefinitionView view)
+        public void InitWithView(PageObjectDefinitionView view)
         {
 
             this.view = view;
@@ -83,6 +83,11 @@ namespace SwdPageRecorder.UI
         internal void UpdateLastCallStat(string statText)
         {
             view.UpdateLastCallStat(statText);
+        }
+
+        internal WebElementDefinition[] GetWebElementDefinitionFromTree()
+        {
+            return view.GetWebElementDefinitionFromTree();
         }
     }
 }

@@ -80,6 +80,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwdMain\SwdMainPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\PageObjectSourceCodePresenter.cs" />
+    <Compile Include="SwdMain\Tabs\PageObjectSourceCodeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\PageObjectSourceCodeView.Designer.cs">
+      <DependentUpon>PageObjectSourceCodeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SwdMain\Tabs\HtmlDomTesterView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -94,6 +101,13 @@
       <DependentUpon>PageObjectDefinitionView.cs</DependentUpon>
     </Compile>
     <Compile Include="SwdMain\Tabs\PageObjectDefinitionPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\FullHtmlSourceTabPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\FullHtmlSourceTabView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\FullHtmlSourceTabView.Designer.cs">
+      <DependentUpon>FullHtmlSourceTabView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SwdMain\Tabs\SelectorsEditPresenter.cs" />
     <Compile Include="SwdMain\Tabs\SelectorsEditView.cs">
       <SubType>UserControl</SubType>
@@ -110,11 +124,17 @@
     <EmbeddedResource Include="SwdMain\Tabs\BrowserSettingsTabView.resx">
       <DependentUpon>BrowserSettingsTabView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\PageObjectSourceCodeView.resx">
+      <DependentUpon>PageObjectSourceCodeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\Tabs\HtmlDomTesterView.resx">
       <DependentUpon>HtmlDomTesterView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\Tabs\PageObjectDefinitionView.resx">
       <DependentUpon>PageObjectDefinitionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\FullHtmlSourceTabView.resx">
+      <DependentUpon>FullHtmlSourceTabView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\Tabs\SelectorsEditView.resx">
       <DependentUpon>SelectorsEditView.cs</DependentUpon>

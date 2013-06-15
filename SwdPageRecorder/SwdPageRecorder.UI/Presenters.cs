@@ -52,5 +52,24 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        private static FullHtmlSourceTabPresenter _pageObjectSourceCodePresenter = null;
+        public static FullHtmlSourceTabPresenter PageObjectSourceCodePresenter
+        {
+            get
+            {
+                return (_pageObjectSourceCodePresenter = _pageObjectSourceCodePresenter ?? new FullHtmlSourceTabPresenter());
+            }
+        }
+
+        private static PageObjectSourceCodePresenter _fullHtmlSourceTabPresenter = null;
+        public static PageObjectSourceCodePresenter FullHtmlSourceTabPresenter
+        {
+            get
+            {
+                return (_fullHtmlSourceTabPresenter = _fullHtmlSourceTabPresenter ?? new PageObjectSourceCodePresenter());
+            }
+        }
+
+        
     }
 }

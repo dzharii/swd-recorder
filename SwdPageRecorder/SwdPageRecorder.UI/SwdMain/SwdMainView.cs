@@ -26,21 +26,6 @@ namespace SwdPageRecorder.UI
         }
 
 
-
-
-
-
-
-        private void btnGenerateSourceCode_Click(object sender, EventArgs e)
-        {
-            presenter.GenerateSourceCodeForPageObject();
-        }
-
-        internal void DisplayGeneratedCode(string[] code)
-        {
-            txtSourceCode.Lines = code;
-        }
-
         private void txtBrowserUrl_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == FormKeys.Enter)
@@ -49,15 +34,6 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        private void btnGetHtmlSource_Click(object sender, EventArgs e)
-        {
-            presenter.DisplayHtmlPageSource();
-        }
-
-        internal void FillHtmlCodeBox(string[] htmlLines)
-        {
-            txtHtmlPageSource.Lines = htmlLines;
-        }
 
         private void btnStartVisualSearch_Click(object sender, EventArgs e)
         {

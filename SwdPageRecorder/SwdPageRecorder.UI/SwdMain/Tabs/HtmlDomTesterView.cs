@@ -21,7 +21,7 @@ namespace SwdPageRecorder.UI
         {
             InitializeComponent();
             this.presenter = Presenters.HtmlDomTesterPresenter;
-            presenter.InitView(this);
+            presenter.InitWithView(this);
         }
 
         private void btnTestLocator_Click(object sender, EventArgs e)

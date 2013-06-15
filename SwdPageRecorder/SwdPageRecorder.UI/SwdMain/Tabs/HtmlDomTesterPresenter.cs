@@ -27,7 +27,7 @@ namespace SwdPageRecorder.UI
 
         public IWebDriver Driver { get { return SwdBrowser.GetDriver(); } }
 
-        public void InitView(HtmlDomTesterView view)
+        public void InitWithView(HtmlDomTesterView view)
         {
             this.view = view;
         }

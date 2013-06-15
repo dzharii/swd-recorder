@@ -25,7 +25,7 @@ namespace SwdPageRecorder.UI
     {
         private BrowserSettingsTabView view = null;
         
-        public void InitView(BrowserSettingsTabView view)
+        public void InitWithView(BrowserSettingsTabView view)
         {
             this.view = view;
         }

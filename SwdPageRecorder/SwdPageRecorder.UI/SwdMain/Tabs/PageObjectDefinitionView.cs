@@ -22,7 +22,7 @@ namespace SwdPageRecorder.UI
             InitializeComponent();
 
             presenter = Presenters.PageObjectDefinitionPresenter;
-            presenter.InitView(this);
+            presenter.InitWithView(this);
         }
 
         public void DisplayMessage(string title, string message)
