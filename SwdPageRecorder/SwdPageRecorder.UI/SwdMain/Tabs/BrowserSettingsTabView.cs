@@ -16,6 +16,7 @@ namespace SwdPageRecorder.UI
     public partial class BrowserSettingsTabView : UserControl, IView
     {
         public BrowserSettingsTabPresenter presenter = null;
+        private Control[] driverControls;
                 
         public BrowserSettingsTabView()
         {
@@ -24,9 +25,9 @@ namespace SwdPageRecorder.UI
             presenter.InitWithView(this);
                         
             HandleRemoteDriverSettingsEnabledStatus();
+
+            driverControls = new Control[] { chkUseRemoteHub, grpRemoteConnection, ddlBrowserToStart };
         }
-
-
 
         private void btnStartWebDriver_Click(object sender, EventArgs e)
         {
@@ -89,5 +90,28 @@ namespace SwdPageRecorder.UI
             HandleRemoteDriverSettingsEnabledStatus();
         }
 
+
+
+        private void SetControlsState(string startButtonCaption, bool isEnabled)
+        {
+            btnStartWebDriver.Text = startButtonCaption;
+
+            foreach (var control in driverControls)
+            {
+                control.Enabled = isEnabled;
+            }
+            HandleRemoteDriverSettingsEnabledStatus();
+
+        }
+        
+        internal void DriverWasStopped()
+        {
+            SetControlsState("Start", true);
+        }
+
+        internal void DriverWasStarted()
+        {
+            SetControlsState("Stop", false);
+        }
     }
 }

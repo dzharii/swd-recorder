@@ -318,5 +318,28 @@ return getPathTo(element);
 
 ", webElement);
         }
+
+        
+        // Check if the current driver is working
+        public static bool IsWorking 
+        {
+            get
+            {
+                bool result = true;
+                if (_driver != null)
+                {
+                    try
+                    {
+                        // Try to get page title
+                        var title = _driver.Title;
+                    }
+                    catch
+                    {
+                        result = false;
+                    }
+                }
+                return result;
+            }
+        }
     }
 }

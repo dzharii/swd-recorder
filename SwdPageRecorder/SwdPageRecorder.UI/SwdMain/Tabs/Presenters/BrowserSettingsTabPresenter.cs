@@ -24,6 +24,7 @@ namespace SwdPageRecorder.UI
     public class BrowserSettingsTabPresenter : IPresenter<BrowserSettingsTabView>
     {
         private BrowserSettingsTabView view = null;
+        bool isBrowserStarted = false;
         
         public void InitWithView(BrowserSettingsTabView view)
         {
@@ -32,7 +33,22 @@ namespace SwdPageRecorder.UI
 
         internal void StartNewBrowser(WebDriverOptions browserOptions)
         {
-            SwdBrowser.Initialize(browserOptions);
+            if (isBrowserStarted)
+            {
+                if (SwdBrowser.IsWorking)
+                {
+                    SwdBrowser.CloseDriver();
+                }
+                isBrowserStarted = false;
+                view.DriverWasStopped();
+            }
+            else
+            {
+                SwdBrowser.Initialize(browserOptions);
+                isBrowserStarted = true;
+                view.DriverWasStarted();
+            }
+
 
         }
     }

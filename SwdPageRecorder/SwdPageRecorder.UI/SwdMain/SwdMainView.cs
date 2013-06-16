@@ -37,7 +37,7 @@ namespace SwdPageRecorder.UI
 
         private void btnStartVisualSearch_Click(object sender, EventArgs e)
         {
-            presenter.StartVisualSearch();
+            presenter.ChangeVisualSearchRunningState();
         }
 
 
@@ -65,6 +65,16 @@ namespace SwdPageRecorder.UI
             presenter.SetBrowserUrl(txtBrowserUrl.Text);
 
         }
-        
+
+
+        internal void VisualSearchStopped()
+        {
+            btnStartVisualSearch.Text = "Start";
+        }
+
+        internal void VisuaSearchStarted()
+        {
+            btnStartVisualSearch.Text = "Stop";
+        }
     }
 }

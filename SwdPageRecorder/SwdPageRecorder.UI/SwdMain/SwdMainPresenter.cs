@@ -42,42 +42,62 @@ namespace SwdPageRecorder.UI
         }
 
 
+
+        public void ProcessCommands()
+        {
+            var command = SwdBrowser.GetNextCommand();
+            if (command is GetXPathFromElement)
+            {
+                var getXPathCommand = command as GetXPathFromElement;
+                view.UpdateVisualSearchResult(getXPathCommand.XPathValue);
+            }
+            else if (command is AddElement)
+            {
+                var addElementCommand = command as AddElement;
+
+                var element = new WebElementDefinition()
+                {
+                    Name = addElementCommand.ElementCodeName,
+                    HowToSearch = LocatorSearchMethod.XPath,
+                    Locator = addElementCommand.ElementXPath,
+                };
+                bool addNew = true;
+
+                Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element, addNew);
+            }
+        }
+
+        bool stopVisualSearch = false;
+
         public void VisualSearch_UpdateSearchResult()
         {
 
-            while (true)
+            while (stopVisualSearch == false)
             {
-
-                var command = SwdBrowser.GetNextCommand();
-                if (command is GetXPathFromElement)
+                try
                 {
-                    var getXPathCommand = command as GetXPathFromElement;
-                    view.UpdateVisualSearchResult(getXPathCommand.XPathValue);
+                    ProcessCommands();
                 }
-                else if (command is AddElement)
+                catch(Exception e)
                 {
-                    var addElementCommand = command as AddElement;
-
-                    var element = new WebElementDefinition()
-                    {
-                        Name = addElementCommand.ElementCodeName,
-                        HowToSearch = LocatorSearchMethod.XPath,
-                        Locator = addElementCommand.ElementXPath,
-                    };
-                    bool addNew = true;
-                    
-                    Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element, addNew);
+                    StopVisualSearch();
+                    MessageBox.Show(e.ToString());
                 }
                 Thread.Sleep(100);
             }
 
         }
-        
+
+        internal void StopVisualSearch()
+        {
+            stopVisualSearch = true;
+            view.VisualSearchStopped();
+        }
+
         internal void StartVisualSearch()
         {
             SwdBrowser.InjectVisualSearch();
-
-            if (visualSearchWorker!=null)
+            if (visualSearchWorker != null)
             {
                 visualSearchWorker.Abort();
                 visualSearchWorker = null;
@@ -86,6 +106,21 @@ namespace SwdPageRecorder.UI
             visualSearchWorker = new Thread(VisualSearch_UpdateSearchResult);
             visualSearchWorker.IsBackground = true;
             visualSearchWorker.Start();
+            view.VisuaSearchStarted();
+            stopVisualSearch = false;
+        }
+
+        
+        internal void ChangeVisualSearchRunningState()
+        {
+            if (stopVisualSearch)
+            {
+                StopVisualSearch();
+            }
+            else
+            {
+                StartVisualSearch();
+            }
         }
     }
 }
