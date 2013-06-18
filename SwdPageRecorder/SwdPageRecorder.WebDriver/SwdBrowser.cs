@@ -16,7 +16,7 @@ using SwdPageRecorder.WebDriver.JsCommand;
 
 using System.Xml;
 
-using Sgml;
+using HtmlAgilityPack;
 
 
 namespace SwdPageRecorder.WebDriver
@@ -180,76 +180,33 @@ namespace SwdPageRecorder.WebDriver
             return stream;
         }
 
-        public static XmlDocument GetPageSourceXml()
+        public static HtmlDocument GetPageSource()
         {
 
-            string currentPageSource = GetDriver().PageSource;
-            XmlDocument doc = new XmlDocument();
+            string currentPageSource = (GetDriver().PageSource ?? "").Replace("\r\n", "");
+            
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.OptionFixNestedTags = true;
 
-            using (Stream pageStream = GenerateStreamFromString(currentPageSource))
-            using (TextReader txtReader = new StreamReader(pageStream))
-            {
-                // setup SgmlReader
-                Sgml.SgmlReader sgmlReader = new Sgml.SgmlReader();
-                sgmlReader.DocType = "HTML";
-                sgmlReader.WhitespaceHandling = WhitespaceHandling.All;
-                sgmlReader.CaseFolding = Sgml.CaseFolding.ToLower;
-
-                sgmlReader.InputStream = txtReader;
-
-                // create document
-                doc.PreserveWhitespace = false;
-                doc.XmlResolver = null;
-                doc.Load(sgmlReader);
-            }
-            return doc;
+            // https://htmlagilitypack.codeplex.com/discussions/247206
+            HtmlNode.ElementsFlags.Remove("form");
+            
+            htmlDoc.LoadHtml(currentPageSource);
+            return htmlDoc;
         }
 
 
-        public static string XmlTidy(XmlDocument document)
+        public static string XmlTidy(HtmlDocument document)
         {
-            string result = "";
-
-            
-            using (MemoryStream memStream = new MemoryStream())
-            using (XmlTextWriter writer = new XmlTextWriter(memStream, Encoding.Unicode))
-            {
-                try
-                {
-                    writer.Formatting = Formatting.Indented;
-
-                    // Write the XML into a formatting XmlTextWriter
-                    document.WriteContentTo(writer);
-                    writer.Flush();
-                    memStream.Flush();
-
-                    // Have to rewind the MemoryStream in order to read
-                    // its contents.
-                    memStream.Position = 0;
-
-                    // Read MemoryStream contents into a StreamReader.
-                    StreamReader sReader = new StreamReader(memStream);
-
-                    // Extract the text from the StreamReader.
-                    string formattedXML = sReader.ReadToEnd();
-
-                    result = formattedXML;
-                }
-                catch (XmlException)
-                {
-                }
-            }
-
-            return result;
+            return document.DocumentNode.OuterHtml;
         }
 
 
 
         public static string GetTidyHtml()
         {
-
-            var xml = GetPageSourceXml();
-            return XmlTidy(xml);
+            var html = GetPageSource();
+            return XmlTidy(html);
         }
 
         private static string lastCommandId = null;

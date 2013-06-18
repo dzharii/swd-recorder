@@ -1,10 +1,10 @@
-﻿using System.Xml;
+﻿using HtmlAgilityPack;
 
 namespace SwdPageRecorder.UI
 {
     public class HtmlTreeNodeData
     {
-        public XmlNode OriginalXmlNode { get; set; }
+        public HtmlNode OriginalHtmlNode { get; set; }
         public string nodeXPath { get; set; }
     }
 }

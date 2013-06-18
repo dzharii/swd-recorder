@@ -19,6 +19,8 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+using HAP = HtmlAgilityPack;
+
 namespace SwdPageRecorder.UI
 {
     public class HtmlDomTesterPresenter : IPresenter<HtmlDomTesterView>
@@ -103,15 +105,19 @@ namespace SwdPageRecorder.UI
             view.DisplaySearchResults(displayList);
         }
 
-        private void ParseXmlNodes(TreeNode tnode, XmlNodeList xmlNodes, string parentXPath)
+        private void ParseHtmlNodes(TreeNode tnode, HAP.HtmlNodeCollection htmlNodes, string parentXPath)
         {
 
+            
             var childrenCount = new Dictionary<string, int>();
 
-            foreach (XmlNode xmlNode in xmlNodes)
+            foreach (HAP.HtmlNode htmlNode in htmlNodes)
             {
 
-                var currentNodeName = xmlNode.LocalName.ToLower();
+                var currentNodeName = htmlNode.Name.ToLower();
+
+                if (currentNodeName.StartsWith("#")) continue;
+
                 if (childrenCount.ContainsKey(currentNodeName))
                 {
                     childrenCount[currentNodeName]++;
@@ -125,14 +131,14 @@ namespace SwdPageRecorder.UI
                 currentNodeXPath += String.Format("/{0}[{1}]", currentNodeName, childrenCount[currentNodeName]);
 
 
-                if (xmlNode.Attributes == null) continue;
+                if (htmlNode.Attributes == null) continue;
 
                 var attributes = new List<string>();
 
-                for (int i = 0; i < xmlNode.Attributes.Count; i++)
+                for (int i = 0; i < htmlNode.Attributes.Count; i++)
                 {
-                    var attr = xmlNode.Attributes[i];
-                    attributes.Add(attr.LocalName + "= \"" + attr.Value + "\"");
+                    var attr = htmlNode.Attributes[i];
+                    attributes.Add(attr.Name+ "= \"" + attr.Value + "\"");
                 }
 
                 string nodeDisplayName = currentNodeName + " " + String.Join(" ", attributes);
@@ -144,16 +150,22 @@ namespace SwdPageRecorder.UI
 
                 newNode.Tag = new HtmlTreeNodeData()
                 {
-                    OriginalXmlNode = xmlNode,
+                    OriginalHtmlNode = htmlNode,
                     nodeXPath = currentNodeXPath,
                 };
 
                 tnode.Nodes.Add(newNode);
 
-                if (xmlNode.HasChildNodes)
+                if (htmlNode.Name == "form")
                 {
 
-                    ParseXmlNodes(newNode, xmlNode.ChildNodes, currentNodeXPath);
+                }
+
+
+                if (htmlNode.HasChildNodes)
+                {
+
+                    ParseHtmlNodes(newNode, htmlNode.ChildNodes, currentNodeXPath);
                 }
             }
 
@@ -161,17 +173,17 @@ namespace SwdPageRecorder.UI
 
         internal void UpdateTestHtmlDocumentView()
         {
-            XmlDocument doc = SwdBrowser.GetPageSourceXml();
+            var doc = SwdBrowser.GetPageSource();
 
-            var root = doc.FirstChild;
-            var treeRootNode = new TreeNode(root.LocalName);
-            treeRootNode.Name = root.LocalName.ToLower();
+            var root = doc.DocumentNode.ChildNodes.FindFirst(@"html");
+            var treeRootNode = new TreeNode(root.Name);
+            treeRootNode.Name = root.Name.ToLower();
             treeRootNode.Tag = new HtmlTreeNodeData()
             {
                 nodeXPath = "/html",
-                OriginalXmlNode = root,
+                OriginalHtmlNode = root,
             };
-            ParseXmlNodes(treeRootNode, root.ChildNodes, "/html[1]");
+            ParseHtmlNodes(treeRootNode, root.ChildNodes, "/html[1]");
 
             view.AddTestHtmlNodes(treeRootNode);
 
@@ -180,16 +192,16 @@ namespace SwdPageRecorder.UI
 
         internal void UpdateHtmlPropertiesForSelectedNode(TreeNode htmlTreeNode)
         {
-            var xmlNode = (htmlTreeNode.Tag as HtmlTreeNodeData).OriginalXmlNode;
+            var htmlNode = (htmlTreeNode.Tag as HtmlTreeNodeData).OriginalHtmlNode;
 
             List<string> attributes = new List<string>();
 
-            if (xmlNode.Attributes != null)
+            if (htmlNode.Attributes != null)
             {
-                for (int i = 0; i < xmlNode.Attributes.Count; i++)
+                for (int i = 0; i < htmlNode.Attributes.Count; i++)
                 {
-                    var attr = xmlNode.Attributes[i];
-                    attributes.Add(attr.LocalName + "= \"" + attr.Value + "\"");
+                    var attr = htmlNode.Attributes[i];
+                    attributes.Add(attr.Name + "= \"" + attr.Value + "\"");
                 }
             }
 

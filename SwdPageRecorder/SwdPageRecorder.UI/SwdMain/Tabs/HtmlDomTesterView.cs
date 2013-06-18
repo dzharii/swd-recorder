@@ -133,7 +133,14 @@ namespace SwdPageRecorder.UI
             var htmlNode = FindTreeNode(travelNodes);
             tvHtmlDoc.SelectedNode = htmlNode;
             tvHtmlDoc.Focus();
-            htmlNode.EnsureVisible();
+            if (htmlNode != null)
+            {
+                htmlNode.EnsureVisible();
+            }
+            else
+            {
+                MessageBox.Show("Tree: Element was not found");
+            }
         }
 
     }
