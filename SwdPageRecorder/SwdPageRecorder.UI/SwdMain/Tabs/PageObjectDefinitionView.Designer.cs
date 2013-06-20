@@ -28,18 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pages");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("WebElements:");
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lblLastCallTime = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tvWebElements = new System.Windows.Forms.TreeView();
+            this.cbPageObjectFiles = new System.Windows.Forms.ComboBox();
+            this.btnNewPageObject = new System.Windows.Forms.Button();
+            this.btnSavePageObject = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.btnSavePageObject);
+            this.groupBox4.Controls.Add(this.btnNewPageObject);
+            this.groupBox4.Controls.Add(this.cbPageObjectFiles);
             this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Controls.Add(this.tvWebElements);
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
@@ -53,9 +61,9 @@
             // 
             this.groupBox7.Controls.Add(this.lblLastCallTime);
             this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Location = new System.Drawing.Point(6, 235);
+            this.groupBox7.Location = new System.Drawing.Point(7, 274);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(225, 154);
+            this.groupBox7.Size = new System.Drawing.Size(225, 134);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Stats";
@@ -81,18 +89,54 @@
             // tvWebElements
             // 
             this.tvWebElements.AllowDrop = true;
-            this.tvWebElements.Location = new System.Drawing.Point(6, 19);
+            this.tvWebElements.Location = new System.Drawing.Point(7, 75);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "Pages";
+            treeNode4.Name = "Node0";
+            treeNode4.Text = "WebElements:";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode4});
             this.tvWebElements.Size = new System.Drawing.Size(225, 186);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
             this.tvWebElements.DragDrop += new System.Windows.Forms.DragEventHandler(this.tvWebElements_DragDrop);
             this.tvWebElements.DragEnter += new System.Windows.Forms.DragEventHandler(this.tvWebElements_DragEnter);
             this.tvWebElements.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tvWebElements_KeyUp);
+            // 
+            // cbPageObjectFiles
+            // 
+            this.cbPageObjectFiles.FormattingEnabled = true;
+            this.cbPageObjectFiles.Location = new System.Drawing.Point(7, 48);
+            this.cbPageObjectFiles.Name = "cbPageObjectFiles";
+            this.cbPageObjectFiles.Size = new System.Drawing.Size(224, 21);
+            this.cbPageObjectFiles.TabIndex = 4;
+            this.cbPageObjectFiles.TextChanged += new System.EventHandler(this.cbPageObjectFiles_TextChanged);
+            // 
+            // btnNewPageObject
+            // 
+            this.btnNewPageObject.Location = new System.Drawing.Point(111, 19);
+            this.btnNewPageObject.Name = "btnNewPageObject";
+            this.btnNewPageObject.Size = new System.Drawing.Size(42, 23);
+            this.btnNewPageObject.TabIndex = 5;
+            this.btnNewPageObject.Text = "New";
+            this.btnNewPageObject.UseVisualStyleBackColor = true;
+            // 
+            // btnSavePageObject
+            // 
+            this.btnSavePageObject.Location = new System.Drawing.Point(189, 19);
+            this.btnSavePageObject.Name = "btnSavePageObject";
+            this.btnSavePageObject.Size = new System.Drawing.Size(42, 23);
+            this.btnSavePageObject.TabIndex = 6;
+            this.btnSavePageObject.Text = "Save";
+            this.btnSavePageObject.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "PO File Name";
             // 
             // PageObjectDefinitionView
             // 
@@ -102,6 +146,7 @@
             this.Name = "PageObjectDefinitionView";
             this.Size = new System.Drawing.Size(246, 486);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
@@ -115,5 +160,9 @@
         public System.Windows.Forms.Label lblLastCallTime;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.TreeView tvWebElements;
+        private System.Windows.Forms.Button btnSavePageObject;
+        private System.Windows.Forms.Button btnNewPageObject;
+        private System.Windows.Forms.ComboBox cbPageObjectFiles;
+        private System.Windows.Forms.Label label1;
     }
 }

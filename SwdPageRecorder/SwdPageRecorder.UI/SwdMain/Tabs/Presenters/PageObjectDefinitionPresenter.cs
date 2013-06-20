@@ -21,6 +21,8 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+using System.IO;
+
 namespace SwdPageRecorder.UI
 {
     public class PageObjectDefinitionPresenter : IPresenter<PageObjectDefinitionView>
@@ -100,6 +102,14 @@ namespace SwdPageRecorder.UI
             _isEditingExistingNode = false;
             _currentEditingNode = null;
 
+        }
+
+        internal void InitPageObjectFiles()
+        {
+            string fullPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string theDirectory = Path.GetDirectoryName(fullPath);
+            string[] files = Directory.GetFiles(theDirectory).Where( f => f.EndsWith(@".po")).ToArray();
+            view.SetPageObjectFiles(files);
         }
     }
 }

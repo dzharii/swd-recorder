@@ -25,6 +25,8 @@ namespace SwdPageRecorder.UI
             presenter.InitWithView(this);
 
             tvWebElements.ItemDrag += tvWebElements_ItemDrag;
+
+            presenter.InitPageObjectFiles();
         }
 
 
@@ -139,12 +141,15 @@ namespace SwdPageRecorder.UI
                 NewNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
                 if (DestinationNode.TreeView == NewNode.TreeView)
                 {
-                    var copiedNode = (TreeNode)NewNode.Clone();
-                    DestinationNode.Parent.Nodes.Insert(DestinationNode.Index, copiedNode);
-                    DestinationNode.Expand();
-                    tvWebElements.SelectedNode = copiedNode;
-                    //Remove Original Node
-                    NewNode.Remove();
+                    if (presenter.IsWebElementNode(NewNode))
+                    {
+                        var copiedNode = (TreeNode)NewNode.Clone();
+                        DestinationNode.Parent.Nodes.Insert(DestinationNode.Index, copiedNode);
+                        DestinationNode.Expand();
+                        tvWebElements.SelectedNode = copiedNode;
+                        //Remove Original Node
+                        NewNode.Remove();
+                    }
                 }
             }                
         }
@@ -160,5 +165,26 @@ namespace SwdPageRecorder.UI
             e.Effect = DragDropEffects.Move;
         }
 
+
+
+        internal void SetPageObjectFiles(string[] files)
+        {
+            cbPageObjectFiles.Items.Clear();
+            cbPageObjectFiles.Items.AddRange(files);
+        }
+
+        private void cbPageObjectFiles_TextChanged(object sender, EventArgs e)
+        {
+            var firstNode = tvWebElements.Nodes[0];
+            var currentName = cbPageObjectFiles.Text;
+            if (!String.IsNullOrWhiteSpace(currentName))
+            {
+                firstNode.Text = currentName;
+            }
+            else
+            {
+                firstNode.Text = "No Name";
+            }
+        }
     }
 }
