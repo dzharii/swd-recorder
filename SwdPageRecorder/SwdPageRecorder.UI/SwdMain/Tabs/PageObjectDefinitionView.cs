@@ -23,7 +23,10 @@ namespace SwdPageRecorder.UI
 
             presenter = Presenters.PageObjectDefinitionPresenter;
             presenter.InitWithView(this);
+
+            tvWebElements.ItemDrag += tvWebElements_ItemDrag;
         }
+
 
         public void DisplayMessage(string title, string message)
         {
@@ -32,7 +35,10 @@ namespace SwdPageRecorder.UI
 
         private void tvWebElements_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            presenter.OpenExistingNodeForEdit(e.Node);
+            if (presenter.IsWebElementNode(e.Node))
+            {
+                presenter.OpenExistingNodeForEdit(e.Node);
+            }
         }
 
         internal IEnumerable<WebElementDefinition> GetKnownWebElements()
@@ -104,6 +110,54 @@ namespace SwdPageRecorder.UI
             }
 
             return definitions.ToArray();
+        }
+
+        private void tvWebElements_KeyUp(object sender, KeyEventArgs e)
+        {
+            var selectedNode = tvWebElements.SelectedNode;
+            
+            if (selectedNode == null) return;
+            if (! presenter.IsWebElementNode(selectedNode)) return;
+
+            if (e.KeyValue == Convert.ToInt32(FormKeys.Delete))
+            {
+                presenter.ReleaseNode(selectedNode);
+                selectedNode.Remove();
+
+            }
+
+        }
+
+        private void tvWebElements_DragDrop(object sender, DragEventArgs e)
+        {
+            TreeNode NewNode;
+
+            if (e.Data.GetDataPresent("System.Windows.Forms.TreeNode", false))
+            {
+                Point pt = ((TreeView)sender).PointToClient(new Point(e.X, e.Y));
+                TreeNode DestinationNode = ((TreeView)sender).GetNodeAt(pt);
+                NewNode = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
+                if (DestinationNode.TreeView == NewNode.TreeView)
+                {
+                    var copiedNode = (TreeNode)NewNode.Clone();
+                    DestinationNode.Parent.Nodes.Insert(DestinationNode.Index, copiedNode);
+                    DestinationNode.Expand();
+                    tvWebElements.SelectedNode = copiedNode;
+                    //Remove Original Node
+                    NewNode.Remove();
+                }
+            }                
+        }
+
+        void tvWebElements_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            DoDragDrop(e.Item, DragDropEffects.Move);
+        }
+
+
+        private void tvWebElements_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
         }
 
     }

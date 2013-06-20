@@ -89,5 +89,17 @@ namespace SwdPageRecorder.UI
         {
             return view.GetWebElementDefinitionFromTree();
         }
+
+        internal bool IsWebElementNode(TreeNode treeNode)
+        {
+            return (treeNode.Tag as WebElementDefinition) != null;
+        }
+
+        internal void ReleaseNode(TreeNode selectedNode)
+        {
+            _isEditingExistingNode = false;
+            _currentEditingNode = null;
+
+        }
     }
 }

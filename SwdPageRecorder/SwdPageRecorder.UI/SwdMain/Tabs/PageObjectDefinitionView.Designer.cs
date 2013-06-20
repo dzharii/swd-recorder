@@ -80,7 +80,7 @@
             // 
             // tvWebElements
             // 
-            this.tvWebElements.LabelEdit = true;
+            this.tvWebElements.AllowDrop = true;
             this.tvWebElements.Location = new System.Drawing.Point(6, 19);
             this.tvWebElements.Name = "tvWebElements";
             treeNode1.Name = "Node0";
@@ -90,6 +90,9 @@
             this.tvWebElements.Size = new System.Drawing.Size(225, 186);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
+            this.tvWebElements.DragDrop += new System.Windows.Forms.DragEventHandler(this.tvWebElements_DragDrop);
+            this.tvWebElements.DragEnter += new System.Windows.Forms.DragEventHandler(this.tvWebElements_DragEnter);
+            this.tvWebElements.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tvWebElements_KeyUp);
             // 
             // PageObjectDefinitionView
             // 
