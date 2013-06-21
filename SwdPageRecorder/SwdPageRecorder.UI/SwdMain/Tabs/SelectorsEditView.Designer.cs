@@ -49,6 +49,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnCopyWebElement);
             this.groupBox2.Controls.Add(this.btnHighlightWebElementInBrowser);
             this.groupBox2.Controls.Add(this.btnNewWebElement);
@@ -73,6 +76,7 @@
             // 
             // btnCopyWebElement
             // 
+            this.btnCopyWebElement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCopyWebElement.Location = new System.Drawing.Point(645, 43);
             this.btnCopyWebElement.Name = "btnCopyWebElement";
             this.btnCopyWebElement.Size = new System.Drawing.Size(75, 23);
@@ -83,6 +87,7 @@
             // 
             // btnHighlightWebElementInBrowser
             // 
+            this.btnHighlightWebElementInBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHighlightWebElementInBrowser.Location = new System.Drawing.Point(645, 87);
             this.btnHighlightWebElementInBrowser.Name = "btnHighlightWebElementInBrowser";
             this.btnHighlightWebElementInBrowser.Size = new System.Drawing.Size(75, 23);
@@ -93,6 +98,7 @@
             // 
             // btnNewWebElement
             // 
+            this.btnNewWebElement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewWebElement.Location = new System.Drawing.Point(645, 14);
             this.btnNewWebElement.Name = "btnNewWebElement";
             this.btnNewWebElement.Size = new System.Drawing.Size(75, 23);
@@ -103,6 +109,7 @@
             // 
             // btnUpdateDeclaration
             // 
+            this.btnUpdateDeclaration.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateDeclaration.Location = new System.Drawing.Point(645, 119);
             this.btnUpdateDeclaration.Name = "btnUpdateDeclaration";
             this.btnUpdateDeclaration.Size = new System.Drawing.Size(75, 23);
@@ -113,6 +120,8 @@
             // 
             // txtWebElementName
             // 
+            this.txtWebElementName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtWebElementName.Location = new System.Drawing.Point(132, 13);
             this.txtWebElementName.Name = "txtWebElementName";
             this.txtWebElementName.Size = new System.Drawing.Size(481, 20);
@@ -129,6 +138,8 @@
             // 
             // txtOtherLocator
             // 
+            this.txtOtherLocator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOtherLocator.Location = new System.Drawing.Point(132, 115);
             this.txtOtherLocator.Name = "txtOtherLocator";
             this.txtOtherLocator.Size = new System.Drawing.Size(481, 20);
@@ -156,6 +167,8 @@
             // 
             // txtHtmlId
             // 
+            this.txtHtmlId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHtmlId.Location = new System.Drawing.Point(132, 39);
             this.txtHtmlId.Name = "txtHtmlId";
             this.txtHtmlId.Size = new System.Drawing.Size(481, 20);
@@ -176,6 +189,8 @@
             // 
             // txtXPath
             // 
+            this.txtXPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtXPath.Location = new System.Drawing.Point(132, 87);
             this.txtXPath.Name = "txtXPath";
             this.txtXPath.Size = new System.Drawing.Size(481, 20);
@@ -204,6 +219,8 @@
             // 
             // txtCssSelector
             // 
+            this.txtCssSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCssSelector.Location = new System.Drawing.Point(132, 64);
             this.txtCssSelector.Name = "txtCssSelector";
             this.txtCssSelector.Size = new System.Drawing.Size(481, 20);

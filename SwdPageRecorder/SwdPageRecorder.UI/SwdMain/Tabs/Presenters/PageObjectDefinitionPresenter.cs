@@ -108,7 +108,12 @@ namespace SwdPageRecorder.UI
         {
             string fullPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string theDirectory = Path.GetDirectoryName(fullPath);
-            string[] files = Directory.GetFiles(theDirectory).Where( f => f.EndsWith(@".po")).ToArray();
+
+            string[] files = Directory.GetFiles(theDirectory)
+                     .Where( f => f.EndsWith(@".pox"))
+                     .Select( f => Path.GetFileNameWithoutExtension(f))
+                     .ToArray();
+            
             view.SetPageObjectFiles(files);
         }
     }

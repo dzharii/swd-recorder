@@ -28,22 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("WebElements:");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("WebElements:");
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSavePageObject = new System.Windows.Forms.Button();
+            this.btnNewPageObject = new System.Windows.Forms.Button();
+            this.cbPageObjectFiles = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lblLastCallTime = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tvWebElements = new System.Windows.Forms.TreeView();
-            this.cbPageObjectFiles = new System.Windows.Forms.ComboBox();
-            this.btnNewPageObject = new System.Windows.Forms.Button();
-            this.btnSavePageObject = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.btnSavePageObject);
             this.groupBox4.Controls.Add(this.btnNewPageObject);
@@ -57,8 +60,50 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Page Object";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "PageObject File:";
+            // 
+            // btnSavePageObject
+            // 
+            this.btnSavePageObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSavePageObject.Location = new System.Drawing.Point(189, 19);
+            this.btnSavePageObject.Name = "btnSavePageObject";
+            this.btnSavePageObject.Size = new System.Drawing.Size(42, 23);
+            this.btnSavePageObject.TabIndex = 6;
+            this.btnSavePageObject.Text = "Save";
+            this.btnSavePageObject.UseVisualStyleBackColor = true;
+            // 
+            // btnNewPageObject
+            // 
+            this.btnNewPageObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNewPageObject.Location = new System.Drawing.Point(120, 19);
+            this.btnNewPageObject.Name = "btnNewPageObject";
+            this.btnNewPageObject.Size = new System.Drawing.Size(42, 23);
+            this.btnNewPageObject.TabIndex = 5;
+            this.btnNewPageObject.Text = "New";
+            this.btnNewPageObject.UseVisualStyleBackColor = true;
+            // 
+            // cbPageObjectFiles
+            // 
+            this.cbPageObjectFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPageObjectFiles.FormattingEnabled = true;
+            this.cbPageObjectFiles.Location = new System.Drawing.Point(7, 48);
+            this.cbPageObjectFiles.Name = "cbPageObjectFiles";
+            this.cbPageObjectFiles.Size = new System.Drawing.Size(224, 21);
+            this.cbPageObjectFiles.TabIndex = 4;
+            this.cbPageObjectFiles.TextChanged += new System.EventHandler(this.cbPageObjectFiles_TextChanged);
+            // 
             // groupBox7
             // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.lblLastCallTime);
             this.groupBox7.Controls.Add(this.label4);
             this.groupBox7.Location = new System.Drawing.Point(7, 274);
@@ -89,54 +134,20 @@
             // tvWebElements
             // 
             this.tvWebElements.AllowDrop = true;
+            this.tvWebElements.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tvWebElements.Location = new System.Drawing.Point(7, 75);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode4.Name = "Node0";
-            treeNode4.Text = "WebElements:";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "WebElements:";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode1});
             this.tvWebElements.Size = new System.Drawing.Size(225, 186);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
             this.tvWebElements.DragDrop += new System.Windows.Forms.DragEventHandler(this.tvWebElements_DragDrop);
             this.tvWebElements.DragEnter += new System.Windows.Forms.DragEventHandler(this.tvWebElements_DragEnter);
             this.tvWebElements.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tvWebElements_KeyUp);
-            // 
-            // cbPageObjectFiles
-            // 
-            this.cbPageObjectFiles.FormattingEnabled = true;
-            this.cbPageObjectFiles.Location = new System.Drawing.Point(7, 48);
-            this.cbPageObjectFiles.Name = "cbPageObjectFiles";
-            this.cbPageObjectFiles.Size = new System.Drawing.Size(224, 21);
-            this.cbPageObjectFiles.TabIndex = 4;
-            this.cbPageObjectFiles.TextChanged += new System.EventHandler(this.cbPageObjectFiles_TextChanged);
-            // 
-            // btnNewPageObject
-            // 
-            this.btnNewPageObject.Location = new System.Drawing.Point(111, 19);
-            this.btnNewPageObject.Name = "btnNewPageObject";
-            this.btnNewPageObject.Size = new System.Drawing.Size(42, 23);
-            this.btnNewPageObject.TabIndex = 5;
-            this.btnNewPageObject.Text = "New";
-            this.btnNewPageObject.UseVisualStyleBackColor = true;
-            // 
-            // btnSavePageObject
-            // 
-            this.btnSavePageObject.Location = new System.Drawing.Point(189, 19);
-            this.btnSavePageObject.Name = "btnSavePageObject";
-            this.btnSavePageObject.Size = new System.Drawing.Size(42, 23);
-            this.btnSavePageObject.TabIndex = 6;
-            this.btnSavePageObject.Text = "Save";
-            this.btnSavePageObject.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "PO File Name";
             // 
             // PageObjectDefinitionView
             // 

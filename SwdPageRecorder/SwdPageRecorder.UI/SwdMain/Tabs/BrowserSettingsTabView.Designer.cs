@@ -61,18 +61,21 @@
             // 
             // grpRemoteConnection
             // 
+            this.grpRemoteConnection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpRemoteConnection.Controls.Add(this.lblHubConnectionStatus);
             this.grpRemoteConnection.Controls.Add(this.label2);
             this.grpRemoteConnection.Controls.Add(this.txtRemoteHubUrl);
             this.grpRemoteConnection.Location = new System.Drawing.Point(3, 26);
             this.grpRemoteConnection.Name = "grpRemoteConnection";
-            this.grpRemoteConnection.Size = new System.Drawing.Size(558, 100);
+            this.grpRemoteConnection.Size = new System.Drawing.Size(566, 100);
             this.grpRemoteConnection.TabIndex = 7;
             this.grpRemoteConnection.TabStop = false;
             this.grpRemoteConnection.Text = "Remote Driver Configuration";
             // 
             // lblHubConnectionStatus
             // 
+            this.lblHubConnectionStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHubConnectionStatus.AutoSize = true;
             this.lblHubConnectionStatus.Location = new System.Drawing.Point(508, 31);
             this.lblHubConnectionStatus.Name = "lblHubConnectionStatus";
@@ -91,6 +94,8 @@
             // 
             // txtRemoteHubUrl
             // 
+            this.txtRemoteHubUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRemoteHubUrl.Location = new System.Drawing.Point(69, 28);
             this.txtRemoteHubUrl.Name = "txtRemoteHubUrl";
             this.txtRemoteHubUrl.Size = new System.Drawing.Size(433, 20);

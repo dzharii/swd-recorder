@@ -34,6 +34,7 @@
             // 
             // btnGenerateSourceCode
             // 
+            this.btnGenerateSourceCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenerateSourceCode.Location = new System.Drawing.Point(486, 2);
             this.btnGenerateSourceCode.Name = "btnGenerateSourceCode";
             this.btnGenerateSourceCode.Size = new System.Drawing.Size(75, 23);
@@ -46,6 +47,9 @@
             // 
             this.txtSourceCode.AcceptsReturn = true;
             this.txtSourceCode.AcceptsTab = true;
+            this.txtSourceCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSourceCode.Location = new System.Drawing.Point(3, 25);
             this.txtSourceCode.Multiline = true;
             this.txtSourceCode.Name = "txtSourceCode";

@@ -26,8 +26,8 @@ namespace SwdPageRecorder.UI
 
         private void btnTestLocator_Click(object sender, EventArgs e)
         {
-            presenter.TestLocators();
             presenter.UpdateTestHtmlDocumentView();
+            presenter.TestLocators();
         }
 
         public void DisplaySearchResults(List<ResultElement> displayList)

@@ -34,6 +34,9 @@
             // 
             // txtHtmlPageSource
             // 
+            this.txtHtmlPageSource.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHtmlPageSource.Location = new System.Drawing.Point(3, 31);
             this.txtHtmlPageSource.Multiline = true;
             this.txtHtmlPageSource.Name = "txtHtmlPageSource";
@@ -44,6 +47,7 @@
             // 
             // btnGetHtmlSource
             // 
+            this.btnGetHtmlSource.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGetHtmlSource.Location = new System.Drawing.Point(476, 2);
             this.btnGetHtmlSource.Name = "btnGetHtmlSource";
             this.btnGetHtmlSource.Size = new System.Drawing.Size(75, 23);
