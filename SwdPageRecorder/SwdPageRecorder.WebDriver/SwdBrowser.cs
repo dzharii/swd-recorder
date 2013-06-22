@@ -295,6 +295,10 @@ return getPathTo(element);
                         result = false;
                     }
                 }
+                else // When driver is Null it definitely not working
+                {
+                    result = false;
+                }
                 return result;
             }
         }

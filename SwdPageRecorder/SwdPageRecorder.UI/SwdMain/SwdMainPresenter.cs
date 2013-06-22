@@ -122,5 +122,19 @@ namespace SwdPageRecorder.UI
                 StartVisualSearch();
             }
         }
+
+        internal void InitControls()
+        {
+            if (SwdBrowser.IsWorking)
+            {
+                view.txtBrowserUrl.Enabled = true;
+                view.btnBrowser_Go.Enabled = true;
+            }
+            else
+            {
+                view.txtBrowserUrl.Enabled = false;
+                view.btnBrowser_Go.Enabled = false;
+            }
+        }
     }
 }

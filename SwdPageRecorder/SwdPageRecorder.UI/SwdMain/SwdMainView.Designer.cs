@@ -303,13 +303,13 @@
         public System.Windows.Forms.Button btnStartVisualSearch;
         public System.Windows.Forms.TextBox txtVisualSearchResult;
         public System.Windows.Forms.Button btnBrowser_Go;
-        private BrowserSettingsTabView browserSettingsTab1;
         public PageObjectDefinitionView pageObjectDefinitionView;
         private SelectorsEditView selectorsEditView;
         private HtmlDomTesterView htmlDomTesterView1;
         private PageObjectSourceCodeView pageObjectSourceCodeView1;
         private FullHtmlSourceTabView fullHtmlSourceTabView1;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        public BrowserSettingsTabView browserSettingsTab1;
         
 
     }

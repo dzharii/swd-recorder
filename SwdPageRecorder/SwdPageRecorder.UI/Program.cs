@@ -7,13 +7,10 @@ using System.Net;
 
 namespace SwdPageRecorder.UI
 {
-    static class Program
+    public static class SWDRecorder_Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
+
+        public static SwdMainView Run(SwdMainView mainForm)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -21,8 +18,16 @@ namespace SwdPageRecorder.UI
             Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
 
-            Application.Run(new SwdMainView());
-                        
+            
+            Application.Run(mainForm);
+            return mainForm;
+        }
+
+        [STAThread]
+        static void Main()
+        {
+            var mainForm = new SwdMainView();
+            Run(mainForm);
         }
 
 
