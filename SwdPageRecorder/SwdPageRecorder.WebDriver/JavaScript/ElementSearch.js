@@ -159,6 +159,23 @@
         return document.getElementsByTagName('head')[0].appendChild(el);
     }
 
+    function preventEvent(event)
+    {
+        if (event.preventDefault) event.preventDefault();
+        event.returnValue = false;
+
+        //IE9 & Other Browsers
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        }
+            //IE8 and Lower
+        else {
+            event.cancelBubble = true;
+        }
+
+        return false;
+    }
+
 
     // ========== MAIN !!!!!! ============================
     addStyle(".highlight { background-color:silver !important}");
@@ -171,8 +188,16 @@
 
     if (document.body.addEventListener) {
         document.body.addEventListener('mouseover', handler, false);
-        document.addEventListener("mousedown", function (event) {
-            if (event.ctrlKey && event.button == 0) {
+        
+        document.addEventListener("mousedown", function (event) { // Ctrl + Right button
+            if (event.ctrlKey && event.button == 2) {
+                if (event === undefined) event = window.event;                     // IE hack
+                return preventEvent(event);
+            }
+        });
+
+        document.addEventListener("mousedown", function (event) { // Ctrl + Right button
+            if (event.ctrlKey && event.button == 2) {
                 // =====================
 
                 if (event === undefined) event = window.event;                     // IE hack
@@ -208,9 +233,7 @@
 
                 showPos(event, xpath);
 
-                if (event.preventDefault) event.preventDefault();
-                event.returnValue = false;
-                return false;
+                return preventEvent(event);
             }
         });
     }
