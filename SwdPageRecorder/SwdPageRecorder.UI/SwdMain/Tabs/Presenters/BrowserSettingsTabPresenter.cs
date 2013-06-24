@@ -24,29 +24,48 @@ namespace SwdPageRecorder.UI
     public class BrowserSettingsTabPresenter : IPresenter<BrowserSettingsTabView>
     {
         private BrowserSettingsTabView view = null;
-        bool isBrowserStarted = false;
         
         public void InitWithView(BrowserSettingsTabView view)
         {
             this.view = view;
+
+            // Subscribe to WebDriverUtils events
+            SwdBrowser.OnDriverStarted += InitControls;
+            SwdBrowser.OnDriverClosed += InitControls;
+            InitControls();
+
+            view.SetStatus("Not started");
         }
 
-        internal void StartNewBrowser(WebDriverOptions browserOptions)
+        private void InitControls()
         {
-            if (isBrowserStarted)
+            var driverIsRunning = SwdBrowser.IsWorking;
+            if (driverIsRunning)
             {
-                if (SwdBrowser.IsWorking)
-                {
-                    SwdBrowser.CloseDriver();
-                }
-                isBrowserStarted = false;
+                view.SetStatus("Running");
+            }
+            else
+            {
+                view.SetStatus("Not running");
+            }
+            
+        }
+
+        public void StartNewBrowser(WebDriverOptions browserOptions)
+        {
+            if (SwdBrowser.IsWorking)
+            {
+                view.DisableDriverStartButton();
+                SwdBrowser.CloseDriver();
+                view.EnableDriverStartButton();
                 view.DriverWasStopped();
             }
             else
             {
+                view.DisableDriverStartButton();
                 SwdBrowser.Initialize(browserOptions);
-                isBrowserStarted = true;
                 view.DriverWasStarted();
+                view.EnableDriverStartButton();
             }
 
 

@@ -133,7 +133,6 @@
             // 
             // tvWebElements
             // 
-            this.tvWebElements.AllowDrop = true;
             this.tvWebElements.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvWebElements.Location = new System.Drawing.Point(7, 75);

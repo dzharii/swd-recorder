@@ -15,14 +15,14 @@ namespace SwdPageRecorder.UI
 {
     public partial class BrowserSettingsTabView : UserControl, IView
     {
-        public BrowserSettingsTabPresenter presenter = null;
+        public BrowserSettingsTabPresenter Presenter {get; private set;}
         private Control[] driverControls;
                 
         public BrowserSettingsTabView()
         {
             InitializeComponent();
-            presenter = Presenters.BrowserSettingsTabPresenter;
-            presenter.InitWithView(this);
+            Presenter = Presenters.BrowserSettingsTabPresenter;
+            Presenter.InitWithView(this);
                         
             HandleRemoteDriverSettingsEnabledStatus();
 
@@ -38,7 +38,7 @@ namespace SwdPageRecorder.UI
                 RemoteUrl = txtRemoteHubUrl.Text,
             };
 
-            presenter.StartNewBrowser(browserOptions); 
+            Presenter.StartNewBrowser(browserOptions); 
         }
 
         private void HandleRemoteDriverSettingsEnabledStatus()
@@ -112,6 +112,21 @@ namespace SwdPageRecorder.UI
         internal void DriverWasStarted()
         {
             SetControlsState("Stop", false);
+        }
+
+        internal void DisableDriverStartButton()
+        {
+            btnStartWebDriver.Enabled = false;
+        }
+
+        internal void EnableDriverStartButton()
+        {
+            btnStartWebDriver.Enabled = true;
+        }
+
+        internal void SetStatus(string status)
+        {
+            lblWebDriverStatus.Text = status;
         }
     }
 }

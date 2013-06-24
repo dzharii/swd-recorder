@@ -10,10 +10,16 @@ namespace SwdPageRecorder.UI
     public static class SWDRecorder_Program
     {
 
+        public static class Log
+        {
+
+        }
+      
+        
         public static SwdMainView Run(SwdMainView mainForm)
         {
+            
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
             Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(CurrentDomain_ProcessExit);
@@ -26,6 +32,8 @@ namespace SwdPageRecorder.UI
         [STAThread]
         static void Main()
         {
+            Application.SetCompatibleTextRenderingDefault(false);
+
             var mainForm = new SwdMainView();
             Run(mainForm);
         }

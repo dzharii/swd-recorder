@@ -32,6 +32,18 @@ namespace SwdPageRecorder.UI
         public void InitWithView(HtmlDomTesterView view)
         {
             this.view = view;
+
+            // Subscribe to WebDriverUtils events
+            SwdBrowser.OnDriverStarted += InitControls;
+            SwdBrowser.OnDriverClosed += InitControls;
+            InitControls();
+        }
+
+        private void InitControls()
+        {
+            var shouldControlBeEnabled = SwdBrowser.IsWorking;
+
+            view.btnTestLocator.Enabled = shouldControlBeEnabled;
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(LocatorSearchMethod searchMethod, string locator)

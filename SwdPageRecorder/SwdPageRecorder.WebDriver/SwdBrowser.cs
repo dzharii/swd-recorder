@@ -18,16 +18,28 @@ using System.Xml;
 
 using HtmlAgilityPack;
 
+using SwdPageRecorder.WebDriver.SwdBrowserUtils;
+
 
 namespace SwdPageRecorder.WebDriver
 {
     public static class SwdBrowser
     {
+        public static event Action OnDriverStarted;
+        public static event Action OnDriverClosed;
+        
         private static IWebDriver _driver = null;
         private static bool isRemote = false;
 
+        public static bool Started { get; private set; }
 
         private static object lockObject = new object();
+
+        static SwdBrowser()
+        {
+            Started = false;
+        }
+
         public static IWebDriver GetDriver()
         {
             lock (lockObject)
@@ -39,80 +51,26 @@ namespace SwdPageRecorder.WebDriver
 
         public static void Initialize(WebDriverOptions browserOptions)
         {
-            if (browserOptions.IsRemote)
-            {
-                _driver = ConnetctToRemoteWebDriver(browserOptions);
-            }
-            else
-            {
-                _driver = StartEmbededWebDriver(browserOptions);
-            }
-        }
 
-        private static IWebDriver ConnetctToRemoteWebDriver(WebDriverOptions browserOptions)
-        {
-            DesiredCapabilities caps = null;
-            Uri hubUri = new Uri(browserOptions.RemoteUrl);
-            
-            switch (browserOptions.BrowserName)
+            if (_driver != null)
             {
-
-                case WebDriverOptions.browser_Firefox:
-                    caps = DesiredCapabilities.Firefox();
-                    break;
-                case WebDriverOptions.browser_Chrome:
-                    caps = DesiredCapabilities.Chrome();
-                    break;
-                case WebDriverOptions.browser_InternetExplorer:
-                    caps = DesiredCapabilities.InternetExplorer();
-                    break;
-                case WebDriverOptions.browser_PhantomJS:
-                    caps = DesiredCapabilities.PhantomJS();
-                    break;
-                case WebDriverOptions.browser_HtmlUnit:
-                    caps = DesiredCapabilities.HtmlUnit();
-                    break;
-                case WebDriverOptions.browser_HtmlUnitWithJavaScript:
-                    caps = DesiredCapabilities.HtmlUnitWithJavaScript();
-                    break;
-                case WebDriverOptions.browser_Opera:
-                    caps = DesiredCapabilities.Opera();
-                    break;
-                case WebDriverOptions.browser_Safari:
-                    caps = DesiredCapabilities.Safari();
-                    break;
-                case WebDriverOptions.browser_IPhone:
-                    caps = DesiredCapabilities.IPhone();
-                    break;
-                case WebDriverOptions.browser_IPad:
-                    caps = DesiredCapabilities.IPad();
-                    break;
-                case WebDriverOptions.browser_Android:
-                    caps = DesiredCapabilities.Android();
-                    break;
+                _driver.Quit();
+                if (OnDriverClosed != null) OnDriverClosed();
+                Started = false;
             }
-            isRemote = true;
-            return new RemoteWebDriver(hubUri, caps);
-        }
 
-        private static IWebDriver StartEmbededWebDriver(WebDriverOptions browserOptions)
-        {
-            switch (browserOptions.BrowserName)
+            bool wasRemoteDriverCreated = false;
+            _driver = WebDriverUtils.Initialize(browserOptions, out wasRemoteDriverCreated);
+            isRemote = wasRemoteDriverCreated;
+
+            Started = true;
+
+            // Fire OnDriverStarted event
+            if (OnDriverStarted != null)
             {
-            
-                case WebDriverOptions.browser_Firefox:
-                    return new FirefoxDriver();
-                case WebDriverOptions.browser_Chrome:
-                    return new ChromeDriver();
-                case WebDriverOptions.browser_InternetExplorer:
-                    return new InternetExplorerDriver();
-                case WebDriverOptions.browser_PhantomJS:
-                    return new PhantomJSDriver();
-                case WebDriverOptions.browser_Safari:
-                    return new SafariDriver();
+                OnDriverStarted();
+                
             }
-            isRemote = false;
-            return null;
         }
 
         public static void CloseDriver()
@@ -121,159 +79,48 @@ namespace SwdPageRecorder.WebDriver
             if (_driver != null)
             {
                 _driver.Dispose();
+
+                // Fire OnDriverClosed
+                if (OnDriverClosed != null)
+                {
+                    OnDriverClosed();
+                    
+                }
             }
+            Started = false;
         }
-
-
-        public static string ReadJavaScriptFromFile(string filePath)
-        {
-            string result = "";
-            string contents = File.ReadAllText(filePath);
-
-
-            // Replace comments
-            contents = Regex.Replace(contents, @"(/\*[^/]+\*/)", @"");
-            contents = Regex.Replace(contents, @"(\s//[^/\n]+)", @"");
-            
-            // Replace newlines
-            result = Regex.Replace(contents, @"\r\n|\n", @" ");
-
-            return result;
-        }
-
 
         public static void InjectVisualSearch()
         {
-            string javaScript = ReadJavaScriptFromFile(Path.Combine("JavaScript", "ElementSearch.js"));
-            IJavaScriptExecutor jsExec = GetDriver() as IJavaScriptExecutor;
-
-            jsExec.ExecuteScript(javaScript);
-
+            JavaScriptUtils.InjectVisualSearch(GetDriver());
         }
 
         public static void HighlightElement(By by)
         {
-         
-            var element = GetDriver().FindElement(by);
-            IJavaScriptExecutor jsExec = GetDriver() as IJavaScriptExecutor;
-            jsExec.ExecuteScript(
-            @"
-                element = arguments[0];
-                original_style = element.getAttribute('style');
-                element.setAttribute('style', original_style + ""; background: yellow; border: 2px solid red;"");
-                setTimeout(function(){
-                    element.setAttribute('style', original_style);
-                }, 300);
-
-           ", element);
-        }
-
-        
-        // TODO: Move to Utility
-        public static Stream GenerateStreamFromString(string s)
-        {
-            MemoryStream stream = new MemoryStream();
-            StreamWriter writer = new StreamWriter(stream);
-            writer.Write(s);
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
+            JavaScriptUtils.HighlightElement(by, GetDriver());
         }
 
         public static HtmlDocument GetPageSource()
         {
-
-            string currentPageSource = (GetDriver().PageSource ?? "").Replace("\r\n", "");
-            
-            var htmlDoc = new HtmlDocument();
-            htmlDoc.OptionFixNestedTags = true;
-
-            // https://htmlagilitypack.codeplex.com/discussions/247206
-            HtmlNode.ElementsFlags.Remove("form");
-            
-            htmlDoc.LoadHtml(currentPageSource);
-            return htmlDoc;
+            return HtmlPageUtils.GetPageSource(GetDriver());
         }
-
-
-        public static string XmlTidy(HtmlDocument document)
-        {
-            return document.DocumentNode.OuterHtml;
-        }
-
 
 
         public static string GetTidyHtml()
         {
-            var html = GetPageSource();
-            return XmlTidy(html);
+            return HtmlPageUtils.GetTidyHtml(GetDriver());
         }
 
-        private static string lastCommandId = null;
+
         public static BrowserCommand GetNextCommand() // Returns null if no new commands received
         {
-            BrowserCommand result = null;
-
-            IWebElement body = null;
-
-            try
-            {
-                body = SwdBrowser.GetDriver().FindElement(By.TagName(@"body"));
-            }
-            catch { }
-
-            if (body == null) return null;
-
-            string jsonCommand = body.GetAttribute("swdpr_command");
-
-            if (!String.IsNullOrWhiteSpace(jsonCommand))
-            {
-
-                var unknownCommand = BrowserCommandParser.ParseCommand<BrowserCommand>(jsonCommand);
-
-                if (lastCommandId == unknownCommand.CommandId) return null;
-
-                if (unknownCommand.Command == @"GetXPathFromElement")
-                {
-                    result = BrowserCommandParser.ParseCommand<GetXPathFromElement>(jsonCommand);
-                }
-                else if ((unknownCommand.Command == @"AddElement"))
-                {
-                    result = BrowserCommandParser.ParseCommand<AddElement>(jsonCommand);
-                }
-                lastCommandId = unknownCommand.CommandId;
-            }
-
-
-            return result;
-
+            return BrowserCommands.GetNextCommand(GetDriver());
         }
 
 
         public static string GetElementXPath(IWebElement webElement)
         {
-            IJavaScriptExecutor jsExec = GetDriver() as IJavaScriptExecutor;
-            return (string)jsExec.ExecuteScript(
-@"
-function getPathTo(element) {
-    if (element === document.body)
-        return '/html/' + element.tagName.toLowerCase();
-
-    var ix = 0;
-    var siblings = element.parentNode.childNodes;
-    for (var i = 0; i < siblings.length; i++) {
-        var sibling = siblings[i];
-        if (sibling === element)
-            return getPathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
-        if (sibling.nodeType === 1 && sibling.tagName === element.tagName)
-            ix++;
-    }
-}
-
-var element = arguments[0];
-return getPathTo(element);
-
-", webElement);
+            return JavaScriptUtils.GetElementXPath(webElement);
         }
 
         
@@ -302,5 +149,17 @@ return getPathTo(element);
                 return result;
             }
         }
+
+
+        static readonly Finalizer finalizer = new Finalizer();
+
+        sealed class Finalizer
+        {
+            ~Finalizer()
+            {
+                CloseDriver();
+            }
+        }
+
     }
 }

@@ -124,6 +124,7 @@
     <Compile Include="SwdMain\TravelNode.cs" />
     <Compile Include="SwdMain\WebElementDefinition.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="WinFromsExtensions.cs" />
     <EmbeddedResource Include="SwdMain\SwdMainView.resx">
       <DependentUpon>SwdMainView.cs</DependentUpon>
     </EmbeddedResource>

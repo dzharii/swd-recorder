@@ -77,6 +77,10 @@
       <Project>{3c5b6b24-d897-4946-a6a5-d2c4f2da8369}</Project>
       <Name>SwdPageRecorder.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj">
+      <Project>{dc2ec3c9-dc4f-430a-bba7-7f04b9c215eb}</Project>
+      <Name>SwdPageRecorder.WebDriver</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

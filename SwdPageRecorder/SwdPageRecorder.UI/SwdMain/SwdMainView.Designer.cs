@@ -38,7 +38,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.htmlDomTesterView1 = new SwdPageRecorder.UI.HtmlDomTesterView();
             this.selectorsEditView = new SwdPageRecorder.UI.SelectorsEditView();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.grpVisualSearch = new System.Windows.Forms.GroupBox();
             this.btnStartVisualSearch = new System.Windows.Forms.Button();
             this.txtVisualSearchResult = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -54,7 +54,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.grpVisualSearch.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.SuspendLayout();
@@ -151,7 +151,7 @@
             // 
             this.tabPage2.Controls.Add(this.htmlDomTesterView1);
             this.tabPage2.Controls.Add(this.selectorsEditView);
-            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Controls.Add(this.grpVisualSearch);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -179,18 +179,18 @@
             this.selectorsEditView.Size = new System.Drawing.Size(732, 157);
             this.selectorsEditView.TabIndex = 2;
             // 
-            // groupBox5
+            // grpVisualSearch
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpVisualSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.btnStartVisualSearch);
-            this.groupBox5.Controls.Add(this.txtVisualSearchResult);
-            this.groupBox5.Location = new System.Drawing.Point(7, 165);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(727, 51);
-            this.groupBox5.TabIndex = 4;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Visual Search";
+            this.grpVisualSearch.Controls.Add(this.btnStartVisualSearch);
+            this.grpVisualSearch.Controls.Add(this.txtVisualSearchResult);
+            this.grpVisualSearch.Location = new System.Drawing.Point(7, 165);
+            this.grpVisualSearch.Name = "grpVisualSearch";
+            this.grpVisualSearch.Size = new System.Drawing.Size(727, 51);
+            this.grpVisualSearch.TabIndex = 4;
+            this.grpVisualSearch.TabStop = false;
+            this.grpVisualSearch.Text = "Visual Search";
             // 
             // btnStartVisualSearch
             // 
@@ -251,7 +251,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fullHtmlSourceTabView1.Location = new System.Drawing.Point(6, 6);
             this.fullHtmlSourceTabView1.Name = "fullHtmlSourceTabView1";
-            this.fullHtmlSourceTabView1.Size = new System.Drawing.Size(728, 387);
+            this.fullHtmlSourceTabView1.Size = new System.Drawing.Size(728, 442);
             this.fullHtmlSourceTabView1.TabIndex = 0;
             // 
             // pageObjectDefinitionView
@@ -282,8 +282,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.grpVisualSearch.ResumeLayout(false);
+            this.grpVisualSearch.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -299,17 +299,17 @@
         public System.Windows.Forms.TabPage tabPage3;
         public System.Windows.Forms.TextBox txtBrowserUrl;
         public System.Windows.Forms.TabPage tabPage4;
-        public System.Windows.Forms.GroupBox groupBox5;
+        public System.Windows.Forms.GroupBox grpVisualSearch;
         public System.Windows.Forms.Button btnStartVisualSearch;
         public System.Windows.Forms.TextBox txtVisualSearchResult;
         public System.Windows.Forms.Button btnBrowser_Go;
         public PageObjectDefinitionView pageObjectDefinitionView;
-        private SelectorsEditView selectorsEditView;
-        private HtmlDomTesterView htmlDomTesterView1;
         private PageObjectSourceCodeView pageObjectSourceCodeView1;
-        private FullHtmlSourceTabView fullHtmlSourceTabView1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         public BrowserSettingsTabView browserSettingsTab1;
+        public HtmlDomTesterView htmlDomTesterView1;
+        public SelectorsEditView selectorsEditView;
+        public FullHtmlSourceTabView fullHtmlSourceTabView1;
         
 
     }

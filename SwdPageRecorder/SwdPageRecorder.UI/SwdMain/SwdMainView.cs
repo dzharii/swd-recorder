@@ -23,7 +23,6 @@ namespace SwdPageRecorder.UI
             InitializeComponent();
             presenter = Presenters.SwdMainPresenter;
             presenter.InitView(this);
-            presenter.InitControls();
         }
 
 

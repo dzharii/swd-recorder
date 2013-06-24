@@ -33,6 +33,11 @@ namespace SwdPageRecorder.UI
         public void InitView(SwdMainView view)
         {
             this.view = view;
+
+            // Subscribe to WebDriverUtils events
+            SwdBrowser.OnDriverStarted += InitControls;
+            SwdBrowser.OnDriverClosed += InitControls;
+            InitControls();
         }
 
 
@@ -125,16 +130,12 @@ namespace SwdPageRecorder.UI
 
         internal void InitControls()
         {
-            if (SwdBrowser.IsWorking)
-            {
-                view.txtBrowserUrl.Enabled = true;
-                view.btnBrowser_Go.Enabled = true;
-            }
-            else
-            {
-                view.txtBrowserUrl.Enabled = false;
-                view.btnBrowser_Go.Enabled = false;
-            }
+            var shouldControlBeEnabled = SwdBrowser.IsWorking;
+
+            view.txtBrowserUrl.Enabled = shouldControlBeEnabled;
+            view.btnBrowser_Go.Enabled = shouldControlBeEnabled;
+            view.grpVisualSearch.Enabled = shouldControlBeEnabled;
+
         }
     }
 }

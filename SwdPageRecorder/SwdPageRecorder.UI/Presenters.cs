@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 namespace SwdPageRecorder.UI
 {
+   
     public static class Presenters
     {
         private static SwdMainPresenter _swdMainPresenter = null;

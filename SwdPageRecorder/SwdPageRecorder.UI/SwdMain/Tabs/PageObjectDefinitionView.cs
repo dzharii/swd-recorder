@@ -10,6 +10,7 @@ using SwdPageRecorder.WebDriver;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using FormKeys = System.Windows.Forms.Keys;
+using System.Threading;
 
 namespace SwdPageRecorder.UI
 {
@@ -24,7 +25,12 @@ namespace SwdPageRecorder.UI
             presenter = Presenters.PageObjectDefinitionPresenter;
             presenter.InitWithView(this);
 
-            tvWebElements.ItemDrag += tvWebElements_ItemDrag;
+            // Enable DragDrop operations only for standalone window
+            if (Thread.CurrentThread.GetApartmentState() == ApartmentState.STA)
+            {
+                tvWebElements.ItemDrag += tvWebElements_ItemDrag;
+                tvWebElements.AllowDrop = true;
+            }
 
             presenter.InitPageObjectFiles();
         }

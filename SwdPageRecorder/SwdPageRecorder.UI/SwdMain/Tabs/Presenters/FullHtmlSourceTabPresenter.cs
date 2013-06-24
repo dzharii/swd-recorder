@@ -28,6 +28,18 @@ namespace SwdPageRecorder.UI
         public void InitWithView(FullHtmlSourceTabView view)
         {
             this.view = view;
+
+            // Subscribe to WebDriverUtils events
+            SwdBrowser.OnDriverStarted += InitControls;
+            SwdBrowser.OnDriverClosed += InitControls;
+            InitControls();
+        }
+
+        private void InitControls()
+        {
+            var shouldControlBeEnabled = SwdBrowser.IsWorking;
+            view.btnGetHtmlSource.Enabled = shouldControlBeEnabled;
+            view.txtHtmlPageSource.Enabled = shouldControlBeEnabled;
         }
 
         internal void DisplayHtmlPageSource()

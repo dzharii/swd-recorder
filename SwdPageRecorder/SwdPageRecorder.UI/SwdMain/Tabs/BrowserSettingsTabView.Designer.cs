@@ -31,7 +31,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chkUseRemoteHub = new System.Windows.Forms.CheckBox();
             this.grpRemoteConnection = new System.Windows.Forms.GroupBox();
-            this.lblHubConnectionStatus = new System.Windows.Forms.Label();
+            this.lblWebDriverStatus = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRemoteHubUrl = new System.Windows.Forms.TextBox();
             this.btnStartWebDriver = new System.Windows.Forms.Button();
@@ -63,7 +63,6 @@
             // 
             this.grpRemoteConnection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpRemoteConnection.Controls.Add(this.lblHubConnectionStatus);
             this.grpRemoteConnection.Controls.Add(this.label2);
             this.grpRemoteConnection.Controls.Add(this.txtRemoteHubUrl);
             this.grpRemoteConnection.Location = new System.Drawing.Point(3, 26);
@@ -73,15 +72,15 @@
             this.grpRemoteConnection.TabStop = false;
             this.grpRemoteConnection.Text = "Remote Driver Configuration";
             // 
-            // lblHubConnectionStatus
+            // lblWebDriverStatus
             // 
-            this.lblHubConnectionStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblHubConnectionStatus.AutoSize = true;
-            this.lblHubConnectionStatus.Location = new System.Drawing.Point(508, 31);
-            this.lblHubConnectionStatus.Name = "lblHubConnectionStatus";
-            this.lblHubConnectionStatus.Size = new System.Drawing.Size(37, 13);
-            this.lblHubConnectionStatus.TabIndex = 2;
-            this.lblHubConnectionStatus.Text = "Status";
+            this.lblWebDriverStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblWebDriverStatus.AutoSize = true;
+            this.lblWebDriverStatus.Location = new System.Drawing.Point(481, 136);
+            this.lblWebDriverStatus.Name = "lblWebDriverStatus";
+            this.lblWebDriverStatus.Size = new System.Drawing.Size(37, 13);
+            this.lblWebDriverStatus.TabIndex = 2;
+            this.lblWebDriverStatus.Text = "Status";
             // 
             // label2
             // 
@@ -128,6 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblWebDriverStatus);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.chkUseRemoteHub);
             this.Controls.Add(this.grpRemoteConnection);
@@ -147,7 +147,7 @@
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.CheckBox chkUseRemoteHub;
         public System.Windows.Forms.GroupBox grpRemoteConnection;
-        public System.Windows.Forms.Label lblHubConnectionStatus;
+        public System.Windows.Forms.Label lblWebDriverStatus;
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox txtRemoteHubUrl;
         public System.Windows.Forms.Button btnStartWebDriver;
