@@ -80,6 +80,9 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                 case WebDriverOptions.browser_Android:
                     caps = DesiredCapabilities.Android();
                     break;
+                default:
+                    throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserName),
+                                                "WebDriverOptions.BrowserName");
             }
             return new RemoteWebDriver(hubUri, caps);
         }
@@ -99,6 +102,9 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                     return new PhantomJSDriver();
                 case WebDriverOptions.browser_Safari:
                     return new SafariDriver();
+                default:
+                    throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserName),   
+                                                "WebDriverOptions.BrowserName");
             }
             return null;
         }

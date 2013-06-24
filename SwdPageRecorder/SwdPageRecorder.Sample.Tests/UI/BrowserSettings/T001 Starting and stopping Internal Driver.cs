@@ -115,11 +115,28 @@ namespace SwdPageRecorder.Sample.Tests.UI.BrowserSettings
         public void When_driver_is_started_for_first_time_all_depending_UI_controls_should_be_enabled()
         {
 
-            this.When(_ => PrepareApplication(), "Given the application is running")
-                .And(_ => StartDriver(), "When Driver was started")
+            this.Given(_ => PrepareApplication(), "Given the application is running")
+                .When(_ => StartDriver(), "When Driver was started")
                 .Then(_ => EnsureElementEnabled(ExpectedControls()), "Then ensure depending UI controls are enabled")
                 .And(_ => CheckDriverStartButton("Stop"), "And Driver Start button should change it’s caption to {0}")
                 .BDDfy();
+        }
+
+        [Test]
+        public void When_driver_was_stopped_then_depending_UI_controls_should_be_disabled()
+        {
+
+            this.Given(_ => PrepareApplication(), "Given the application is running")
+                .And(_ => StartDriver(), "And Driver was started")
+                .When( _=> StopDriver(), "When I stop the Driver")
+                .Then(_ => EnsureElementDisabled(ExpectedControls()), "Then ensure depending UI controls are disabled")
+                .And(_ => CheckDriverStartButton("Start"), "And Driver Start button should change it’s caption to {0}")
+                .BDDfy();
+        }
+
+        private void StopDriver()
+        {
+            MainForm.browserSettingsTab1.Presenter.StopDriver();
         }
 
         private void CheckDriverStartButton(string expectedButtonCaption)
@@ -131,7 +148,7 @@ namespace SwdPageRecorder.Sample.Tests.UI.BrowserSettings
         {
             var browserOptions = new WebDriverOptions()
             {
-                BrowserName = "FireFox",
+                BrowserName = WebDriverOptions.browser_Firefox,
                 IsRemote = false,
                 RemoteUrl = "",
             };

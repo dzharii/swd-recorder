@@ -55,20 +55,29 @@ namespace SwdPageRecorder.UI
         {
             if (SwdBrowser.IsWorking)
             {
-                view.DisableDriverStartButton();
-                SwdBrowser.CloseDriver();
-                view.EnableDriverStartButton();
-                view.DriverWasStopped();
+                StopDriver();
             }
             else
             {
-                view.DisableDriverStartButton();
-                SwdBrowser.Initialize(browserOptions);
-                view.DriverWasStarted();
-                view.EnableDriverStartButton();
+                StartDriver(browserOptions);
             }
+        }
 
+        public void StartDriver(WebDriverOptions browserOptions)
+        {
+            view.DisableDriverStartButton();
+            SwdBrowser.Initialize(browserOptions);
+            view.DriverWasStarted();
+            view.EnableDriverStartButton();
 
+        }
+
+        public void StopDriver()
+        {
+            view.DisableDriverStartButton();
+            SwdBrowser.CloseDriver();
+            view.EnableDriverStartButton();
+            view.DriverWasStopped();
         }
     }
 }
