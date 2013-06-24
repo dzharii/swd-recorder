@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("WebElements:");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("WebElements:");
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnViewInWindowsExplorer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSavePageObject = new System.Windows.Forms.Button();
             this.btnNewPageObject = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnViewInWindowsExplorer);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.btnSavePageObject);
             this.groupBox4.Controls.Add(this.btnNewPageObject);
@@ -60,6 +62,17 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Page Object";
             // 
+            // btnViewInWindowsExplorer
+            // 
+            this.btnViewInWindowsExplorer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewInWindowsExplorer.Location = new System.Drawing.Point(146, 23);
+            this.btnViewInWindowsExplorer.Name = "btnViewInWindowsExplorer";
+            this.btnViewInWindowsExplorer.Size = new System.Drawing.Size(42, 23);
+            this.btnViewInWindowsExplorer.TabIndex = 8;
+            this.btnViewInWindowsExplorer.Text = "Files";
+            this.btnViewInWindowsExplorer.UseVisualStyleBackColor = true;
+            this.btnViewInWindowsExplorer.Click += new System.EventHandler(this.btnViewInWindowsExplorer_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -72,22 +85,24 @@
             // btnSavePageObject
             // 
             this.btnSavePageObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSavePageObject.Location = new System.Drawing.Point(189, 19);
+            this.btnSavePageObject.Location = new System.Drawing.Point(189, 23);
             this.btnSavePageObject.Name = "btnSavePageObject";
             this.btnSavePageObject.Size = new System.Drawing.Size(42, 23);
             this.btnSavePageObject.TabIndex = 6;
             this.btnSavePageObject.Text = "Save";
             this.btnSavePageObject.UseVisualStyleBackColor = true;
+            this.btnSavePageObject.Click += new System.EventHandler(this.btnSavePageObject_Click);
             // 
             // btnNewPageObject
             // 
             this.btnNewPageObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewPageObject.Location = new System.Drawing.Point(120, 19);
+            this.btnNewPageObject.Location = new System.Drawing.Point(98, 23);
             this.btnNewPageObject.Name = "btnNewPageObject";
             this.btnNewPageObject.Size = new System.Drawing.Size(42, 23);
             this.btnNewPageObject.TabIndex = 5;
             this.btnNewPageObject.Text = "New";
             this.btnNewPageObject.UseVisualStyleBackColor = true;
+            this.btnNewPageObject.Click += new System.EventHandler(this.btnNewPageObject_Click);
             // 
             // cbPageObjectFiles
             // 
@@ -98,6 +113,7 @@
             this.cbPageObjectFiles.Name = "cbPageObjectFiles";
             this.cbPageObjectFiles.Size = new System.Drawing.Size(224, 21);
             this.cbPageObjectFiles.TabIndex = 4;
+            this.cbPageObjectFiles.SelectionChangeCommitted += new System.EventHandler(this.cbPageObjectFiles_SelectionChangeCommitted);
             this.cbPageObjectFiles.TextChanged += new System.EventHandler(this.cbPageObjectFiles_TextChanged);
             // 
             // groupBox7
@@ -137,10 +153,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvWebElements.Location = new System.Drawing.Point(7, 75);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "WebElements:";
+            treeNode5.Name = "Node0";
+            treeNode5.Text = "WebElements:";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode5});
             this.tvWebElements.Size = new System.Drawing.Size(225, 186);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
@@ -170,9 +186,10 @@
         public System.Windows.Forms.Label lblLastCallTime;
         public System.Windows.Forms.Label label4;
         public System.Windows.Forms.TreeView tvWebElements;
-        private System.Windows.Forms.Button btnSavePageObject;
-        private System.Windows.Forms.Button btnNewPageObject;
-        private System.Windows.Forms.ComboBox cbPageObjectFiles;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnSavePageObject;
+        public System.Windows.Forms.Button btnNewPageObject;
+        public System.Windows.Forms.ComboBox cbPageObjectFiles;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnViewInWindowsExplorer;
     }
 }

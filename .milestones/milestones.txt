@@ -5,6 +5,8 @@ RELESE 0.1
 --------------------------------------------------
 [+] Generate Page Object source code
 [-] Read/Save application settings/PageObjects
+    [-] Application Settings
+    [+] PageObjects
 [ ] Existing items:
     [+] Existing items edit/update
     [+] Existing items delete

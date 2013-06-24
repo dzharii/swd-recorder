@@ -33,6 +33,8 @@ namespace SwdPageRecorder.UI
             }
 
             presenter.InitPageObjectFiles();
+            presenter.UpdatePageTreeFromFileName();
+            presenter.UpdateControlsState();
         }
 
 
@@ -131,6 +133,7 @@ namespace SwdPageRecorder.UI
             {
                 presenter.ReleaseNode(selectedNode);
                 selectedNode.Remove();
+                presenter.NotifyOnChanges();
 
             }
 
@@ -179,18 +182,81 @@ namespace SwdPageRecorder.UI
             cbPageObjectFiles.Items.AddRange(files);
         }
 
-        private void cbPageObjectFiles_TextChanged(object sender, EventArgs e)
+        public void UpdatePageTreeFromFileName()
         {
             var firstNode = tvWebElements.Nodes[0];
             var currentName = cbPageObjectFiles.Text;
             if (!String.IsNullOrWhiteSpace(currentName))
             {
                 firstNode.Text = currentName;
+                presenter.NotifyOnChanges();
             }
             else
             {
                 firstNode.Text = "No Name";
             }
+        }
+
+        private void cbPageObjectFiles_TextChanged(object sender, EventArgs e)
+        {
+            
+            presenter.UpdatePageTreeFromFileName();
+        }
+
+        private void btnSavePageObject_Click(object sender, EventArgs e)
+        {
+            presenter.SavePageObject(); 
+        }
+
+
+
+        internal bool ConfirmFileOverwrite(string targetFullPath)
+        {
+            string text = String.Format("File: {0}\r\nalready exists.\r\nDo you want to replace it?", targetFullPath);
+            string caption = @"Confirm Save As";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+
+            return MessageBox.Show(text, caption, buttons) == DialogResult.Yes;
+        }
+
+        internal void NotifyOnSaveError(string errorMessage, string targetFile)
+        {
+            string text = String.Format("An error had occurred during saving the Page Object.\r\nFile: {0}\r\nError:{1}", targetFile, errorMessage);
+            string caption = "Save - Error";
+            MessageBox.Show(text, caption);
+        }
+
+        private void cbPageObjectFiles_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string selectedItemText = cbPageObjectFiles.SelectedItem as string;
+            presenter.LoadPageObject(selectedItemText);
+        }
+
+
+        internal void NotifyOnLoadError(string errorMessage, string targetFile)
+        {
+            string text = String.Format("An error had occurred during loading the Page Object.\r\nFile: {0}\r\nError:{1}", targetFile, errorMessage);
+            string caption = "Load - Error";
+            MessageBox.Show(text, caption);
+
+        }
+
+        internal void ClearPageObjectTree()
+        {
+            tvWebElements.Nodes[0].Nodes.Clear();
+            UpdatePageTreeFromFileName();
+        }
+
+        private void btnNewPageObject_Click(object sender, EventArgs e)
+        {
+            cbPageObjectFiles.Text = "";
+            ClearPageObjectTree();
+            presenter.NotifyOnChanges();
+        }
+
+        private void btnViewInWindowsExplorer_Click(object sender, EventArgs e)
+        {
+            presenter.OpenDefaultFolderInWindowsExplorer();
         }
     }
 }

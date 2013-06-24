@@ -22,14 +22,27 @@ using System.Windows.Forms;
 using System.Diagnostics;
 
 using System.IO;
+using System.Xml.Serialization;
 
 namespace SwdPageRecorder.UI
 {
     public class PageObjectDefinitionPresenter : IPresenter<PageObjectDefinitionView>
     {
+
+        const string PoxFileExtension = ".pox";
+        
         private PageObjectDefinitionView view;
         public bool _isEditingExistingNode = false;
         public TreeNode _currentEditingNode = null;
+
+        public bool IsDirty { get; private set; }
+
+        public PageObjectDefinitionPresenter()
+        {
+            IsDirty = false;
+        }
+
+        private string lastSavedFilePath = String.Empty;
 
 
         public void InitWithView(PageObjectDefinitionView view)
@@ -62,17 +75,20 @@ namespace SwdPageRecorder.UI
             if (forceAddNew)
             {
                 view.AddToPageDefinitions(element);
+                NotifyOnChanges();
                 return;
             }
 
             if (_isEditingExistingNode)
             {
                 view.UpdateExistingPageDefinition(_currentEditingNode, element);
+                NotifyOnChanges();
             }
             else
             {
                 _isEditingExistingNode = true;
                 _currentEditingNode = view.AddToPageDefinitions(element);
+                NotifyOnChanges();
             }
         }
 
@@ -104,17 +120,146 @@ namespace SwdPageRecorder.UI
 
         }
 
-        internal void InitPageObjectFiles()
+        public string GetDefaultPageObjectsDirectory()
         {
             string fullPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string theDirectory = Path.GetDirectoryName(fullPath);
+            return theDirectory;
+        }
 
+        internal void InitPageObjectFiles()
+        {
+            var theDirectory = GetDefaultPageObjectsDirectory();
             string[] files = Directory.GetFiles(theDirectory)
-                     .Where( f => f.EndsWith(@".pox"))
+                     .Where(f => f.EndsWith(PoxFileExtension))
                      .Select( f => Path.GetFileNameWithoutExtension(f))
                      .ToArray();
             
             view.SetPageObjectFiles(files);
+        }
+
+        internal void UpdatePageTreeFromFileName()
+        {
+            view.UpdatePageTreeFromFileName();
+        }
+
+        internal void UpdateControlsState()
+        {
+            bool buttonSaveShouldBeEnabled = true;
+
+            // When the PageObject name is empty
+            if (string.IsNullOrWhiteSpace(view.cbPageObjectFiles.Text))
+            {
+                buttonSaveShouldBeEnabled = false;
+            }
+            // Or no changes had occured after last save
+            else if (!IsDirty)
+            {
+                buttonSaveShouldBeEnabled = false;
+            }
+            view.btnSavePageObject.Enabled = buttonSaveShouldBeEnabled;
+        }
+
+        internal void NotifyOnChanges()
+        {
+            IsDirty = true;
+            UpdateControlsState();
+        }
+
+        internal void SavePageObject()
+        {
+            string pageObjectFileName = GetPageObjectFileName();
+            string targetFullPath = Path.Combine(GetDefaultPageObjectsDirectory(), pageObjectFileName);
+
+            if (File.Exists(targetFullPath) && lastSavedFilePath != targetFullPath)
+            {
+                if (!view.ConfirmFileOverwrite(targetFullPath))
+                {
+                    return;
+                }
+            }
+
+            try
+            {
+                SavePageObjectToFile(targetFullPath);
+            }
+            catch(Exception e)
+            {
+                view.NotifyOnSaveError(e.Message, targetFullPath);
+                return;
+            }
+            InitPageObjectFiles();
+
+            IsDirty = false;
+            lastSavedFilePath = targetFullPath;
+            UpdateControlsState();
+        }
+
+        private void SavePageObjectToFile(string targetFullPath)
+        {
+            WebElementDefinition[] definitions = GetWebElementDefinitionFromTree();
+            using (var stream = File.Create(targetFullPath))
+            {
+                var serializer = new XmlSerializer(typeof(WebElementDefinition[]));
+                serializer.Serialize(stream, definitions);
+            }
+
+        }
+
+        private string GetPageObjectFileName()
+        {
+            string fileName = view.cbPageObjectFiles.Text.Trim();
+            if (!fileName.ToLower().EndsWith(PoxFileExtension))
+            {
+                fileName += PoxFileExtension;
+            }
+
+            return fileName;
+        }
+
+        internal void LoadPageObject(string pageObjectFileName)
+        {
+            string pageObjectFile = pageObjectFileName + PoxFileExtension;
+            string targetFullPath = Path.Combine(GetDefaultPageObjectsDirectory(), pageObjectFile);
+
+            WebElementDefinition[] definitions = null;
+            try
+            {
+                definitions = LoadPageObjectFromFile(targetFullPath);
+            }
+            catch (Exception e)
+            {
+                view.NotifyOnLoadError(e.Message, targetFullPath);
+                return;
+            }
+
+            view.ClearPageObjectTree();
+            foreach (var def in definitions)
+            {
+
+                UpdatePageDefinition(def, forceAddNew: true);
+            }
+
+            IsDirty = false;
+            lastSavedFilePath = targetFullPath;
+            UpdateControlsState();
+        }
+
+        private WebElementDefinition[] LoadPageObjectFromFile(string pageObjectFileName)
+        {
+            WebElementDefinition[] definitions = null;
+
+            using (FileStream stream = File.OpenRead(pageObjectFileName))
+            {
+                var serializer = new XmlSerializer(typeof(WebElementDefinition[]));
+                definitions = (WebElementDefinition[])serializer.Deserialize(stream);
+            }
+            return definitions;
+        }
+
+        internal void OpenDefaultFolderInWindowsExplorer()
+        {
+            Process.Start(GetDefaultPageObjectsDirectory());
         }
     }
 }
