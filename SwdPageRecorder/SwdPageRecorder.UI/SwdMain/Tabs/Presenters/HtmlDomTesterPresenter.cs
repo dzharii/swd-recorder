@@ -240,8 +240,41 @@ namespace SwdPageRecorder.UI
             string xPath = SwdBrowser.GetElementXPath(webElement);
 
             var travelNodes = GetTreeTravelDataFromXPath(xPath);
+            FindTreeNode(travelNodes);
+        }
 
-            view.FindAndHighlightElementInTree(travelNodes);
+        internal TreeNode FindTreeNode(List<TravelNode> travelNodes)
+        {
+            var searchNodes = view.tvHtmlDoc.Nodes;
+            for (var i = 0; i < travelNodes.Count; i++)
+            {
+                bool isLastTravelNode = (i == travelNodes.Count - 1);
+
+                var travelNode = travelNodes[i];
+                var targetNodeIndex = -1;
+                foreach (TreeNode treeNode in searchNodes)
+                {
+                    if (treeNode.Name == travelNode.NodeName)
+                    {
+                        targetNodeIndex++;
+
+                        if (targetNodeIndex == travelNode.NodeIndex)
+                        {
+                            view.ShowTreeNode(treeNode);
+                            if (isLastTravelNode)
+                            {
+                                return treeNode;
+                            }
+                            else
+                            {
+                                searchNodes = treeNode.Nodes;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
         }
 
     }

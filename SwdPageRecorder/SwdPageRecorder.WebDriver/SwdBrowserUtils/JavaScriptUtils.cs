@@ -71,9 +71,9 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
            ", element);
         }
 
-        public static string GetElementXPath(IWebElement webElement)
+        public static string GetElementXPath(IWebElement webElement, IWebDriver webDriver)
         {
-            IJavaScriptExecutor jsExec = webElement as IJavaScriptExecutor;
+            IJavaScriptExecutor jsExec = webDriver as IJavaScriptExecutor;
             return (string)jsExec.ExecuteScript(
 @"
 function getPathTo(element) {
@@ -85,15 +85,18 @@ function getPathTo(element) {
     for (var i = 0; i < siblings.length; i++) {
         var sibling = siblings[i];
         if (sibling === element)
+        {
             return getPathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
+        }
         if (sibling.nodeType === 1 && sibling.tagName === element.tagName)
             ix++;
     }
 }
 
 var element = arguments[0];
-return getPathTo(element);
-
+var xpath = '';
+xpath = getPathTo(element);
+return xpath;
 ", webElement);
         }
     }

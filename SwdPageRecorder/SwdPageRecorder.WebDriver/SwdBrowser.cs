@@ -120,7 +120,7 @@ namespace SwdPageRecorder.WebDriver
 
         public static string GetElementXPath(IWebElement webElement)
         {
-            return JavaScriptUtils.GetElementXPath(webElement);
+            return JavaScriptUtils.GetElementXPath(webElement, GetDriver());
         }
 
         

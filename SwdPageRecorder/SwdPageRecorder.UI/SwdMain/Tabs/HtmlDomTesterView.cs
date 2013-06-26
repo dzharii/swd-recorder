@@ -95,53 +95,17 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        internal TreeNode FindTreeNode(List<TravelNode> travelNodes)
+        internal void ShowTreeNode(TreeNode treeNode)
         {
-            var searchNodes = tvHtmlDoc.Nodes;
-            for (var i = 0; i < travelNodes.Count; i++)
+            if (treeNode != null)
             {
-                bool isLastTravelNode = (i == travelNodes.Count - 1);
-
-                var travelNode = travelNodes[i];
-                var targetNodeIndex = -1;
-                foreach (TreeNode treeNode in searchNodes)
-                {
-                    if (treeNode.Name == travelNode.NodeName)
-                    {
-                        targetNodeIndex++;
-
-                        if (targetNodeIndex == travelNode.NodeIndex)
-                        {
-                            if (isLastTravelNode)
-                            {
-                                return treeNode;
-                            }
-                            else
-                            {
-                                searchNodes = treeNode.Nodes;
-                                break;
-                            }
-                        }
-                    }
-                }
+                tvHtmlDoc.SelectedNode = treeNode;
+                tvHtmlDoc.Focus();
+                treeNode.EnsureVisible();
             }
-            return null;
-        }
-
-        internal void FindAndHighlightElementInTree(List<TravelNode> travelNodes)
-        {
-            var htmlNode = FindTreeNode(travelNodes);
-            tvHtmlDoc.SelectedNode = htmlNode;
-            tvHtmlDoc.Focus();
-            if (htmlNode != null)
-            {
-                htmlNode.EnsureVisible();
-            }
-            else
-            {
+            else {
                 MessageBox.Show("Tree: Element was not found");
             }
         }
-
     }
 }
