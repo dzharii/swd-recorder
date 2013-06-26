@@ -106,7 +106,6 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                     throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserName),   
                                                 "WebDriverOptions.BrowserName");
             }
-            return null;
         }
     }
 }
