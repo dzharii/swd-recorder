@@ -31,15 +31,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chkUseRemoteHub = new System.Windows.Forms.CheckBox();
             this.grpRemoteConnection = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnTestRemoteHub = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRemoteHubUrl = new System.Windows.Forms.TextBox();
             this.lblWebDriverStatus = new System.Windows.Forms.Label();
             this.btnStartWebDriver = new System.Windows.Forms.Button();
             this.ddlBrowserToStart = new System.Windows.Forms.ComboBox();
-            this.btnTestRemoteHub = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.grdDesiredCapabilities = new System.Windows.Forms.PropertyGrid();
+            this.grpDesiredCaps = new System.Windows.Forms.GroupBox();
+            this.btnLoadCapabilities = new System.Windows.Forms.Button();
             this.grpRemoteConnection.SuspendLayout();
+            this.grpDesiredCaps.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -73,10 +77,38 @@
             this.grpRemoteConnection.Controls.Add(this.txtRemoteHubUrl);
             this.grpRemoteConnection.Location = new System.Drawing.Point(3, 26);
             this.grpRemoteConnection.Name = "grpRemoteConnection";
-            this.grpRemoteConnection.Size = new System.Drawing.Size(566, 100);
+            this.grpRemoteConnection.Size = new System.Drawing.Size(688, 100);
             this.grpRemoteConnection.TabIndex = 7;
             this.grpRemoteConnection.TabStop = false;
             this.grpRemoteConnection.Text = "Remote Driver Configuration";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(179, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(276, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Implement ME!!! / Press \"Test\" in order to check status/ ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(70, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Remote Hub Status:";
+            // 
+            // btnTestRemoteHub
+            // 
+            this.btnTestRemoteHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTestRemoteHub.Location = new System.Drawing.Point(607, 26);
+            this.btnTestRemoteHub.Name = "btnTestRemoteHub";
+            this.btnTestRemoteHub.Size = new System.Drawing.Size(75, 23);
+            this.btnTestRemoteHub.TabIndex = 2;
+            this.btnTestRemoteHub.Text = "Test";
+            this.btnTestRemoteHub.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -93,7 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRemoteHubUrl.Location = new System.Drawing.Point(69, 28);
             this.txtRemoteHubUrl.Name = "txtRemoteHubUrl";
-            this.txtRemoteHubUrl.Size = new System.Drawing.Size(410, 20);
+            this.txtRemoteHubUrl.Size = new System.Drawing.Size(532, 20);
             this.txtRemoteHubUrl.TabIndex = 0;
             this.txtRemoteHubUrl.Text = "http://127.0.0.1:4444/wd/hub";
             // 
@@ -101,7 +133,7 @@
             // 
             this.lblWebDriverStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblWebDriverStatus.AutoSize = true;
-            this.lblWebDriverStatus.Location = new System.Drawing.Point(481, 136);
+            this.lblWebDriverStatus.Location = new System.Drawing.Point(603, 136);
             this.lblWebDriverStatus.Name = "lblWebDriverStatus";
             this.lblWebDriverStatus.Size = new System.Drawing.Size(37, 13);
             this.lblWebDriverStatus.TabIndex = 2;
@@ -129,38 +161,45 @@
             this.ddlBrowserToStart.Size = new System.Drawing.Size(121, 21);
             this.ddlBrowserToStart.TabIndex = 5;
             // 
-            // btnTestRemoteHub
+            // grdDesiredCapabilities
             // 
-            this.btnTestRemoteHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestRemoteHub.Location = new System.Drawing.Point(485, 26);
-            this.btnTestRemoteHub.Name = "btnTestRemoteHub";
-            this.btnTestRemoteHub.Size = new System.Drawing.Size(75, 23);
-            this.btnTestRemoteHub.TabIndex = 2;
-            this.btnTestRemoteHub.Text = "Test";
-            this.btnTestRemoteHub.UseVisualStyleBackColor = true;
+            this.grdDesiredCapabilities.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdDesiredCapabilities.Location = new System.Drawing.Point(6, 49);
+            this.grdDesiredCapabilities.Name = "grdDesiredCapabilities";
+            this.grdDesiredCapabilities.Size = new System.Drawing.Size(667, 158);
+            this.grdDesiredCapabilities.TabIndex = 10;
             // 
-            // label1
+            // grpDesiredCaps
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Remote Hub Status:";
+            this.grpDesiredCaps.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpDesiredCaps.Controls.Add(this.btnLoadCapabilities);
+            this.grpDesiredCaps.Controls.Add(this.grdDesiredCapabilities);
+            this.grpDesiredCaps.Location = new System.Drawing.Point(6, 183);
+            this.grpDesiredCaps.Name = "grpDesiredCaps";
+            this.grpDesiredCaps.Size = new System.Drawing.Size(679, 240);
+            this.grpDesiredCaps.TabIndex = 11;
+            this.grpDesiredCaps.TabStop = false;
+            this.grpDesiredCaps.Text = "Capabilities";
             // 
-            // label4
+            // btnLoadCapabilities
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(179, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(276, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Implement ME!!! / Press \"Test\" in order to check status/ ";
+            this.btnLoadCapabilities.Location = new System.Drawing.Point(7, 20);
+            this.btnLoadCapabilities.Name = "btnLoadCapabilities";
+            this.btnLoadCapabilities.Size = new System.Drawing.Size(124, 23);
+            this.btnLoadCapabilities.TabIndex = 11;
+            this.btnLoadCapabilities.Text = "Load Capabilities";
+            this.btnLoadCapabilities.UseVisualStyleBackColor = true;
+            this.btnLoadCapabilities.Click += new System.EventHandler(this.btnLoadCapabilities_Click);
             // 
             // BrowserSettingsTabView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grpDesiredCaps);
             this.Controls.Add(this.lblWebDriverStatus);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.chkUseRemoteHub);
@@ -168,9 +207,10 @@
             this.Controls.Add(this.btnStartWebDriver);
             this.Controls.Add(this.ddlBrowserToStart);
             this.Name = "BrowserSettingsTabView";
-            this.Size = new System.Drawing.Size(572, 193);
+            this.Size = new System.Drawing.Size(694, 426);
             this.grpRemoteConnection.ResumeLayout(false);
             this.grpRemoteConnection.PerformLayout();
+            this.grpDesiredCaps.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +229,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTestRemoteHub;
+        private System.Windows.Forms.GroupBox grpDesiredCaps;
+        public System.Windows.Forms.PropertyGrid grdDesiredCapabilities;
+        private System.Windows.Forms.Button btnLoadCapabilities;
     }
 }

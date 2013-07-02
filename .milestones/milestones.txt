@@ -19,6 +19,9 @@ RELESE 0.1
 [-] Implement interactions through JavaScript window.Objct
     Using WebDriver to automatically check for JavaScript errors on every page
     http://watirmelon.com/2012/12/19/using-webdriver-to-automatically-check-for-javascript-errors-on-every-page/
+[-] View DesiredCapabilities
+    https://code.google.com/p/selenium/wiki/DesiredCapabilities
+    [-] Subclass Desired caps for IE, Firefox, etc.
 --------------------------------------------------
 RELESE 0.2
 --------------------------------------------------

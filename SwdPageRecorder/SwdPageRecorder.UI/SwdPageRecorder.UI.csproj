@@ -72,6 +72,7 @@
     <Compile Include="SwdMain\Tabs\BrowserSettingsTabView.Designer.cs">
       <DependentUpon>BrowserSettingsTabView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SwdMain\Tabs\Model\DesiredCapabilitiesData.cs" />
     <Compile Include="SwdMain\Tabs\Presenters\BrowserSettingsTabPresenter.cs" />
     <Compile Include="SwdMain\CSharpPageObjectGenerator.cs" />
     <Compile Include="SwdMain\HtmlTreeNodeData.cs" />

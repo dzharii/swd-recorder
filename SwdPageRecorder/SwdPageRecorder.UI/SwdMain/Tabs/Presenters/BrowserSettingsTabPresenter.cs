@@ -24,6 +24,7 @@ namespace SwdPageRecorder.UI
     public class BrowserSettingsTabPresenter : IPresenter<BrowserSettingsTabView>
     {
         private BrowserSettingsTabView view = null;
+        private DesiredCapabilitiesData _desiredCapabilitiesdata = new DesiredCapabilitiesData();
         
         public void InitWithView(BrowserSettingsTabView view)
         {
@@ -78,6 +79,42 @@ namespace SwdPageRecorder.UI
             SwdBrowser.CloseDriver();
             view.EnableDriverStartButton();
             view.DriverWasStopped();
+        }
+
+        internal void InitDesiredCapabilities()
+        {
+            view.grdDesiredCapabilities.SelectedObject = _desiredCapabilitiesdata;
+        }
+
+        public static T? GetValueOrNull<T>(string valueAsString)
+            where T : struct
+        {
+            if (string.IsNullOrEmpty(valueAsString))
+                return null;
+            return (T)Convert.ChangeType(valueAsString, typeof(T));
+        }
+        
+        internal void LoadCapabilities()
+        {
+            var remoteDriver = (RemoteWebDriver)SwdBrowser.GetDriver();
+            foreach (var prop in _desiredCapabilitiesdata.GetType().GetProperties())
+            {
+                if (!remoteDriver.Capabilities.HasCapability(prop.Name)) continue;
+
+                object driverValue = remoteDriver.Capabilities.GetCapability(prop.Name);
+                if (driverValue == null) continue;
+
+                if (prop.PropertyType == typeof(bool?))
+                {
+                    bool? boolValue = GetValueOrNull<bool>(driverValue.ToString());
+                    prop.SetValue(_desiredCapabilitiesdata, boolValue, null);
+                }
+                else
+                {
+                    prop.SetValue(_desiredCapabilitiesdata, driverValue.ToString(), null);
+                }
+            }
+            InitDesiredCapabilities();
         }
     }
 }

@@ -27,6 +27,16 @@ namespace SwdPageRecorder.UI
             HandleRemoteDriverSettingsEnabledStatus();
 
             driverControls = new Control[] { chkUseRemoteHub, grpRemoteConnection, ddlBrowserToStart };
+
+            SetDesiredCapsAvailability(false);
+            Presenter.InitDesiredCapabilities();
+
+
+        }
+
+        private void SetDesiredCapsAvailability(bool enabled)
+        {
+            grpDesiredCaps.Enabled = enabled;
         }
 
         private void btnStartWebDriver_Click(object sender, EventArgs e)
@@ -107,11 +117,13 @@ namespace SwdPageRecorder.UI
         internal void DriverWasStopped()
         {
             SetControlsState("Start", true);
+            SetDesiredCapsAvailability(false);
         }
 
         internal void DriverWasStarted()
         {
             SetControlsState("Stop", false);
+            SetDesiredCapsAvailability(true);
         }
 
         internal void DisableDriverStartButton()
@@ -127,6 +139,11 @@ namespace SwdPageRecorder.UI
         internal void SetStatus(string status)
         {
             lblWebDriverStatus.Text = status;
+        }
+
+        private void btnLoadCapabilities_Click(object sender, EventArgs e)
+        {
+            Presenter.LoadCapabilities();
         }
     }
 }

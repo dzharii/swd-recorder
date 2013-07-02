@@ -1,3 +1,3 @@
-start java  -jar selenium-server-standalone-2.33.0.jar
-@REM  -Dwebdriver.ie.driver=.\IEDriverServer32.exe
-@REM start java -Dwebdriver.chrome.driver="%cd%\chromedriver.exe" -jar selenium-server-standalone-2.33.0.jar
+@set IE=-Dwebdriver.ie.driver="%cd%\IEDriverServer.exe"
+@set CHROME=-Dwebdriver.chrome.driver="%cd%\chromedriver.exe"
+start java %CHROME% %IE% -jar selenium-server-standalone-2.33.0.jar
