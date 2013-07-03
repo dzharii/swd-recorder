@@ -21,6 +21,7 @@ namespace SwdPageRecorder.UI
         public SwdMainView()
         {
             InitializeComponent();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             presenter = Presenters.SwdMainPresenter;
             presenter.InitView(this);
         }
