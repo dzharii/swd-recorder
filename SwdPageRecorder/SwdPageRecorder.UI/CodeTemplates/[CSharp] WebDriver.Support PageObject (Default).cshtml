@@ -1,10 +1,20 @@
-﻿public class Page
+﻿@functions{
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\"\"");
+        locator = locator.Replace("{", "{{");
+        locator = locator.Replace("}", "}}");
+        return locator;
+    }
+}
+
+public class Page
 {
     @foreach (var element in @Model.WebElementDefinitions ) 
     {
         <text>
-            [FindsBy(How=How.@Raw(@element.How), Using = @@"@Raw(@element.QuotedLoacator)")]
-            public IWebElement @Raw(@element.Name) { get; set; }
+            [FindsBy(How=How.@Raw(@element.How), Using = @@"@Raw(@QuoteLocator(@element.Locator))")]
+            protected IWebElement @Raw(@element.Name) { get; set; }
         </text>
     }
 }

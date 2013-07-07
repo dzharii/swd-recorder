@@ -155,6 +155,9 @@
       <DependentUpon>SelectorsEditView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="CodeTemplates\[Java] WebDriver.Support PageObject.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="CodeTemplates\[CSharp] WebDriver.Support PageObject %28Default%29.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

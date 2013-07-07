@@ -4,8 +4,11 @@ Milestones
 RELESE 0.1
 --------------------------------------------------
 [+] Generate Page Object source code
-    [-] Razor PageObject templates
-
+    [+] Razor PageObject templates
+        [+] C#
+        [+] Java
+        [-] Ruby
+        [-] Python
 [-] Read/Save application settings/PageObjects
     [-] Application Settings
     [+] PageObjects

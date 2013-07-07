@@ -15,7 +15,6 @@ using System.Net;
 using SwdPageRecorder.WebDriver.JsCommand;
 
 using System.Xml;
-
 using HtmlAgilityPack;
 
 
