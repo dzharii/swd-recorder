@@ -1,0 +1,19 @@
+<table id="SWDTable">
+   <tr>
+     <td>Code identifier</td>
+     <td><span id="SwdPR_PopUp_CodeID"><input type="text" id="SwdPR_PopUp_CodeIDText"></span></td>
+   </tr>
+   <tr>
+     <td>Element</td>
+     <td><span id="SwdPR_PopUp_ElementName">Element</span></td>
+   </tr>
+   <tr>
+     <td>Text:</td>
+     <td><span id="SwdPR_PopUp_ElementText">Element</span></td>
+   </tr>
+   <tr>
+     <td>XPathLocator</td>
+     <td><span id="SwdPR_PopUp_XPathLocator">Element</span></td>
+   </tr>
+   </table>
+<input type="button" value="Add element" onclick="window.Swd_addElement()">

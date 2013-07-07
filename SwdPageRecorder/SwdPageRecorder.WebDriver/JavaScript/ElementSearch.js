@@ -1,6 +1,7 @@
 ﻿(function () {
     // =================== XPATH 
 
+    // Migrated
     function pseudoGuid() {
         var result = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
         result = result.replace(/[xy]/g, function(c) 
@@ -12,6 +13,7 @@
         return result;
     }
 
+    // Migrated
     function getPathTo(element) {
         if (element.id !== '')
             return 'id("' + element.id + '")';
@@ -91,6 +93,7 @@
         container.appendChild(element);
     }
 
+    // Migrated
     function createElementForm() {
         //Create an input type dynamically.   
         var element = document.createElement("div");

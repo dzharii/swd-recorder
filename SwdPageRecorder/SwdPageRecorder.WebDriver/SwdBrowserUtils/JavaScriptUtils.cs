@@ -42,6 +42,10 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
         }
 
 
+
+
+
+
         internal static void InjectVisualSearch(IWebDriver webDriver)
         {
             string javaScript = ReadJavaScriptFromFile(Path.Combine("JavaScript", "ElementSearch.js"));

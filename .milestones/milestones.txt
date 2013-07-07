@@ -4,6 +4,8 @@ Milestones
 RELESE 0.1
 --------------------------------------------------
 [+] Generate Page Object source code
+    [-] Razor PageObject templates
+
 [-] Read/Save application settings/PageObjects
     [-] Application Settings
     [+] PageObjects
@@ -36,7 +38,7 @@ RELESE 0.2
     [-] FindBy JavaScript
     [-] Allow JavaScript snippets
     [?] Integration with Chrome/IE console????
-[-] Razor PageObject templates
+[-] Frames support and SearchContext switch
 
 ==================================================
 --------------------------------------------------
