@@ -258,7 +258,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pageObjectSourceCodeView1.Location = new System.Drawing.Point(2, 0);
             this.pageObjectSourceCodeView1.Name = "pageObjectSourceCodeView1";
-            this.pageObjectSourceCodeView1.Size = new System.Drawing.Size(732, 390);
+            this.pageObjectSourceCodeView1.Size = new System.Drawing.Size(732, 448);
             this.pageObjectSourceCodeView1.TabIndex = 0;
             // 
             // tabPage4

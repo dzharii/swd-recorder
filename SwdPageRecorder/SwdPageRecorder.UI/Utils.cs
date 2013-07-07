@@ -51,5 +51,11 @@ namespace SwdPageRecorder.UI
             }
             return by;
         }
+
+        internal static string[] SplitSingleLineToMultyLine(string singleLineSource)
+        {
+            string[] result = singleLineSource.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            return result;
+        }
     }
 }

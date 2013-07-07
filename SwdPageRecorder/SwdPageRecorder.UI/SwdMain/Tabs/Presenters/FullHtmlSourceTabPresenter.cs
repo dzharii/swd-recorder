@@ -45,15 +45,11 @@ namespace SwdPageRecorder.UI
         internal void DisplayHtmlPageSource()
         {
             string singleLineSource = SwdBrowser.GetTidyHtml();
-            string[] htmlLines = SplitSingleLineToMultyLine(singleLineSource);
+            string[] htmlLines = Utils.SplitSingleLineToMultyLine(singleLineSource);
             view.FillHtmlCodeBox(htmlLines);
         }
 
-        private string[] SplitSingleLineToMultyLine(string singleLineSource)
-        {
-            string[] result = singleLineSource.Split(new string[] { "\n", "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            return result;
-        }
+
 
 
     }

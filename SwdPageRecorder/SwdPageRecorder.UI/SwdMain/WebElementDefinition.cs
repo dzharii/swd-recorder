@@ -19,5 +19,24 @@ namespace SwdPageRecorder.UI
         {
             return Name;
         }
+
+
+        public string QuotedLoacator {
+            get {
+                var value = Locator;
+                value = value.Replace("\"", "\"\"");
+                value = value.Replace("{", "{{");
+                value = value.Replace("}", "}}");
+                return value;
+            }
+        }
+        public string How
+        {
+            get
+            {
+                var value = Enum.GetName(typeof(LocatorSearchMethod), this.HowToSearch);
+                return value;
+            }
+        }
     }
 }

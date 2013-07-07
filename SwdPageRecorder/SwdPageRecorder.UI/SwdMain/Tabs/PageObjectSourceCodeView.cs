@@ -16,8 +16,11 @@ namespace SwdPageRecorder.UI
         {
             InitializeComponent();
 
-            this.presenter = Presenters.FullHtmlSourceTabPresenter;
-            this.presenter.InitWithView(this);
+            presenter = Presenters.FullHtmlSourceTabPresenter;
+            presenter.InitWithView(this);
+            presenter.InitTemplateFilesList();
+            presenter.TrySelectDefaultTemplate();
+
         }
 
         private void btnGenerateSourceCode_Click(object sender, EventArgs e)
@@ -28,6 +31,31 @@ namespace SwdPageRecorder.UI
         internal void DisplayGeneratedCode(string[] code)
         {
             txtSourceCode.Lines = code;
+        }
+
+        internal void SetPageObjectFiles(string[] files)
+        {
+            cbCodeTemplates.Items.Clear();
+            if (files.Length > 0)
+            {
+                cbCodeTemplates.Items.AddRange(files);
+            }
+
+        }
+
+        internal string GetSelectedTemplateFile()
+        {
+            string selectedTemalateName = "";
+            if (cbCodeTemplates.SelectedItem != null)
+            {
+                selectedTemalateName = cbCodeTemplates.SelectedItem as string;
+            }
+            return selectedTemalateName;
+        }
+
+        internal void WarnTemplateNeedsToBeSelected()
+        {
+            MessageBox.Show("Please, select a code template from the list");
         }
     }
 }

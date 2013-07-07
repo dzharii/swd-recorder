@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using RazorEngine;
 
 namespace SwdPageRecorder.UI
 {
@@ -22,10 +24,20 @@ namespace SwdPageRecorder.UI
             AddLine(line, lastTabsIndent);
         }
 
-
         
-        internal string[] Generate(WebElementDefinition[] definitions)
+        internal string[] Generate(WebElementDefinition[] definitions, string fullTemplatePath)
         {
+
+            var template = File.ReadAllText(fullTemplatePath);
+            var result = Razor.Parse(template, 
+                new {
+                        WebElementDefinitions = definitions,
+                
+                    });
+            
+            return Utils.SplitSingleLineToMultyLine(result);
+
+            
             GenerateCodeHeader();
 
             AddLine("// Web Elements", 1);

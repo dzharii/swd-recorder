@@ -1,0 +1,10 @@
+﻿public class Page
+{
+    @foreach (var element in @Model.WebElementDefinitions ) 
+    {
+        <text>
+            [FindsBy(How=@@"@Raw(@element.How)", Using = @@"@Raw(@element.QuotedLoacator)")]
+            public IWebElement @Raw(@element.Name) { get; set; }
+        </text>
+    }
+}
