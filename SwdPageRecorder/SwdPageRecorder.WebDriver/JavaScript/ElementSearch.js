@@ -191,63 +191,21 @@
 
     if (document.body.addEventListener) {
         document.body.addEventListener('mouseover', handler, false);
-        
-        document.addEventListener("mousedown", function (event) { // Ctrl + Right button
-            if (event.ctrlKey && event.button == 2) {
-                if (event === undefined) event = window.event;                     // IE hack
-                return preventEvent(event);
-            }
-        });
-
-        document.addEventListener("mousedown", function (event) { // Ctrl + Right button
-            if (event.ctrlKey && event.button == 2) {
-                // =====================
-
-                if (event === undefined) event = window.event;                     // IE hack
-                var target = 'target' in event ? event.target : event.srcElement; // another IE hack
-
-                var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
-                var mxy = [event.clientX + root.scrollLeft, event.clientY + root.scrollTop];
-
-                var path = getPathTo(target);
-                var txy = getPageXY(target);
-                // alert('Clicked element '+path+' offset '+(mxy[0]-txy[0])+', '+(mxy[1]-txy[1]));
-
-                // xpath = 'Clicked element '+path+' offset '+(mxy[0]-txy[0])+', '+(mxy[1]-txy[1]);
-
-                var body = document.getElementsByTagName('body')[0];
-                var xpath = path;
-
-                var JsonData = {
-                    "Command": "GetXPathFromElement",
-                    "Caller": "EventListener : mousedown",
-                    "CommandId": pseudoGuid(),
-                    "XPathValue" : xpath,
-
-                };
-
-                var myJSONText = JSON.stringify(JsonData, null, 2);
-
-                body.setAttribute("swdpr_command", myJSONText);
-
-                // !!! Add button
-
-                // addButton(event.target);
-
-                showPos(event, xpath);
-
-                return preventEvent(event);
-            }
-        });
+        document.addEventListener('contextmenu', rightClickHandler, false);
     }
     else if (document.body.attachEvent) {
         document.body.attachEvent('mouseover', function (e) {
             return handler(e || window.event);
         });
+        document.body.attachEvent('oncontextmenu', function (e) {
+            return rightClickHandler(e || window.event);
+        });
     }
     else {
         document.body.onmouseover = handler;
+        document.body.onmouseover = rightClickHandler;
     }
+
 
     function handler(event) {
         
@@ -264,6 +222,52 @@
             prev.className += " highlight";
         }
     }
+
+    // =========================
+    function rightClickHandler(event) { // Ctrl + Right button
+         if (event.ctrlKey) {
+             // =====================
+
+             if (event === undefined) event = window.event;                     // IE hack
+             var target = 'target' in event ? event.target : event.srcElement; // another IE hack
+
+             var root = document.compatMode === 'CSS1Compat' ? document.documentElement : document.body;
+             var mxy = [event.clientX + root.scrollLeft, event.clientY + root.scrollTop];
+
+             var path = getPathTo(target);
+             var txy = getPageXY(target);
+             // alert('Clicked element '+path+' offset '+(mxy[0]-txy[0])+', '+(mxy[1]-txy[1]));
+
+             // xpath = 'Clicked element '+path+' offset '+(mxy[0]-txy[0])+', '+(mxy[1]-txy[1]);
+
+             var body = document.getElementsByTagName('body')[0];
+             var xpath = path;
+
+             var JsonData = {
+                 "Command": "GetXPathFromElement",
+                 "Caller": "EventListener : mousedown",
+                 "CommandId": pseudoGuid(),
+                 "XPathValue" : xpath,
+
+             };
+
+             var myJSONText = JSON.stringify(JsonData, null, 2);
+
+             body.setAttribute("swdpr_command", myJSONText);
+
+             // !!! Add button
+
+             // addButton(event.target);
+
+             showPos(event, xpath);
+
+             return preventEvent(event);
+         }
+     }
+
+
+    // ====================
+
 
 })();
 
