@@ -230,6 +230,8 @@
             // SelectorsEditView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.groupBox2);
             this.Name = "SelectorsEditView";
             this.Size = new System.Drawing.Size(736, 157);

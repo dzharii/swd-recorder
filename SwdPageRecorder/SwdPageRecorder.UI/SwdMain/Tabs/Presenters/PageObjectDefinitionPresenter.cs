@@ -24,6 +24,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
 
+using System.ComponentModel;
+
 namespace SwdPageRecorder.UI
 {
     public class PageObjectDefinitionPresenter : IPresenter<PageObjectDefinitionView>
@@ -261,5 +263,19 @@ namespace SwdPageRecorder.UI
         {
             Process.Start(GetDefaultPageObjectsDirectory());
         }
+
+        internal void ShowPropertiesForNode(TreeNode treeNode)
+        {
+            WebElementDefinition element = (treeNode.Tag as WebElementDefinition);
+            if ( !view.isEditWebElementFromPropAllowed())
+            {
+                WebElementDefinition readOnlyElement = element.Clone();
+                TypeDescriptor.AddAttributes(readOnlyElement, new Attribute[] { new ReadOnlyAttribute(true) });
+                element = readOnlyElement;
+            }
+
+            view.propPageElement.SelectedObject = element;
+        }
+
     }
 }

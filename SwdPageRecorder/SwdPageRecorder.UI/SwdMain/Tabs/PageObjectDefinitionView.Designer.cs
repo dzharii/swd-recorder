@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("WebElements:");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("WebElements:");
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnViewInWindowsExplorer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,6 +39,8 @@
             this.lblLastCallTime = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tvWebElements = new System.Windows.Forms.TreeView();
+            this.propPageElement = new System.Windows.Forms.PropertyGrid();
+            this.chkAllowEditWebElementProps = new System.Windows.Forms.CheckBox();
             this.groupBox4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +50,8 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.chkAllowEditWebElementProps);
+            this.groupBox4.Controls.Add(this.propPageElement);
             this.groupBox4.Controls.Add(this.btnViewInWindowsExplorer);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.btnSavePageObject);
@@ -118,13 +122,13 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.lblLastCallTime);
             this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Location = new System.Drawing.Point(7, 274);
+            this.groupBox7.Location = new System.Drawing.Point(6, 435);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(225, 134);
+            this.groupBox7.Size = new System.Drawing.Size(225, 34);
             this.groupBox7.TabIndex = 3;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Stats";
@@ -132,7 +136,7 @@
             // lblLastCallTime
             // 
             this.lblLastCallTime.AutoSize = true;
-            this.lblLastCallTime.Location = new System.Drawing.Point(62, 28);
+            this.lblLastCallTime.Location = new System.Drawing.Point(61, 16);
             this.lblLastCallTime.Name = "lblLastCallTime";
             this.lblLastCallTime.Size = new System.Drawing.Size(26, 13);
             this.lblLastCallTime.TabIndex = 1;
@@ -141,7 +145,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 28);
+            this.label4.Location = new System.Drawing.Point(6, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 0;
@@ -153,16 +157,38 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvWebElements.Location = new System.Drawing.Point(7, 75);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode1.Name = "Node0";
-            treeNode1.Text = "WebElements:";
+            treeNode2.Name = "Node0";
+            treeNode2.Text = "WebElements:";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.tvWebElements.Size = new System.Drawing.Size(225, 186);
+            treeNode2});
+            this.tvWebElements.Size = new System.Drawing.Size(225, 133);
             this.tvWebElements.TabIndex = 2;
+            this.tvWebElements.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseClick);
             this.tvWebElements.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseDoubleClick);
             this.tvWebElements.DragDrop += new System.Windows.Forms.DragEventHandler(this.tvWebElements_DragDrop);
             this.tvWebElements.DragEnter += new System.Windows.Forms.DragEventHandler(this.tvWebElements_DragEnter);
             this.tvWebElements.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tvWebElements_KeyUp);
+            // 
+            // propPageElement
+            // 
+            this.propPageElement.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propPageElement.Location = new System.Drawing.Point(7, 238);
+            this.propPageElement.Name = "propPageElement";
+            this.propPageElement.Size = new System.Drawing.Size(224, 191);
+            this.propPageElement.TabIndex = 9;
+            // 
+            // chkAllowEditWebElementProps
+            // 
+            this.chkAllowEditWebElementProps.AutoSize = true;
+            this.chkAllowEditWebElementProps.Location = new System.Drawing.Point(7, 215);
+            this.chkAllowEditWebElementProps.Name = "chkAllowEditWebElementProps";
+            this.chkAllowEditWebElementProps.Size = new System.Drawing.Size(186, 17);
+            this.chkAllowEditWebElementProps.TabIndex = 10;
+            this.chkAllowEditWebElementProps.Text = "Allow edit web element properties ";
+            this.chkAllowEditWebElementProps.UseVisualStyleBackColor = true;
+            this.chkAllowEditWebElementProps.CheckedChanged += new System.EventHandler(this.chkAllowEditWebElementProps_CheckedChanged);
             // 
             // PageObjectDefinitionView
             // 
@@ -190,5 +216,7 @@
         public System.Windows.Forms.ComboBox cbPageObjectFiles;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button btnViewInWindowsExplorer;
+        public System.Windows.Forms.PropertyGrid propPageElement;
+        private System.Windows.Forms.CheckBox chkAllowEditWebElementProps;
     }
 }

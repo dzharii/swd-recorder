@@ -48,6 +48,15 @@ namespace SwdPageRecorder.UI
             if (presenter.IsWebElementNode(e.Node))
             {
                 presenter.OpenExistingNodeForEdit(e.Node);
+                presenter.ShowPropertiesForNode(e.Node);
+            }
+        }
+
+        private void tvWebElements_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (presenter.IsWebElementNode(e.Node))
+            {
+                presenter.ShowPropertiesForNode(e.Node);
             }
         }
 
@@ -257,6 +266,17 @@ namespace SwdPageRecorder.UI
         private void btnViewInWindowsExplorer_Click(object sender, EventArgs e)
         {
             presenter.OpenDefaultFolderInWindowsExplorer();
+        }
+
+        private void chkAllowEditWebElementProps_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+
+
+        internal bool isEditWebElementFromPropAllowed()
+        {
+            return chkAllowEditWebElementProps.Checked;
         }
     }
 }

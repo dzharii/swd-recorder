@@ -7,8 +7,9 @@ RELESE 0.1
     [+] Razor PageObject templates
         [+] C#
         [+] Java
-        [-] Ruby
-        [-] Python
+[-] Implement Properties view for PageElement using standard property control
+    [+] View
+    [+] Edit
 [-] Read/Save application settings/PageObjects
     [-] Application Settings
     [+] PageObjects
@@ -32,6 +33,9 @@ RELESE 0.2
 --------------------------------------------------
 [-] XPath/CSS selectors internal processing
     [-] FizzlerEx: http://fizzlerex.codeplex.com/
+[+] Razor PageObject templates
+    [-] Ruby
+    [-] Python
 [-] Implement TestBox for element with click/sendkeys, etc
 [-] PageObject loading/source code integration
 [-] WebDriver proxy: Use SWDPR as a proxy that allows to reconnect to 
