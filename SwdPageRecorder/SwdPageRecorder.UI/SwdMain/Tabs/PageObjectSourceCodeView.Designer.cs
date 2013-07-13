@@ -52,6 +52,7 @@
             this.txtSourceCode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSourceCode.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtSourceCode.Location = new System.Drawing.Point(3, 31);
             this.txtSourceCode.Multiline = true;
             this.txtSourceCode.Name = "txtSourceCode";

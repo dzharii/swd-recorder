@@ -22,7 +22,7 @@ RELESE 0.1
 [+] Implement visual search for element
     [+] Implement DOM box
     [+] Implement 2 sides communication (via JSON serialization) (http://www.sitepoint.com/javascript-json-serialization/)
-    [-] Make it user friendly
+    [+] Make it user friendly
 
 [+] Implement interactions through JavaScript window.Object
     Using WebDriver to automatically check for JavaScript errors on every page

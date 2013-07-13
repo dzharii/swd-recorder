@@ -76,19 +76,33 @@ namespace SwdPageRecorder.UI
 
         public void VisualSearch_UpdateSearchResult()
         {
-
-            while (stopVisualSearch == false)
+            try
             {
-                try
+                MyLog.Write("VisualSearch_UpdateSearchResult: Started");
+                while (stopVisualSearch == false)
                 {
-                    ProcessCommands();
+                    try
+                    {
+                        if (!SwdBrowser.IsVisualSearchScriptInjected())
+                        {
+                            MyLog.Write("VisualSearch_UpdateSearchResult: Found the Visual search is not injected. Injecting");
+                            SwdBrowser.InjectVisualSearch();
+                        }
+
+                        ProcessCommands();
+                    }
+                    catch (Exception e)
+                    {
+                        StopVisualSearch();
+                        MyLog.Exception(e);
+                    }
+                    Thread.Sleep(1000);
                 }
-                catch(Exception e)
-                {
-                    StopVisualSearch();
-                    MessageBox.Show(e.ToString());
-                }
-                Thread.Sleep(100);
+            }
+            finally
+            {
+                StopVisualSearch();
+                MyLog.Write("VisualSearch_UpdateSearchResult: Finished");
             }
 
         }
@@ -108,11 +122,20 @@ namespace SwdPageRecorder.UI
                 visualSearchWorker = null;
             }
 
+            stopVisualSearch = false;
+
             visualSearchWorker = new Thread(VisualSearch_UpdateSearchResult);
             visualSearchWorker.IsBackground = true;
             visualSearchWorker.Start();
+
+            while (!visualSearchWorker.IsAlive)
+            {
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(1);
+            }
+
             view.VisuaSearchStarted();
-            stopVisualSearch = false;
+            
         }
 
         

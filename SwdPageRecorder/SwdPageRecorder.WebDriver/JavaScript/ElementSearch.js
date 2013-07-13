@@ -243,6 +243,8 @@
 
 
     // ====================
+    window.swd_visual_search_injected = "swd_visual_search_injected";
+    // ====================
 
 
 })();

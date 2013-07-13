@@ -82,5 +82,7 @@ namespace SwdPageRecorder.UI
         {
             System.Diagnostics.Process.Start(@"https://github.com/dzhariy/swd-recorder");
         }
+
+
     }
 }

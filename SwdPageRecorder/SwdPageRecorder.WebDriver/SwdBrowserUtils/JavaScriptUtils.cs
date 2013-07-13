@@ -43,15 +43,29 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
 
 
 
-
-
-
         internal static void InjectVisualSearch(IWebDriver webDriver)
         {
+
+            MyLog.Write("InjectVisualSearch: Started");
             string javaScript = ReadJavaScriptFromFile(Path.Combine("JavaScript", "ElementSearch.js"));
             IJavaScriptExecutor jsExec = webDriver as IJavaScriptExecutor;
 
-            jsExec.ExecuteScript(javaScript);
+            if (!IsVisualSearchScriptInjected(webDriver))
+            {
+                MyLog.Write("InjectVisualSearch: Was not injected. Perform Inject");
+                jsExec.ExecuteScript(javaScript);
+            }
+            MyLog.Write("InjectVisualSearch: Finished");
+        }
+
+        public static bool IsVisualSearchScriptInjected(IWebDriver webDriver)
+        {
+            string jsCheckScript = @"return window.swd_visual_search_injected === undefined ? 'false' : 'true';";
+            IJavaScriptExecutor jsExec = webDriver as IJavaScriptExecutor;
+
+            string isInjected = jsExec.ExecuteScript(jsCheckScript) as string;
+            return isInjected == "true";
+            
         }
 
         internal static void HighlightElement(By by)

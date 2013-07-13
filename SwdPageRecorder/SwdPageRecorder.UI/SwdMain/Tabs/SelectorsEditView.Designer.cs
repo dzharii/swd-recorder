@@ -122,6 +122,7 @@
             // 
             this.txtWebElementName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtWebElementName.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWebElementName.Location = new System.Drawing.Point(132, 13);
             this.txtWebElementName.Name = "txtWebElementName";
             this.txtWebElementName.Size = new System.Drawing.Size(481, 20);
@@ -140,6 +141,7 @@
             // 
             this.txtOtherLocator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOtherLocator.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtOtherLocator.Location = new System.Drawing.Point(132, 115);
             this.txtOtherLocator.Name = "txtOtherLocator";
             this.txtOtherLocator.Size = new System.Drawing.Size(481, 20);
@@ -169,6 +171,7 @@
             // 
             this.txtHtmlId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHtmlId.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtHtmlId.Location = new System.Drawing.Point(132, 39);
             this.txtHtmlId.Name = "txtHtmlId";
             this.txtHtmlId.Size = new System.Drawing.Size(481, 20);
@@ -191,6 +194,7 @@
             // 
             this.txtXPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtXPath.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtXPath.Location = new System.Drawing.Point(132, 87);
             this.txtXPath.Name = "txtXPath";
             this.txtXPath.Size = new System.Drawing.Size(481, 20);
@@ -221,6 +225,7 @@
             // 
             this.txtCssSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCssSelector.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtCssSelector.Location = new System.Drawing.Point(132, 64);
             this.txtCssSelector.Name = "txtCssSelector";
             this.txtCssSelector.Size = new System.Drawing.Size(481, 20);

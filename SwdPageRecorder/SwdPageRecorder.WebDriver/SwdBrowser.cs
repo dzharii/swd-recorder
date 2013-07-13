@@ -95,6 +95,11 @@ namespace SwdPageRecorder.WebDriver
             JavaScriptUtils.InjectVisualSearch(GetDriver());
         }
 
+        public static bool IsVisualSearchScriptInjected()
+        {
+            return JavaScriptUtils.IsVisualSearchScriptInjected(GetDriver());
+        }
+
         public static void HighlightElement(By by)
         {
             JavaScriptUtils.HighlightElement(by, GetDriver());
