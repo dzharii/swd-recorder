@@ -108,7 +108,7 @@
         element.id = 'SwdPR_PopUp';
         document.getElementsByTagName('body')[0].appendChild(element);
 
-        var closeClickHandler = "document.getElementById('SwdPR_PopUp').style.display = 'none';";
+        var closeClickHandler = "document.getElementById('SwdPR_PopUp').style.display = 'none'; window.Swd_highLightElement();";
         element.innerHTML = 
         ' <table id="SWDTable">' +
         '   <tr>' +
@@ -202,6 +202,7 @@
     //===================================================================
 
     var prev;
+    window.Swd_prevActiveElement = undefined;
 
     if (document.body.addEventListener) {
         document.body.addEventListener('mouseover', handler, false);
@@ -234,6 +235,18 @@
         if (event.target && event.ctrlKey) {
             prev = event.target;
             prev.className += " highlight";
+        }
+    }
+
+    window.Swd_highLightElement = function highLightElement(targetElement) {
+        
+        if (window.Swd_prevActiveElement) {
+            window.Swd_prevActiveElement.className = window.Swd_prevActiveElement.className.replace(/\bhighlight\b/, '');
+            window.Swd_prevActiveElement = undefined;
+        }
+        if (targetElement) {
+            window.Swd_prevActiveElement = targetElement;
+            window.Swd_prevActiveElement.className += " highlight";
         }
     }
 
@@ -273,6 +286,7 @@
 
              // addButton(event.target);
 
+             window.Swd_highLightElement(target);
              showPos(event, xpath);
 
              return preventEvent(event);
