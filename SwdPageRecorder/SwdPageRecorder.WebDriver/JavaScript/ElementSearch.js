@@ -1,7 +1,6 @@
 ﻿(function () {
     // =================== XPATH 
 
-    // Migrated
     function pseudoGuid() {
         var result = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
         result = result.replace(/[xy]/g, function(c) 
@@ -13,7 +12,6 @@
         return result;
     }
 
-    // Migrated
     function getPathTo(element) {
         if (element.id !== '')
             return 'id("' + element.id + '")';
@@ -40,12 +38,9 @@
         }
         return [x, y];
     }
-
-
     // ==========================
 
     // ====== SHOW DIV Coords==============
-
     function showPos(event, xpath) {
         
         var el, x, y;
@@ -71,36 +66,14 @@
         el.style.border = "3px solid black";
         el.style.padding = "5px 5px 5px 5px";
         el.style.zIndex = 2147483647;
-
-        
-        
         
         document.getElementById("SwdPR_PopUp_XPathLocator").innerHTML = xpath;
         document.getElementById("SwdPR_PopUp_ElementText").innerHTML = pseudoGuid();
         document.getElementById("SwdPR_PopUp_CodeIDText").value = '';
-
-        
-        
-
         console.log(x + ";" + y);
     }
 
-    // ================= ADD button
-    function addButton(container) {
-        //Create an input type dynamically.   
-        var element = document.createElement("input");
-        //Assign different attributes to the element. 
-        element.type = 'button';
-        element.value = 'Click Me'; 
-        element.name = '';  
-        element.onclick = function() { // Note this is a function
-            alert("blabla");
-        };
 
-        container.appendChild(element);
-    }
-
-    // Migrated
     function createElementForm() {
         //Create an input type dynamically.   
         var element = document.createElement("div");
@@ -108,7 +81,7 @@
         element.id = 'SwdPR_PopUp';
         document.getElementsByTagName('body')[0].appendChild(element);
 
-        var closeClickHandler = "document.getElementById('SwdPR_PopUp').style.display = 'none'; window.Swd_highLightElement();";
+        var closeClickHandler = "document.getElementById('SwdPR_PopUp').style.display = 'none';";
         element.innerHTML = 
         ' <table id="SWDTable">' +
         '   <tr>' +
@@ -147,17 +120,16 @@
 
         };
 
-        var myJSONText = JSON.stringify(JsonData, null, 2);
-
-        // TODO: Reduce this copy-paste
-        var body = document.getElementsByTagName('body')[0];
-        body.setAttribute("swdpr_command", myJSONText);        
-
+        createCommand(JsonData);
     };
 
 
     //===========================
 
+    function createCommand(jsonData) {
+        var myJSONText = JSON.stringify(jsonData, null, 2);
+        window.swdpr_command = myJSONText;
+    }
 
     function addStyle(str) {
         var el = document.createElement('style');
@@ -190,12 +162,8 @@
     addStyle(".highlight { background-color:silver !important}");
     addStyle("table#SWDTable { background-color:white; border-collapse:collapse;} table#SWDTable,table#SWDTable th, table#SWDTable td { font-family: Verdana, Arial; font-size: 10pt; padding-left:10pt; padding-right:10pt; border-bottom: 1px solid black; }");
     addStyle("input#SwdPR_PopUp_CodeIDText { display:table-cell; width:95%;}");
-
-      
     addStyle("span#SwdPR_PopUp_CloseButton {  display:table-cell; width:10px; border: 2px solid #c2c2c2; padding: 1px 5px; top: -20px; background-color: #980000; border-radius: 20px; font-size: 15px; font-weight: bold; color: white;text-decoration: none; cursor:pointer; }");
     addStyle("div#SwdPR_PopUp { display:none; } div#SwdPR_PopUp_Element_Name { display:table; width: 100%; } ");
-    
-
 
 
     createElementForm();
@@ -224,8 +192,8 @@
 
     function handler(event) {
         
-        if (event.target === document.body ||
-            (prev && prev === event.target)) {
+        if (event.target === document.body
+        || (prev && prev === event.target)) {
             return;
         }
         if (prev) {
@@ -235,18 +203,6 @@
         if (event.target && event.ctrlKey) {
             prev = event.target;
             prev.className += " highlight";
-        }
-    }
-
-    window.Swd_highLightElement = function highLightElement(targetElement) {
-        
-        if (window.Swd_prevActiveElement) {
-            window.Swd_prevActiveElement.className = window.Swd_prevActiveElement.className.replace(/\bhighlight\b/, '');
-            window.Swd_prevActiveElement = undefined;
-        }
-        if (targetElement) {
-            window.Swd_prevActiveElement = targetElement;
-            window.Swd_prevActiveElement.className += " highlight";
         }
     }
 
@@ -277,16 +233,8 @@
                  "XPathValue" : xpath,
 
              };
+             createCommand(JsonData);
 
-             var myJSONText = JSON.stringify(JsonData, null, 2);
-
-             body.setAttribute("swdpr_command", myJSONText);
-
-             // !!! Add button
-
-             // addButton(event.target);
-
-             window.Swd_highLightElement(target);
              showPos(event, xpath);
 
              return preventEvent(event);

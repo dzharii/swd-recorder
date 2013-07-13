@@ -63,6 +63,7 @@
     <Compile Include="JsCommand\BrowserCommand.cs" />
     <Compile Include="JsCommand\BrowserCommandParser.cs" />
     <Compile Include="JsCommand\GetXPathFromElement.cs" />
+    <Compile Include="MyLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwdBrowser.cs" />
     <Compile Include="SwdBrowserUtils\BrowserCommands.cs" />
@@ -81,9 +82,9 @@
     <Content Include="IEDriverServer.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="JavaScript\ElementSearch.js">
+    <None Include="JavaScript\ElementSearch.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="JavaScript\Lib\" />

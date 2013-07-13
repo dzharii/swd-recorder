@@ -267,13 +267,13 @@ namespace SwdPageRecorder.UI
         internal void ShowPropertiesForNode(TreeNode treeNode)
         {
             WebElementDefinition element = (treeNode.Tag as WebElementDefinition);
+
             if ( !view.isEditWebElementFromPropAllowed())
             {
                 WebElementDefinition readOnlyElement = element.Clone();
                 TypeDescriptor.AddAttributes(readOnlyElement, new Attribute[] { new ReadOnlyAttribute(true) });
                 element = readOnlyElement;
             }
-
             view.propPageElement.SelectedObject = element;
         }
 

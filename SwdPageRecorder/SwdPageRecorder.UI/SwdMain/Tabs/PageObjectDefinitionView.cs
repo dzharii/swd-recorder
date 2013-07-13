@@ -272,11 +272,10 @@ namespace SwdPageRecorder.UI
         {
         }
 
-
-
         internal bool isEditWebElementFromPropAllowed()
         {
             return chkAllowEditWebElementProps.Checked;
         }
+
     }
 }

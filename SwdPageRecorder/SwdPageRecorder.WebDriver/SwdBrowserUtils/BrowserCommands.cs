@@ -23,22 +23,26 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
     public static class BrowserCommands
     {
 
+        const string javaScript_GetCommand = @"return window.swdpr_command === undefined ? '' : window.swdpr_command;";
+        
         private static string lastCommandId = null;
         public static BrowserCommand GetNextCommand(IWebDriver webDriver)
         {
             BrowserCommand result = null;
+            IJavaScriptExecutor js = webDriver as IJavaScriptExecutor;
 
-            IWebElement body = null;
+            string jsonCommand = string.Empty;
 
             try
             {
-                body = SwdBrowser.GetDriver().FindElement(By.TagName(@"body"));
+                jsonCommand = js.ExecuteScript(javaScript_GetCommand) as string;
             }
-            catch { }
-
-            if (body == null) return null;
-
-            string jsonCommand = body.GetAttribute("swdpr_command");
+            catch (Exception e)
+            { 
+                MyLog.Exception(e);
+                jsonCommand = "";
+                throw;
+            }
 
             if (!String.IsNullOrWhiteSpace(jsonCommand))
             {

@@ -301,7 +301,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox1);
             this.Name = "SwdMainView";
-            this.Text = "SWD Page Recorder v0.1 alpha";
+            this.Text = "SWD Page Recorder v0.1 beta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("WebElements:");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("WebElements:");
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnViewInWindowsExplorer = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -157,10 +157,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvWebElements.Location = new System.Drawing.Point(7, 75);
             this.tvWebElements.Name = "tvWebElements";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "WebElements:";
+            treeNode5.Name = "Node0";
+            treeNode5.Text = "WebElements:";
             this.tvWebElements.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode5});
             this.tvWebElements.Size = new System.Drawing.Size(225, 133);
             this.tvWebElements.TabIndex = 2;
             this.tvWebElements.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvWebElements_NodeMouseClick);
@@ -184,9 +184,9 @@
             this.chkAllowEditWebElementProps.AutoSize = true;
             this.chkAllowEditWebElementProps.Location = new System.Drawing.Point(7, 215);
             this.chkAllowEditWebElementProps.Name = "chkAllowEditWebElementProps";
-            this.chkAllowEditWebElementProps.Size = new System.Drawing.Size(186, 17);
+            this.chkAllowEditWebElementProps.Size = new System.Drawing.Size(187, 17);
             this.chkAllowEditWebElementProps.TabIndex = 10;
-            this.chkAllowEditWebElementProps.Text = "Allow edit web element properties ";
+            this.chkAllowEditWebElementProps.Text = "Allow edit WebElement properties ";
             this.chkAllowEditWebElementProps.UseVisualStyleBackColor = true;
             this.chkAllowEditWebElementProps.CheckedChanged += new System.EventHandler(this.chkAllowEditWebElementProps_CheckedChanged);
             // 
