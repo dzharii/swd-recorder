@@ -63,16 +63,23 @@
         x -= 2; y -= 2;
         y = y+15;
 
+        el.style.background = "white";
         el.style.position = "absolute";
         el.style.left = x + "px";
         el.style.top = y + "px";
         el.style.display = "block";
+        el.style.border = "3px solid black";
+        el.style.padding = "5px 5px 5px 5px";
         el.style.zIndex = 2147483647;
+
         
         
         
         document.getElementById("SwdPR_PopUp_XPathLocator").innerHTML = xpath;
         document.getElementById("SwdPR_PopUp_ElementText").innerHTML = pseudoGuid();
+        document.getElementById("SwdPR_PopUp_CodeIDText").value = '';
+
+        
         
 
         console.log(x + ";" + y);
@@ -99,15 +106,14 @@
         var element = document.createElement("div");
         //Assign different attributes to the element. 
         element.id = 'SwdPR_PopUp';
-        element.style = 'display: block; position: absolute; left: 100px; top: 50px; border: solid black 1px; padding: 10px; background-color: rgb(200,100,100); text-align: justify; font-size: 12px; width: 135px;';
-        element.name = '';  
         document.getElementsByTagName('body')[0].appendChild(element);
 
+        var closeClickHandler = "document.getElementById('SwdPR_PopUp').style.display = 'none';";
         element.innerHTML = 
         ' <table id="SWDTable">' +
         '   <tr>' +
         '     <td>Code identifier</td>' +
-        '     <td><span id="SwdPR_PopUp_CodeID"><input type="text" id="SwdPR_PopUp_CodeIDText"></span></td>' +
+        '     <td><div id="SwdPR_PopUp_Element_Name"><span id="SwdPR_PopUp_CodeID"><input type="text" id="SwdPR_PopUp_CodeIDText"></span><span id="SwdPR_PopUp_CodeClose"></span><span id="SwdPR_PopUp_CloseButton" onclick="' + closeClickHandler + '">X</span></div></td>' +
         '   </tr>' +
         '   <tr>' +
         '     <td>Element</td>' +
@@ -182,7 +188,15 @@
 
     // ========== MAIN !!!!!! ============================
     addStyle(".highlight { background-color:silver !important}");
-    addStyle("table#SWDTable { background-color:white; border-collapse:collapse; } table#SWDTable,table#SWDTable th, table#SWDTable td { border: 1px solid black; }");
+    addStyle("table#SWDTable { background-color:white; border-collapse:collapse;} table#SWDTable,table#SWDTable th, table#SWDTable td { font-family: Verdana, Arial; font-size: 10pt; padding-left:10pt; padding-right:10pt; border-bottom: 1px solid black; }");
+    addStyle("input#SwdPR_PopUp_CodeIDText { display:table-cell; width:95%;}");
+
+      
+    addStyle("span#SwdPR_PopUp_CloseButton {  display:table-cell; width:10px; border: 2px solid #c2c2c2; padding: 1px 5px; top: -20px; background-color: #980000; border-radius: 20px; font-size: 15px; font-weight: bold; color: white;text-decoration: none; cursor:pointer; }");
+    addStyle("div#SwdPR_PopUp { display:none; } div#SwdPR_PopUp_Element_Name { display:table; width: 100%; } ");
+    
+
+
 
     createElementForm();
     //===================================================================
