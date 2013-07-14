@@ -11,6 +11,7 @@ RELESE 0.1
 [!] Implement "Update Properties from WebElement"
     [+] Read all props
     [-] UI implementation
+    [-] Update Visual Search with reading additional props (Extend command)
 
 [+] Generate Page Object source code
     [+] Razor PageObject templates
