@@ -18,5 +18,7 @@ namespace SwdPageRecorder.UI
         PartialLinkText = 6,
         XPath = 7,
         Custom = 8,
+        ByJavaScriptExpression = 20,
+        ByCustomCodeExpression = 30,
     }
 }

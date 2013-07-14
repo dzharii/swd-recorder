@@ -70,12 +70,36 @@ namespace SwdPageRecorder.UI
 
         internal void VisualSearchStopped()
         {
-            btnStartVisualSearch.Text = "Start";
+            var action = (MethodInvoker)delegate
+            {
+                btnStartVisualSearch.Text = "Start";
+            };
+
+            if (btnStartVisualSearch.InvokeRequired)
+            {
+                btnStartVisualSearch.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
         }
 
         internal void VisuaSearchStarted()
         {
-            btnStartVisualSearch.Text = "Stop";
+            var action = (MethodInvoker)delegate
+            {
+                btnStartVisualSearch.Text = "Stop";
+            };
+
+            if (btnStartVisualSearch.InvokeRequired)
+            {
+                btnStartVisualSearch.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

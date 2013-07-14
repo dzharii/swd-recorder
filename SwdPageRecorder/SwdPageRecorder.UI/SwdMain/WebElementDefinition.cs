@@ -29,19 +29,26 @@ namespace SwdPageRecorder.UI
         public bool ReturnsCollection { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
-        public bool DependsOnOtherWebElement { get; set; }
-
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
-        public string MasterWebElementName { get; set; }
-
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
         public WebElementHtmlAttributes AllHtmlTagProperties { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public string Arg1 { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public string Arg2 { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public string Arg3 { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public string Arg4 { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public string Arg5 { get; set; }
 
         public WebElementDefinition()
         {
             ReturnsCollection = false;
-            DependsOnOtherWebElement = false;
-            MasterWebElementName = "";
             AlternativeFindsBy = new WebElementLocator[] { };
             HtmlTag = "";
             AllHtmlTagProperties = new WebElementHtmlAttributes();

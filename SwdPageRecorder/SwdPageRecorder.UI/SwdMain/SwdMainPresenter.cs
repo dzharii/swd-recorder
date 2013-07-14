@@ -30,6 +30,9 @@ namespace SwdPageRecorder.UI
 
         public Thread visualSearchWorker = null;
 
+        const int VisualSearchQueryDelayMs = 777;
+
+
         public void InitView(SwdMainView view)
         {
             this.view = view;
@@ -96,7 +99,7 @@ namespace SwdPageRecorder.UI
                         StopVisualSearch();
                         MyLog.Exception(e);
                     }
-                    Thread.Sleep(1000);
+                    Thread.Sleep(VisualSearchQueryDelayMs);
                 }
             }
             finally

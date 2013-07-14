@@ -155,9 +155,12 @@ namespace SwdPageRecorder.WebDriver
             }
         }
 
+        public static Dictionary<string, string> ReadElementAttributes(By by)
+        {
+            return JavaScriptUtils.ReadElementAttributes(by, GetDriver());
+        }
 
         static readonly Finalizer finalizer = new Finalizer();
-
         sealed class Finalizer
         {
             ~Finalizer()
@@ -165,6 +168,5 @@ namespace SwdPageRecorder.WebDriver
                 CloseDriver();
             }
         }
-
     }
 }

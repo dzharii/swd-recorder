@@ -268,14 +268,5 @@ namespace SwdPageRecorder.UI
             presenter.OpenDefaultFolderInWindowsExplorer();
         }
 
-        private void chkAllowEditWebElementProps_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        internal bool isEditWebElementFromPropAllowed()
-        {
-            return chkAllowEditWebElementProps.Checked;
-        }
-
     }
 }

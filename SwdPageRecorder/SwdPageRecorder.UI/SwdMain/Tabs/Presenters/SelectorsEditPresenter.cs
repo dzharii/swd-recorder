@@ -80,5 +80,27 @@ namespace SwdPageRecorder.UI
         {
             return view.GetLocatorText();
         }
+
+        internal void ReadElementProperties(WebElementDefinition element)
+        {
+            var by = Utils.ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
+            var attributes = SwdBrowser.ReadElementAttributes(by);
+
+            if (attributes.Count == 0) return;
+
+            element.HtmlTag = attributes["TagName"];
+            attributes.Remove("TagName");
+
+            WebElementHtmlAttributes elementAttrs = new WebElementHtmlAttributes();
+
+            foreach (var attrKey in attributes.Keys)
+            {
+                elementAttrs.Add(attrKey, attributes[attrKey]);
+            }
+
+            element.AllHtmlTagProperties = elementAttrs;
+
+            view.UpdateElementPropertiesForm(element);
+        }
     }
 }

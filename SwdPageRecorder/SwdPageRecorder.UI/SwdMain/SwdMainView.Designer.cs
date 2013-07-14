@@ -125,7 +125,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pageObjectDefinitionView);
-            this.splitContainer1.Size = new System.Drawing.Size(1002, 480);
+            this.splitContainer1.Size = new System.Drawing.Size(1002, 450);
             this.splitContainer1.SplitterDistance = 748;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -139,7 +139,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(748, 480);
+            this.tabControl1.Size = new System.Drawing.Size(748, 450);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -148,7 +148,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(740, 454);
+            this.tabPage1.Size = new System.Drawing.Size(740, 424);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Browser Settings";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.browserSettingsTab1.Location = new System.Drawing.Point(6, 6);
             this.browserSettingsTab1.Name = "browserSettingsTab1";
-            this.browserSettingsTab1.Size = new System.Drawing.Size(728, 442);
+            this.browserSettingsTab1.Size = new System.Drawing.Size(728, 412);
             this.browserSettingsTab1.TabIndex = 0;
             // 
             // tabPage2
@@ -171,7 +171,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(740, 454);
+            this.tabPage2.Size = new System.Drawing.Size(740, 424);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Locators";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -184,7 +184,7 @@
             this.selectorsEditView.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.selectorsEditView.Location = new System.Drawing.Point(3, 6);
             this.selectorsEditView.Name = "selectorsEditView";
-            this.selectorsEditView.Size = new System.Drawing.Size(731, 153);
+            this.selectorsEditView.Size = new System.Drawing.Size(731, 179);
             this.selectorsEditView.TabIndex = 6;
             // 
             // htmlDomTesterView1
@@ -192,9 +192,9 @@
             this.htmlDomTesterView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.htmlDomTesterView1.Location = new System.Drawing.Point(2, 234);
+            this.htmlDomTesterView1.Location = new System.Drawing.Point(2, 243);
             this.htmlDomTesterView1.Name = "htmlDomTesterView1";
-            this.htmlDomTesterView1.Size = new System.Drawing.Size(739, 220);
+            this.htmlDomTesterView1.Size = new System.Drawing.Size(739, 182);
             this.htmlDomTesterView1.TabIndex = 5;
             // 
             // grpVisualSearch
@@ -204,9 +204,9 @@
             this.grpVisualSearch.Controls.Add(this.label1);
             this.grpVisualSearch.Controls.Add(this.btnStartVisualSearch);
             this.grpVisualSearch.Controls.Add(this.txtVisualSearchResult);
-            this.grpVisualSearch.Location = new System.Drawing.Point(7, 165);
+            this.grpVisualSearch.Location = new System.Drawing.Point(6, 182);
             this.grpVisualSearch.Name = "grpVisualSearch";
-            this.grpVisualSearch.Size = new System.Drawing.Size(727, 71);
+            this.grpVisualSearch.Size = new System.Drawing.Size(727, 61);
             this.grpVisualSearch.TabIndex = 4;
             this.grpVisualSearch.TabStop = false;
             this.grpVisualSearch.Text = "Visual Search";
@@ -236,7 +236,7 @@
             // 
             this.txtVisualSearchResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVisualSearchResult.Location = new System.Drawing.Point(6, 19);
+            this.txtVisualSearchResult.Location = new System.Drawing.Point(6, 20);
             this.txtVisualSearchResult.Name = "txtVisualSearchResult";
             this.txtVisualSearchResult.Size = new System.Drawing.Size(602, 20);
             this.txtVisualSearchResult.TabIndex = 0;
@@ -247,7 +247,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(740, 454);
+            this.tabPage3.Size = new System.Drawing.Size(740, 424);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Source Code";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -259,7 +259,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pageObjectSourceCodeView1.Location = new System.Drawing.Point(2, 0);
             this.pageObjectSourceCodeView1.Name = "pageObjectSourceCodeView1";
-            this.pageObjectSourceCodeView1.Size = new System.Drawing.Size(732, 448);
+            this.pageObjectSourceCodeView1.Size = new System.Drawing.Size(732, 418);
             this.pageObjectSourceCodeView1.TabIndex = 0;
             // 
             // tabPage4
@@ -268,7 +268,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(740, 454);
+            this.tabPage4.Size = new System.Drawing.Size(740, 424);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "HTML Source";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -280,7 +280,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.fullHtmlSourceTabView1.Location = new System.Drawing.Point(6, 6);
             this.fullHtmlSourceTabView1.Name = "fullHtmlSourceTabView1";
-            this.fullHtmlSourceTabView1.Size = new System.Drawing.Size(728, 442);
+            this.fullHtmlSourceTabView1.Size = new System.Drawing.Size(728, 412);
             this.fullHtmlSourceTabView1.TabIndex = 0;
             // 
             // pageObjectDefinitionView
@@ -290,14 +290,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pageObjectDefinitionView.Location = new System.Drawing.Point(3, 3);
             this.pageObjectDefinitionView.Name = "pageObjectDefinitionView";
-            this.pageObjectDefinitionView.Size = new System.Drawing.Size(244, 470);
+            this.pageObjectDefinitionView.Size = new System.Drawing.Size(244, 440);
             this.pageObjectDefinitionView.TabIndex = 2;
             // 
             // SwdMainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 542);
+            this.ClientSize = new System.Drawing.Size(1014, 512);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox1);
             this.Name = "SwdMainView";

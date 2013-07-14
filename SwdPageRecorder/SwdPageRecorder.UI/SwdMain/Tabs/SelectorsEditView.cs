@@ -96,6 +96,9 @@ namespace SwdPageRecorder.UI
                 Name = txtWebElementName.Text,
                 HowToSearch = GetLocatorSearchMethod(),
                 Locator = GetLocatorText(),
+
+                // Properties
+                HtmlTag = txtPropHtmlTag.Text,
             };
             return element;
         }
@@ -219,6 +222,17 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        private void btnReadElementProperties_Click(object sender, EventArgs e)
+        {
+            var element = GetWebElementDefinitionFromForm();
+            presenter.ReadElementProperties(element);
+        }
 
+
+
+        internal void UpdateElementPropertiesForm(WebElementDefinition element)
+        {
+            txtPropHtmlTag.Text = element.HtmlTag;
+        }
     }
 }
