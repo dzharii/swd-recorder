@@ -114,3 +114,8 @@ More Ideas
 ==================================================
 Notes
 ==================================================
+
+Linux Support:
+
+    http://unix.stackexchange.com/questions/36529/generating-a-linux-executable-with-mono-with-mkbundle
+    http://www.mono-project.com/AOT
