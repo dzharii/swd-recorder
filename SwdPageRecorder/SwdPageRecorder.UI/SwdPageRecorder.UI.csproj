@@ -73,6 +73,8 @@
     <Compile Include="IPresenter.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="Presenters.cs" />
+    <Compile Include="SwdMain\WebElementHtmlAttributes.cs" />
+    <Compile Include="SwdMain\SerializableDictionary.cs" />
     <Compile Include="SwdMain\Tabs\BrowserSettingsTabView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -132,6 +134,7 @@
     <Compile Include="SwdMain\TravelNode.cs" />
     <Compile Include="SwdMain\WebElementDefinition.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="SwdMain\WebElementLocator.cs" />
     <Compile Include="WinFromsExtensions.cs" />
     <EmbeddedResource Include="SwdMain\SwdMainView.resx">
       <DependentUpon>SwdMainView.cs</DependentUpon>

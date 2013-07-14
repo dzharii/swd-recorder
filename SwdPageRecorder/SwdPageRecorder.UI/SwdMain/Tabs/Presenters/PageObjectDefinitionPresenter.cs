@@ -49,11 +49,8 @@ namespace SwdPageRecorder.UI
 
         public void InitWithView(PageObjectDefinitionView view)
         {
-
             this.view = view;
         }
-
-
 
         internal void UpdatePageDefinition(WebElementDefinition element)
         {
@@ -187,6 +184,7 @@ namespace SwdPageRecorder.UI
             }
             catch(Exception e)
             {
+                MyLog.Exception(e);
                 view.NotifyOnSaveError(e.Message, targetFullPath);
                 return;
             }
@@ -231,6 +229,7 @@ namespace SwdPageRecorder.UI
             }
             catch (Exception e)
             {
+                MyLog.Exception(e);
                 view.NotifyOnLoadError(e.Message, targetFullPath);
                 return;
             }

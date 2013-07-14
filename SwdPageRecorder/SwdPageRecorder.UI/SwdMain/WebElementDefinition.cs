@@ -19,6 +19,35 @@ namespace SwdPageRecorder.UI
         [DisplayName("Locator")]
         public string Locator { get; set; }
 
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public string HtmlTag { get; set; }        
+        
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public WebElementLocator[] AlternativeFindsBy { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public bool ReturnsCollection { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public bool DependsOnOtherWebElement { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public string MasterWebElementName { get; set; }
+
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public WebElementHtmlAttributes AllHtmlTagProperties { get; set; }
+
+        public WebElementDefinition()
+        {
+            ReturnsCollection = false;
+            DependsOnOtherWebElement = false;
+            MasterWebElementName = "";
+            AlternativeFindsBy = new WebElementLocator[] { };
+            HtmlTag = "";
+            AllHtmlTagProperties = new WebElementHtmlAttributes();
+        }
+
+
         public override string ToString()
         {
             return Name;

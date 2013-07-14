@@ -5,10 +5,19 @@ RELESE 0.1
 --------------------------------------------------
 [!] Visual Search stop/start/inject is the most buggy area
     [-] Fix it!
+    [-] Test it!
+    [-] Write automated tests!
+
+[!] Implement "Update Properties from WebElement"
+
 [+] Generate Page Object source code
     [+] Razor PageObject templates
         [+] C#
         [+] Java
+        [-] Ruby
+            PageObjects gem samples:
+            https://github.com/wikimedia/qa-browsertests
+
 [-] Implement Properties view for PageElement using standard property control
     [+] View
     [+] Edit
@@ -30,6 +39,14 @@ RELESE 0.1
 [-] View DesiredCapabilities
     https://code.google.com/p/selenium/wiki/DesiredCapabilities
     [-] Subclass Desired caps for IE, Firefox, etc.
+
+[-] Internal WebElement Definition Enhancement to support all WebElement data:
+    Is Element Collection
+    Depends on Element
+    MultyFinds/AlternativeFindBys
+    Tag
+    All Properties
+
 --------------------------------------------------
 RELESE 0.2
 --------------------------------------------------
@@ -37,7 +54,6 @@ RELESE 0.2
 [-] XPath/CSS selectors internal processing
     [-] FizzlerEx: http://fizzlerex.codeplex.com/
 [+] Razor PageObject templates
-    [-] Ruby
     [-] Python
 [-] Implement TestBox for element with click/sendkeys, etc
 [-] PageObject loading/source code integration
@@ -95,8 +111,3 @@ More Ideas
 ==================================================
 Notes
 ==================================================
-Web Element Properties:
-Is Element Collection
-Depends on Element
-MultyFinds/AlternativeFindBys
-
