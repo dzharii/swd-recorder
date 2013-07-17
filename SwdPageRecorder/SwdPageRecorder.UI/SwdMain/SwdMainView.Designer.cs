@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwdMainView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnBrowser_Go = new System.Windows.Forms.Button();
@@ -300,8 +301,9 @@
             this.ClientSize = new System.Drawing.Size(1014, 512);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SwdMainView";
-            this.Text = "SWD Page Recorder v0.1 beta";
+            this.Text = "SWD Page Recorder v0.1 beta 1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
