@@ -139,6 +139,7 @@
             // txtHtmlNodeProperties
             // 
             this.txtHtmlNodeProperties.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtHtmlNodeProperties.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtHtmlNodeProperties.Location = new System.Drawing.Point(3, 3);
             this.txtHtmlNodeProperties.Multiline = true;
             this.txtHtmlNodeProperties.Name = "txtHtmlNodeProperties";

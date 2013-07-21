@@ -4,8 +4,8 @@ Milestones
 RELESE 0.1
 --------------------------------------------------
 [!] Visual Search stop/start/inject is the most buggy area
-    [-] Fix it!
-    [-] Test it!
+    [+] Fix it!
+    [+] Test it!
     [-] Write automated tests!
 
 [!] Implement "Update Properties from WebElement"

@@ -1,0 +1,19 @@
+﻿@functions{
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\"\"");
+        locator = locator.Replace("{", "{{");
+        locator = locator.Replace("}", "}}");
+        return locator;
+    }
+}
+
+public static class Page
+{
+    @foreach (var element in @Model.WebElementDefinitions ) 
+    {
+        <text>
+            public const string @Raw(@element.Name)_@Raw(@element.How)=@@"@Raw(@QuoteLocator(@element.Locator))";
+        </text>
+    }
+}

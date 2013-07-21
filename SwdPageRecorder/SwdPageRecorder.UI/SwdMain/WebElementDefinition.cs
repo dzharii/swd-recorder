@@ -41,10 +41,7 @@ namespace SwdPageRecorder.UI
         public string Arg3 { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
-        public string Arg4 { get; set; }
-
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
-        public string Arg5 { get; set; }
+        public string HtmlFrameId { get; set; }
 
         public WebElementDefinition()
         {

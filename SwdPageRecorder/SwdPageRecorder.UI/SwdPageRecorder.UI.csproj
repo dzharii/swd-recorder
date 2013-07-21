@@ -158,6 +158,9 @@
       <DependentUpon>SelectorsEditView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="CodeTemplates\[CSharp] Locator constants in the static class.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CodeTemplates\[Java] WebDriver.Support PageObject.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

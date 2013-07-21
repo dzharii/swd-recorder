@@ -12,19 +12,53 @@
         return result;
     }
 
+    function getInputElementsByTypeAndValue(inputType, inputValue) {
+        var inputs = document.getElementsByTagName('input');
+
+        var result = new Array();
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type === inputType && inputs[i].value === inputValue) {
+                result.push(inputs[i]);
+            }
+        }
+        return result;
+    }
+
     function getPathTo(element) {
-        if (element.id !== '')
+        var elementTagName = element.tagName.toLowerCase();
+
+        // Check if node has ID and this ID is unique over the document
+        if (element.id && document.getElementById(element.id) === element) {
             return 'id("' + element.id + '")';
-        if (element === document.body)
-            return '/html/' + element.tagName.toLowerCase();
+        }
+
+        // Check element name
+        else if (element.name && document.getElementsByName(element.name).length === 1) {
+            return "//" + elementTagName + "[@name='" + element.name + "']";
+        }
+
+        // Submit value
+        else if (elementTagName === "input" && getInputElementsByTypeAndValue("submit", element.value).length === 1) {
+            return "input[@type='submit' and @value='" + element.value + "']";
+        }
+
+        // Checkbox value
+        else if (elementTagName === "input" && getInputElementsByTypeAndValue("checkbox", element.value).length === 1) {
+            return "input[@type='checkbox' and @value='" + element.value + "']";
+        }
+
+        if (element === document.body) {
+            return '/html/' + elementTagName;
+        }
 
         var ix = 0;
         var siblings = element.parentNode.childNodes;
         for (var i = 0; i < siblings.length; i++) {
             var sibling = siblings[i];
             if (sibling === element)
-                return getPathTo(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix + 1) + ']';
-            if (sibling.nodeType === 1 && sibling.tagName === element.tagName)
+                return getPathTo(element.parentNode) + '/' + elementTagName + '[' + (ix + 1) + ']';
+            if (sibling.nodeType === 1 && sibling.tagName.toLowerCase() === element.tagName.toLowerCase())
                 ix++;
         }
     }

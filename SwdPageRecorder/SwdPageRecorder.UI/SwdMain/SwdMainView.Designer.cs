@@ -193,9 +193,9 @@
             this.htmlDomTesterView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.htmlDomTesterView1.Location = new System.Drawing.Point(2, 243);
+            this.htmlDomTesterView1.Location = new System.Drawing.Point(2, 251);
             this.htmlDomTesterView1.Name = "htmlDomTesterView1";
-            this.htmlDomTesterView1.Size = new System.Drawing.Size(739, 182);
+            this.htmlDomTesterView1.Size = new System.Drawing.Size(739, 174);
             this.htmlDomTesterView1.TabIndex = 5;
             // 
             // grpVisualSearch
@@ -205,7 +205,7 @@
             this.grpVisualSearch.Controls.Add(this.label1);
             this.grpVisualSearch.Controls.Add(this.btnStartVisualSearch);
             this.grpVisualSearch.Controls.Add(this.txtVisualSearchResult);
-            this.grpVisualSearch.Location = new System.Drawing.Point(6, 182);
+            this.grpVisualSearch.Location = new System.Drawing.Point(6, 185);
             this.grpVisualSearch.Name = "grpVisualSearch";
             this.grpVisualSearch.Size = new System.Drawing.Size(727, 61);
             this.grpVisualSearch.TabIndex = 4;
