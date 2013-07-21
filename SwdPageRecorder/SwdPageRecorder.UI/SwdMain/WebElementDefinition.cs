@@ -23,7 +23,7 @@ namespace SwdPageRecorder.UI
         public string HtmlTag { get; set; }        
         
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
-        public WebElementLocator[] AlternativeFindsBy { get; set; }
+        public WebElementLocator[] AlternativeFindBys { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
         public bool ReturnsCollection { get; set; }
@@ -46,7 +46,7 @@ namespace SwdPageRecorder.UI
         public WebElementDefinition()
         {
             ReturnsCollection = false;
-            AlternativeFindsBy = new WebElementLocator[] { };
+            AlternativeFindBys = new WebElementLocator[] { };
             HtmlTag = "";
             AllHtmlTagProperties = new WebElementHtmlAttributes();
         }
@@ -69,12 +69,41 @@ namespace SwdPageRecorder.UI
 
         public WebElementDefinition Clone()
         {
-            return new WebElementDefinition()
+            var clone =  new WebElementDefinition()
             {
                 Name = Name,
                 Locator = Locator,
                 HowToSearch = HowToSearch,
+                HtmlTag = HtmlTag,
+                ReturnsCollection = ReturnsCollection,
+                Arg1 = Arg1,
+                Arg2 = Arg2,
+                Arg3 = Arg3,
+                HtmlFrameId = HtmlFrameId,
+                AllHtmlTagProperties = new WebElementHtmlAttributes(),
+                AlternativeFindBys = null,
             };
+
+
+            foreach (var entry in AllHtmlTagProperties)
+            {
+                clone.AllHtmlTagProperties.Add(entry.Key, entry.Value);
+            }
+
+
+            List<WebElementLocator> clonedfindBys = new List<WebElementLocator>();
+            foreach (var entry in AlternativeFindBys)
+            {
+                clonedfindBys.Add(new WebElementLocator() 
+                                      { 
+                                          HowToSearch = entry.HowToSearch, 
+                                          Locator = entry.Locator,
+                                      });
+            }
+
+            clone.AlternativeFindBys = clonedfindBys.ToArray();
+
+            return clone;
         }
     }
 }
