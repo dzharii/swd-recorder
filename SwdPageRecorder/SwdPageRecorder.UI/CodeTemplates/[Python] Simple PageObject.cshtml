@@ -1,0 +1,38 @@
+﻿@functions{
+    string PythonHow(string howFromCSharp)
+    {
+        switch (howFromCSharp)
+        {
+            case "Id": return "find_element_by_id";
+            case "Name": return "find_element_by_name";
+            case "TagName": return "find_element_by_tag_name";
+            case "ClassName": return "find_element_by_class_name";
+            case "CssSelector": return "find_element_by_css_selector";
+            case "LinkText": return "find_element_by_link_text";
+            case "PartialLinkText": return "find_element_by_partial_link_text";
+            case "XPath": return "find_element_by_xpath";
+            default: return "LOCATOR PARSE ERROR";
+        }
+    }
+
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\\\"");
+        return locator;
+    }    
+}
+
+class ShirtPage(Page):
+    def __init__(self, driver):
+        self.driver = driver
+
+
+    @foreach (var element in @Model.WebElementDefinitions ) 
+    {
+        
+    <text>
+    def @Raw(@element.Name) (self):</text>
+        <text>return @Raw("self.driver.")@Raw(@PythonHow(@element.How)) ("@Raw(@QuoteLocator(@element.Locator))");
+        </text>
+            
+    }

@@ -20,6 +20,7 @@ RELESE 0.1
         [-] Ruby
             PageObjects gem samples:
             https://github.com/wikimedia/qa-browsertests
+        [-] Python (https://github.com/Element-34/Py.Saunter-Examples)
 
 [-] Implement Properties view for PageElement using standard property control
     [+] View
@@ -56,8 +57,6 @@ RELESE 0.2
 [-] Save Application Settings
 [-] XPath/CSS selectors internal processing
     [-] FizzlerEx: http://fizzlerex.codeplex.com/
-[+] Razor PageObject templates
-    [-] Python
 [-] Implement TestBox for element with click/sendkeys, etc
 [-] PageObject loading/source code integration
 [-] WebDriver proxy: Use SWDPR as a proxy that allows to reconnect to 
