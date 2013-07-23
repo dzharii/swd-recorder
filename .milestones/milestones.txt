@@ -20,7 +20,7 @@ RELESE 0.1
         [-] Ruby
             PageObjects gem samples:
             https://github.com/wikimedia/qa-browsertests
-        [-] Python (https://github.com/Element-34/Py.Saunter-Examples)
+        [+] Python (https://github.com/Element-34/Py.Saunter-Examples)
 
 [-] Implement Properties view for PageElement using standard property control
     [+] View
@@ -109,6 +109,8 @@ More Ideas
   When I click on the locator
   It should be marked, so the developer can see this sight and fix the locator
 
+* CodedUI Pageobjects?
+
 
 ==================================================
 Notes
@@ -122,5 +124,7 @@ Linux Support:
 Mykhailo Poliarush:
 https://github.com/mozilla/mozwebqa-test-templates
 https://github.com/mozilla/moztrap-tests
+
+
 
 

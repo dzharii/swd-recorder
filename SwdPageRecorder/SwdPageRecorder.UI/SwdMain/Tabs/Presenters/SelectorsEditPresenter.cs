@@ -37,9 +37,10 @@ namespace SwdPageRecorder.UI
 
         private void InitControls()
         {
-            var shouldControlBeEnabled = SwdBrowser.IsWorking;
+            var isDriverAlive = SwdBrowser.IsWorking;
 
-            view.btnHighlightWebElementInBrowser.Enabled = shouldControlBeEnabled;
+            view.btnHighlightWebElementInBrowser.Enabled = isDriverAlive;
+            view.btnReadElementProperties.Enabled = isDriverAlive;
         }
 
         internal void NewWebElement()

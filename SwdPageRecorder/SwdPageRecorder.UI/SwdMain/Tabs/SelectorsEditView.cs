@@ -99,8 +99,37 @@ namespace SwdPageRecorder.UI
 
                 // Properties
                 HtmlTag = txtPropHtmlTag.Text,
+                AllHtmlTagProperties = txtAllElementHtmlProps.Tag != null 
+                                       ? txtAllElementHtmlProps.Tag as WebElementHtmlAttributes
+                                       : new WebElementHtmlAttributes(),
+
+                // Custom Args
+                Arg1 = txtPropArg1.Text,
+                Arg2 = txtPropArg2.Text,
+                Arg3 = txtPropArg3.Text,
+
             };
             return element;
+        }
+
+        internal void UpdateElementPropertiesForm(WebElementDefinition sourceElement)
+        {
+            var element = sourceElement.Clone();
+
+            txtPropHtmlTag.Text = element.HtmlTag;
+
+            StringBuilder htmlProperties = new StringBuilder();
+            foreach (KeyValuePair<string, string> item in element.AllHtmlTagProperties)
+            {
+                htmlProperties.AppendFormat("{0}=\"{1}\";", item.Key, item.Value);
+            }
+
+            txtAllElementHtmlProps.Text = htmlProperties.ToString();
+            txtAllElementHtmlProps.Tag = element.AllHtmlTagProperties;
+
+            txtPropArg1.Text = element.Arg1 ?? "";
+            txtPropArg2.Text = element.Arg2 ?? "";
+            txtPropArg3.Text = element.Arg3 ?? "";
         }
         
         
@@ -111,6 +140,15 @@ namespace SwdPageRecorder.UI
             txtCssSelector.Clear();
             txtXPath.Clear();
             txtOtherLocator.Clear();
+
+            txtPropHtmlTag.Clear();
+            txtAllElementHtmlProps.Clear();
+            txtPropHtmlTag.Tag = null;
+
+            txtPropArg1.Clear();
+            txtPropArg2.Clear();
+            txtPropArg3.Clear();
+
         }
 
         internal void AppendWebElementNameWith(string appendWithStr)
@@ -220,19 +258,15 @@ namespace SwdPageRecorder.UI
                     }
                     break;
             }
+
+            UpdateElementPropertiesForm(formData);
+
         }
 
         private void btnReadElementProperties_Click(object sender, EventArgs e)
         {
             var element = GetWebElementDefinitionFromForm();
             presenter.ReadElementProperties(element);
-        }
-
-
-
-        internal void UpdateElementPropertiesForm(WebElementDefinition element)
-        {
-            txtPropHtmlTag.Text = element.HtmlTag;
         }
     }
 }

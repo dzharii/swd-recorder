@@ -1,0 +1,42 @@
+type_to_class[:area] =     ::PageObject::Elements::Area
+type_to_class[:audio] =    ::PageObject::Elements::Audio
+type_to_class[:submit] =   ::PageObject::Elements::Button
+type_to_class[:image] =    ::PageObject::Elements::Button
+type_to_class[:button] =   ::PageObject::Elements::Button
+type_to_class[:reset] =    ::PageObject::Elements::Button
+type_to_class[:canvas] =   ::PageObject::Elements::Canvas
+type_to_class[:checkbox] = ::PageObject::Elements::CheckBox
+type_to_class[:file] =     ::PageObject::Elements::FileField
+type_to_class[:hidden] =   ::PageObject::Elements::HiddenField
+type_to_class[:radio] =    ::PageObject::Elements::RadioButton
+type_to_class[:text] =     ::PageObject::Elements::TextField
+type_to_class[:password] = ::PageObject::Elements::TextField
+type_to_class[:video] =    ::PageObject::Elements::Video
+
+
+tag_to_class[:div] =  ::PageObject::Elements::Div
+tag_to_class[:form] = ::PageObject::Elements::Form
+tag_to_class[:h1] =   ::PageObject::Elements::Heading
+tag_to_class[:h2] =   ::PageObject::Elements::Heading
+tag_to_class[:h3] =   ::PageObject::Elements::Heading
+tag_to_class[:h4] =   ::PageObject::Elements::Heading
+tag_to_class[:h5] =   ::PageObject::Elements::Heading
+tag_to_class[:h6] =   ::PageObject::Elements::Heading
+
+tag_to_class[:img] = ::PageObject::Elements::Image
+tag_to_class[:label] = ::PageObject::Elements::Label
+tag_to_class[:a] = ::PageObject::Elements::Link
+tag_to_class[:li] = ::PageObject::Elements::ListItem
+tag_to_class[:option] = ::PageObject::Elements::Option
+tag_to_class[:ol] = ::PageObject::Elements::OrderedList
+tag_to_class[:p] = ::PageObject::Elements::Paragraph
+
+tag_to_class[:select] = ::PageObject::Elements::SelectList
+tag_to_class[:span] = ::PageObject::Elements::Span
+tag_to_class[:table] = ::PageObject::Elements::Table
+tag_to_class[:td] = ::PageObject::Elements::TableCell
+tag_to_class[:th] = ::PageObject::Elements::TableCell
+tag_to_class[:tr] = ::PageObject::Elements::TableRow
+tag_to_class[:textarea] = ::PageObject::Elements::TextArea
+tag_to_class[:ul] = ::PageObject::Elements::UnorderedList
+
