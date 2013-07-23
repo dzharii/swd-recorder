@@ -118,3 +118,9 @@ Linux Support:
 
     http://unix.stackexchange.com/questions/36529/generating-a-linux-executable-with-mono-with-mkbundle
     http://www.mono-project.com/AOT
+
+Mykhailo Poliarush:
+https://github.com/mozilla/mozwebqa-test-templates
+https://github.com/mozilla/moztrap-tests
+
+

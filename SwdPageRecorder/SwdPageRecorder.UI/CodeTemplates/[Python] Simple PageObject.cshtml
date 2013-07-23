@@ -22,7 +22,7 @@
     }    
 }
 
-class ShirtPage(Page):
+class MyPage(object):
     def __init__(self, driver):
         self.driver = driver
 
@@ -32,7 +32,7 @@ class ShirtPage(Page):
         
     <text>
     def @Raw(@element.Name) (self):</text>
-        <text>return @Raw("self.driver.")@Raw(@PythonHow(@element.How)) ("@Raw(@QuoteLocator(@element.Locator))");
+        <text>return @Raw("self.driver.")@Raw(@PythonHow(@element.How)) ("@Raw(@QuoteLocator(@element.Locator))")
         </text>
             
     }
