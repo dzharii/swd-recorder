@@ -205,22 +205,23 @@
             this.grpVisualSearch.Controls.Add(this.label1);
             this.grpVisualSearch.Controls.Add(this.btnStartVisualSearch);
             this.grpVisualSearch.Controls.Add(this.txtVisualSearchResult);
+            this.grpVisualSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.grpVisualSearch.Location = new System.Drawing.Point(6, 185);
             this.grpVisualSearch.Name = "grpVisualSearch";
             this.grpVisualSearch.Size = new System.Drawing.Size(727, 61);
             this.grpVisualSearch.TabIndex = 4;
             this.grpVisualSearch.TabStop = false;
-            this.grpVisualSearch.Text = "Visual Search";
+            this.grpVisualSearch.Text = "In-Browser Web Element Explorer";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(494, 13);
+            this.label1.Size = new System.Drawing.Size(550, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Tip: Use Ctrl to highlight elements in the browser window. Use Ctrl + RightClick " +
-    "to invoke properties form";
+            this.label1.Text = "Tip: In the Web-Browser: Use Ctrl to highlight elements. Use Ctrl + RightClick to" +
+    " invoke WebElement properties form";
             // 
             // btnStartVisualSearch
             // 

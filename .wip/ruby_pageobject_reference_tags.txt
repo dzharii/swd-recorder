@@ -1,3 +1,5 @@
+D:\projects_current\.temp\page-object\lib\page-object\accessors.rb
+
 type_to_class[:area] =     ::PageObject::Elements::Area
 type_to_class[:audio] =    ::PageObject::Elements::Audio
 type_to_class[:submit] =   ::PageObject::Elements::Button
