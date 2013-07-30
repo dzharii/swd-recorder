@@ -2,10 +2,12 @@ D:\projects_current\.temp\page-object\lib\page-object\accessors.rb
 
 type_to_class[:area] =     ::PageObject::Elements::Area
 type_to_class[:audio] =    ::PageObject::Elements::Audio
+
 type_to_class[:submit] =   ::PageObject::Elements::Button
 type_to_class[:image] =    ::PageObject::Elements::Button
 type_to_class[:button] =   ::PageObject::Elements::Button
 type_to_class[:reset] =    ::PageObject::Elements::Button
+
 type_to_class[:canvas] =   ::PageObject::Elements::Canvas
 type_to_class[:checkbox] = ::PageObject::Elements::CheckBox
 type_to_class[:file] =     ::PageObject::Elements::FileField

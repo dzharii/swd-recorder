@@ -67,6 +67,22 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        public string Type
+        {
+            get
+            {
+                var type = string.Empty;
+
+                if (AllHtmlTagProperties.ContainsKey("type"))
+                {
+                    type = AllHtmlTagProperties["type"];
+                }
+
+                return type;
+            }
+        }
+
         public WebElementDefinition Clone()
         {
             var clone =  new WebElementDefinition()

@@ -17,7 +17,7 @@ RELESE 0.1
     [+] Razor PageObject templates
         [+] C#
         [+] Java
-        [-] Ruby
+        [+] Ruby
             PageObjects gem samples:
             https://github.com/wikimedia/qa-browsertests
         [+] Python (https://github.com/Element-34/Py.Saunter-Examples)
@@ -44,7 +44,7 @@ RELESE 0.1
     https://code.google.com/p/selenium/wiki/DesiredCapabilities
     [-] Subclass Desired caps for IE, Firefox, etc.
 
-[-] Internal WebElement Definition Enhancement to support all WebElement data:
+[+] Internal WebElement Definition Enhancement to support all WebElement data:
     Is Element Collection
     Depends on Element
     MultyFinds/AlternativeFindBys
@@ -84,7 +84,7 @@ RELESE 0.1
 --------------------------------------------------
 RELESE 0.2
 --------------------------------------------------
-[-] Add support for ReadOnlyCollection IWebElement
+[-] Add support for IList<IWebElement> -- PageObject
 [-] Add  support for Multiple FindsBy
 [-] Advanced HTML editor
 [-] Browser screenshots
