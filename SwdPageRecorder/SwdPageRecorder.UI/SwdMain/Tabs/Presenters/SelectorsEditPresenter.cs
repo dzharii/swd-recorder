@@ -82,7 +82,17 @@ namespace SwdPageRecorder.UI
             return view.GetLocatorText();
         }
 
+        
+        
+
         internal void ReadElementProperties(WebElementDefinition element)
+        {
+
+            UpdateWebElementWithAdditionalProperties(element);
+            view.UpdateElementPropertiesForm(element);
+        }
+
+        public void UpdateWebElementWithAdditionalProperties(WebElementDefinition element)
         {
             var by = Utils.ByFromLocatorSearchMethod(element.HowToSearch, element.Locator);
             var attributes = SwdBrowser.ReadElementAttributes(by);
@@ -100,8 +110,6 @@ namespace SwdPageRecorder.UI
             }
 
             element.AllHtmlTagProperties = elementAttrs;
-
-            view.UpdateElementPropertiesForm(element);
         }
     }
 }

@@ -70,7 +70,7 @@ namespace SwdPageRecorder.UI
                     Locator = addElementCommand.ElementXPath,
                 };
                 bool addNew = true;
-
+                Presenters.SelectorsEditPresenter.UpdateWebElementWithAdditionalProperties(element);
                 Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element, addNew);
             }
         }
