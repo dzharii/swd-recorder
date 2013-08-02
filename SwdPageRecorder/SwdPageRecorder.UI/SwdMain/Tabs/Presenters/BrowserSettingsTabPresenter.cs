@@ -24,7 +24,7 @@ namespace SwdPageRecorder.UI
     public class BrowserSettingsTabPresenter : IPresenter<BrowserSettingsTabView>
     {
         private BrowserSettingsTabView view = null;
-        private DesiredCapabilitiesData _desiredCapabilitiesdata = new DesiredCapabilitiesData();
+        private DesiredCapabilitiesData _desiredCapabilitiesdata = null;
         
         public void InitWithView(BrowserSettingsTabView view)
         {
@@ -66,11 +66,45 @@ namespace SwdPageRecorder.UI
 
         public void StartDriver(WebDriverOptions browserOptions)
         {
+            bool startFailure = false;
             view.DisableDriverStartButton();
-            SwdBrowser.Initialize(browserOptions);
-            view.DriverWasStarted();
-            view.EnableDriverStartButton();
+            try
+            {
+                SwdBrowser.Initialize(browserOptions);
+            }
+            catch
+            {
+                startFailure = true;
+                throw;
+            }
+            finally
+            {
+                if (!startFailure)
+                {
+                    SetDesiredCapabilities(browserOptions);
+                    view.DriverWasStarted();
+                }
+                view.EnableDriverStartButton();
+            }
+        }
 
+        private void SetDesiredCapabilities(WebDriverOptions browserOptions)
+        {
+
+            switch (browserOptions.BrowserName)
+            {
+                case WebDriverOptions.browser_Chrome:
+                    _desiredCapabilitiesdata = new ChromeDesiredCapabilitiesData();
+                    break;
+                case WebDriverOptions.browser_InternetExplorer:
+                    _desiredCapabilitiesdata = new IEDesiredCapabilitiesData();
+                    break;
+                default: 
+                    _desiredCapabilitiesdata = new DesiredCapabilitiesData();
+                    break;
+            }
+            
+            
         }
 
         public void StopDriver()
@@ -99,15 +133,22 @@ namespace SwdPageRecorder.UI
             var remoteDriver = (RemoteWebDriver)SwdBrowser.GetDriver();
             foreach (var prop in _desiredCapabilitiesdata.GetType().GetProperties())
             {
-                if (!remoteDriver.Capabilities.HasCapability(prop.Name)) continue;
+                string capabilityName = prop.Name.Replace("__", ".");
 
-                object driverValue = remoteDriver.Capabilities.GetCapability(prop.Name);
+                if (!remoteDriver.Capabilities.HasCapability(capabilityName)) continue;
+
+                object driverValue = remoteDriver.Capabilities.GetCapability(capabilityName);
                 if (driverValue == null) continue;
 
                 if (prop.PropertyType == typeof(bool?))
                 {
                     bool? boolValue = GetValueOrNull<bool>(driverValue.ToString());
                     prop.SetValue(_desiredCapabilitiesdata, boolValue, null);
+                }
+                else if (prop.PropertyType == typeof(int?))
+                {
+                    int? intValue = GetValueOrNull<int>(driverValue.ToString());
+                    prop.SetValue(_desiredCapabilitiesdata, intValue, null);
                 }
                 else
                 {
