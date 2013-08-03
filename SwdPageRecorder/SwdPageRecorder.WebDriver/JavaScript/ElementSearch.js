@@ -43,11 +43,6 @@
             return "input[@type='submit' and @value='" + element.value + "']";
         }
 
-        // Checkbox value
-        else if (elementTagName === "input" && getInputElementsByTypeAndValue("checkbox", element.value).length === 1) {
-            return "input[@type='checkbox' and @value='" + element.value + "']";
-        }
-
         if (element === document.body) {
             return '/html/' + elementTagName;
         }

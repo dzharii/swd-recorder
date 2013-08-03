@@ -21,6 +21,7 @@ RELESE 0.1
             PageObjects gem samples:
             https://github.com/wikimedia/qa-browsertests
         [+] Python (https://github.com/Element-34/Py.Saunter-Examples)
+        [?] CodedUI? http://msdn.microsoft.com/ru-ru/library/microsoft.visualstudio.testtools.uitesting.htmlcontrols.htmlcontrol.propertynames.aspx
 
 [-] Implement Properties view for PageElement using standard property control
     [+] View

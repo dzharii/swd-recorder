@@ -145,5 +145,16 @@ namespace SwdPageRecorder.UI
         {
             Presenter.LoadCapabilities();
         }
+
+        private void btnTestRemoteHub_Click(object sender, EventArgs e)
+        {
+            Presenter.TestRemoteHub(txtRemoteHubUrl.Text);
+        }
+
+        internal void SetTestResult(string result, bool isOk)
+        {
+            lblRemoteHubStatus.Text = result;
+            lblRemoteHubStatus.ForeColor = (isOk) ? Color.Green : Color.Red;
+        }
     }
 }

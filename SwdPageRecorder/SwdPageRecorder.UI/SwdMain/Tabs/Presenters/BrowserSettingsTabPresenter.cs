@@ -19,6 +19,8 @@ using System.Xml.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
 
+using System.Net;
+
 namespace SwdPageRecorder.UI
 {
     public class BrowserSettingsTabPresenter : IPresenter<BrowserSettingsTabView>
@@ -156,6 +158,26 @@ namespace SwdPageRecorder.UI
                 }
             }
             InitDesiredCapabilities();
+        }
+
+        internal void TestRemoteHub(string url)
+        {
+            var client = new WebClient();
+            string result = "OK";
+            bool isOk = true;
+
+            string response = "";
+            try
+            {
+                response = client.DownloadString(url);
+            }
+            catch(Exception e)
+            {
+                isOk = false;
+                result = "FAILED: " + e.Message;
+            }
+            view.SetTestResult(result, isOk);
+
         }
     }
 }
