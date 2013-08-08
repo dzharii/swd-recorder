@@ -52,6 +52,9 @@ RELESE 0.1
     Tag
     All Properties
 
+[-] Implement feature definition with tests like in 
+    http://padre.perlide.org/trac/wiki/Features/Autocomplete
+
 --------------------------------------------------
 RELESE 0.2
 --------------------------------------------------
@@ -68,6 +71,8 @@ RELESE 0.2
     [-] Allow JavaScript snippets
     [?] Integration with Chrome/IE console????
 [-] Frames support and SearchContext switch
+[-] WebElement Explorer change locator strategy: CSS, XPath, Id, name as a separate command
+	Command passed to WEE engine from UI
 
 ==================================================
 --------------------------------------------------
