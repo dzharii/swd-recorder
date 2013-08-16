@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer1 = new MySplitContainer();
             this.tvHtmlDoc = new System.Windows.Forms.TreeView();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -186,6 +186,6 @@
         public System.Windows.Forms.TextBox txtHtmlNodeProperties;
         public System.Windows.Forms.TreeView tvHtmlDoc;
         public System.Windows.Forms.Button btnTestLocator;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private MySplitContainer splitContainer1;
     }
 }

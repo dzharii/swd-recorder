@@ -33,7 +33,7 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnBrowser_Go = new System.Windows.Forms.Button();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer1 = new MySplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTabView();
@@ -337,7 +337,7 @@
         public System.Windows.Forms.Button btnBrowser_Go;
         public PageObjectDefinitionView pageObjectDefinitionView;
         private PageObjectSourceCodeView pageObjectSourceCodeView1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private MySplitContainer splitContainer1;
         public BrowserSettingsTabView browserSettingsTab1;
         public HtmlDomTesterView htmlDomTesterView1;
         public FullHtmlSourceTabView fullHtmlSourceTabView1;

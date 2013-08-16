@@ -1,6 +1,14 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A22BF707-81E6-42C6-8088-CFEEA128B0AB}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\Microsoft.Build.dll = .nuget\Microsoft.Build.dll
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder", "SwdPageRecorder\SwdPageRecorder.csproj", "{DEF90C76-F4F1-4225-9A3D-440323F5F7CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.UI", "SwdPageRecorder.UI\SwdPageRecorder.UI.csproj", "{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}"
@@ -12,13 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.Console", "SwdPageRecorder.Console\SwdPageRecorder.Console.csproj", "{0592CE7A-0E99-473A-BCC7-884A09F1AD56}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.WebDriver", "SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj", "{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A22BF707-81E6-42C6-8088-CFEEA128B0AB}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
