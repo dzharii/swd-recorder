@@ -58,6 +58,10 @@ RELESE 0.1
 --------------------------------------------------
 RELESE 0.2
 --------------------------------------------------
+[-] API
+    [-] Libray
+    [-] Commandline
+        [-] Class generation from template
 [-] Save Application Settings
 [-] XPath/CSS selectors internal processing
     [-] FizzlerEx: http://fizzlerex.codeplex.com/
