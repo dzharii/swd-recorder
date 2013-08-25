@@ -54,9 +54,11 @@ namespace SwdPageRecorder.UI
             
         }
 
+
+        public bool wasBrowserStarted = false;
         public void StartNewBrowser(WebDriverOptions browserOptions)
         {
-            if (SwdBrowser.IsWorking)
+            if (wasBrowserStarted)
             {
                 StopDriver();
             }
@@ -68,11 +70,13 @@ namespace SwdPageRecorder.UI
 
         public void StartDriver(WebDriverOptions browserOptions)
         {
+            wasBrowserStarted = false;
             bool startFailure = false;
             view.DisableDriverStartButton();
             try
             {
                 SwdBrowser.Initialize(browserOptions);
+                wasBrowserStarted = true;
             }
             catch
             {
@@ -115,6 +119,7 @@ namespace SwdPageRecorder.UI
             SwdBrowser.CloseDriver();
             view.EnableDriverStartButton();
             view.DriverWasStopped();
+            wasBrowserStarted = false;
         }
 
         internal void InitDesiredCapabilities()

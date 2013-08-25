@@ -21,7 +21,6 @@ RELESE 0.1
             PageObjects gem samples:
             https://github.com/wikimedia/qa-browsertests
         [+] Python (https://github.com/Element-34/Py.Saunter-Examples)
-        [?] CodedUI? http://msdn.microsoft.com/ru-ru/library/microsoft.visualstudio.testtools.uitesting.htmlcontrols.htmlcontrol.propertynames.aspx
 
 [-] Implement Properties view for PageElement using standard property control
     [+] View
@@ -77,6 +76,10 @@ RELESE 0.2
 [-] Frames support and SearchContext switch
 [-] WebElement Explorer change locator strategy: CSS, XPath, Id, name as a separate command
 	Command passed to WEE engine from UI
+
+[-] User Scripts Injector
+    Allow injecting a custom user scripts written in JavaScript. 
+    The application should verify if the user script was injected and inject in case it is not injected.
 
 ==================================================
 --------------------------------------------------
