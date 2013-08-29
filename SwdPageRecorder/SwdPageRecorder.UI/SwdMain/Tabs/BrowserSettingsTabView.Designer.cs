@@ -42,6 +42,7 @@
             this.grdDesiredCapabilities = new System.Windows.Forms.PropertyGrid();
             this.grpDesiredCaps = new System.Windows.Forms.GroupBox();
             this.btnLoadCapabilities = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.grpRemoteConnection.SuspendLayout();
             this.grpDesiredCaps.SuspendLayout();
             this.SuspendLayout();
@@ -169,7 +170,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDesiredCapabilities.Location = new System.Drawing.Point(6, 49);
             this.grdDesiredCapabilities.Name = "grdDesiredCapabilities";
-            this.grdDesiredCapabilities.Size = new System.Drawing.Size(667, 158);
+            this.grdDesiredCapabilities.Size = new System.Drawing.Size(667, 152);
             this.grdDesiredCapabilities.TabIndex = 10;
             // 
             // grpDesiredCaps
@@ -179,9 +180,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpDesiredCaps.Controls.Add(this.btnLoadCapabilities);
             this.grpDesiredCaps.Controls.Add(this.grdDesiredCapabilities);
-            this.grpDesiredCaps.Location = new System.Drawing.Point(6, 183);
+            this.grpDesiredCaps.Location = new System.Drawing.Point(6, 189);
             this.grpDesiredCaps.Name = "grpDesiredCaps";
-            this.grpDesiredCaps.Size = new System.Drawing.Size(679, 240);
+            this.grpDesiredCaps.Size = new System.Drawing.Size(679, 234);
             this.grpDesiredCaps.TabIndex = 11;
             this.grpDesiredCaps.TabStop = false;
             this.grpDesiredCaps.Text = "Capabilities";
@@ -196,9 +197,20 @@
             this.btnLoadCapabilities.UseVisualStyleBackColor = true;
             this.btnLoadCapabilities.Click += new System.EventHandler(this.btnLoadCapabilities_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 168);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(693, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Note: if you are going to use a browser other than Firefox, please download appro" +
+    "priate driver executable and put it near the SWD Page Recorder";
+            // 
             // BrowserSettingsTabView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.grpDesiredCaps);
             this.Controls.Add(this.lblWebDriverStatus);
             this.Controls.Add(this.label3);
@@ -232,5 +244,6 @@
         private System.Windows.Forms.GroupBox grpDesiredCaps;
         public System.Windows.Forms.PropertyGrid grdDesiredCapabilities;
         private System.Windows.Forms.Button btnLoadCapabilities;
+        private System.Windows.Forms.Label label4;
     }
 }

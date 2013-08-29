@@ -4,17 +4,14 @@ using System.Linq;
 using System.Windows.Forms;
 using SwdPageRecorder.WebDriver;
 using System.Net;
+using System.Threading;
 
 namespace SwdPageRecorder.UI
 {
     public static class SWDRecorder_Program
     {
 
-        public static class Log
-        {
-
-        }
-      
+     
         
         public static SwdMainView Run(SwdMainView mainForm)
         {
@@ -32,6 +29,7 @@ namespace SwdPageRecorder.UI
         [STAThread]
         static void Main()
         {
+            
             Application.SetCompatibleTextRenderingDefault(false);
 
             var mainForm = new SwdMainView();
@@ -49,5 +47,6 @@ namespace SwdPageRecorder.UI
         {
             SwdBrowser.CloseDriver();
         }
+
     }
 }

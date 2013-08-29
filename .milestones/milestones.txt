@@ -3,6 +3,14 @@ Milestones
 --------------------------------------------------
 RELESE 0.1
 --------------------------------------------------
+[-] Add a copy button to Source Code Tab
+    https://github.com/dzhariy/swd-recorder/issues/10
+
+[-] Web Element Explorer enhancements (https://github.com/dzhariy/swd-recorder/issues/9)
+    [-] Display value of Id, Name attributes (if available for the element)
+    [-] Along with XPathLocator, also show/suggest CSS Locator
+    [-] When user adds an element, show success message or close the popup    
+
 [!] Visual Search stop/start/inject is the most buggy area
     [+] Fix it!
     [+] Test it!
