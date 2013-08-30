@@ -17,7 +17,7 @@ using System.Threading;
 using SwdPageRecorder.WebDriver;
 
 
-namespace SwdPageRecorder.Sample.Tests.UI.BrowserSettings
+namespace SwdPageRecorder.Tests.UI.BrowserSettings
 {
     
     [TestFixture]

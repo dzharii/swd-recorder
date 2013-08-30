@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SwdPageRecorder.Sample.Tests")]
+[assembly: AssemblyTitle("SwdPageRecorder.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SwdPageRecorder.Sample.Tests")]
+[assembly: AssemblyProduct("SwdPageRecorder.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1e33754e-f504-45ff-a63b-7dc6f2a92741")]
+[assembly: Guid("78651597-1b6e-45f6-a229-80253c3aa665")]
 
 // Version information for an assembly consists of the following four values:
 //
