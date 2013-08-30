@@ -8,3 +8,11 @@
 
 3. Install Git
    sudo apt-get install git
+
+4. Get Sources
+
+
+5. Import Mozilla certificates
+
+mozroots --import --ask-remove 
+
