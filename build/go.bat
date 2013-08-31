@@ -35,7 +35,7 @@ md SwdPageRecorder_Latest >>%STDOUT_DEFAULT%
 @echo [5/8]    Cheving a gum...
 @rem !!! Merge all dll files (except WebDriver.dll)  into executable file
 set MERGE_LIBS1=%SwdUiPath%\HtmlAgilityPack.dll %SwdUiPath%\Newtonsoft.Json.dll %SwdUiPath%\SwdPageRecorder.WebDriver.dll
-set MERGE_LIBS2=%SwdUiPath%\RazorEngine.dll %SwdUiPath%\System.Web.Razor.dll %SwdUiPath%\NLog.dll %SwdUiPath%\SwdPageRecorder.UI.XmlSerializers.dll
+set MERGE_LIBS2=%SwdUiPath%\RazorEngine.dll %SwdUiPath%\System.Web.Razor.dll %SwdUiPath%\NLog.dll
 
 
 ilmerge\ILMerge.exe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /t:winexe /out:SwdPageRecorder_Latest\SwdPageRecorder.exe %SwdUiPath%\SwdPageRecorder.UI.exe  %MERGE_LIBS1% %MERGE_LIBS2% >>%STDOUT_DEFAULT%
