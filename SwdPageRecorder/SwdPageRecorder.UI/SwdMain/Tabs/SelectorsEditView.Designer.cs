@@ -114,7 +114,7 @@
             this.tbElementDetails.Multiline = true;
             this.tbElementDetails.Name = "tbElementDetails";
             this.tbElementDetails.SelectedIndex = 0;
-            this.tbElementDetails.Size = new System.Drawing.Size(636, 149);
+            this.tbElementDetails.Size = new System.Drawing.Size(625, 149);
             this.tbElementDetails.TabIndex = 17;
             // 
             // tabPage1
@@ -133,7 +133,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(609, 141);
+            this.tabPage1.Size = new System.Drawing.Size(598, 141);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Selectors";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
             this.txtCssSelector.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtCssSelector.Location = new System.Drawing.Point(132, 61);
             this.txtCssSelector.Name = "txtCssSelector";
-            this.txtCssSelector.Size = new System.Drawing.Size(471, 20);
+            this.txtCssSelector.Size = new System.Drawing.Size(460, 20);
             this.txtCssSelector.TabIndex = 1;
             this.txtCssSelector.Enter += new System.EventHandler(this.txtCssSelector_Enter);
             // 
@@ -185,7 +185,7 @@
             this.txtXPath.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtXPath.Location = new System.Drawing.Point(132, 84);
             this.txtXPath.Name = "txtXPath";
-            this.txtXPath.Size = new System.Drawing.Size(471, 20);
+            this.txtXPath.Size = new System.Drawing.Size(460, 20);
             this.txtXPath.TabIndex = 4;
             this.txtXPath.Enter += new System.EventHandler(this.txtXPath_Enter);
             // 
@@ -196,7 +196,7 @@
             this.txtWebElementName.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWebElementName.Location = new System.Drawing.Point(132, 10);
             this.txtWebElementName.Name = "txtWebElementName";
-            this.txtWebElementName.Size = new System.Drawing.Size(471, 20);
+            this.txtWebElementName.Size = new System.Drawing.Size(460, 20);
             this.txtWebElementName.TabIndex = 11;
             // 
             // rbtnHtmlId
@@ -218,7 +218,7 @@
             this.txtHtmlId.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtHtmlId.Location = new System.Drawing.Point(132, 36);
             this.txtHtmlId.Name = "txtHtmlId";
-            this.txtHtmlId.Size = new System.Drawing.Size(471, 20);
+            this.txtHtmlId.Size = new System.Drawing.Size(460, 20);
             this.txtHtmlId.TabIndex = 6;
             this.txtHtmlId.Enter += new System.EventHandler(this.txtHtmlId_Enter);
             // 
@@ -229,7 +229,7 @@
             this.txtOtherLocator.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtOtherLocator.Location = new System.Drawing.Point(132, 112);
             this.txtOtherLocator.Name = "txtOtherLocator";
-            this.txtOtherLocator.Size = new System.Drawing.Size(471, 20);
+            this.txtOtherLocator.Size = new System.Drawing.Size(460, 20);
             this.txtOtherLocator.TabIndex = 9;
             this.txtOtherLocator.Enter += new System.EventHandler(this.txtOtherLocator_Enter);
             // 
