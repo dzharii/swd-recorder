@@ -17,4 +17,8 @@ namespace SwdPageRecorder.UI
         [XmlAttribute(Type = typeof(string))]
         public string Locator { get; set; }
     }
+
+    // XmlAttribute were required in oder to fix
+    // There is no possibility to save page object .pox file
+    // https://github.com/dzhariy/swd-recorder/issues/7
 }
