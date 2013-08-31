@@ -20,28 +20,28 @@ namespace SwdPageRecorder.UI
         [DisplayName("Locator")]
         public string Locator { get; set; }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
-        public string HtmlTag { get; set; }        
-        
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
+        public string HtmlTag { get; set; }
+
+        [Browsable(false)]
         public WebElementLocator[] AlternativeFindBys { get; set; }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
         public bool ReturnsCollection { get; set; }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
         public WebElementHtmlAttributes AllHtmlTagProperties { get; set; }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
         public string Arg1 { get; set; }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
         public string Arg2 { get; set; }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
         public string Arg3 { get; set; }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
         public string HtmlFrameId { get; set; }
 
         public WebElementDefinition()
@@ -57,7 +57,7 @@ namespace SwdPageRecorder.UI
             return Name;
         }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
         [XmlIgnore]
         public string How
         {
@@ -68,7 +68,7 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [Browsable(false)]
         [XmlIgnore]
         public string Type
         {

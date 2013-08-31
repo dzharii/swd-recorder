@@ -27,11 +27,11 @@ md SwdPageRecorder_Latest >>%STDOUT_DEFAULT%
 @rem =====================
 
 @echo [4/8]    Doing some morning exercises...
-@Rem preparing a serialization assembly
+@Rem 
 
-@REM sgen\sgen.exe %SwdUiPath%\SwdPageRecorder.UI.exe /force /out:%SwdUiPath% /nologo >>%STDOUT_DEFAULT%
+@REM empty step
 
-@Rem // end of SGEN
+@Rem 
 @echo [5/8]    Cheving a gum...
 @rem !!! Merge all dll files (except WebDriver.dll)  into executable file
 set MERGE_LIBS1=%SwdUiPath%\HtmlAgilityPack.dll %SwdUiPath%\Newtonsoft.Json.dll %SwdUiPath%\SwdPageRecorder.WebDriver.dll
