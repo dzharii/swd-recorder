@@ -29,7 +29,7 @@ md SwdPageRecorder_Latest >>%STDOUT_DEFAULT%
 @echo [4/8]    Doing some morning exercises...
 @Rem preparing a serialization assembly
 
-sgen\sgen.exe %SwdUiPath%\SwdPageRecorder.UI.exe /force /out:%SwdUiPath% /nologo >>%STDOUT_DEFAULT%
+@REM sgen\sgen.exe %SwdUiPath%\SwdPageRecorder.UI.exe /force /out:%SwdUiPath% /nologo >>%STDOUT_DEFAULT%
 
 @Rem // end of SGEN
 @echo [5/8]    Cheving a gum...
