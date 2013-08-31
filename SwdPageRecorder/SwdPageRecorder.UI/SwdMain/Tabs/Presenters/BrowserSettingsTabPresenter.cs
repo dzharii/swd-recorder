@@ -21,6 +21,8 @@ using System.Diagnostics;
 
 using System.Net;
 
+using SwdPageRecorder.UI.FeaturesAndWorkarounds;
+
 namespace SwdPageRecorder.UI
 {
     public class BrowserSettingsTabPresenter : IPresenter<BrowserSettingsTabView>
@@ -70,6 +72,17 @@ namespace SwdPageRecorder.UI
 
         public void StartDriver(WebDriverOptions browserOptions)
         {
+            
+            if (browserOptions.BrowserName == WebDriverOptions.browser_Firefox
+                && browserOptions.IsRemote == false)
+            {
+                if (Workaround.Is_Firefox_Supported_for_Internal_driver_execution().ShouldBeApplied)
+                {
+                    UserNotifications.NotifyUserAboutWorkaround(Workaround.Is_Firefox_Supported_for_Internal_driver_execution());
+                    return;
+                }
+            }
+            
             wasBrowserStarted = false;
             bool startFailure = false;
             view.DisableDriverStartButton();

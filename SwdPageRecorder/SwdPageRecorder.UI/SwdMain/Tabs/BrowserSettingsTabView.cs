@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using SwdPageRecorder.WebDriver;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+
+using SwdPageRecorder.UI.FeaturesAndWorkarounds;
+
 using FormKeys = System.Windows.Forms.Keys;
 
 namespace SwdPageRecorder.UI
