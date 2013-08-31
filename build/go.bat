@@ -8,6 +8,8 @@ set SlnPath=..\SwdPageRecorder\SwdPageRecorder.sln
 set BinPath=..\Bin
 set SwdUiPath=%BinPath%\SwdPageRecorder.UI
 
+set EnableNuGetPackageRestore=true
+
 set STDOUT_DEFAULT=nul
 @rem =====================
 

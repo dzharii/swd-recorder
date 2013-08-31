@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace SwdPageRecorder.UI
 {
@@ -11,36 +12,47 @@ namespace SwdPageRecorder.UI
     {
         [Required]
         [RegularExpression(@"^[a-zA-Z_][a-zA-Z_0-9]*$", ErrorMessage = "Name should have no spaces and special characters like < $ ; > etc.")]
+        [XmlAttribute(Type = typeof(string))]
         public string Name { get; set;  }
 
         [DisplayName("Search Method")]
+        [XmlAttribute(Type = typeof(LocatorSearchMethod))]
         public LocatorSearchMethod HowToSearch { get; set; }
 
         [DisplayName("Locator")]
+        [XmlAttribute(Type = typeof(string))]
         public string Locator { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlAttribute(Type = typeof(string))]
         public string HtmlTag { get; set; }        
         
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlAttribute(Type = typeof(WebElementLocator[]))]
         public WebElementLocator[] AlternativeFindBys { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlAttribute(Type = typeof(bool))]
         public bool ReturnsCollection { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlAttribute(Type = typeof(WebElementHtmlAttributes))]
         public WebElementHtmlAttributes AllHtmlTagProperties { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlAttribute(Type = typeof(string))]
         public string Arg1 { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlAttribute(Type = typeof(string))]
         public string Arg2 { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlAttribute(Type = typeof(string))]
         public string Arg3 { get; set; }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlAttribute(Type = typeof(string))]
         public string HtmlFrameId { get; set; }
 
         public WebElementDefinition()
@@ -51,13 +63,13 @@ namespace SwdPageRecorder.UI
             AllHtmlTagProperties = new WebElementHtmlAttributes();
         }
 
-
         public override string ToString()
         {
             return Name;
         }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlIgnore]
         public string How
         {
             get
@@ -68,6 +80,7 @@ namespace SwdPageRecorder.UI
         }
 
         [BrowsableAttribute(false), DefaultValueAttribute(false)]
+        [XmlIgnore]
         public string Type
         {
             get
