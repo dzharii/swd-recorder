@@ -1,7 +1,7 @@
 @echo off
-@echo [1/7] Building SwdPageRecorder...
+@echo [1/8] Building SwdPageRecorder...
 
-@echo [2/7]    Sharpening knives....
+@echo [2/8]    Sharpening knives....
 @rem Global variables
 
 set SlnPath=..\SwdPageRecorder\SwdPageRecorder.sln
@@ -15,7 +15,7 @@ set STDOUT_DEFAULT=nul
 
 echo Hello! >%STDOUT_DEFAULT%
 
-@echo [3/7]    Vacuuming a room...
+@echo [3/8]    Vacuuming a room...
 @rem Build/output cleanup
 
 @%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\msbuild %SlnPath% /t:clean >>%STDOUT_DEFAULT%
@@ -26,10 +26,17 @@ md SwdPageRecorder_Latest >>%STDOUT_DEFAULT%
 
 @rem =====================
 
-@echo [4/7]    Cheving a gum...
+@echo [4/8]    Doing some morning exercises...
+@Rem preparing a serialization assembly
+
+sgen\sgen.exe %SwdUiPath%\SwdPageRecorder.UI.exe /force /out:%SwdUiPath% /nologo >>%STDOUT_DEFAULT%
+
+@Rem // end of SGEN
+@echo [5/8]    Cheving a gum...
 @rem !!! Merge all dll files (except WebDriver.dll)  into executable file
 set MERGE_LIBS1=%SwdUiPath%\HtmlAgilityPack.dll %SwdUiPath%\Newtonsoft.Json.dll %SwdUiPath%\SwdPageRecorder.WebDriver.dll
-set MERGE_LIBS2=%SwdUiPath%\RazorEngine.dll %SwdUiPath%\System.Web.Razor.dll %SwdUiPath%\NLog.dll
+set MERGE_LIBS2=%SwdUiPath%\RazorEngine.dll %SwdUiPath%\System.Web.Razor.dll %SwdUiPath%\NLog.dll %SwdUiPath%\SwdPageRecorder.UI.XmlSerializers.dll
+
 
 ilmerge\ILMerge.exe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /t:winexe /out:SwdPageRecorder_Latest\SwdPageRecorder.exe %SwdUiPath%\SwdPageRecorder.UI.exe  %MERGE_LIBS1% %MERGE_LIBS2% >>%STDOUT_DEFAULT%
 
@@ -38,7 +45,7 @@ del /F /Q SwdPageRecorder_Latest\SwdPageRecorder.pdb
 
 @rem =====================
 
-@echo [5/7]    Shovelling coal into the build...
+@echo [6/8]    Shovelling coal into the build...
 @REM  Copy license, javascript files, code templates and WebDriver.dll
 
 xcopy %SwdUiPath%\JavaScript  SwdPageRecorder_Latest\JavaScript /e/y/i >>%STDOUT_DEFAULT%
@@ -53,10 +60,10 @@ copy %SwdUiPath%\WebDriver.dll SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 
 @REM #~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~#~
 
-@echo [6/7]    Cutting the edges...
+@echo [7/8]    Cutting the edges...
 @REM Compressing the build folder
 
 @REM TODO!!!
 
-@echo [7/7] Build completed.
+@echo [8/8] Build completed.
 
