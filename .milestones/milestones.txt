@@ -3,6 +3,10 @@ Milestones
 --------------------------------------------------
 RELESE 0.1
 --------------------------------------------------
+[-] Linux!
+    [-] Disable the posibility to select embeded driver. All work unstable. 
+        No any reason to allow starting them
+
 [-] Add a copy button to Source Code Tab
     https://github.com/dzhariy/swd-recorder/issues/10
 

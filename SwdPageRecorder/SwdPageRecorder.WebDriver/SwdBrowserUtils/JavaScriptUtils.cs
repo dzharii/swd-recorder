@@ -147,22 +147,25 @@ return xpath;
             IJavaScriptExecutor jsExec = webDriver as IJavaScriptExecutor;
             string json = (string)jsExec.ExecuteScript(
             @"
-                var resultArray = [];
+                var jsonResult = ""[\n"";
+                
                 var attrs = arguments[0].attributes;
                 for (var l = 0; l < attrs.length; ++l) {
                     var a = attrs[l]; 
-                    resultArray.push(
-                                        { 
-                                            Key: a.name,
-                                            Value: a.value,
-                                        }
-                    ); 
+                    
+                    var name  = a.name.replace(/\\/g, ""\\\\"").replace(/\""/g, ""\\\"""");
+                    var value = a.value.replace(/\\/g, ""\\\\"").replace(/\""/g, ""\\\"""");
+
+                    jsonResult += '{ ""Key"": ""' + name + '"", ""Value"": ""' + value + '""},';
+
                 }
-                var myJSONText = JSON.stringify(resultArray, null, 2);
-                return myJSONText;
+                jsonResult += ""]\n"";
+                
+                return jsonResult;
 
             ", currentElement);
 
+            MyLog.Write("JSON:\n" + json);
             List<KeyValuePair<string, string>> attributesList = JsonConvert.DeserializeObject<List<KeyValuePair<string, string>>>(json);
             foreach (var attr in attributesList)
             {
