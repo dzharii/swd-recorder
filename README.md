@@ -28,3 +28,7 @@ http://ubuntuguide.net/monodevelop-3-1-hud-support-ubuntu-12-04
     sudo apt-get update
 
     sudo apt-get install monodevelop-latest
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dzhariy/swd-recorder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
