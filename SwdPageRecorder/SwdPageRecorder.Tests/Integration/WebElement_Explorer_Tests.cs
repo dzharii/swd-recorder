@@ -32,6 +32,8 @@ namespace SwdPageRecorder.Tests.Integration
             SwdBrowser.InjectVisualSearch();
 
             //Helper.ClickId();
+
+            throw new NotImplementedException();
             
         }
 

@@ -69,14 +69,12 @@
     <Compile Include="MyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Smoke_UI_OpenClose_Browser.cs" />
-    <Compile Include="Integration\SwdWebDriver\SwdBrowser_Tests.cs" />
+    <Compile Include="EndToEnd\SwdWebDriver\SwdBrowser_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SwdPageRecorder.TestModel\SwdPageRecorder.TestModel.csproj">
       <Project>{CF660034-7A02-4800-A232-2C2B8F670A83}</Project>
@@ -86,9 +84,6 @@
       <Project>{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}</Project>
       <Name>SwdPageRecorder.WebDriver</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="TestResource\page_opens_several_tabs.html">
