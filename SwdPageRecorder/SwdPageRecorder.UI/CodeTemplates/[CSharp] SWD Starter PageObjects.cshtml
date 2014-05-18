@@ -1,0 +1,119 @@
+﻿@functions{
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\"\"");
+        locator = locator.Replace("{", "{{");
+        locator = locator.Replace("}", "}}");
+        return locator;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+// Create a new file with name 
+//   SWD.Starter\src\Demo.TestModel\PageDeclarations\@Raw(@Model.PageObject.PageObjectName + ".cs")
+// and put the following page-object code there:
+//////////////////////////////////////////////////////////////////////////////////
+ 
+  
+#region Usings - System
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+#endregion
+#region Usings - SWD
+    using Swd.Core;
+    using Swd.Core.Pages;
+    using Swd.Core.WebDriver;
+#endregion
+#region Usings - WebDriver
+    using OpenQA.Selenium.Support.PageObjects;
+    using OpenQA.Selenium;
+#endregion
+
+namespace Demo.TestModel.PageDeclarations
+{
+    public class @Raw(@Model.PageObject.PageObjectName) : MyPageBase
+    {
+        #region WebElements
+        @foreach (var element in @Model.PageObject.Items ) 
+        {
+
+        if(element.ReturnsCollection) 
+        {        
+        <text>
+        [FindsBy(How=How.@Raw(@element.How), Using = @@"@Raw(@QuoteLocator(@element.Locator))")]
+        protected IList<IWebElement> @Raw(@element.Name) { get; set; }
+        </text>
+        }
+        else 
+        {
+        <text>
+        [FindsBy(How=How.@Raw(@element.How), Using = @@"@Raw(@QuoteLocator(@element.Locator))")]
+        protected IWebElement @Raw(@element.Name) { get; set; }
+        </text>
+        }
+        }
+        #endregion    
+         
+        #region Invoke() and IsDisplayed()
+        public override void Invoke()
+        {
+            throw new NotImplementedException();
+        }
+        
+        public override bool IsDisplayed()
+        {
+            throw new NotImplementedException();
+            return true;
+        }
+        #endregion    
+ 
+
+        public override void VerifyExpectedElementsAreDisplayed()
+        {
+            @foreach (var element in @Model.PageObject.Items ) 
+            {
+
+            if(element.ReturnsCollection) { continue ; }
+            else 
+            {
+            <text>VerifyElementVisible("@Raw(@element.Name)", @Raw(@element.Name));</text>
+            }
+        }
+        }            
+    }
+}
+/// END OF PAGE-OBJECT FILE
+    
+//////////////////////////////////////////////////////////////////////////////////
+// Now open the file MyPages.cs at the following location:
+//   SWD.Starter\src\Demo.TestModel\MyPages.cs
+// And put the following code after the line 
+// “Put your new pages here:”
+//////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+ 
+    public static @Raw(@Model.PageObject.PageObjectName)    @Raw(@Model.PageObject.PageObjectName)     { get { return GetPage<@Raw(@Model.PageObject.PageObjectName)>(); } }
+ 
+     
+/// END OF SIMPLE, BUT IMPORTANT TASK
+  
+//////////////////////////////////////////////////////////////////////////////////
+// Now switch to Test project. Open the file:
+//   SWD.Starter\src\Demo.TestProject\Smoke\Smoke_test_for_each_pageobject.cs
+// And put the following code after the line 
+// “Add testMethods for your new pages here:”
+//////////////////////////////////////////////////////////////////////////////////
+ 
+      
+   
+        [TestMethod]
+        public void @Raw(@Model.PageObject.PageObjectName)_VerifyExpectedElements()
+        {
+            PageTest(MyPages.@Raw(@Model.PageObject.PageObjectName));
+        }
+ 
+   
+/// END OF TEST. Now it's time to run the test... And implement Invoke() and Exists()

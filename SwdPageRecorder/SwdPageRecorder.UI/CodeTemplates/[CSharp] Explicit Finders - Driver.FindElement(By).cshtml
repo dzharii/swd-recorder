@@ -1,0 +1,57 @@
+﻿@functions{
+    string GetCSharpBy(string howFromCSharp)
+    {
+        switch (howFromCSharp)
+        {
+            case "Id":
+            case "Name":
+            case "TagName":
+            case "ClassName":
+            case "CssSelector":
+            case "LinkText":
+            case "PartialLinkText":
+            case "XPath":           return howFromCSharp;
+            default:                return "LOCATOR PARSE ERROR";
+        }
+    }    
+	
+	
+	string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\"\"");
+        locator = locator.Replace("{", "{{");
+        locator = locator.Replace("}", "}}");
+        return locator;
+    }
+}
+
+public class @Raw(@Model.PageObject.PageObjectName)
+{
+    // Initialize Driver in any convenient way: Constructor, shared static class etc...
+    protected IWebDriver Driver { get; set; }
+
+@foreach (var element in @Model.PageObject.Items ) 
+{
+    if(element.ReturnsCollection) 
+    {
+    <text>
+    protected IList<IWebElement> @Raw(@element.Name)
+    {
+        get { return Driver.FindElements(By.@Raw(@GetCSharpBy(@element.How)) (@@"@Raw(@QuoteLocator(@element.Locator))") ); }
+    }
+    </text>
+
+    }
+    else
+    {
+    <text>
+    protected IWebElement @Raw(@element.Name)
+    {
+        get { return Driver.FindElement(By.@Raw(@GetCSharpBy(@element.How)) (@@"@Raw(@QuoteLocator(@element.Locator))") ); }
+    }
+    </text>
+    }
+
+} 
+
+}

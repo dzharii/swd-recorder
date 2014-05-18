@@ -1,0 +1,2 @@
+Highlight elements: https://gist.github.com/marciomazza/3086536
+How to use Razor:   http://vibrantcode.com/blog/2010/11/16/hosting-razor-outside-of-aspnet-revised-for-mvc3-rc.html/

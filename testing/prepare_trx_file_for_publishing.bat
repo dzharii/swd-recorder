@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy unrestricted -File "%~dp0_prepare_trx_file_for_publishing.ps1" "%~dp0..\Bin\TestResults"

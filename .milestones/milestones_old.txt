@@ -1,0 +1,159 @@
+Milestones
+==================================================
+--------------------------------------------------
+RELESE 0.1
+--------------------------------------------------
+[-] !DoInvokeAction(   () => for all multithreading controls
+[-] Linux!
+    [-] Disable the posibility to select embeded driver. All work unstable. 
+        No any reason to allow starting them
+
+[-] Add a copy button to Source Code Tab
+    https://github.com/dzhariy/swd-recorder/issues/10
+
+[-] Web Element Explorer enhancements (https://github.com/dzhariy/swd-recorder/issues/9)
+    [-] Display value of Id, Name attributes (if available for the element)
+    [-] Along with XPathLocator, also show/suggest CSS Locator
+    [-] When user adds an element, show success message or close the popup    
+
+[!] Visual Search stop/start/inject is the most buggy area
+    [+] Fix it!
+    [+] Test it!
+    [-] Write automated tests!
+
+[+] Implement "Update Properties from WebElement"
+    [+] Read all props
+    [+] UI implementation
+    [+] Update Visual Search with reading additional props (Extend command)
+
+[+] Generate Page Object source code
+    [+] Razor PageObject templates
+        [+] C#
+        [+] Java
+        [+] Ruby
+            PageObjects gem samples:
+            https://github.com/wikimedia/qa-browsertests
+        [+] Python (https://github.com/Element-34/Py.Saunter-Examples)
+
+[-] Implement Properties view for PageElement using standard property control
+    [+] View
+    [+] Edit
+[+] Read/Save PageObjects
+    [+] PageObjects
+[ ] Existing items:
+    [+] Existing items edit/update
+    [+] Existing items delete
+    [+] Existing items change order in tree
+[+] Highlight elements
+[+] Implement visual search for element
+    [+] Implement DOM box
+    [+] Implement 2 sides communication (via JSON serialization) (http://www.sitepoint.com/javascript-json-serialization/)
+    [+] Make it user friendly
+
+[+] Implement interactions through JavaScript window.Object
+    // Using WebDriver to automatically check for JavaScript errors on every page
+    // http://watirmelon.com/2012/12/19/using-webdriver-to-automatically-check-for-javascript-errors-on-every-page/
+[+] View DesiredCapabilities
+    https://code.google.com/p/selenium/wiki/DesiredCapabilities
+    [+] Subclass Desired caps for IE, Chrome
+
+[+] Internal WebElement Definition Enhancement to support all WebElement data:
+    Is Element Collection
+    Depends on Element
+    MultyFinds/AlternativeFindBys
+    Tag
+    All Properties
+
+[-] Implement feature definition with tests like in 
+    http://padre.perlide.org/trac/wiki/Features/Autocomplete
+
+--------------------------------------------------
+RELESE 0.2
+--------------------------------------------------
+[-] API
+    [-] Libray
+    [-] Commandline
+        [-] Class generation from template
+[-] Save Application Settings
+[-] XPath/CSS selectors internal processing
+    [-] FizzlerEx: http://fizzlerex.codeplex.com/
+[-] Implement TestBox for element with click/sendkeys, etc
+[-] PageObject loading/source code integration
+[-] WebDriver proxy: Use SWDPR as a proxy that allows to reconnect to 
+    existing Browser instance. Use Fiddler-core to implement proxy
+[-] Implement Cpapbility settings
+[-] JavaScript support
+    [-] FindBy JavaScript
+    [-] Allow JavaScript snippets
+    [?] Integration with Chrome/IE console????
+[-] Frames support and SearchContext switch
+[-] WebElement Explorer change locator strategy: CSS, XPath, Id, name as a separate command
+	Command passed to WEE engine from UI
+
+[-] User Scripts Injector
+    Allow injecting a custom user scripts written in JavaScript. 
+    The application should verify if the user script was injected and inject in case it is not injected.
+
+==================================================
+--------------------------------------------------
+RELESE 0.1
+--------------------------------------------------
+[!] Code refactoring
+   [+] MVP pattern
+   [!] JavaScript code clean up
+   [!] Create a reusable functions (getXPath!)
+[+] Initial Unit tests
+[!] Safe error handeling!!!! !!!!! !!!!!
+[!] Event Logging
+==================================================
+
+--------------------------------------------------
+RELESE 0.2
+--------------------------------------------------
+[-] Add support for IList<IWebElement> -- PageObject
+[-] Add  support for Multiple FindsBy
+[-] Advanced HTML editor
+[-] Browser screenshots
+[-] CSharp code integration
+
+==================================================
+WebDriver limitations
+==================================================
+[!] Reduce Webdriver calls: According to JSON-wired implementation, 
+    Webdriver makes http call each time the client request an webelement 
+    property. That’s slows down the Test Locators feature. 
+    Possible solution: make a javascript search avoiding webdriver’s one
+==================================================
+More Ideas
+==================================================
+
+* Allow leaving comments on the page in order to
+  notify developers about ugly locatord
+  
+  Given I am automation engeneer
+  And I see ugly XPATH locator
+  When I click on the locator
+  It should be marked, so the developer can see this sight and fix the locator
+
+* CodedUI Pageobjects?
+
+* FindElementByJavaScript?
+  http://stackoverflow.com/a/11320472/1126595
+
+
+==================================================
+Notes
+==================================================
+
+Linux Support:
+
+    http://unix.stackexchange.com/questions/36529/generating-a-linux-executable-with-mono-with-mkbundle
+    http://www.mono-project.com/AOT
+
+Mykhailo Poliarush:
+https://github.com/mozilla/mozwebqa-test-templates
+https://github.com/mozilla/moztrap-tests
+
+
+
+
