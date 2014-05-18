@@ -479,5 +479,19 @@ namespace SwdPageRecorder.WebDriver
 
             return elementProxy;
         }
+
+        /// <summary>
+        /// Tests remote hub availabbility. 
+        /// Throws Exception when the hub is not available. 
+        /// </summary>
+        /// <param name="url"></param>
+
+        public static void TestRemoteHub(string url)
+        {
+            var client = new WebClient();
+            string response = "";
+            response = client.DownloadString(url);
+            
+        }
     }
 }

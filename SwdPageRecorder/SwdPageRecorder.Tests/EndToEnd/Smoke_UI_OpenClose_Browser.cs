@@ -14,7 +14,7 @@ using System.IO;
 
 
 
-namespace SwdPageRecorder.Tests
+namespace SwdPageRecorder.Tests.EndToEnd
 {
     [TestClass]
     public class Smoke_UI_OpenClose_Browser : MyTest

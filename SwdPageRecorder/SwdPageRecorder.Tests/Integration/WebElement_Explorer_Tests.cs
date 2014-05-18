@@ -21,7 +21,7 @@ namespace SwdPageRecorder.Tests.Integration
         const int secondFrame = 1;
         const int thirdFrame = 2;
         
-        [TestMethod]
+        [TestMethod, Ignore]
         public void WebElementExplorer_Test()
         {
             Helper.RunDefaultBrowser();

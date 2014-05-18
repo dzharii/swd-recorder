@@ -68,8 +68,8 @@
     <Compile Include="Integration\WebElement_Explorer_Tests.cs" />
     <Compile Include="MyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Smoke_UI_OpenClose_Browser.cs" />
-    <Compile Include="EndToEnd\SwdWebDriver\SwdBrowser_Tests.cs" />
+    <Compile Include="EndToEnd\Smoke_UI_OpenClose_Browser.cs" />
+    <Compile Include="Integration\SwdPageRecorder.WebDriver\SwdBrowser_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

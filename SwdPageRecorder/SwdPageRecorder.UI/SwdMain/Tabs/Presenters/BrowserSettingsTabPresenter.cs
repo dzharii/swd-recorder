@@ -229,14 +229,12 @@ namespace SwdPageRecorder.UI
 
         public bool TestRemoteHub(string url)
         {
-            var client = new WebClient();
             string result = "OK";
             bool isOk = true;
 
-            string response = "";
             try
             {
-                response = client.DownloadString(url);
+                SwdBrowser.TestRemoteHub(url);
             }
             catch(Exception e)
             {

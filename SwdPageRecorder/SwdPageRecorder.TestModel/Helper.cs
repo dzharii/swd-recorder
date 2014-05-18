@@ -11,6 +11,8 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Collections;
 
+using System.Diagnostics;
+
 namespace SwdPageRecorder.TestModel
 {
     public static class Helper
@@ -103,5 +105,24 @@ namespace SwdPageRecorder.TestModel
         {
             return Path.Combine(Helper.AssemblyDirectory(), "SwdPageRecorder.UI.exe");
         }
+
+        
+        public static string[] GetAllMainWindowTitlesOnDesktop()
+        {
+            List<string> result = new List<string>();
+
+            Process[] processes = Process.GetProcesses();
+            foreach (var process in processes)
+            {
+                if (!string.IsNullOrWhiteSpace(process.MainWindowTitle))
+                {
+                    result.Add(process.MainWindowTitle);
+                }
+            }
+            return result.ToArray();
+        }
+
+
+
     }
 }
