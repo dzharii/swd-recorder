@@ -1,0 +1,40 @@
+﻿@functions{
+    string PythonHow(string howFromCSharp, bool multipleElements)
+    {
+        string findBy = multipleElements ? "find_elements_by" : "find_element_by";
+        
+        switch (howFromCSharp)
+        {
+            case "Id":              return findBy + "_id";
+            case "Name":            return findBy + "_name";
+            case "TagName":         return findBy + "_tag_name";
+            case "ClassName":       return findBy + "_class_name";
+            case "CssSelector":     return findBy + "_css_selector";
+            case "LinkText":        return findBy + "_link_text";
+            case "PartialLinkText": return findBy + "_partial_link_text";
+            case "XPath":           return findBy + "_xpath";
+            default: return "LOCATOR PARSE ERROR";
+        }
+    }
+
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\\\"");
+        return locator;
+    }    
+}
+
+class MyPage(object):
+    def __init__(self, driver):
+        self.driver = driver
+
+
+    @foreach (var element in @Model.PageObject.Items ) 
+    {
+        
+    <text>
+    def @Raw(@element.Name) (self):</text>
+        <text>return @Raw("self.driver.")@Raw(@PythonHow(@element.How, @element.ReturnsCollection)) ("@Raw(@QuoteLocator(@element.Locator))")
+        </text>
+            
+    }

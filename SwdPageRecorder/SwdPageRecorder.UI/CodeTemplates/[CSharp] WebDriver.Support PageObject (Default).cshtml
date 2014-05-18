@@ -1,0 +1,31 @@
+﻿@functions{
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\"\"");
+        locator = locator.Replace("{", "{{");
+        locator = locator.Replace("}", "}}");
+        return locator;
+    }
+}
+
+public class @Raw(@Model.PageObject.PageObjectName)
+{
+    @foreach (var element in @Model.PageObject.Items ) 
+    {
+        
+        if(element.ReturnsCollection) 
+        {        
+    <text>
+    [FindsBy(How=How.@Raw(@element.How), Using = @@"@Raw(@QuoteLocator(@element.Locator))")]
+    protected IList<IWebElement> @Raw(@element.Name) { get; set; }
+    </text>
+        }
+        else 
+        {
+    <text>
+    [FindsBy(How=How.@Raw(@element.How), Using = @@"@Raw(@QuoteLocator(@element.Locator))")]
+    protected IWebElement @Raw(@element.Name) { get; set; }
+    </text>
+        }
+    }
+}

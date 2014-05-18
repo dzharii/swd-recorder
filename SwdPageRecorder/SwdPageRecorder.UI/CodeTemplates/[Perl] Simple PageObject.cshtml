@@ -1,0 +1,93 @@
+﻿@functions{
+    string PerlHow(string howFromCSharp)
+    {
+        switch (howFromCSharp)
+        {
+            case "Id":              return "id";
+            case "Name":            return "name";
+            case "TagName":         return "tag_name";
+            case "ClassName":       return "class_name";
+            case "CssSelector":     return "css";
+            case "LinkText":        return "link_text";
+            case "PartialLinkText": return "partial_link_text";
+            case "XPath":           return "xpath";
+            default:                return "LOCATOR PARSE ERROR";
+        }
+    }
+}
+
+package Pages::SomePage;
+use strict; use warnings;
+use Selenium::Remote::Driver;
+use Selenium::Remote::WebElement;
+ 
+=head1 NAME
+ 
+Pages::SomePage - Implements Page Object pattern for I<Some Page>
+ 
+=cut
+ 
+=head1 USAGE
+ 
+    use Selenium::Remote::Driver;
+    use Pages::SomePage;
+     
+    my $driver = new Selenium::Remote::Driver;
+    $driver->get('http://yandex.ru');
+     
+    my $page = Pages::SomePage->new($driver);
+     
+    $page->txt_generated_search_box->send_keys("hello");
+     
+    $driver->quit();
+ 
+=cut
+ 
+ 
+
+sub new {
+    my ($class, $driver) = (@Raw("@_"));
+
+    my $data = {
+        driver=> $driver
+    };
+     
+    return bless $data, $class;
+}
+  
+  
+sub driver {
+    return shift->{'driver'};
+}
+  
+ 
+# ELEMENTS: 
+#--------- 
+ 
+@foreach (var element in @Model.PageObject.Items ) 
+{
+
+if(element.ReturnsCollection) 
+{
+<text>
+sub @Raw(@element.Name) {
+    return shift->driver->find_elements(q!@Raw(@element.Locator)!, "@Raw(@PerlHow(@element.How))");
+}
+</text>
+}
+else 
+{
+<text>
+sub @Raw(@element.Name) {
+    return shift->driver->find_element(q!@Raw(@element.Locator)!, "@Raw(@PerlHow(@element.How))");
+}
+</text>
+
+} 
+ 
+        
+}
+
+
+
+1;

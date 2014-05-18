@@ -1,0 +1,44 @@
+﻿@functions{
+    string JavaHow(string howFromCSharp)
+    {
+        switch (howFromCSharp)
+        {
+            case "Id": return "ID";
+            case "Name": return "NAME";
+            case "TagName": return "TAG_NAME";
+            case "ClassName": return "CLASS_NAME";
+            case "CssSelector": return "CSS";
+            case "LinkText": return "LINK_TEXT";
+            case "PartialLinkText": return "PARTIAL_LINK_TEXT";
+            case "XPath": return "XPATH";
+            default: return "LOCATOR PARSE ERROR";
+        }
+    }
+
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\\\"");
+        return locator;
+    }    
+}
+
+public class @Raw(@Model.PageObject.PageObjectName)
+{
+    @foreach (var element in @Model.PageObject.Items ) 
+    {
+        if(element.ReturnsCollection) 
+        {        
+        <text>
+            @@FindBy(how=How.@Raw(@JavaHow(@element.How)), using="@Raw(@QuoteLocator(@element.Locator))")
+            private List<WebElement> @Raw(@element.Name);
+        </text>
+        }
+        else 
+        {
+        <text>
+            @@FindBy(how=How.@Raw(@JavaHow(@element.How)), using="@Raw(@QuoteLocator(@element.Locator))")
+            private WebElement @Raw(@element.Name);
+        </text>
+        }
+    }
+}

@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A22BF707-81E6-42C6-8088-CFEEA128B0AB}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\Microsoft.Build.dll = .nuget\Microsoft.Build.dll
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.UI", "SwdPageRecorder.UI\SwdPageRecorder.UI.csproj", "{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.WebDriver", "SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj", "{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.Tests", "SwdPageRecorder.Tests\SwdPageRecorder.Tests.csproj", "{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{740A548F-C595-4AA6-BA88-C474CE89C713}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		SwdPageRecorder.vsmdi = SwdPageRecorder.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.TestModel", "SwdPageRecorder.TestModel\SwdPageRecorder.TestModel.csproj", "{CF660034-7A02-4800-A232-2C2B8F670A83}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SwdPageRecorder.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+EndGlobal
