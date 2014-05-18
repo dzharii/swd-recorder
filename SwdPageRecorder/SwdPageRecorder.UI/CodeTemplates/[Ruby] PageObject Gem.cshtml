@@ -1,0 +1,111 @@
+﻿@functions{
+
+    string RubyHow(string howFromCSharp)
+    {
+        switch (howFromCSharp)
+        {
+            case "Id":              return "id";
+            case "Name":            return "name";
+            case "ClassName":       return "class";
+            case "CssSelector":     return "css";
+            case "LinkText":        return "text";
+            case "PartialLinkText": return "text";
+            case "XPath":           return "xpath";
+            default:                return "!!! LOCATOR PARSE ERROR !!!";
+        }
+    }
+
+    string RubyTagToAccessor(string tag, string type)
+    {
+        string result = string.Empty;
+
+        tag = tag.ToLower();
+        type = type.ToLower();
+
+        Dictionary<string, string[]> AccessorsAndTags = new Dictionary<string, string[]>();
+        AccessorsAndTags.Add("text_area",       new string[] { "textarea"   });
+        AccessorsAndTags.Add("select_list",     new string[] { "select"     });
+        AccessorsAndTags.Add("link",            new string[] { "a"          });
+        AccessorsAndTags.Add("list_item",       new string[] { "li"         });
+        AccessorsAndTags.Add("unordered_list",  new string[] { "ul"         });
+        AccessorsAndTags.Add("ordered_list",    new string[] { "ol"         });
+        AccessorsAndTags.Add("paragraph",       new string[] { "p"          });
+        AccessorsAndTags.Add("cell",            new string[] { "td", "th"   });
+        AccessorsAndTags.Add("image",           new string[] { "img"        });
+
+        Dictionary<string, string[]> AccessorsAndTypes = new Dictionary<string, string[]>();
+        AccessorsAndTypes.Add("area",         new string[] { "area"      });
+        AccessorsAndTypes.Add("audio",        new string[] { "audio"     });
+        AccessorsAndTypes.Add("button",       new string[] { "submit", "image", "button", "reset",});
+        AccessorsAndTypes.Add("canvas",       new string[] { "canvas"    });
+        AccessorsAndTypes.Add("checkbox",     new string[] { "checkbox"  });
+        AccessorsAndTypes.Add("file_field",   new string[] { "file"      });
+        AccessorsAndTypes.Add("hidden_field", new string[] { "hidden"    });
+        AccessorsAndTypes.Add("radio_button", new string[] { "radio"     });
+        AccessorsAndTypes.Add("text_field",   new string[] { "text", "password"});
+        AccessorsAndTypes.Add("video",        new string[] { "video"     });
+
+        if (!String.IsNullOrEmpty(type))
+        {
+            foreach (KeyValuePair<string, string[]> entry in AccessorsAndTypes)
+            {
+                if (Array.Exists(entry.Value, delegate(string item) { return item == type; }))
+                {
+                    result = entry.Key;
+                    break;
+                }
+            }
+        }
+
+        if (String.IsNullOrEmpty(result))
+        {
+            foreach (KeyValuePair<string, string[]> entry in AccessorsAndTags)
+            {
+                if (Array.Exists(entry.Value, delegate(string item) { return item == tag; }))
+                {
+                    result = entry.Key;
+                    break;
+                }
+            }
+        }
+
+        if (String.IsNullOrEmpty(result))
+        {
+            result = tag;
+        }
+        
+        return result;
+    }
+
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("'", "\\'");
+        return locator;
+    }    
+
+
+    string RubyWebElement(string name, string tag, string type, string howFromCSharp, string locator)
+    {
+        System.Text.StringBuilder result = new System.Text.StringBuilder();
+        
+        result.AppendFormat("{0}(", RubyTagToAccessor(tag, type));
+        result.AppendFormat(":{0}, ", name);
+        result.AppendFormat("{0}: '{1}')", RubyHow(howFromCSharp), QuoteLocator(locator));
+
+        return result.ToString();
+    }
+}
+
+class @Raw(@Model.PageObject.PageObjectName)
+  include PageObject
+
+
+@foreach (var element in @Model.PageObject.Items ) 
+{
+      
+<text>  @Raw( RubyWebElement(@element.Name, @element.HtmlTag, @element.Type, @element.How, @element.Locator) )</text>
+    
+}
+
+
+end

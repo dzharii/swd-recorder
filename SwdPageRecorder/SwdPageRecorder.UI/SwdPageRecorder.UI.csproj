@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ApplicationIcon>icon3.ico</ApplicationIcon>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SwdPageRecorder.UI</RootNamespace>
+    <AssemblyName>SwdPageRecorder.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClearScript">
+      <HintPath>..\vendor\ClearScript\ClearScript.dll</HintPath>
+    </Reference>
+    <Reference Include="FastColoredTextBox, Version=2.12.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\vendor\FastColoredTextBox-PavelTorgashov\FastColoredTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.3.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RazorEngine.3.3.0\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=2.41.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Selenium.WebDriver.2.41.0\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeGeneration\ExternalGenerator.cs" />
+    <Compile Include="IPresenter.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="Presenters.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\PlayGroundView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\PlayGroundView.Designer.cs">
+      <DependentUpon>PlayGroundView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\JavaScriptEditorView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\JavaScriptEditorView.Designer.cs">
+      <DependentUpon>JavaScriptEditorView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\Model\ChromeDesiredCapabilitiesData.cs" />
+    <Compile Include="SwdMain\Tabs\Model\IEDesiredCapabilitiesData.cs" />
+    <Compile Include="SwdMain\Tabs\Presenters\PlayGroundPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\Presenters\JavascriptEditorTabPresenter.cs" />
+    <Compile Include="SwdMain\UIActions.cs" />
+    <Compile Include="SwdMain\Tabs\BrowserSettingsTabView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\BrowserSettingsTabView.Designer.cs">
+      <DependentUpon>BrowserSettingsTabView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\Model\DesiredCapabilitiesData.cs" />
+    <Compile Include="SwdMain\Tabs\Presenters\BrowserSettingsTabPresenter.cs" />
+    <Compile Include="SwdMain\CSharpPageObjectGenerator.cs" />
+    <Compile Include="SwdMain\HtmlTreeNodeData.cs" />
+    <Compile Include="SwdMain\ResultElement.cs" />
+    <Compile Include="SwdMain\SwdMainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SwdMain\SwdMainView.Designer.cs">
+      <DependentUpon>SwdMainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SwdMain\SwdMainPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\Presenters\PageObjectSourceCodePresenter.cs" />
+    <Compile Include="SwdMain\Tabs\PageObjectSourceCodeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\PageObjectSourceCodeView.Designer.cs">
+      <DependentUpon>PageObjectSourceCodeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\HtmlDomTesterView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\HtmlDomTesterView.Designer.cs">
+      <DependentUpon>HtmlDomTesterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\Presenters\HtmlDomTesterPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\PageObjectDefinitionView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\PageObjectDefinitionView.Designer.cs">
+      <DependentUpon>PageObjectDefinitionView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\Presenters\PageObjectDefinitionPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\Presenters\FullHtmlSourceTabPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\FullHtmlSourceTabView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\FullHtmlSourceTabView.Designer.cs">
+      <DependentUpon>FullHtmlSourceTabView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\Presenters\SelectorsEditPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\SelectorsEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\SelectorsEditView.Designer.cs">
+      <DependentUpon>SelectorsEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\TravelNode.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WinFromsExtensions.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\SwdMainView.resx">
+      <DependentUpon>SwdMainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\BrowserSettingsTabView.resx">
+      <DependentUpon>BrowserSettingsTabView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\PlayGroundView.resx">
+      <DependentUpon>PlayGroundView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\JavaScriptEditorView.resx">
+      <DependentUpon>JavaScriptEditorView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\PageObjectSourceCodeView.resx">
+      <DependentUpon>PageObjectSourceCodeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\HtmlDomTesterView.resx">
+      <DependentUpon>HtmlDomTesterView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\PageObjectDefinitionView.resx">
+      <DependentUpon>PageObjectDefinitionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\FullHtmlSourceTabView.resx">
+      <DependentUpon>FullHtmlSourceTabView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\SelectorsEditView.resx">
+      <DependentUpon>SelectorsEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CodeTemplates\[CSharp] Explicit Finders - Driver.FindElement%28By%29.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[CSharp] Locator constants in the static class.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[CSharp] SWD Starter PageObjects with DataForm.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[CSharp] SWD Starter PageObjects.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[Java] WebDriver.Support PageObject.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[CSharp] WebDriver.Support PageObject %28Default%29.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[Perl] Simple PageObject.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[Python] Simple PageObject.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[Ruby] PageObject Gem.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="CodeTemplates\[ZZZ] Experimental Run External Tool.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj">
+      <Project>{dc2ec3c9-dc4f-430a-bba7-7f04b9c215eb}</Project>
+      <Name>SwdPageRecorder.WebDriver</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon3.ico" />
+    <Content Include="sample_ParserWebElements.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sample_ParserWebElements.lib.json2.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Snippets\UI\enable all INPUTs on the page.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Snippets\UI\00 hello.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="transparent_icon.ico" />
+    <None Include="Resources\loading-indicator.gif" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
