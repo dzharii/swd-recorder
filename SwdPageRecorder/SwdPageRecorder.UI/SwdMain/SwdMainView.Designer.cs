@@ -62,8 +62,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.javaScriptEditorView1 = new SwdPageRecorder.UI.JavaScriptEditorView();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinitionView();
             this.playGroundView1 = new SwdPageRecorder.UI.PlayGroundView();
+            this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinitionView();
             this.groupBox1.SuspendLayout();
             this.pnlLoadingBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -460,6 +460,15 @@
             this.tabPage6.Text = "WebDriver Playground";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // playGroundView1
+            // 
+            this.playGroundView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playGroundView1.Enabled = false;
+            this.playGroundView1.Location = new System.Drawing.Point(3, 3);
+            this.playGroundView1.Name = "playGroundView1";
+            this.playGroundView1.Size = new System.Drawing.Size(734, 398);
+            this.playGroundView1.TabIndex = 0;
+            // 
             // pageObjectDefinitionView
             // 
             this.pageObjectDefinitionView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -469,14 +478,6 @@
             this.pageObjectDefinitionView.Name = "pageObjectDefinitionView";
             this.pageObjectDefinitionView.Size = new System.Drawing.Size(244, 420);
             this.pageObjectDefinitionView.TabIndex = 2;
-            // 
-            // playGroundView1
-            // 
-            this.playGroundView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.playGroundView1.Location = new System.Drawing.Point(3, 3);
-            this.playGroundView1.Name = "playGroundView1";
-            this.playGroundView1.Size = new System.Drawing.Size(734, 398);
-            this.playGroundView1.TabIndex = 0;
             // 
             // SwdMainView
             // 
@@ -488,7 +489,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SwdMainView";
-            this.Text = "SWD Page Recorder v2.41 (April 27, 2014)";
+            this.Text = "SWD Page Recorder v2.41 (June 01, 2014)";
             this.Shown += new System.EventHandler(this.SwdMainView_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

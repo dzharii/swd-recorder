@@ -53,7 +53,7 @@ namespace SwdPageRecorder.UI
 
 
             InitControls();
-
+            
 
         }
 
