@@ -26,12 +26,19 @@ using System.Collections;
 
 using FastColoredTextBoxNS;
 
+using SwdPageRecorder.WebDriver.OpenQA.Selenium.Support.PageObjects;
+
+using Microsoft.ClearScript;
+using Microsoft.ClearScript.Windows;
+
 
 namespace SwdPageRecorder.UI
 {
     public class PlayGroundPresenter : IPresenter<PlayGroundView>
     {
         private PlayGroundView view = null;
+
+
 
 
         public void InitWithView(PlayGroundView view)
@@ -61,18 +68,23 @@ namespace SwdPageRecorder.UI
             var driverIsRunning = SwdBrowser.IsWorking;
             if (driverIsRunning)
             {
-                // 
+                view.Enabled = true;
             }
             else
             {
-                //
+                view.Enabled = false;
             }
         }
 
 
 
+        
         internal void InitiCodeEditor()
         {
+            // This code is disabled 
+            // TODO: Complete. Handle crash
+            return;
+
             AutocompleteMenu autocomplete = new AutocompleteMenu(view.txtJavaScriptCode);
             autocomplete.MinFragmentLength = 2;
 
@@ -135,5 +147,50 @@ namespace SwdPageRecorder.UI
 
             return methods;
         }
+
+        Dictionary<string, Type> importedTypes = new Dictionary<string, Type>()
+        {
+            // OpenQA.Selenium:
+            {"By", typeof(OpenQA.Selenium.By)},
+            {"Keys", typeof(OpenQA.Selenium.Keys)},
+
+            // OpenQA.Selenium.Interactions:
+            {"Actions", typeof(OpenQA.Selenium.Interactions.Actions)},
+            {"TouchActions", typeof(OpenQA.Selenium.Interactions.TouchActions)},
+        };
+
+        private void ImportTypes(JScriptEngine engine)
+        {
+            foreach (KeyValuePair<string, Type> pair in importedTypes)
+            {
+                engine.AddHostType(pair.Key, pair.Value);
+            }
+        }
+
+        internal void RunScript(string code)
+        {
+            using (var engine = new JScriptEngine())
+            {
+                engine.AddHostObject("driver", SwdBrowser.GetDriver());
+
+                ImportTypes(engine);
+
+                var uiPageObject = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
+
+                
+                foreach (var element in uiPageObject.Items)
+                {
+                    IWebElement proxyElement = SwdBrowser.CreateWebElementProxy(element);
+                    string name = element.Name;
+                    engine.AddHostObject(name, proxyElement);
+                }
+
+                var result = engine.Evaluate(code) ?? "(none)";
+                view.AppendConsole(result.ToString() + "\r\n");
+
+            }
+        }
+
+
     }
 }
