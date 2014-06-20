@@ -9,25 +9,20 @@ Read more (in Russian): http://blog.zhariy.com/2013/06/swd-page-recorder-01-alph
 
 English article is comming...
 
-Linux installation (Ubuntu, Linux Mint)
-========================================
-The application is not working on Mono 2.10. Use Mono 3 in order to use SWD Page Recorder. 
 
-The easiest way to get Mono 3 is installing 
+Why SWD Page Recorder?
+----------------------
+We both know: you awesome application is the best for solving the business problems in your domain.   
+However, the developers may not have time for writing a comprehensive unit and integration testing suites… On the other hand, the QA Team may not trust the unit tests written by developers. There are so many reasons why the teams across the world choose the User Acceptance / User Interface testing approach.   
+And you will realize that the code produced by such tools as Selenium IDE and Selenium Builder is good in the beginning…  However, the test suites created with Record & Playback tools will require so much maintenance time, so you would put more effort on fixing the tests rather than running them. That is the hidden cost of the Record & Playback approach.   
+At this point, you will discover many teams uses PageObjects in order to reduce the maintenance time and boosts the test case creation. Your will make the test code more stable and clean.  
+The only one thing... You still need to spend a lot of time creating your PageObject classes manually.   
+  
+You should not.   
+  
+Let SWD Page Recorder do this for your. SWD Page Recorder enables you to pick the required elements from the Web application UI and generate the code for the new PageObject class.   
 
-The easiest way to install Mono 3 on Ubuntu/Linux Mint is installing SharpDevelop3, and the latest Mono will be installed as a dependency. 
 
-Use the following guide to install Mono3/SharpDevelop3:
-
-**Install MonoDevelop 3.1 with HUD support on Ubuntu 12.04**
-http://ubuntuguide.net/monodevelop-3-1-hud-support-ubuntu-12-04
-
-**Commands:**
-    sudo add-apt-repository ppa:keks9n/monodevelop-latest
-
-    sudo apt-get update
-
-    sudo apt-get install monodevelop-latest
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dzhariy/swd-recorder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
