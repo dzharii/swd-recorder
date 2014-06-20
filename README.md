@@ -42,6 +42,9 @@ You should not.
 Let SWD Page Recorder do this for your. SWD Page Recorder enables you to pick the required elements from the Web application UI and generate the code for the new PageObject class.   
 
 
+![SWD Page Recorder](https://raw.githubusercontent.com/dzharii/swd-recorder/master/articles/04-inro-features-readme.md/pagerecorder.png)
+
+
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dzhariy/swd-recorder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
