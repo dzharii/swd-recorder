@@ -31,7 +31,8 @@ namespace SwdPageRecorder.UI
             public void ApplicationThreadException(object sender, ThreadExceptionEventArgs e)
             {
                 MyLog.Exception(e.Exception);
-                MessageBox.Show(e.Exception.Message, "SWD Page Recorder - Error");
+                string exceptionType = string.Format("Error type: ({0})", e.Exception.GetType().ToString());
+                MessageBox.Show(e.Exception.Message + "\r\n" + exceptionType, "SWD Page Recorder - Error");
             }
         }
 

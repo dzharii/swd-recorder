@@ -35,7 +35,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+ 
 public class @Raw(@Model.PageObject.PageObjectName) extends MyBasePage {
     @foreach (var element in @Model.PageObject.Items ) 
     {
@@ -55,18 +55,19 @@ public class @Raw(@Model.PageObject.PageObjectName) extends MyBasePage {
         }
     }
 
-    @Override
+ 
+    @@Override
     public void invoke() {
         throw new UnsupportedOperationException("invoke() is not implemented");
     }
-
-    @Override
+ 
+    @@Override
     public boolean isDisplayed() {
         throw new UnsupportedOperationException("isDisplayed() is not implemented");
 		
     }
-
-    @Override
+ 
+    @@Override
     public void verifyExpectedElementsAreDisplayed() {
         @foreach (var element in @Model.PageObject.Items ) 
         {
@@ -104,8 +105,8 @@ public class @Raw(@Model.PageObject.PageObjectName) extends MyBasePage {
 // “Add testMethods for your new pages here:”
 //////////////////////////////////////////////////////////////////////////////////
 
-    @Test
-    public void test_@Raw(@Model.PageObject.PageObjectName)() 
+    @@Test
+    public void test_@Raw(@Model.PageObject.PageObjectName) () 
     {
         testPage(MyPages.@Raw(@Model.PageObject.PageObjectName));
     } 

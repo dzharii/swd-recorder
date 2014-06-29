@@ -14,13 +14,21 @@ namespace SwdPageRecorder.UI
         internal string[] Generate(SwdPageObject pageObject, string fullTemplatePath)
         {
             var template = File.ReadAllText(fullTemplatePath);
-            var result = Razor.Parse(template, 
-                new {
-                        PageObject = pageObject,
-                        ExternalGenerator = new ExternalGenerator(),
-                
-                    });
             
+            object model = new {
+                                        PageObject = pageObject,
+                                        ExternalGenerator = new ExternalGenerator(),
+                                    };
+
+            string result = "not parsed";
+            try
+            {
+                result = Razor.Parse(template, model);
+            }
+            catch
+            {
+                throw;
+            }
             return Utils.SplitSingleLineToMultyLine(result);
         }
     }

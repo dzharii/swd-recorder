@@ -34,7 +34,17 @@ namespace SwdPageRecorder.UI
             var fullTemplatePath = Path.Combine(GetDefaultCodeTemplateDirectory(),
                                             selectedTemalateName + codeTemplateFileExtension);
 
-            string[] code = generator.Generate(definitions, fullTemplatePath);
+            string[] code;
+
+            try
+            {
+                code = generator.Generate(definitions, fullTemplatePath);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+            
             view.DisplayGeneratedCode(code);
 
         }

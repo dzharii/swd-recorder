@@ -12,7 +12,7 @@ namespace SwdPageRecorder.WebDriver
 
         public static void Exception(Exception e)
         {
-            logger.ErrorException(e.Message, e);
+            logger.Error(e.Message, e);
         }
 
         public static void Write(string message)
