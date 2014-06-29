@@ -228,6 +228,9 @@
     <None Include="CodeTemplates\[CSharp] SWD Starter PageObjects.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="CodeTemplates\[Java] SWD StarterJ PageObjects.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CodeTemplates\[Java] WebDriver.Support PageObject.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

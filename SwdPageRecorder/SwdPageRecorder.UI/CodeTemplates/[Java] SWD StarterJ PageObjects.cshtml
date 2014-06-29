@@ -1,0 +1,113 @@
+﻿@functions{
+    string JavaHow(string howFromCSharp)
+    {
+        switch (howFromCSharp)
+        {
+            case "Id": return "ID";
+            case "Name": return "NAME";
+            case "TagName": return "TAG_NAME";
+            case "ClassName": return "CLASS_NAME";
+            case "CssSelector": return "CSS";
+            case "LinkText": return "LINK_TEXT";
+            case "PartialLinkText": return "PARTIAL_LINK_TEXT";
+            case "XPath": return "XPATH";
+            default: return "LOCATOR PARSE ERROR";
+        }
+    }
+
+    string QuoteLocator(string locator)
+    {
+        locator = locator.Replace("\"", "\\\"");
+        return locator;
+    }    
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+// Create a new file with name 
+//   SWD.Starter\src\Demo.TestModel\PageDeclarations\@Raw(@Model.PageObject.PageObjectName + ".cs")
+// and put the following page-object code there:
+//////////////////////////////////////////////////////////////////////////////////
+package org.swd.starterj.demo.testmodel.pages;
+ 
+import java.util.List;
+ 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class @Raw(@Model.PageObject.PageObjectName) extends MyBasePage {
+    @foreach (var element in @Model.PageObject.Items ) 
+    {
+        if(element.ReturnsCollection) 
+        {        
+        <text>
+            @@FindBy(how=How.@Raw(@JavaHow(@element.How)), using="@Raw(@QuoteLocator(@element.Locator))")
+            private List<WebElement> @Raw(@element.Name);
+        </text>
+        }
+        else 
+        {
+        <text>
+            @@FindBy(how=How.@Raw(@JavaHow(@element.How)), using="@Raw(@QuoteLocator(@element.Locator))")
+            private WebElement @Raw(@element.Name);
+        </text>
+        }
+    }
+
+    @Override
+    public void invoke() {
+        throw new UnsupportedOperationException("invoke() is not implemented");
+    }
+
+    @Override
+    public boolean isDisplayed() {
+        throw new UnsupportedOperationException("isDisplayed() is not implemented");
+		
+    }
+
+    @Override
+    public void verifyExpectedElementsAreDisplayed() {
+        @foreach (var element in @Model.PageObject.Items ) 
+        {
+
+        if(element.ReturnsCollection) { continue ; }
+        else 
+        {
+        <text>verifyElementVisible("@Raw(@element.Name)", @Raw(@element.Name));</text>
+        }
+        }
+    }
+
+}
+
+/// END OF PAGE-OBJECT FILE
+    
+//////////////////////////////////////////////////////////////////////////////////
+// Now open the file MyPages.cs at the following location:
+//   SWD.Starter\src\Demo.TestModel\MyPages.cs
+// And put the following code after the line 
+// “Put your new pages here:”
+//////////////////////////////////////////////////////////////////////////////////
+ 
+ 
+ 
+    public static @Raw(@Model.PageObject.PageObjectName)    @Raw(@Model.PageObject.PageObjectName)     { get { return GetPage<@Raw(@Model.PageObject.PageObjectName)>(); } }
+ 
+     
+/// END OF SIMPLE, BUT IMPORTANT TASK
+  
+//////////////////////////////////////////////////////////////////////////////////
+// Now switch to Test project. Open the file:
+//   SWD.Starter\src\Demo.TestProject\Smoke\Smoke_test_for_each_pageobject.cs
+// And put the following code after the line 
+// “Add testMethods for your new pages here:”
+//////////////////////////////////////////////////////////////////////////////////
+
+    @Test
+    public void test_@Raw(@Model.PageObject.PageObjectName)() 
+    {
+        testPage(MyPages.@Raw(@Model.PageObject.PageObjectName));
+    } 
+   
+/// END OF TEST. Now it's time to run the test... And implement Invoke() and Exists()
