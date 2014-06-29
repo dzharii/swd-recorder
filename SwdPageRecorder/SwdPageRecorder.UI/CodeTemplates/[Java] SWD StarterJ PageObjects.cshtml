@@ -23,8 +23,9 @@
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-// Create a new file with name 
-//   SWD.Starter\src\Demo.TestModel\PageDeclarations\@Raw(@Model.PageObject.PageObjectName + ".cs")
+// Create a new class inside the package: 
+// (Test Packages) → org.swd.starterj.demo.testmodel.pages 
+//   with name "@Raw(@Model.PageObject.PageObjectName)"
 // and put the following page-object code there:
 //////////////////////////////////////////////////////////////////////////////////
 package org.swd.starterj.demo.testmodel.pages;
@@ -34,6 +35,7 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
  
 public class @Raw(@Model.PageObject.PageObjectName) extends MyBasePage {
@@ -68,7 +70,7 @@ public class @Raw(@Model.PageObject.PageObjectName) extends MyBasePage {
     }
  
     @@Override
-    public void verifyExpectedElementsAreDisplayed() {
+    public void verifyExpectedElementsAreDisplayed()  throws Throwable {
         @foreach (var element in @Model.PageObject.Items ) 
         {
 
@@ -85,30 +87,31 @@ public class @Raw(@Model.PageObject.PageObjectName) extends MyBasePage {
 /// END OF PAGE-OBJECT FILE
     
 //////////////////////////////////////////////////////////////////////////////////
-// Now open the file MyPages.cs at the following location:
-//   SWD.Starter\src\Demo.TestModel\MyPages.cs
+// Now open the class MyPages at the following location:
+//   (Test Packages) → org.swd.starterj.demo.testmodel → MyPages.java
 // And put the following code after the line 
 // “Put your new pages here:”
 //////////////////////////////////////////////////////////////////////////////////
  
  
  
-    public static @Raw(@Model.PageObject.PageObjectName)    @Raw(@Model.PageObject.PageObjectName)     { get { return GetPage<@Raw(@Model.PageObject.PageObjectName)>(); } }
+    public static final @Raw(@Model.PageObject.PageObjectName) @Raw("get" + @Model.PageObject.PageObjectName) () { 
+		return getPage(@Raw(@Model.PageObject.PageObjectName + ".class")); 
+	}
  
      
 /// END OF SIMPLE, BUT IMPORTANT TASK
   
 //////////////////////////////////////////////////////////////////////////////////
-// Now switch to Test project. Open the file:
-//   SWD.Starter\src\Demo.TestProject\Smoke\Smoke_test_for_each_pageobject.cs
+// Now switch to Test project (org.swd.starterj.demo). Open the file:
+//   Smoke_test_for_each_pageobject.java
 // And put the following code after the line 
 // “Add testMethods for your new pages here:”
 //////////////////////////////////////////////////////////////////////////////////
-
+ 
     @@Test
-    public void test_@Raw(@Model.PageObject.PageObjectName) () 
-    {
-        testPage(MyPages.@Raw(@Model.PageObject.PageObjectName));
+    public void @Raw("test" + @Model.PageObject.PageObjectName) ()  throws Throwable {
+        testPage(MyPages.@Raw("get" + @Model.PageObject.PageObjectName + "()"));
     } 
-   
+    
 /// END OF TEST. Now it's time to run the test... And implement Invoke() and Exists()
