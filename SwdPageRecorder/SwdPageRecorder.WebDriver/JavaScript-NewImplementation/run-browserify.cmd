@@ -1,0 +1,1 @@
+browserify src\main.js > out\web-element-explorer.js
