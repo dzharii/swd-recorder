@@ -42,7 +42,7 @@ namespace SwdPageRecorder.UI
 // WebDriver Playground is in ALPHA quality. The following classes supported: 
 // PageObject web elements, (IWebElement), driver (IWebDriver), By, Keys, Actions.
 
-driver.Navigate().GoToUrl(""http://swd-tools.com"")
+driver.Navigate().GoToUrl(""https://github.com/dzharii/swd-recorder"")
 ";
 
         }
