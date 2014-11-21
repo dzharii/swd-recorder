@@ -111,7 +111,7 @@ namespace SwdPageRecorder.UI
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(@"http://swd-tools.com");
+            System.Diagnostics.Process.Start(@"https://github.com/dzharii/swd-recorder");
         }
 
 

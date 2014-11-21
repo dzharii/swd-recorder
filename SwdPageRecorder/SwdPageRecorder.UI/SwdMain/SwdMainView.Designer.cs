@@ -128,7 +128,7 @@
             this.txtBrowserUrl.Name = "txtBrowserUrl";
             this.txtBrowserUrl.Size = new System.Drawing.Size(637, 20);
             this.txtBrowserUrl.TabIndex = 0;
-            this.txtBrowserUrl.Text = "http://swd-tools.com";
+            this.txtBrowserUrl.Text = "https://github.com/dzharii/swd-recorder";
             this.txtBrowserUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBrowserUrl_KeyUp);
             // 
             // pnlLoadingBar
@@ -489,7 +489,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SwdMainView";
-            this.Text = "SWD Page Recorder v2.42 (July 01, 2014)";
+            this.Text = "SWD Page Recorder v2.44 (November 20, 2014)";
             this.Shown += new System.EventHandler(this.SwdMainView_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

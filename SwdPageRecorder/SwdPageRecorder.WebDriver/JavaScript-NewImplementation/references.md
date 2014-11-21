@@ -1,0 +1,1 @@
+[Retrieve the position (X,Y) of an HTML element](http://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element/442474#442474)
