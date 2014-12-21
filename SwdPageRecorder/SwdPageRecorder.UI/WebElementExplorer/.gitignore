@@ -1,3 +1,4 @@
 *.map
 *.js
 !WebElementExplorer.js
+!lib/*

@@ -160,7 +160,6 @@ namespace SwdPageRecorder.UI
             view.DriverIsStopping();
 
             Exception threadException;
-
             UIActions.PerformSlowOperation(
                         "Operation: Stop WebDriver instance",
                         () =>

@@ -2,8 +2,8 @@
 module WebElementExplorer {
 
 
-    function findOneById(id : string): HTMLElement {
-        return document.getElementById(id );
+    export function findOneById(id : string): HTMLElement {
+        return document.getElementById(id);
     }
 
     function findManyByName(name: string): NodeList {

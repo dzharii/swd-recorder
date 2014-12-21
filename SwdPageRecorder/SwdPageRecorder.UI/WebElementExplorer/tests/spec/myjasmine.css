@@ -1,0 +1,20 @@
+﻿li.suite-detail {
+   line-height: 1.6em;
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 1.6em;
+   font-weight: bold;
+}
+
+
+ul.specs {
+   line-height: 1.6em;
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 1.5em;
+   border-top: 1px solid silver;
+}
+
+ul.specs li {
+    list-style:square;
+    
+
+}
