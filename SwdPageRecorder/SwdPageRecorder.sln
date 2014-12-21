@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A22BF7
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.UI", "SwdPageRecorder.UI\SwdPageRecorder.UI.csproj", "{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.WebDriver", "SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj", "{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.Tests", "SwdPageRecorder.Tests\SwdPageRecorder.Tests.csproj", "{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}"
@@ -34,10 +32,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C5B6B24-D897-4946-A6A5-D2C4F2DA8369}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,0 +1,3 @@
+*.map
+*.js
+!WebElementExplorer.js
