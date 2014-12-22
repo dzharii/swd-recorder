@@ -196,12 +196,26 @@ namespace SwdPageRecorder.UI
                 }
             });
 
-            t.Start();
 
-            string logLine = await t;
+            string logLine = "done";
+            try
+            {
+                t.Start();
 
-            view.AppendConsole(logLine + "\r\n");
-            Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
+                logLine = await t;
+            }
+            catch (Exception ex)
+            {
+                MyLog.Exception(ex);
+                logLine = "ERROR: " + ex.Message;
+                // TODO: FIX message --> Exception has been thrown by the target of invocation
+                // \TODO: FIX message --> Exception has been thrown by the target of invocation
+            }
+            finally 
+            {
+                view.AppendConsole(logLine + "\r\n");
+                Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
+            }
         }
 
 
