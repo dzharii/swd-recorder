@@ -24,6 +24,7 @@ module WebElementExplorer {
                         var actualElements = findManyByName(name);
                         expect(actualElements.length).toBe(1);
                         expect(actualElements[0]).toBe(expectedInput);
+
                     });
                 });
 

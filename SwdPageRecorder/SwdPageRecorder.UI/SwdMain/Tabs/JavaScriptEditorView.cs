@@ -68,6 +68,7 @@ namespace SwdPageRecorder.UI
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            
             presenter.RunScript();
         }
 

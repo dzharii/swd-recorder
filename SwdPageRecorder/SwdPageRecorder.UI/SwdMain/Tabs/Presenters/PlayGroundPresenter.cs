@@ -169,6 +169,9 @@ namespace SwdPageRecorder.UI
 
         internal void RunScript(string code)
         {
+
+            Presenters.SwdMainPresenter.DisplayLoadingIndicator(true);
+            
             using (var engine = new JScriptEngine())
             {
                 engine.AddHostObject("driver", SwdBrowser.GetDriver());
@@ -189,6 +192,7 @@ namespace SwdPageRecorder.UI
                 view.AppendConsole(result.ToString() + "\r\n");
 
             }
+            Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
         }
 
 
