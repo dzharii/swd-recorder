@@ -30,6 +30,7 @@ using SwdPageRecorder.WebDriver.OpenQA.Selenium.Support.PageObjects;
 
 using Microsoft.ClearScript;
 using Microsoft.ClearScript.Windows;
+using System.Threading.Tasks;
 
 
 namespace SwdPageRecorder.UI
@@ -167,31 +168,39 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        internal void RunScript(string code)
+        internal async void RunScript(string code)
         {
 
             Presenters.SwdMainPresenter.DisplayLoadingIndicator(true);
             
-            using (var engine = new JScriptEngine())
+            Task<string> t = new Task<string>( () => 
             {
-                engine.AddHostObject("driver", SwdBrowser.GetDriver());
+                using (var engine = new JScriptEngine())
+                {
+                    engine.AddHostObject("driver", SwdBrowser.GetDriver());
 
-                ImportTypes(engine);
+                    ImportTypes(engine);
 
-                var uiPageObject = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
+                    var uiPageObject = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
 
                 
-                foreach (var element in uiPageObject.Items)
-                {
-                    IWebElement proxyElement = SwdBrowser.CreateWebElementProxy(element);
-                    string name = element.Name;
-                    engine.AddHostObject(name, proxyElement);
+                    foreach (var element in uiPageObject.Items)
+                    {
+                        IWebElement proxyElement = SwdBrowser.CreateWebElementProxy(element);
+                        string name = element.Name;
+                        engine.AddHostObject(name, proxyElement);
+                    }
+
+                    var result = engine.Evaluate(code) ?? "(none)";
+                    return result.ToString();
                 }
+            });
 
-                var result = engine.Evaluate(code) ?? "(none)";
-                view.AppendConsole(result.ToString() + "\r\n");
+            t.Start();
 
-            }
+            string logLine = await t;
+
+            view.AppendConsole(logLine + "\r\n");
             Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
         }
 
