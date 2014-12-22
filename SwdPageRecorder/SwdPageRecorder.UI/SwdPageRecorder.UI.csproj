@@ -338,6 +338,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="WebElementExplorer\src\MainView.ts" />
     <TypeScriptCompile Include="WebElementExplorer\src\App.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\tests\spec\Helper.ts" />
     <TypeScriptCompile Include="WebElementExplorer\tests\spec\Spec_Doc.ts" />
     <TypeScriptCompile Include="WebElementExplorer\tests\spec\jasmine.d.ts" />
     <TypeScriptCompile Include="WebElementExplorer\tests\_test_references.ts" />

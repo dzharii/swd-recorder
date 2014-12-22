@@ -6,7 +6,7 @@ module WebElementExplorer {
         return document.getElementById(id);
     }
 
-    function findManyByName(name: string): NodeList {
+    export function findManyByName(name: string): NodeList {
         return document.getElementsByName(name);
     }
 
