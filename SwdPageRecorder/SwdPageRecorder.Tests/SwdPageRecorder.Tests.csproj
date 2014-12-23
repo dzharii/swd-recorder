@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
     <ProjectGuid>{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -50,7 +52,25 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\FluentAssertions.3.2.2\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="nunit.core">
+      <HintPath>..\packages\NUnitTestAdapter.WithFramework.1.2\lib\nunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>..\packages\NUnitTestAdapter.WithFramework.1.2\lib\nunit.core.interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnitTestAdapter.WithFramework.1.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util">
+      <HintPath>..\packages\NUnitTestAdapter.WithFramework.1.2\lib\nunit.util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NUnit.VisualStudio.TestAdapter">
+      <HintPath>..\packages\NUnitTestAdapter.WithFramework.1.2\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -81,6 +101,9 @@
     <Compile Include="Integration\SwdPageRecorder.WebDriver\SwdBrowser_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="JS\WebElementExplorer\lib\jasmine-2.1.3\MIT.LICENSE" />
+    <None Include="JS\WebElementExplorer\package.json" />
+    <None Include="JS\WebElementExplorer\run-karma.cmd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +117,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JS\WebElementExplorer\karma.conf.js" />
+    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\boot.js" />
+    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\console.js" />
+    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\jasmine-html.js" />
+    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\jasmine.css" />
+    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\jasmine.js" />
+    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\jasmine_favicon.png" />
+    <Content Include="JS\WebElementExplorer\myjasmine.css" />
+    <Content Include="JS\WebElementExplorer\SpecRunner.html" />
     <Content Include="TestResource\frameworks_demo\case-bootstrap\demob.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -137,8 +169,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="JS\WebElementExplorer\jasmine.d.ts" />
+    <TypeScriptCompile Include="JS\WebElementExplorer\spec\Helper.ts" />
+    <TypeScriptCompile Include="JS\WebElementExplorer\spec\Spec_Doc.ts" />
+    <TypeScriptCompile Include="JS\WebElementExplorer\_test_references.ts" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

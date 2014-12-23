@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
@@ -14,14 +14,14 @@ using FluentAssertions;
 
 namespace SwdPageRecorder.Tests.Integration
 {
-    [TestClass]
+    [TestFixture]
     public class WebElement_Explorer_Tests : MyTest    
     {
         const int firstFrame = 0;
         const int secondFrame = 1;
         const int thirdFrame = 2;
-        
-        [TestMethod, Ignore]
+
+        [Test(Description = "WebDriver"), Ignore]
         public void WebElementExplorer_Test()
         {
             Helper.RunDefaultBrowser();

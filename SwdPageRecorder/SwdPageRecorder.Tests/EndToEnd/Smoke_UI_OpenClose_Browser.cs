@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using TestStack.White;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
@@ -16,7 +16,7 @@ using System.IO;
 
 namespace SwdPageRecorder.Tests.EndToEnd
 {
-    [TestClass]
+    [TestFixture]
     public class Smoke_UI_OpenClose_Browser : MyTest
     {
         //http://teststack.azurewebsites.net/White/UIItems.html
@@ -52,25 +52,25 @@ namespace SwdPageRecorder.Tests.EndToEnd
 
 
 
-        [TestMethod, TestCategory("UI")]
+        [Test(Description="UI")]
         public void Start_and_Stop_Open_Recorder_with_Firefox()
         {
             OpenAppWithBrowser("Firefox");
         }
 
-        [TestMethod, TestCategory("UI")]
+        [Test(Description = "UI")]
         public void Start_and_Stop_Open_Recorder_with_Google_Chrome()
         {
             OpenAppWithBrowser("Chrome");
         }
 
-        [TestMethod, TestCategory("UI")]
+        [Test(Description = "UI")]
         public void Start_and_Stop_Open_Recorder_with_PahntomJS()
         {
             OpenAppWithBrowser("PhantomJS");
         }
 
-        [TestMethod, TestCategory("UI")]
+        [Test(Description = "UI")]
         public void Start_and_Stop_Open_Recorder_with_InternetExplorer()
         {
             OpenAppWithBrowser("InternetExplorer");

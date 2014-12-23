@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using NUnit.Framework;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
@@ -13,9 +14,18 @@ using FluentAssertions;
 
 namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
 {
-    [TestClass]
+    [TestFixture]
     public class SwdBrowser_Tests : MyTest    
     {
+
+
+        [Test(Description = "TODO")]
+        public void Implement_headless_UI_runs()
+        {
+            "Using desktoputils run the NUnit tests in headless mode".Should().BeEmpty();
+        }
+
+        
         /// <summary>
         /// SwdBrowser.Initialize should be able to connect to the Remote Hub 
         /// Tests: @SwdBrowser.Initialize, @WebDriverOptions, @SwdBrowser.TestRemoteHub, @SwdBrowser.RunStandaloneServer
@@ -23,7 +33,7 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
         /// 1. The test verifies if the remote hub started with @SwdBrowser.TestRemoteHub and starts the server
         /// 2. Then it verifies if the HtmlUnitDriver is active
         /// </summary>
-        [TestMethod]
+        [Test(Description = "WebDriver")]
         public void Initialize_should_be_able_to_start_new_browser()
         {
             WebDriverOptions options = new WebDriverOptions()
@@ -80,7 +90,7 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
         /// 4. Closes the browser with @SwdBrowser.CloseDriver
         /// 5. Verifies there are no windows with such title on Windows Desktop
         /// </summary>
-        [TestMethod]
+        [Test(Description = "WebDriver")]
         public void CloseDriver_should_close_the_opened_browser_instance()
         {
             WebDriverOptions options = new WebDriverOptions()
@@ -113,8 +123,8 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
         }
 
 
-        
-        [TestMethod]
+
+        [Test(Description = "WebDriver")]
         public void Enumerate_Windows_Tabs()
         {
             Helper.RunDefaultBrowser();
@@ -139,7 +149,7 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
             SwdBrowser.CloseDriver();
         }
 
-        [TestMethod]
+        [Test(Description = "WebDriver")]
         public void Enumerate_Windows_Popup()
         {
             Helper.RunDefaultBrowser();
@@ -167,7 +177,7 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
             SwdBrowser.CloseDriver();
         }
 
-        [TestMethod]
+        [Test(Description = "WebDriver")]
         public void Get_Frames_Tree()
         {
 
