@@ -101,9 +101,7 @@
     <Compile Include="Integration\SwdPageRecorder.WebDriver\SwdBrowser_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="JS\WebElementExplorer\lib\jasmine-2.1.3\MIT.LICENSE" />
     <None Include="JS\WebElementExplorer\package.json" />
-    <None Include="JS\WebElementExplorer\run-karma.cmd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -117,15 +115,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="JS\WebElementExplorer\karma.conf.js" />
-    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\boot.js" />
-    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\console.js" />
-    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\jasmine-html.js" />
-    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\jasmine.css" />
-    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\jasmine.js" />
-    <Content Include="JS\WebElementExplorer\lib\jasmine-2.1.3\jasmine_favicon.png" />
-    <Content Include="JS\WebElementExplorer\myjasmine.css" />
-    <Content Include="JS\WebElementExplorer\SpecRunner.html" />
+    <Content Include="JS\WebElementExplorer\.gitignore" />
+    <Content Include="JS\WebElementExplorer\qunit.html" />
     <Content Include="TestResource\frameworks_demo\case-bootstrap\demob.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -169,10 +160,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <TypeScriptCompile Include="JS\WebElementExplorer\jasmine.d.ts" />
-    <TypeScriptCompile Include="JS\WebElementExplorer\spec\Helper.ts" />
-    <TypeScriptCompile Include="JS\WebElementExplorer\spec\Spec_Doc.ts" />
+    <TypeScriptCompile Include="JS\WebElementExplorer\qunit.d.ts" />
+    <TypeScriptCompile Include="JS\WebElementExplorer\tests\Helper.ts" />
+    <TypeScriptCompile Include="JS\WebElementExplorer\tests\Spec_Doc.ts" />
     <TypeScriptCompile Include="JS\WebElementExplorer\_test_references.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
