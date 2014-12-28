@@ -20,8 +20,8 @@ module WebElementExplorer {
             expectedInput.setAttribute("name", name);
             var actualElements = findManyByName(name);
 
-            assert.equal(actualElements.length, 1);
-            assert.equal(actualElements[0], expectedInput);
+            assert.equal(actualElements.length, 1, "There is only one element in the list");
+            assert.equal(actualElements[0], expectedInput, "And that element equals to the expected");
         });
 
     });
