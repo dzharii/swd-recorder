@@ -262,5 +262,11 @@ namespace SwdPageRecorder.UI
 
         }
 
+        private void btnSwitchToFrameCode_Click(object sender, EventArgs e)
+        {
+            BrowserPageFrame frame = ddlFrames.SelectedItem as BrowserPageFrame;
+            presenter.OpenSwitchToFrameCodeHelperPopup(frame);
+        }
+
     }
 }

@@ -316,5 +316,11 @@ namespace SwdPageRecorder.UI
                 view.EnableSwitchToControls();
             }
         }
+
+        internal void OpenSwitchToFrameCodeHelperPopup(BrowserPageFrame frame)
+        {
+            SwitchToPopupView popupForm = new SwitchToPopupView();
+            popupForm.ShowDialog();
+        }
     }
 }

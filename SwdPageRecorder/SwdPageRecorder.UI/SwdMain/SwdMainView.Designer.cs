@@ -42,6 +42,8 @@
             this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTabView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpSwitchTo = new System.Windows.Forms.GroupBox();
+            this.btnSwitchToWindowCode = new System.Windows.Forms.Button();
+            this.btnSwitchToFrameCode = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.ddlFrames = new System.Windows.Forms.ComboBox();
@@ -239,6 +241,8 @@
             // grpSwitchTo
             // 
             this.grpSwitchTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSwitchTo.Controls.Add(this.btnSwitchToWindowCode);
+            this.grpSwitchTo.Controls.Add(this.btnSwitchToFrameCode);
             this.grpSwitchTo.Controls.Add(this.btnRefresh);
             this.grpSwitchTo.Controls.Add(this.label4);
             this.grpSwitchTo.Controls.Add(this.ddlFrames);
@@ -251,6 +255,28 @@
             this.grpSwitchTo.TabIndex = 5;
             this.grpSwitchTo.TabStop = false;
             this.grpSwitchTo.Text = "SwitchTo (Search Context)";
+            // 
+            // btnSwitchToWindowCode
+            // 
+            this.btnSwitchToWindowCode.Enabled = false;
+            this.btnSwitchToWindowCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSwitchToWindowCode.Location = new System.Drawing.Point(54, 17);
+            this.btnSwitchToWindowCode.Name = "btnSwitchToWindowCode";
+            this.btnSwitchToWindowCode.Size = new System.Drawing.Size(31, 23);
+            this.btnSwitchToWindowCode.TabIndex = 6;
+            this.btnSwitchToWindowCode.Text = "{ }";
+            this.btnSwitchToWindowCode.UseVisualStyleBackColor = true;
+            // 
+            // btnSwitchToFrameCode
+            // 
+            this.btnSwitchToFrameCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSwitchToFrameCode.Location = new System.Drawing.Point(54, 44);
+            this.btnSwitchToFrameCode.Name = "btnSwitchToFrameCode";
+            this.btnSwitchToFrameCode.Size = new System.Drawing.Size(31, 23);
+            this.btnSwitchToFrameCode.TabIndex = 5;
+            this.btnSwitchToFrameCode.Text = "{ }";
+            this.btnSwitchToFrameCode.UseVisualStyleBackColor = true;
+            this.btnSwitchToFrameCode.Click += new System.EventHandler(this.btnSwitchToFrameCode_Click);
             // 
             // btnRefresh
             // 
@@ -275,9 +301,9 @@
             // 
             this.ddlFrames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlFrames.FormattingEnabled = true;
-            this.ddlFrames.Location = new System.Drawing.Point(61, 45);
+            this.ddlFrames.Location = new System.Drawing.Point(89, 45);
             this.ddlFrames.Name = "ddlFrames";
-            this.ddlFrames.Size = new System.Drawing.Size(192, 21);
+            this.ddlFrames.Size = new System.Drawing.Size(164, 21);
             this.ddlFrames.TabIndex = 2;
             this.ddlFrames.SelectedIndexChanged += new System.EventHandler(this.ddlFrames_SelectedIndexChanged);
             // 
@@ -294,9 +320,9 @@
             // 
             this.ddlWindows.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlWindows.FormattingEnabled = true;
-            this.ddlWindows.Location = new System.Drawing.Point(61, 18);
+            this.ddlWindows.Location = new System.Drawing.Point(89, 18);
             this.ddlWindows.Name = "ddlWindows";
-            this.ddlWindows.Size = new System.Drawing.Size(248, 21);
+            this.ddlWindows.Size = new System.Drawing.Size(220, 21);
             this.ddlWindows.TabIndex = 0;
             this.ddlWindows.SelectedIndexChanged += new System.EventHandler(this.ddlWindows_SelectedIndexChanged);
             // 
@@ -395,7 +421,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(740, 404);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Source Code";
+            this.tabPage3.Text = "{ } Source Code";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // pageObjectSourceCodeView1
@@ -554,6 +580,8 @@
         private JavaScriptEditorView javaScriptEditorView1;
         private System.Windows.Forms.TabPage tabPage6;
         private PlayGroundView playGroundView1;
+        private System.Windows.Forms.Button btnSwitchToWindowCode;
+        private System.Windows.Forms.Button btnSwitchToFrameCode;
         
 
     }
