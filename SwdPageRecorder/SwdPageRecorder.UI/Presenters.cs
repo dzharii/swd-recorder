@@ -91,5 +91,17 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        private static SwitchToPopupPresenter _switchToPopupPresenter = null;
+        public static SwitchToPopupPresenter SwitchToPopupPresenter
+        {
+            get
+            {
+                return (_switchToPopupPresenter = _switchToPopupPresenter ?? new SwitchToPopupPresenter());
+            }
+        }
+
     }
 }
+
+
+

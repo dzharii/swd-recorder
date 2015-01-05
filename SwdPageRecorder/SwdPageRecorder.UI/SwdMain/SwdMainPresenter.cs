@@ -317,9 +317,9 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        internal void OpenSwitchToFrameCodeHelperPopup(BrowserPageFrame frame)
+        internal void OpenSwitchToFrameCodeHelperPopup(BrowserPageFrame currentFrame)
         {
-            SwitchToPopupView popupForm = new SwitchToPopupView();
+            SwitchToPopupView popupForm = new SwitchToPopupView(currentFrame, view);
             popupForm.ShowDialog();
         }
     }

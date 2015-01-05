@@ -49,6 +49,21 @@ namespace SwdPageRecorder.WebDriver
         public BrowserPageFrame ParentFrame { get; set; }
         public List<BrowserPageFrame> ChildFrames { get; set; }
 
+
+        public int[] GetPath()
+        {
+            List<int> path = new List<int>();
+            BrowserPageFrame currentFrame = this;
+            
+            while (currentFrame != null)
+            {
+                path.Add(currentFrame.Index);
+                currentFrame = currentFrame.ParentFrame;
+            }
+            path.Reverse();
+            return path.ToArray();
+        }
+        
         public List<BrowserPageFrame> ToList()
         {
             List<BrowserPageFrame> result = new List<BrowserPageFrame>();

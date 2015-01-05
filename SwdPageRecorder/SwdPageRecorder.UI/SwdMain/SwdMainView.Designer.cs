@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwdMainView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -36,6 +37,7 @@
             this.pnlLoadingBar = new System.Windows.Forms.Panel();
             this.lblLoadingInProgress = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ttipSwitchToFrameCode = new System.Windows.Forms.ToolTip(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -275,6 +277,7 @@
             this.btnSwitchToFrameCode.Size = new System.Drawing.Size(31, 23);
             this.btnSwitchToFrameCode.TabIndex = 5;
             this.btnSwitchToFrameCode.Text = "{ }";
+            this.ttipSwitchToFrameCode.SetToolTip(this.btnSwitchToFrameCode, "Generates the \"driver.SwitchTo().Frame(...)... code for the selected frame\"");
             this.btnSwitchToFrameCode.UseVisualStyleBackColor = true;
             this.btnSwitchToFrameCode.Click += new System.EventHandler(this.btnSwitchToFrameCode_Click);
             // 
@@ -582,6 +585,7 @@
         private PlayGroundView playGroundView1;
         private System.Windows.Forms.Button btnSwitchToWindowCode;
         private System.Windows.Forms.Button btnSwitchToFrameCode;
+        private System.Windows.Forms.ToolTip ttipSwitchToFrameCode;
         
 
     }
