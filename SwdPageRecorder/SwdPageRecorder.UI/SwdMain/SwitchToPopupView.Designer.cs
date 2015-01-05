@@ -34,9 +34,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 262);
+            this.ClientSize = new System.Drawing.Size(589, 198);
             this.Name = "SwitchToPopupView";
-            this.Text = "SwitchToPopupView";
+            this.Text = "{ } Switch To Frame Helper";
             this.ResumeLayout(false);
 
         }
