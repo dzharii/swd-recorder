@@ -38,7 +38,7 @@ set MERGE_LIBS2=%SwdUiPath%\RazorEngine.dll %SwdUiPath%\System.Web.Razor.dll %Sw
 set MERGE_LIBS3=%SwdUiPath%\ClearScript.dll 
 
 
-ilmerge\ILMerge.exe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /t:winexe /out:SwdPageRecorder_Latest\SwdPageRecorder.exe %SwdUiPath%\SwdPageRecorder.UI.exe  %MERGE_LIBS1% %MERGE_LIBS2% %MERGE_LIBS3% >>%STDOUT_DEFAULT%
+ilmerge\ILMerge.exe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5" /t:winexe /out:SwdPageRecorder_Latest\SwdPageRecorder.exe %SwdUiPath%\SwdPageRecorder.UI.exe  %MERGE_LIBS1% %MERGE_LIBS2% %MERGE_LIBS3% >>%STDOUT_DEFAULT%
 
 @REM Remove SwdPageRecorder.pdb
 del /F /Q SwdPageRecorder_Latest\SwdPageRecorder.pdb

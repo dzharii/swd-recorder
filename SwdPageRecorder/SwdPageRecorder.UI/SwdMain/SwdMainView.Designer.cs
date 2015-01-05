@@ -38,6 +38,7 @@
             this.lblLoadingInProgress = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ttipSwitchToFrameCode = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSwitchToFrameCode = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -45,7 +46,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpSwitchTo = new System.Windows.Forms.GroupBox();
             this.btnSwitchToWindowCode = new System.Windows.Forms.Button();
-            this.btnSwitchToFrameCode = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.ddlFrames = new System.Windows.Forms.ComboBox();
@@ -170,6 +170,18 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnSwitchToFrameCode
+            // 
+            this.btnSwitchToFrameCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSwitchToFrameCode.Location = new System.Drawing.Point(54, 44);
+            this.btnSwitchToFrameCode.Name = "btnSwitchToFrameCode";
+            this.btnSwitchToFrameCode.Size = new System.Drawing.Size(31, 23);
+            this.btnSwitchToFrameCode.TabIndex = 5;
+            this.btnSwitchToFrameCode.Text = "{ }";
+            this.ttipSwitchToFrameCode.SetToolTip(this.btnSwitchToFrameCode, "Generates the \"driver.SwitchTo().Frame(...)... code for the selected frame\"");
+            this.btnSwitchToFrameCode.UseVisualStyleBackColor = true;
+            this.btnSwitchToFrameCode.Click += new System.EventHandler(this.btnSwitchToFrameCode_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -268,18 +280,6 @@
             this.btnSwitchToWindowCode.TabIndex = 6;
             this.btnSwitchToWindowCode.Text = "{ }";
             this.btnSwitchToWindowCode.UseVisualStyleBackColor = true;
-            // 
-            // btnSwitchToFrameCode
-            // 
-            this.btnSwitchToFrameCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSwitchToFrameCode.Location = new System.Drawing.Point(54, 44);
-            this.btnSwitchToFrameCode.Name = "btnSwitchToFrameCode";
-            this.btnSwitchToFrameCode.Size = new System.Drawing.Size(31, 23);
-            this.btnSwitchToFrameCode.TabIndex = 5;
-            this.btnSwitchToFrameCode.Text = "{ }";
-            this.ttipSwitchToFrameCode.SetToolTip(this.btnSwitchToFrameCode, "Generates the \"driver.SwitchTo().Frame(...)... code for the selected frame\"");
-            this.btnSwitchToFrameCode.UseVisualStyleBackColor = true;
-            this.btnSwitchToFrameCode.Click += new System.EventHandler(this.btnSwitchToFrameCode_Click);
             // 
             // btnRefresh
             // 
@@ -518,7 +518,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SwdMainView";
-            this.Text = "SWD Page Recorder v2.44 (November 20, 2014)";
+            this.Text = "SWD Page Recorder v2.44 (January 05, 2015)";
             this.Shown += new System.EventHandler(this.SwdMainView_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
