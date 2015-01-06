@@ -92,7 +92,7 @@ namespace SwdPageRecorder.UI
         }
 
 
-        private WebElementDefinition GetWebElementDefinitionFromForm()
+        public WebElementDefinition GetWebElementDefinitionFromForm()
         {
             var element = new WebElementDefinition()
             {
@@ -276,6 +276,11 @@ namespace SwdPageRecorder.UI
         {
             var element = GetWebElementDefinitionFromForm();
             presenter.ReadElementProperties(element);
+        }
+
+        internal void DisplayWarningMessage(string message)
+        {
+            MessageBox.Show(message, "Yo! (SWD Page Recorder)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

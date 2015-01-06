@@ -26,6 +26,8 @@ namespace SwdPageRecorder.UI
 
         private void btnTestLocator_Click(object sender, EventArgs e)
         {
+            if (!Presenters.SelectorsEditPresenter.IsValidForm()) return;
+
             presenter.UpdateTestHtmlDocumentView();
             presenter.TestLocators();
         }

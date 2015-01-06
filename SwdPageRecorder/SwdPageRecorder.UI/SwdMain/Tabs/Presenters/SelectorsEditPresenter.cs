@@ -43,6 +43,23 @@ namespace SwdPageRecorder.UI
             view.btnReadElementProperties.Enabled = isDriverAlive;
         }
 
+        public bool IsValidForm()
+        {
+            bool isValid = true;
+            var element = view.GetWebElementDefinitionFromForm();
+            if (String.IsNullOrWhiteSpace(element.Locator))
+            {
+                string message = "Locator's value cannot be empty.\n\n" + 
+                                 "Please, type the Locator value or load the existing element\n" + 
+                                 "from the PageObject pane (double-click) before attempting\n" + 
+                                 "to Highlight or Test the locator.";
+
+                view.DisplayWarningMessage(message);
+                isValid = false;
+            }
+            return isValid;
+        }
+
         internal void NewWebElement()
         {
             Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
@@ -59,6 +76,8 @@ namespace SwdPageRecorder.UI
 
         internal void HighLightWebElement(WebElementDefinition element)
         {
+            if (!IsValidForm()) return;
+
             var by = SwdBrowser.ConvertLocatorSearchMethodToBy(element.HowToSearch, element.Locator);
             SwdBrowser.HighlightElement(by);
 
