@@ -25,9 +25,18 @@ function compileTemplate(template) {
 }
 
 
-var str = "<span>{{hello}}</span>\r\n " 
+var inputTemplateName = process.argv[2];
+var outputFile = process.argv[3];
 
-          + "<div> {{x}}</div>\n";
+var fs = require("fs");
+var templateContent = fs.readFileSync(inputTemplateName, "utf8");
 
-console.log(compileTemplate(str));
+console.dir(templateContent);
+
+var data = compileTemplate(templateContent);
+
+fs.writeFileSync(outputFile, data);
+
+console.log("Done");
+
 
