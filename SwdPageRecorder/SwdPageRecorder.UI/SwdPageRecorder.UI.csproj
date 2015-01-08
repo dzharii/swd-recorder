@@ -334,14 +334,14 @@
     <None Include="Resources\loading-indicator.gif" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="WebElementExplorer\app.ts" />
-    <TypeScriptCompile Include="WebElementExplorer\Doc.ts" />
-    <TypeScriptCompile Include="WebElementExplorer\MainPresenter.ts" />
-    <TypeScriptCompile Include="WebElementExplorer\MainView.ts" />
-    <TypeScriptCompile Include="WebElementExplorer\Utils.ts">
+    <TypeScriptCompile Include="WebElementExplorer\src\app.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\src\Doc.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\src\MainPresenter.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\src\MainView.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\src\Utils.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="WebElementExplorer\_reference.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\src\_reference.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebElementExplorer\js\" />

@@ -40,7 +40,6 @@ var WebElementExplorer;
 })(WebElementExplorer || (WebElementExplorer = {}));
 /// <reference path="utils.ts" />
 /// <reference path="_reference.ts" />
-// sdsdsd
 var WebElementExplorer;
 (function (WebElementExplorer) {
     function findOneById(id) {
@@ -56,6 +55,7 @@ var WebElementExplorer;
     function getTagName(element) {
         return element.tagName.toLowerCase();
     }
+    WebElementExplorer.getTagName = getTagName;
 
     function canFindById(element) {
         var result = null;
@@ -65,6 +65,7 @@ var WebElementExplorer;
         var elementExists = findOneById(element.id) === element;
         return elementExists;
     }
+    WebElementExplorer.canFindById = canFindById;
 
     function canFindByName(element) {
         var result = null;
@@ -78,6 +79,7 @@ var WebElementExplorer;
 
         return elementExists;
     }
+    WebElementExplorer.canFindByName = canFindByName;
 
     function buldFullXPath(element) {
         var elementTagName = getTagName(element);
@@ -108,9 +110,10 @@ var WebElementExplorer;
             }
         }
     }
+    WebElementExplorer.buldFullXPath = buldFullXPath;
 
     function getXPath(element) {
-        WebElementExplorer.hello("getPathTo");
+        WebElementExplorer.hello("getXPath");
         var result = "";
 
         var elementTagName = getTagName(element);
@@ -124,8 +127,22 @@ var WebElementExplorer;
         } else {
             result = buldFullXPath(element);
         }
-        WebElementExplorer.bye("getPathTo");
+        WebElementExplorer.bye("getXPath");
         return result;
     }
+    WebElementExplorer.getXPath = getXPath;
+
+    function getPageXY(element) {
+        WebElementExplorer.hello("getPageXY");
+        var x = 0, y = 0;
+        while (element) {
+            x += element.offsetLeft;
+            y += element.offsetTop;
+            element = element.offsetParent;
+        }
+        WebElementExplorer.bye("getPageXY");
+        return [x, y];
+    }
+    ;
 })(WebElementExplorer || (WebElementExplorer = {}));
 //# sourceMappingURL=WebElementExplorer.js.map
