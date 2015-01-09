@@ -39,6 +39,53 @@ var WebElementExplorer;
     WebElementExplorer.pseudoGuid = pseudoGuid;
 })(WebElementExplorer || (WebElementExplorer = {}));
 /// <reference path="utils.ts" />
+var WebElementExplorer;
+(function (WebElementExplorer) {
+    var SwdPageRecorder = (function () {
+        function SwdPageRecorder() {
+            this.listeners = [
+                {
+                    type: "contextmenu",
+                    listener: this.onBodyContextMenu.bind(this)
+                },
+                {
+                    type: "mouseover",
+                    listener: this.onBodyMouseover.bind(this)
+                }
+            ];
+        }
+        SwdPageRecorder.prototype.init = function () {
+            if (!document || !document.body) {
+                this.logError("Critical. init(): document.body is not defined");
+                return;
+            }
+            if (!document.body.addEventListener) {
+                this.logError("Critical. init(): document.body.addEventListener is not defined");
+                return;
+            }
+
+            this.listeners.forEach(function (item) {
+                document.body.addEventListener(item.type, item.listener, false);
+            });
+        };
+
+        SwdPageRecorder.prototype.destructor = function () {
+            this.listeners.forEach(function (item) {
+                document.body.removeEventListener(item.type, item.listener, false);
+            });
+        };
+
+        SwdPageRecorder.prototype.onBodyContextMenu = function (event) {
+        };
+
+        SwdPageRecorder.prototype.onBodyMouseover = function (event) {
+        };
+
+        SwdPageRecorder.prototype.logError = function (error) {
+        };
+        return SwdPageRecorder;
+    })();
+})(WebElementExplorer || (WebElementExplorer = {}));
 /// <reference path="_reference.ts" />
 var WebElementExplorer;
 (function (WebElementExplorer) {
@@ -132,7 +179,7 @@ var WebElementExplorer;
     }
     WebElementExplorer.getXPath = getXPath;
 
-    function getPageXY(element) {
+    function getElementCoordiantes(element) {
         WebElementExplorer.hello("getPageXY");
         var x = 0, y = 0;
         while (element) {
@@ -143,6 +190,7 @@ var WebElementExplorer;
         WebElementExplorer.bye("getPageXY");
         return [x, y];
     }
+    WebElementExplorer.getElementCoordiantes = getElementCoordiantes;
     ;
 })(WebElementExplorer || (WebElementExplorer = {}));
 //# sourceMappingURL=WebElementExplorer.js.map

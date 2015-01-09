@@ -164,6 +164,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="JS\WebElementExplorer\qunit.d.ts" />
     <TypeScriptCompile Include="JS\WebElementExplorer\tests\Helper.ts" />
+    <TypeScriptCompile Include="JS\WebElementExplorer\tests\Spec_Doc_getXPath_Smart_Cases.ts" />
     <TypeScriptCompile Include="JS\WebElementExplorer\tests\Spec_Doc.ts" />
     <TypeScriptCompile Include="JS\WebElementExplorer\_test_references.ts" />
   </ItemGroup>

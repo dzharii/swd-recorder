@@ -15,6 +15,7 @@ declare module WebElementExplorer {
     function canFindByName(element: HTMLElement): boolean;
     function buldFullXPath(element: HTMLElement): string;
     function getXPath(element: HTMLElement): string;
+    function getElementCoordiantes(element: any): number[];
 }
 declare module WebElementExplorer {
 }

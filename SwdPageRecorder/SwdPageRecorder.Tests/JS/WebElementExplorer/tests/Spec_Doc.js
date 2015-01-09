@@ -123,8 +123,18 @@ var WebElementExplorer;
     });
 
     QUnit.module("Doc.getPageXY");
-    test("next", function (assert) {
-        assert.equal(true, false);
+    test("that the element coordinates should be match to expected or at least greater than expected", function (assert) {
+        WebElementExplorer.Helper.withTempElement("INPUT", function (expectedInput) {
+            expectedInput.setAttribute("name", "someElement");
+            var X = 0;
+            var Y = 1;
+
+            var expectedCoords = [8, 226];
+            var actualCoords = WebElementExplorer.getElementCoordiantes(expectedInput);
+
+            assert.equal(actualCoords[X], expectedCoords[X]);
+            assert.ok(actualCoords[Y] >= expectedCoords[Y]);
+        });
     });
 })(WebElementExplorer || (WebElementExplorer = {}));
 //# sourceMappingURL=Spec_Doc.js.map
