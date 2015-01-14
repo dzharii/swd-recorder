@@ -68,6 +68,23 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        public BrowserPageFrame getCurrentlyChosenFrame()
+        {
+            BrowserPageFrame frame = null;
+            object item = null;
+            this.ddlFrames.Invoke((MethodInvoker)delegate()
+            {
+                item = ddlFrames.SelectedItem;
+            }
+            );
+            if (item is BrowserPageFrame)
+            {
+                frame = item as BrowserPageFrame;
+
+            }
+            return frame;
+        }
+
         private void btnBrowser_Go_Click(object sender, EventArgs e)
         {
             presenter.SetBrowserUrl(txtBrowserUrl.Text);
