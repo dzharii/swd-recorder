@@ -141,11 +141,41 @@ namespace SwdPageRecorder.UI
             {
                 var addElementCommand = command as AddElement;
 
+                SimpleFrame simpleFrame;
+                BrowserPageFrame browserPageFrame = view.getCurrentlyChosenFrame();
+                if (browserPageFrame != null)
+                {
+                    List<string> childs = new List<string>();
+                    string parentTitle;
+                    if (browserPageFrame.ParentFrame != null)
+                    {
+                        parentTitle = browserPageFrame.ParentFrame.GetTitle();
+                    }
+                    else
+                    {
+                        parentTitle = "none";
+                    }
+                    if (browserPageFrame.ChildFrames != null)
+                    {
+                        foreach (BrowserPageFrame b in browserPageFrame.ChildFrames)
+                        {
+                            childs.Add(b.GetTitle());
+                        }
+                    }
+
+                    simpleFrame = new SimpleFrame(browserPageFrame.Index, browserPageFrame.LocatorNameOrId, browserPageFrame.GetTitle(), parentTitle, childs);
+                }
+                else
+                {
+                    simpleFrame = new SimpleFrame(-1, "noFrameChosen", "noFrameChosen", "noFrameChosen", null);
+                }
+
                 var element = new WebElementDefinition()
                 {
                     Name = addElementCommand.ElementCodeName,
                     HowToSearch = LocatorSearchMethod.XPath,
                     Locator = addElementCommand.ElementXPath,
+                    frame = simpleFrame,
                 };
                 bool addNew = true;
                 Presenters.SelectorsEditPresenter.UpdateWebElementWithAdditionalProperties(element);
