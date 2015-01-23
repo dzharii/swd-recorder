@@ -41,6 +41,8 @@ namespace SwdPageRecorder.WebDriver
         [Browsable(false)]
         public string Arg3 { get; set; }
 
+        [DisplayName("Frame")]
+        public SimpleFrame frame { get; set; }
 
         public WebElementDefinition()
         {
@@ -97,6 +99,7 @@ namespace SwdPageRecorder.WebDriver
                 Arg3 = Arg3,
                 AllHtmlTagProperties = new WebElementHtmlAttributes(),
                 AlternativeFindBys = null,
+                frame = frame,
             };
 
 
