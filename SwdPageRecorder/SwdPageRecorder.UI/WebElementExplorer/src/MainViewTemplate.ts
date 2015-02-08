@@ -1,7 +1,9 @@
 ﻿ module WebElementExplorer {
 
      class CSS {
-         static DEFAULT_BOX = "defaultBox";
+         static DEFAULT_BOX = "DEFAULT_BOX";
+         static WINDOW_CONTAINER = "WINDOW_CONTAINER";
+         static TOP_DRAGGING_AREA = "TOP_DRAGGING_AREA";
      }
 
 
@@ -31,7 +33,39 @@
              var styles = {};
 
              styles[CSS.DEFAULT_BOX] = {
-                 
+                 "width": "auto",
+                 "height": "auto",
+                 "margin": "0",
+                 "padding": "0",
+                 "border": "0",
+                 "outline": "0",
+                 "vertical-align": "baseline",
+                 "background": "0 0",
+                 "text-align": "left !important",
+                 "line-height": "normal",
+                 "border-radius": "0",
+                 "font-variant": "normal !important",
+                 "font-weight": "normal",
+                 "cursor": "default",
+                 "font-family": "Segoe UI, Helvetica, sans-serif !important",
+                 "letter-spacing": "normal !important",
+                 "clear": "none",
+                 "box-sizing": "content-box",
+             };
+
+             styles[CSS.WINDOW_CONTAINER] = {
+                 "z-index": "2147483647",
+                 "box-shadow": "0 3px 11px",
+                 "overflow": "hidden",
+             };
+
+             styles[CSS.TOP_DRAGGING_AREA] = {
+                 "cursor": "move",
+                 "background-color": "#D01345",
+                 "background": "linear-gradient(to bottom,#A61E2D 0,#D01345 100%)",
+                 "width": "auto",
+                 "height": "auto",
+                 "min-height": "20pt",
              };
 
              if (!styles[key]) {
@@ -47,9 +81,17 @@
 //==========================================================
              var htmlTemplate =`
 <div style="${this.getStyle(CSS.DEFAULT_BOX)}">
-    Hello World 4!
+    <div data-role="container" style="${this.getStyle(CSS.WINDOW_CONTAINER)}">
+        <div style="${this.getStyle(CSS.TOP_DRAGGING_AREA)}"> 
+                 Header
+        </div>
+        <div>
+        Hello World 4!
+        </div>
+    </div>
 </div>
-`.trim();
+`.trim()
+.replace(/^\s+|\s+$/gm,"");
 //==========================================================
              this.showForm(htmlTemplate);
          }
