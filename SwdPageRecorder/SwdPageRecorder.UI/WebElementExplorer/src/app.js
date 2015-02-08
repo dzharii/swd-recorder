@@ -6,4 +6,3 @@ var WebElementExplorer;
         return SwdPageRecorder;
     })();
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=app.js.map

@@ -6,7 +6,7 @@ var WebElementExplorer;
         return SwdPageRecorder;
     })();
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=app.js.map
+
 /// <reference path="_reference.ts" />
 var WebElementExplorer;
 (function (WebElementExplorer) {
@@ -96,7 +96,7 @@ var WebElementExplorer;
     WebElementExplorer.getElementCoordiantes = getElementCoordiantes;
     ;
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=Doc.js.map
+
 var WebElementExplorer;
 (function (WebElementExplorer) {
     var MainPresenter = (function () {
@@ -106,7 +106,7 @@ var WebElementExplorer;
     })();
     WebElementExplorer.MainPresenter = MainPresenter;
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=mainpresenter.js.map
+
 var WebElementExplorer;
 (function (WebElementExplorer) {
     var MainView = (function () {
@@ -116,12 +116,19 @@ var WebElementExplorer;
     })();
     WebElementExplorer.MainView = MainView;
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=mainview.js.map
+
 var WebElementExplorer;
 (function (WebElementExplorer) {
     var MainViewTemplate = (function () {
         function MainViewTemplate() {
         }
+        MainViewTemplate.prototype.convertObjectToCssStyle = function (jsObject) {
+            var result = "";
+            return result;
+        };
+        MainViewTemplate.prototype.style = function (key) {
+            return {};
+        };
         MainViewTemplate.prototype.render = function () {
             //================= HTML ===================================
             //==========================================================
@@ -132,7 +139,7 @@ var WebElementExplorer;
     })();
     WebElementExplorer.MainViewTemplate = MainViewTemplate;
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=MainViewTemplate.js.map
+
 /// <reference path="_reference.ts" />
 var WebElementExplorer;
 (function (WebElementExplorer) {
@@ -169,10 +176,9 @@ var WebElementExplorer;
     }
     WebElementExplorer.pseudoGuid = pseudoGuid;
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=utils.js.map
+
 /// <reference path="utils.ts" />
 /// <reference path="app.ts" />
 /// <reference path="doc.ts" />
 /// <reference path="mainpresenter.ts" />
 /// <reference path="mainview.ts" />
-//# sourceMappingURL=_reference.js.map

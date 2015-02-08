@@ -87,4 +87,3 @@ var WebElementExplorer;
     WebElementExplorer.getElementCoordiantes = getElementCoordiantes;
     ;
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=Doc.js.map

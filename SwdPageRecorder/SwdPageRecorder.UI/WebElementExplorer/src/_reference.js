@@ -3,4 +3,3 @@
 /// <reference path="doc.ts" />
 /// <reference path="mainpresenter.ts" />
 /// <reference path="mainview.ts" />
-//# sourceMappingURL=_reference.js.map

@@ -7,4 +7,3 @@ var WebElementExplorer;
     })();
     WebElementExplorer.MainView = MainView;
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=mainview.js.map

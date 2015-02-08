@@ -1,4 +1,4 @@
-﻿/// <reference path="../_test_references.ts" />
+﻿/// <reference path="_test_references.ts" />
 
 module WebElementExplorer {
 

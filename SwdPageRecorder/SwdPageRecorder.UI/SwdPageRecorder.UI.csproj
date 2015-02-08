@@ -328,7 +328,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="transparent_icon.ico" />
+    <Content Include="WebElementExplorer\dist\all.js" />
     <Content Include="WebElementExplorer\src\test-me.html" />
+    <Content Include="WebElementExplorer\qunit.html" />
     <None Include="Resources\loading-indicator.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +343,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </TypeScriptCompile>
     <TypeScriptCompile Include="WebElementExplorer\src\_reference.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\tests\Helper.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\qunit.d.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\tests\Spec_Doc.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\tests\Spec_Doc_getXPath_Smart_Cases.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\tests\_test_references.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebElementExplorer\js\" />
@@ -352,8 +359,9 @@
     <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>pushd $(SolutionDir)\$(ProjectName)\WebElementExplorer
+gulp
+popd</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" />
   <PropertyGroup />
