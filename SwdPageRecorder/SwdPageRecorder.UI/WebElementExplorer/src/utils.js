@@ -7,6 +7,12 @@ var WebElementExplorer;
         }
     }
     WebElementExplorer.say = say;
+    function logError(something) {
+        if (typeof console !== "undefined" && console !== null) {
+            return console.error(something);
+        }
+    }
+    WebElementExplorer.logError = logError;
     function dbg(something) {
         if (typeof console !== "undefined" && console !== null) {
             return console.log("DBG:" + something);

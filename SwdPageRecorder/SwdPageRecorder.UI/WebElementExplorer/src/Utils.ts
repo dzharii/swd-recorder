@@ -7,6 +7,12 @@ module WebElementExplorer {
         }
     }
 
+    export function logError(something: any): void {
+        if (typeof console !== "undefined" && console !== null) {
+            return console.error(something);
+        }
+    }
+
     export function dbg (something : any) : void {
         if (typeof console !== "undefined" && console !== null) {
             return console.log("DBG:" + something);

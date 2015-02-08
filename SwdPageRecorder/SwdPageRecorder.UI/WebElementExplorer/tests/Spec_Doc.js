@@ -105,14 +105,19 @@ var WebElementExplorer;
     });
     QUnit.module("Doc.getPageXY");
     test("that the element coordinates should be match to expected or at least greater than expected", function (assert) {
+        var COORDX = 0;
+        var COORDY = 1;
         WebElementExplorer.Helper.withTempElement("INPUT", function (expectedInput) {
             expectedInput.setAttribute("name", "someElement");
-            var X = 0;
-            var Y = 1;
+            var elStyle = expectedInput.style;
+            elStyle.position = 'absolute';
+            elStyle.left = "8px";
+            elStyle.top = "226px";
+            // ===============
             var expectedCoords = [8, 226];
             var actualCoords = WebElementExplorer.getElementCoordiantes(expectedInput);
-            assert.equal(actualCoords[X], expectedCoords[X]);
-            assert.ok(actualCoords[Y] >= expectedCoords[Y]);
+            assert.equal(actualCoords[COORDX], expectedCoords[COORDX]);
+            assert.ok(actualCoords[COORDY] >= expectedCoords[COORDY]);
         });
     });
 })(WebElementExplorer || (WebElementExplorer = {}));

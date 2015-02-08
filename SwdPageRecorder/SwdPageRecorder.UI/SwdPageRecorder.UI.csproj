@@ -345,6 +345,7 @@
     <TypeScriptCompile Include="WebElementExplorer\src\_reference.ts" />
     <TypeScriptCompile Include="WebElementExplorer\tests\Helper.ts" />
     <TypeScriptCompile Include="WebElementExplorer\qunit.d.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\tests\Spec_MainViewTemplate.ts" />
     <TypeScriptCompile Include="WebElementExplorer\tests\Spec_Doc.ts" />
     <TypeScriptCompile Include="WebElementExplorer\tests\Spec_Doc_getXPath_Smart_Cases.ts" />
     <TypeScriptCompile Include="WebElementExplorer\tests\_test_references.ts" />
@@ -359,9 +360,8 @@
     <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>pushd $(SolutionDir)\$(ProjectName)\WebElementExplorer
-gulp
-popd</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" />
   <PropertyGroup />

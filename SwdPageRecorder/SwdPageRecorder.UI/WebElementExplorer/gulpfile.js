@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 
 var concat = require('gulp-concat');
+var livereload = require('gulp-livereload');
  
 gulp.task('default', function() {
   gulp.src('./src/*.js')
@@ -8,8 +9,8 @@ gulp.task('default', function() {
     .pipe(gulp.dest('./dist/'))
 });
 
-/*
-gulp.task('default', function() {
-  // place code for your default task here
+gulp.task('watch', function() {
+  gulp.watch('./src/*.js', ['default']);
 });
-*/
+
+
