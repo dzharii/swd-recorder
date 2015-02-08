@@ -3,6 +3,13 @@ var WebElementExplorer;
     var MainViewTemplate = (function () {
         function MainViewTemplate() {
         }
+        MainViewTemplate.prototype.convertObjectToCssStyle = function (jsObject) {
+            var result = "";
+            return result;
+        };
+        MainViewTemplate.prototype.style = function (key) {
+            return {};
+        };
         MainViewTemplate.prototype.render = function () {
             //================= HTML ===================================
             //==========================================================
@@ -13,4 +20,3 @@ var WebElementExplorer;
     })();
     WebElementExplorer.MainViewTemplate = MainViewTemplate;
 })(WebElementExplorer || (WebElementExplorer = {}));
-//# sourceMappingURL=MainViewTemplate.js.map
