@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.4</TypeScriptToolsVersion>
     <ProjectGuid>{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="JS\WebElementExplorer\.gitignore" />
+    <Content Include="JS\WebElementExplorer\qunit-video.html" />
     <Content Include="JS\WebElementExplorer\qunit.html" />
     <Content Include="TestResource\frameworks_demo\case-bootstrap\demob.htm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

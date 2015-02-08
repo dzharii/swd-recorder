@@ -15,7 +15,6 @@ module WebElementExplorer {
             }
 
             document.body.removeChild(newElement);
-
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿/// <reference path="../_test_references.ts" />
+/// <reference path="../_test_references.ts" />
 var WebElementExplorer;
 (function (WebElementExplorer) {
     QUnit.module("Doc.getXPath");
@@ -8,7 +8,6 @@ var WebElementExplorer;
             assert.equal(actualXPath, "/html/body/input[1]");
         });
     });
-
     test("for the elements with ID, returns id-optimized XPath", function (assert) {
         WebElementExplorer.Helper.withTempElement("INPUT", function (expectedInput) {
             expectedInput.id = "HeyIHaveId";
@@ -16,7 +15,6 @@ var WebElementExplorer;
             assert.equal(actualXPath, "id(\"HeyIHaveId\")");
         });
     });
-
     test("for the elements with name, returns name-optimized XPath", function (assert) {
         WebElementExplorer.Helper.withTempElement("INPUT", function (expectedInput) {
             expectedInput.setAttribute("name", "HeyIHaveName");
@@ -24,7 +22,6 @@ var WebElementExplorer;
             assert.equal(actualXPath, "//input[@name='HeyIHaveName']");
         });
     });
-
     test("for the elements with not unique names, returns full XPath", function (assert) {
         WebElementExplorer.Helper.withTempElement("INPUT", function (otherInput) {
             otherInput.setAttribute("name", "HeyIHaveName");

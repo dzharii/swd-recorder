@@ -328,15 +328,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="transparent_icon.ico" />
-    <Content Include="WebElementExplorer\WebElementExplorer.js">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\loading-indicator.gif" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="WebElementExplorer\src\app.ts" />
     <TypeScriptCompile Include="WebElementExplorer\src\Doc.ts" />
     <TypeScriptCompile Include="WebElementExplorer\src\MainPresenter.ts" />
+    <TypeScriptCompile Include="WebElementExplorer\src\MainViewTemplate.ts" />
     <TypeScriptCompile Include="WebElementExplorer\src\MainView.ts" />
     <TypeScriptCompile Include="WebElementExplorer\src\Utils.ts">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -357,8 +355,9 @@
     </PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" />
-  <PropertyGroup>
-    <TypeScriptOutFile>$(ProjectDir)\WebElementExplorer\WebElementExplorer.js</TypeScriptOutFile>
+  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptModuleKind>none</TypeScriptModuleKind>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <ProjectExtensions />
