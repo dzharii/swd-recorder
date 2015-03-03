@@ -17,8 +17,10 @@ echo Hello! >%STDOUT_DEFAULT%
 @echo [3/8]    Vacuuming a room...
 @rem Build/output cleanup
 
-@%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\msbuild %SlnPath% /t:clean >>%STDOUT_DEFAULT%
-@%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\msbuild %SlnPath% >>%STDOUT_DEFAULT%
+
+
+@"C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" %SlnPath% /t:clean >>%STDOUT_DEFAULT%
+@"C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" %SlnPath% >>%STDOUT_DEFAULT%
 
 IF EXIST "SwdPageRecorder_Latest" rd SwdPageRecorder_Latest /Q /S  >>%STDOUT_DEFAULT%
 md SwdPageRecorder_Latest >>%STDOUT_DEFAULT%

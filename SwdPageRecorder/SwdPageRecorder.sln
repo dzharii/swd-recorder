@@ -15,13 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.WebDriver",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.Tests", "SwdPageRecorder.Tests\SwdPageRecorder.Tests.csproj", "{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{740A548F-C595-4AA6-BA88-C474CE89C713}"
-	ProjectSection(SolutionItems) = preProject
-		Local.testsettings = Local.testsettings
-		SwdPageRecorder.vsmdi = SwdPageRecorder.vsmdi
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.TestModel", "SwdPageRecorder.TestModel\SwdPageRecorder.TestModel.csproj", "{CF660034-7A02-4800-A232-2C2B8F670A83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.UI", "SwdPageRecorder.UI\SwdPageRecorder.UI.csproj", "{F0246C75-182B-4305-8649-C9185BF886E1}"
