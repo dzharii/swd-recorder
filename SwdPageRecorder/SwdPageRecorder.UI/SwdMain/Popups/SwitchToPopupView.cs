@@ -14,7 +14,6 @@ namespace SwdPageRecorder.UI
     public partial class SwitchToPopupView : Form, IView
     {
         private SwitchToPopupPresenter presenter;
-        private BrowserPageFrame currentFrame;
         
         private SwdMainView parentView;
 

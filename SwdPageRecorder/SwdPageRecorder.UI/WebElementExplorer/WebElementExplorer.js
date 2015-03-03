@@ -1,4 +1,4 @@
-﻿/// <reference path="_reference.ts" />
+/// <reference path="_reference.ts" />
 var WebElementExplorer;
 (function (WebElementExplorer) {
     function say(something) {
@@ -7,24 +7,20 @@ var WebElementExplorer;
         }
     }
     WebElementExplorer.say = say;
-
     function dbg(something) {
         if (typeof console !== "undefined" && console !== null) {
             return console.log("DBG:" + something);
         }
     }
     WebElementExplorer.dbg = dbg;
-
     function hello(something) {
         return dbg("(begin): " + something);
     }
     WebElementExplorer.hello = hello;
-
     function bye(something) {
         return dbg("(end): " + something);
     }
     WebElementExplorer.bye = bye;
-
     function pseudoGuid() {
         var result;
         hello("pseudoGuid");
@@ -47,50 +43,37 @@ var WebElementExplorer;
         return document.getElementById(id);
     }
     WebElementExplorer.findOneById = findOneById;
-
     function findManyByName(name) {
         return document.getElementsByName(name);
     }
     WebElementExplorer.findManyByName = findManyByName;
-
     function getTagName(element) {
         return element.tagName.toLowerCase();
     }
-
     function canFindById(element) {
         var result = null;
         if (!(element && element.id))
             return false;
-
         var elementExists = findOneById(element.id) === element;
         return elementExists;
     }
-
     function canFindByName(element) {
         var result = null;
-
         if (!(element && element["name"]))
             return false;
-
         var listOfElements = document.getElementsByName(element["name"]);
-
         var elementExists = listOfElements.length === 1 && listOfElements[0] == element;
-
         return elementExists;
     }
-
     function buldFullXPath(element) {
         var elementTagName = getTagName(element);
         if (element === document.body) {
             return "/html/" + elementTagName;
         }
-
         // XPath count starts from 1
         var xpathOrder = 1;
         var siblings = element.parentNode.childNodes;
-
         var ELEMENT_NODE_TYPE = 1;
-
         for (var i = 0, siblingsCount = siblings.length; i < siblingsCount; i++) {
             var sibling = siblings[i];
             if (sibling.nodeType !== ELEMENT_NODE_TYPE) {
@@ -100,28 +83,24 @@ var WebElementExplorer;
                 return "" + (getXPath(element.parentNode)) + "/" + elementTagName + "[" + (xpathOrder) + "]";
             }
             var siblingTagName = getTagName(sibling);
-
             var hasSameTagAsCurrentElement = sibling.nodeType === ELEMENT_NODE_TYPE && siblingTagName === elementTagName;
-
             if (hasSameTagAsCurrentElement) {
                 xpathOrder++;
             }
         }
     }
-
     function getXPath(element) {
         WebElementExplorer.hello("getPathTo");
         var result = "";
-
         var elementTagName = getTagName(element);
-
         var findResult = "";
-
         if (canFindById(element)) {
             result = "id(\"" + element.id + "\")";
-        } else if (canFindByName(element)) {
+        }
+        else if (canFindByName(element)) {
             result = "//" + elementTagName + "[@name='" + element["name"] + "']";
-        } else {
+        }
+        else {
             result = buldFullXPath(element);
         }
         WebElementExplorer.bye("getPathTo");
