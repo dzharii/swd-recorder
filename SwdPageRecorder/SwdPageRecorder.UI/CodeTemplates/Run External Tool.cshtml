@@ -1,0 +1,19 @@
+﻿@using SwdPageRecorder.UI;
+@using SwdPageRecorder.UI.CodeGeneration;
+@using SwdPageRecorder.WebDriver;
+
+@{
+
+    ExternalGenerator run = new ExternalGenerator();
+
+    string jsonFile = "WebElementDefinitions.json";
+    string commandLine = "cscript //Nologo sample_ParserWebElements.js";
+
+    SwdPageObject pageObject = Model.PageObject;
+    run.SaveToJSonFile(pageObject, jsonFile);
+
+}
+@*~~~ 
+     RunExternalProcess(string fullCommandLine, bool waitForExit (optional; default=true)) 
+~~~ *@
+@Raw(@run.RunExternalProcess(commandLine))

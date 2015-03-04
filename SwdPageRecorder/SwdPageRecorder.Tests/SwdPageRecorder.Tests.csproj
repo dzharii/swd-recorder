@@ -76,6 +76,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="TestStack.White, Version=0.13.0.0, Culture=neutral, PublicKeyToken=2672efbf3e161801, processorArchitecture=MSIL">
@@ -94,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
+    <Compile Include="Integration\Templates\CSharpPageObjectGenerator_Tests.cs" />
     <Compile Include="Integration\WebElement_Explorer_Tests.cs" />
     <Compile Include="MyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +109,10 @@
     <ProjectReference Include="..\SwdPageRecorder.TestModel\SwdPageRecorder.TestModel.csproj">
       <Project>{CF660034-7A02-4800-A232-2C2B8F670A83}</Project>
       <Name>SwdPageRecorder.TestModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SwdPageRecorder.UI\SwdPageRecorder.UI.csproj">
+      <Project>{f0246c75-182b-4305-8649-c9185bf886e1}</Project>
+      <Name>SwdPageRecorder.UI</Name>
     </ProjectReference>
     <ProjectReference Include="..\SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj">
       <Project>{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}</Project>

@@ -9,16 +9,18 @@ using SwdPageRecorder.WebDriver;
 
 namespace SwdPageRecorder.UI
 {
+    public class TemplateViewModel
+    {
+        public SwdPageObject PageObject { get; set; }
+    }
+
     public class CSharpPageObjectGenerator
     {
-        internal string[] Generate(SwdPageObject pageObject, string fullTemplatePath)
+        public string[] Generate(SwdPageObject pageObject, string fullTemplatePath)
         {
             var template = File.ReadAllText(fullTemplatePath);
-            
-            object model = new {
-                                        PageObject = pageObject,
-                                        ExternalGenerator = new ExternalGenerator(),
-                                    };
+
+            object model = new TemplateViewModel() { PageObject = pageObject };
 
             string result = "not parsed";
             try

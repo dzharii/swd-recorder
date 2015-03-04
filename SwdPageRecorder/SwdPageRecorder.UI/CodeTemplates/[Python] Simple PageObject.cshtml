@@ -1,4 +1,7 @@
-﻿@functions{
+﻿@using SwdPageRecorder.UI;
+@using SwdPageRecorder.UI.CodeGeneration;
+
+@functions{
     string PythonHow(string howFromCSharp, bool multipleElements)
     {
         string findBy = multipleElements ? "find_elements_by" : "find_element_by";
@@ -24,7 +27,7 @@
     }    
 }
 
-class MyPage(object):
+class @Raw(@Model.PageObject.PageObjectName) (object):
     def __init__(self, driver):
         self.driver = driver
 

@@ -18,14 +18,6 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
     public class SwdBrowser_Tests : MyTest    
     {
 
-
-        [Test(Description = "TODO")]
-        public void Implement_headless_UI_runs()
-        {
-            "Using desktoputils run the NUnit tests in headless mode".Should().BeEmpty();
-        }
-
-        
         /// <summary>
         /// SwdBrowser.Initialize should be able to connect to the Remote Hub 
         /// Tests: @SwdBrowser.Initialize, @WebDriverOptions, @SwdBrowser.TestRemoteHub, @SwdBrowser.RunStandaloneServer

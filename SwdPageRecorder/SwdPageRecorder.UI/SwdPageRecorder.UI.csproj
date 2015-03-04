@@ -262,16 +262,13 @@
     <None Include="CodeTemplates\[CSharp] WebDriver.Support PageObject %28Default%29.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="CodeTemplates\[Perl] Simple PageObject.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="CodeTemplates\[Python] Simple PageObject.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="CodeTemplates\[Ruby] PageObject Gem.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="CodeTemplates\[ZZZ] Experimental Run External Tool.cshtml">
+    <None Include="CodeTemplates\Run External Tool.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
