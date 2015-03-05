@@ -151,8 +151,6 @@ namespace SwdPageRecorder.UI
 
         private void ParseHtmlNodes(TreeNode tnode, HAP.HtmlNodeCollection htmlNodes, string parentXPath)
         {
-
-            
             var childrenCount = new Dictionary<string, int>();
 
             foreach (HAP.HtmlNode htmlNode in htmlNodes)
@@ -160,6 +158,10 @@ namespace SwdPageRecorder.UI
 
                 var currentNodeName = htmlNode.Name.ToLower();
 
+                //FIX: remove namespace from html name (breakes tree search)
+                currentNodeName = RemoveNamespace(currentNodeName);
+                
+                //FIX: ignore special elements 
                 if (currentNodeName.StartsWith("#")) continue;
 
                 if (childrenCount.ContainsKey(currentNodeName))
@@ -200,19 +202,21 @@ namespace SwdPageRecorder.UI
 
                 tnode.Nodes.Add(newNode);
 
-                if (htmlNode.Name == "form")
-                {
-
-                }
-
-
                 if (htmlNode.HasChildNodes)
                 {
-
                     ParseHtmlNodes(newNode, htmlNode.ChildNodes, currentNodeXPath);
                 }
             }
 
+        }
+
+        private string RemoveNamespace(string currentNodeName)
+        {
+            if (currentNodeName.Contains(":"))
+            {
+                currentNodeName = currentNodeName.Split(':')[1];
+            }
+            return currentNodeName;
         }
 
         internal void UpdateTestHtmlDocumentView()
@@ -222,14 +226,15 @@ namespace SwdPageRecorder.UI
             HAP.HtmlDocument doc = SwdBrowser.GetPageSource();
             HAP.HtmlNode root = doc.DocumentNode.ChildNodes.FindFirst(@"html");
 
-            var treeRootNode = new TreeNode(root.Name);
-            treeRootNode.Name = root.Name.ToLower();
+            string rootNodeName = RemoveNamespace(root.Name);
+            var treeRootNode = new TreeNode(rootNodeName);
+            treeRootNode.Name = rootNodeName.ToLower();
             treeRootNode.Tag = new HtmlTreeNodeData()
             {
                 nodeXPath = "/html",
                 OriginalHtmlNode = root,
             };
-            ParseHtmlNodes(treeRootNode, root.ChildNodes, "/html[1]");
+            ParseHtmlNodes(treeRootNode, root.ChildNodes, "/html");
 
             view.AddTestHtmlNodes(treeRootNode);
 
@@ -289,6 +294,7 @@ namespace SwdPageRecorder.UI
                 var targetNodeIndex = -1;
                 foreach (TreeNode treeNode in searchNodes)
                 {
+                    
                     if (treeNode.Name == travelNode.NodeName)
                     {
                         targetNodeIndex++;
