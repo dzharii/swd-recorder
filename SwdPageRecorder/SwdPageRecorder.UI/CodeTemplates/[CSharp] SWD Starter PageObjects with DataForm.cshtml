@@ -12,7 +12,7 @@
 
     string FormatDataEntry(string elementName)
     {
-        string result = "public string " + elementName + "{ get; set; };";
+        string result = "public string " + elementName + "{ get; set; }";
         return result;
     }
 }
@@ -115,8 +115,9 @@ namespace Demo.TestModel.PageDeclarations
            
            @foreach (var element in @Model.PageObject.Items ) 
            {
-           <text>dataForm.@Raw(@element.Name)</text>@Raw(" = ")@Raw(@element.Name)@Raw(".Text;\r\n");
+           <text>dataForm.@Raw(@element.Name)</text>@Raw(" = ")@Raw(@element.Name)@Raw(".GetElementText();\r\n");
            }
+           return dataForm;
         }
 
 
