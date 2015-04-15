@@ -107,6 +107,7 @@
             // 
             // btnOpenScreenshotFolder
             // 
+            this.btnOpenScreenshotFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenScreenshotFolder.Image = global::SwdPageRecorder.UI.Properties.Resources.eye;
             this.btnOpenScreenshotFolder.Location = new System.Drawing.Point(750, 13);
             this.btnOpenScreenshotFolder.Name = "btnOpenScreenshotFolder";
@@ -117,6 +118,7 @@
             // 
             // btnTakePageScreenshot
             // 
+            this.btnTakePageScreenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTakePageScreenshot.Image = global::SwdPageRecorder.UI.Properties.Resources.camera;
             this.btnTakePageScreenshot.Location = new System.Drawing.Point(716, 13);
             this.btnTakePageScreenshot.Name = "btnTakePageScreenshot";
