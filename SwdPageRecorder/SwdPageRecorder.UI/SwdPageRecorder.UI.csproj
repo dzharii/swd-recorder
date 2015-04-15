@@ -312,6 +312,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon3.ico" />
+    <None Include="Resources\camera.png" />
+    <None Include="Resources\eye.png" />
     <Content Include="sample_ParserWebElements.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

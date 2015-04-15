@@ -22,6 +22,9 @@ namespace SwdPageRecorder.UI
         public SwdMainView()
         {
             InitializeComponent();
+            string versionText = string.Format("SWD Page Recorder {0} (Build Number: {1})", Build.WebDriverVersion, Build.Version);
+            this.Text = versionText;
+            MyLog.Write("Started: " + versionText);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 
             presenter = Presenters.SwdMainPresenter;
@@ -177,6 +180,8 @@ namespace SwdPageRecorder.UI
         {
             txtBrowserUrl.DoInvokeAction(   () => txtBrowserUrl.Enabled = shouldControlBeEnabled);
             btnBrowser_Go.DoInvokeAction(   () =>  btnBrowser_Go.Enabled = shouldControlBeEnabled);
+            btnTakePageScreenshot.DoInvokeAction(() => btnTakePageScreenshot.Enabled = shouldControlBeEnabled);
+            btnOpenScreenshotFolder.DoInvokeAction(() => btnOpenScreenshotFolder.Enabled = shouldControlBeEnabled);
             grpVisualSearch.DoInvokeAction( () =>  grpVisualSearch.Enabled = shouldControlBeEnabled);
             grpSwitchTo.DoInvokeAction(     () => grpSwitchTo.Enabled = shouldControlBeEnabled);
         }
@@ -283,6 +288,29 @@ namespace SwdPageRecorder.UI
         {
             BrowserPageFrame frame = ddlFrames.SelectedItem as BrowserPageFrame;
             presenter.OpenSwitchToFrameCodeHelperPopup(frame);
+        }
+
+        private async void btnTakePageScreenshot_Click(object sender, EventArgs e)
+        {
+            btnTakePageScreenshot.Enabled = false;
+            var oldBackground = btnTakePageScreenshot.BackColor;
+            btnTakePageScreenshot.BackColor = Color.DarkGray;
+            try
+            {
+                presenter.DisplayLoadingIndicator(true);
+                await presenter.TakeAndSaveScreenshot();
+            }
+            finally 
+            {
+                btnTakePageScreenshot.Enabled = true;
+                btnTakePageScreenshot.BackColor = oldBackground;
+                presenter.DisplayLoadingIndicator(false);
+            }
+        }
+
+        private void btnOpenScreenshotFolder_Click(object sender, EventArgs e)
+        {
+            presenter.OpenScreenshotsFolder();
         }
 
     }

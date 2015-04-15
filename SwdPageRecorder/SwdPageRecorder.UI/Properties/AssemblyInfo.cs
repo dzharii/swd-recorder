@@ -32,5 +32,12 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2015.03.04")]
-[assembly: AssemblyFileVersion("2015.03.04")]
+[assembly: AssemblyVersion(Build.Version)]
+[assembly: AssemblyFileVersion(Build.Version)]
+
+public class Build
+{
+    public const string Version = "2015.04.14";
+    public const string WebDriverVersion = "v2.45";
+}
+

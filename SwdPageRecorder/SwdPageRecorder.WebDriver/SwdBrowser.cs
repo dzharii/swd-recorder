@@ -22,6 +22,7 @@ using HtmlAgilityPack;
 using SwdPageRecorder.WebDriver.SwdBrowserUtils;
 
 using SwdPageRecorder.WebDriver.OpenQA.Selenium.Support.PageObjects;
+using System.Reflection;
 
 
 namespace SwdPageRecorder.WebDriver
@@ -492,6 +493,40 @@ namespace SwdPageRecorder.WebDriver
             string response = "";
             response = client.DownloadString(url);
             
+        }
+
+        // Copy-pasted  from 
+        // https://github.com/SeleniumHQ/selenium/blob/master/dotnet/src/support/Extensions/WebDriverExtensions.cs
+        // 
+        public static Screenshot TakeScreenshot()
+        {
+            var driver = GetDriver();
+            ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+            if (screenshotDriver == null)
+            {
+                IHasCapabilities capabilitiesDriver = driver as IHasCapabilities;
+                if (capabilitiesDriver == null)
+                {
+                    throw new WebDriverException("Driver does not implement ITakesScreenshot or IHasCapabilities");
+                }
+
+                if (!capabilitiesDriver.Capabilities.HasCapability(CapabilityType.TakesScreenshot) || !(bool)capabilitiesDriver.Capabilities.GetCapability(CapabilityType.TakesScreenshot))
+                {
+                    throw new WebDriverException("Driver capabilities do not support taking screenshots");
+                }
+
+                MethodInfo executeMethod = driver.GetType().GetMethod("Execute", BindingFlags.Instance | BindingFlags.NonPublic);
+                Response screenshotResponse = executeMethod.Invoke(driver, new object[] { DriverCommand.Screenshot, null }) as Response;
+                if (screenshotResponse == null)
+                {
+                    throw new WebDriverException("Unexpected failure getting screenshot; response was not in the proper format.");
+                }
+
+                string screenshotResult = screenshotResponse.Value.ToString();
+                return new Screenshot(screenshotResult);
+            }
+
+            return screenshotDriver.GetScreenshot();
         }
     }
 }

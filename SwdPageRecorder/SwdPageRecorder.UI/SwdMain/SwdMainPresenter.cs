@@ -18,6 +18,9 @@ using System.Xml.Linq;
 
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing.Imaging;
+using System.Threading.Tasks;
+using System.IO;
 
 
 
@@ -32,6 +35,10 @@ namespace SwdPageRecorder.UI
 
         const int VisualSearchQueryDelayMs = 777;
 
+
+        public string ScreenshotsLocation { get {
+            return Path.Combine(Utils.AssemblyDirectory, "Screenshots");
+        } }
 
         public void InitView(SwdMainView view)
         {
@@ -351,6 +358,49 @@ namespace SwdPageRecorder.UI
         {
             SwitchToPopupView popupForm = new SwitchToPopupView(currentFrame, view);
             popupForm.ShowDialog();
+        }
+
+        internal Task TakeAndSaveScreenshot()
+        {
+            
+            var task = new Task(() =>
+            {
+                EnsureScreenshotsDirectoryExists();
+
+                MyLog.Write("Action: TakeAndSaveScreenshot()");
+                try
+                {
+
+                    var pageUrl = new Uri(SwdBrowser.GetDriver().Url);
+                    var host = pageUrl.Host;
+                    string newFileName = DateTime.Now.ToString("yyyy-dd-M__HH-mm-ss") + "_" + host + ".png";
+                    string newFilePath = Path.Combine(ScreenshotsLocation, newFileName);
+                    
+                    Screenshot screenshot = SwdBrowser.TakeScreenshot();
+                    screenshot.SaveAsFile(newFilePath, ImageFormat.Png);
+                }
+                catch (Exception ex)
+                {
+                    MyLog.Write("Action: TakeAndSaveScreenshot() FAILED");
+                    MyLog.Exception(ex);
+                    throw;
+                }
+            });
+            task.Start();
+            return task;
+        }
+
+        private void EnsureScreenshotsDirectoryExists()
+        {
+            if (!Directory.Exists(ScreenshotsLocation)) {
+                Directory.CreateDirectory(ScreenshotsLocation);
+            }
+        }
+
+        internal void OpenScreenshotsFolder()
+        {
+            EnsureScreenshotsDirectoryExists();
+            Process.Start(ScreenshotsLocation);
         }
     }
 }

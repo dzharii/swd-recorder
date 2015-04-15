@@ -31,6 +31,7 @@ using SwdPageRecorder.WebDriver.OpenQA.Selenium.Support.PageObjects;
 using Microsoft.ClearScript;
 using Microsoft.ClearScript.Windows;
 using System.Threading.Tasks;
+using System.Drawing.Imaging;
 
 
 namespace SwdPageRecorder.UI
@@ -158,6 +159,9 @@ namespace SwdPageRecorder.UI
             // OpenQA.Selenium.Interactions:
             {"Actions", typeof(OpenQA.Selenium.Interactions.Actions)},
             {"TouchActions", typeof(OpenQA.Selenium.Interactions.TouchActions)},
+
+            // Screenshots / Images
+            {"ImageFormat", typeof(ImageFormat)},
         };
 
         private void ImportTypes(JScriptEngine engine)
