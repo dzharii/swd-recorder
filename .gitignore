@@ -1,4 +1,5 @@
 SwdPageRecorder*.zip
+build/SwdPageRecorder_v*
 build.log
 
 #Custom WebDriver
