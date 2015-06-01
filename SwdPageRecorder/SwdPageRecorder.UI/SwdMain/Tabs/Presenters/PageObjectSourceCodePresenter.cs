@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using SwdPageRecorder.WebDriver;
 
 namespace SwdPageRecorder.UI
 {
@@ -42,6 +43,7 @@ namespace SwdPageRecorder.UI
             }
             catch (Exception e)
             {
+                MyLog.Exception(e);
                 throw;
             }
             

@@ -62,6 +62,7 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnOpenBrowserPreview = new System.Windows.Forms.Button();
             this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTabView();
             this.selectorsEditView = new SwdPageRecorder.UI.SelectorsEditView();
             this.htmlDomTesterView1 = new SwdPageRecorder.UI.HtmlDomTesterView();
@@ -93,6 +94,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnOpenBrowserPreview);
             this.groupBox1.Controls.Add(this.btnOpenScreenshotFolder);
             this.groupBox1.Controls.Add(this.btnTakePageScreenshot);
             this.groupBox1.Controls.Add(this.linkLabel1);
@@ -455,6 +457,17 @@
             this.tabPage6.Text = "WebDriver Playground";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // btnOpenBrowserPreview
+            // 
+            this.btnOpenBrowserPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenBrowserPreview.Image = global::SwdPageRecorder.UI.Properties.Resources.monitor;
+            this.btnOpenBrowserPreview.Location = new System.Drawing.Point(827, 13);
+            this.btnOpenBrowserPreview.Name = "btnOpenBrowserPreview";
+            this.btnOpenBrowserPreview.Size = new System.Drawing.Size(35, 23);
+            this.btnOpenBrowserPreview.TabIndex = 5;
+            this.btnOpenBrowserPreview.UseVisualStyleBackColor = true;
+            this.btnOpenBrowserPreview.Click += new System.EventHandler(this.btnOpenBrowserPreview_Click);
+            // 
             // browserSettingsTab1
             // 
             this.browserSettingsTab1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -613,6 +626,7 @@
         private System.Windows.Forms.ToolTip ttipSwitchToFrameCode;
         private System.Windows.Forms.Button btnTakePageScreenshot;
         private System.Windows.Forms.Button btnOpenScreenshotFolder;
+        private System.Windows.Forms.Button btnOpenBrowserPreview;
         
 
     }

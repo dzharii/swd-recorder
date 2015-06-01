@@ -76,6 +76,9 @@
     <Reference Include="ClearScript">
       <HintPath>..\vendor\ClearScript\ClearScript.dll</HintPath>
     </Reference>
+    <Reference Include="Cyotek.Windows.Forms.ImageBox">
+      <HintPath>..\packages\CyotekImageBox.1.1.5.1\lib\net20\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
+    </Reference>
     <Reference Include="FastColoredTextBox, Version=2.12.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\vendor\FastColoredTextBox-PavelTorgashov\FastColoredTextBox.dll</HintPath>
@@ -121,6 +124,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SwdMain\Popups\BrowserScreenView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Popups\BrowserScreenView.Designer.cs">
+      <DependentUpon>BrowserScreenView.cs</DependentUpon>
     </Compile>
     <Compile Include="SwdMain\Popups\Presenters\SwitchToPopupPresenter.cs" />
     <Compile Include="SwdMain\Tabs\PlayGroundView.cs">
@@ -207,6 +216,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Popups\BrowserScreenView.resx">
+      <DependentUpon>BrowserScreenView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\SwdMainView.resx">
       <DependentUpon>SwdMainView.cs</DependentUpon>
@@ -314,6 +326,7 @@
     <Content Include="icon3.ico" />
     <None Include="Resources\camera.png" />
     <None Include="Resources\eye.png" />
+    <None Include="Resources\monitor.png" />
     <Content Include="sample_ParserWebElements.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

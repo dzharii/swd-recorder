@@ -10,6 +10,7 @@ using SwdPageRecorder.WebDriver;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using FormKeys = System.Windows.Forms.Keys;
+using SwdPageRecorder.UI.SwdMain.Popups;
 
 
 namespace SwdPageRecorder.UI
@@ -311,6 +312,12 @@ namespace SwdPageRecorder.UI
         private void btnOpenScreenshotFolder_Click(object sender, EventArgs e)
         {
             presenter.OpenScreenshotsFolder();
+        }
+
+        private void btnOpenBrowserPreview_Click(object sender, EventArgs e)
+        {
+            var browserScreenView = new BrowserScreenView();
+            browserScreenView.Show();
         }
 
     }
