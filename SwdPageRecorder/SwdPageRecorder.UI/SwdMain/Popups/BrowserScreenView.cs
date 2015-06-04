@@ -17,6 +17,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
         public BrowserScreenView()
         {
             InitializeComponent();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,6 +36,9 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
         private void imgBox_Click(object sender, EventArgs args)
         {
+
+            if (!ModifierKeys.HasFlag(Keys.Control)) return;
+            
             MouseEventArgs mouse = args as MouseEventArgs;
 
             
@@ -43,7 +47,11 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             int absoluteY = mouse.Y; // + ;
 
 
-            absoluteX = Convert.ToInt32(absoluteX / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.HorizontalScroll.Value / imgBox.ZoomFactor);
+            var region = imgBox.GetSourceImageRegion();
+
+            
+
+            absoluteX = (Convert.ToInt32(absoluteX / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.HorizontalScroll.Value / imgBox.ZoomFactor)) ;
             absoluteY = Convert.ToInt32(absoluteY / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.VerticalScroll.Value / imgBox.ZoomFactor);
             
 
@@ -72,6 +80,15 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
             
             //txtInfo = 
+        }
+
+        private void imgBox_MouseWheel(object sender, MouseEventArgs e)
+        {
+            bool isZoomingUp = e.Delta > 0;
+            bool allowZoom = imgBox.ZoomFactor > 1 || imgBox.ZoomFactor == 1.0 && isZoomingUp;
+            imgBox.AllowZoom = allowZoom;
+
+            if (imgBox.ZoomFactor < 1) imgBox.Zoom = 100;
         }
     }
 }

@@ -42,12 +42,13 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.imgBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBox.GridDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.Image;
             this.imgBox.ImageBorderStyle = Cyotek.Windows.Forms.ImageBoxBorderStyle.FixedSingleGlowShadow;
+            this.imgBox.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
             this.imgBox.Location = new System.Drawing.Point(3, 16);
             this.imgBox.Name = "imgBox";
-            this.imgBox.ShowPixelGrid = true;
             this.imgBox.Size = new System.Drawing.Size(877, 434);
             this.imgBox.TabIndex = 0;
             this.imgBox.Zoom = 1600;
+            this.imgBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseWheel);
             this.imgBox.Click += new System.EventHandler(this.imgBox_Click);
             // 
             // groupBox1
