@@ -47,10 +47,6 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             int absoluteY = mouse.Y; // + ;
 
 
-            var region = imgBox.GetSourceImageRegion();
-
-            
-
             absoluteX = (Convert.ToInt32(absoluteX / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.HorizontalScroll.Value / imgBox.ZoomFactor)) ;
             absoluteY = Convert.ToInt32(absoluteY / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.VerticalScroll.Value / imgBox.ZoomFactor);
             
@@ -74,12 +70,6 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             })(arguments[0], arguments[1]);";
 
             SwdBrowser.ExecuteJavaScript(script, absoluteX, absoluteY);
-
-
-
-
-            
-            //txtInfo = 
         }
 
         private void imgBox_MouseWheel(object sender, MouseEventArgs e)

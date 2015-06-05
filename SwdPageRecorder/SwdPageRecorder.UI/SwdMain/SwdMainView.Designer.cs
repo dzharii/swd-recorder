@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwdMainView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOpenBrowserPreview = new System.Windows.Forms.Button();
             this.btnOpenScreenshotFolder = new System.Windows.Forms.Button();
             this.btnTakePageScreenshot = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -62,7 +63,6 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.btnOpenBrowserPreview = new System.Windows.Forms.Button();
             this.browserSettingsTab1 = new SwdPageRecorder.UI.BrowserSettingsTabView();
             this.selectorsEditView = new SwdPageRecorder.UI.SelectorsEditView();
             this.htmlDomTesterView1 = new SwdPageRecorder.UI.HtmlDomTesterView();
@@ -106,6 +106,18 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Browser";
+            // 
+            // btnOpenBrowserPreview
+            // 
+            this.btnOpenBrowserPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenBrowserPreview.Enabled = false;
+            this.btnOpenBrowserPreview.Image = global::SwdPageRecorder.UI.Properties.Resources.monitor;
+            this.btnOpenBrowserPreview.Location = new System.Drawing.Point(827, 13);
+            this.btnOpenBrowserPreview.Name = "btnOpenBrowserPreview";
+            this.btnOpenBrowserPreview.Size = new System.Drawing.Size(35, 23);
+            this.btnOpenBrowserPreview.TabIndex = 5;
+            this.btnOpenBrowserPreview.UseVisualStyleBackColor = true;
+            this.btnOpenBrowserPreview.Click += new System.EventHandler(this.btnOpenBrowserPreview_Click);
             // 
             // btnOpenScreenshotFolder
             // 
@@ -456,17 +468,6 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "WebDriver Playground";
             this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // btnOpenBrowserPreview
-            // 
-            this.btnOpenBrowserPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenBrowserPreview.Image = global::SwdPageRecorder.UI.Properties.Resources.monitor;
-            this.btnOpenBrowserPreview.Location = new System.Drawing.Point(827, 13);
-            this.btnOpenBrowserPreview.Name = "btnOpenBrowserPreview";
-            this.btnOpenBrowserPreview.Size = new System.Drawing.Size(35, 23);
-            this.btnOpenBrowserPreview.TabIndex = 5;
-            this.btnOpenBrowserPreview.UseVisualStyleBackColor = true;
-            this.btnOpenBrowserPreview.Click += new System.EventHandler(this.btnOpenBrowserPreview_Click);
             // 
             // browserSettingsTab1
             // 

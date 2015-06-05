@@ -23,6 +23,7 @@ using SwdPageRecorder.WebDriver.SwdBrowserUtils;
 
 using SwdPageRecorder.WebDriver.OpenQA.Selenium.Support.PageObjects;
 using System.Reflection;
+using System.Threading.Tasks;
 
 
 namespace SwdPageRecorder.WebDriver
@@ -87,14 +88,26 @@ namespace SwdPageRecorder.WebDriver
                     bool success = true;
                     try
                     {
-                        _driver.Close();
-                        _driver.Dispose();
+                        var tempDriver = _driver;
+
+                        var closingTask = new Task(() =>
+                        {
+                            tempDriver.Close();
+                            tempDriver.Dispose();
+                        });
+
+                        closingTask.Start();
+                        // and no wait...
+
                     }
                     catch (Exception e)
                     {
-                        
+
                         MyLog.Exception(e);
                         success = true;
+                    }
+                    finally {
+                        _driver = null;
                     }
 
                     // Fire OnDriverClosed

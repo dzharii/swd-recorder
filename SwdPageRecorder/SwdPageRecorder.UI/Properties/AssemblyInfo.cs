@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 public class Build
 {
-    public const string Version = "2015.04.14";
-    public const string WebDriverVersion = "v2.45";
+    public const string Version = "2015.06.05";
+    public const string WebDriverVersion = "v2.46";
 }
 
