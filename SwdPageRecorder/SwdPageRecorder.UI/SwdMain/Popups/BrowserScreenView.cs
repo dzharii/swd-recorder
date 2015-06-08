@@ -8,7 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenQA.Selenium;
 using SwdPageRecorder.WebDriver;
+
+using WINKeys = System.Windows.Forms.Keys;
 
 namespace SwdPageRecorder.UI.SwdMain.Popups
 {
@@ -37,19 +40,25 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
         private void imgBox_Click(object sender, EventArgs args)
         {
 
-            if (!ModifierKeys.HasFlag(Keys.Control)) return;
-            
             MouseEventArgs mouse = args as MouseEventArgs;
-
-            
-                        
-            int absoluteX = mouse.X; // + ;
-            int absoluteY = mouse.Y; // + ;
+            int absoluteX = mouse.X;
+            int absoluteY = mouse.Y;
 
 
-            absoluteX = (Convert.ToInt32(absoluteX / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.HorizontalScroll.Value / imgBox.ZoomFactor)) ;
+            absoluteX = (Convert.ToInt32(absoluteX / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.HorizontalScroll.Value / imgBox.ZoomFactor));
             absoluteY = Convert.ToInt32(absoluteY / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.VerticalScroll.Value / imgBox.ZoomFactor);
-            
+
+            if (!ModifierKeys.HasFlag(WINKeys.Control)) 
+            {
+
+                var clickCommand = String.Format(@"return document.elementFromPoint({0}, {1});", absoluteX, absoluteY);
+                IWebElement element = (IWebElement)SwdBrowser.ExecuteJavaScript(clickCommand);
+                element.Click();
+                button1_Click(this, null);
+
+                return;
+            };
+           
 
             string script =
             @"(function showRectangle(x, y) {

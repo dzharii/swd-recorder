@@ -34,8 +34,6 @@ namespace SwdPageRecorder.WebDriver
         public static event Action OnDriverClosed;
         
         private static IWebDriver _driver = null;
-        private static bool isRemote = false;
-
         public static bool Started { get; private set; }
 
         private static object lockObject = new object();
@@ -63,9 +61,7 @@ namespace SwdPageRecorder.WebDriver
                 Started = false;
             }
 
-            bool wasRemoteDriverCreated = false;
-            _driver = WebDriverUtils.Initialize(browserOptions, out wasRemoteDriverCreated);
-            isRemote = wasRemoteDriverCreated;
+            _driver = WebDriverUtils.Initialize(browserOptions);
 
             Started = true;
 
@@ -73,7 +69,6 @@ namespace SwdPageRecorder.WebDriver
             if (OnDriverStarted != null)
             {
                 OnDriverStarted();
-                
             }
         }
 
