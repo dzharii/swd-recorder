@@ -132,6 +132,15 @@
       <DependentUpon>BrowserScreenView.cs</DependentUpon>
     </Compile>
     <Compile Include="SwdMain\Popups\Presenters\SwitchToPopupPresenter.cs" />
+    <Compile Include="SwdMain\Popups\UserCommandProcessor.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\IUserCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseMoveFinishedCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseMoveStartedCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseMoveAbstractCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseClickCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseUpCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseDownCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\NullCommand.cs" />
     <Compile Include="SwdMain\Tabs\PlayGroundView.cs">
       <SubType>UserControl</SubType>
     </Compile>

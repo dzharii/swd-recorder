@@ -37,7 +37,7 @@ md SwdPageRecorder_Latest >>%STDOUT_DEFAULT%
 @rem !!! Merge all dll files (except WebDriver.dll)  into executable file
 set MERGE_LIBS1=%SwdUiPath%\HtmlAgilityPack.dll %SwdUiPath%\Newtonsoft.Json.dll %SwdUiPath%\SwdPageRecorder.WebDriver.dll
 set MERGE_LIBS2=%SwdUiPath%\RazorEngine.dll %SwdUiPath%\System.Web.Razor.dll %SwdUiPath%\NLog.dll %SwdUiPath%\FastColoredTextBox.dll
-set MERGE_LIBS3=%SwdUiPath%\ClearScript.dll 
+set MERGE_LIBS3=%SwdUiPath%\ClearScript.dll %SwdUiPath%\Cyotek.Windows.Forms.ImageBox.dll
 
 
 ilmerge\ILMerge.exe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5" /t:winexe /out:SwdPageRecorder_Latest\SwdPageRecorder.exe %SwdUiPath%\SwdPageRecorder.UI.exe  %MERGE_LIBS1% %MERGE_LIBS2% %MERGE_LIBS3% >>%STDOUT_DEFAULT%
@@ -57,6 +57,8 @@ xcopy %SwdUiPath%\CodeTemplates  SwdPageRecorder_Latest\CodeTemplates /e/y/i >>%
 xcopy %SwdUiPath%\Snippets  SwdPageRecorder_Latest\Snippets /e/y/i >>%STDOUT_DEFAULT%
 
 copy %SwdUiPath%\NLog.config SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
+
+copy %SwdUiPath%\selenium-server-standalone-2.46.0.jar SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 
 copy ..\license.md SwdPageRecorder_Latest\license.txt /y >>%STDOUT_DEFAULT%
 

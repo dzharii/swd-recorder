@@ -50,6 +50,10 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.imgBox.Zoom = 1600;
             this.imgBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseWheel);
             this.imgBox.Click += new System.EventHandler(this.imgBox_Click);
+            this.imgBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseClick);
+            this.imgBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseDown);
+            this.imgBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseMove);
+            this.imgBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseUp);
             // 
             // groupBox1
             // 

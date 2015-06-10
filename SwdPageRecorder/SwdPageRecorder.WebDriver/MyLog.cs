@@ -24,5 +24,10 @@ namespace SwdPageRecorder.WebDriver
         {
             logger.Error(errorMessage);
         }
+
+        public static void Debug(string message)
+        {
+            logger.Debug(message);
+        }
     }
 }
