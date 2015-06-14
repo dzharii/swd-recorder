@@ -29,7 +29,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
         public void AddMouseUp(MouseEventArgs evt)
         {
-            IUserCommand lastCommand = GetLastCommand();
+            IUserCommand lastCommand = GetLastCommand(cmd => !(cmd is MouseMoveAbstractCommand));
 
             var mouseUp = new MouseUpCommand(evt);
             Commands.Add(mouseUp);
@@ -76,17 +76,21 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
         }
 
         
-        private IUserCommand GetLastCommand()
+        private IUserCommand GetLastCommand(Func<IUserCommand, bool> predicate = null)
         {
-            if (Commands.Count > 0)
+            IUserCommand result;
+            if (predicate != null)
             {
-                return Commands[Commands.Count - 1];
+                result = Commands.LastOrDefault(predicate);
             }
-            else 
+            else
             {
-                return new NullCommand();
+                result = Commands.LastOrDefault();
             }
-        }
 
+            result = result ?? new NullCommand();
+
+            return result;
+        }
     }
 }

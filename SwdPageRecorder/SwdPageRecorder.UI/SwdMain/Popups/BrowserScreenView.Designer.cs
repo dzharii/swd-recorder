@@ -33,6 +33,8 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.imgBox = new Cyotek.Windows.Forms.ImageBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtLog = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +47,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.imgBox.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
             this.imgBox.Location = new System.Drawing.Point(3, 16);
             this.imgBox.Name = "imgBox";
-            this.imgBox.Size = new System.Drawing.Size(877, 434);
+            this.imgBox.Size = new System.Drawing.Size(745, 434);
             this.imgBox.TabIndex = 0;
             this.imgBox.Zoom = 1600;
             this.imgBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseWheel);
@@ -63,14 +65,14 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.groupBox1.Controls.Add(this.imgBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(883, 453);
+            this.groupBox1.Size = new System.Drawing.Size(751, 453);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(901, 39);
+            this.button1.Location = new System.Drawing.Point(769, 39);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(258, 23);
             this.button1.TabIndex = 2;
@@ -78,11 +80,32 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txtLog
+            // 
+            this.txtLog.Location = new System.Drawing.Point(769, 133);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLog.Size = new System.Drawing.Size(390, 329);
+            this.txtLog.TabIndex = 3;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(769, 90);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // BrowserScreenView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1171, 477);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.txtLog);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -90,6 +113,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.Text = "BrowserScreenView";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -97,5 +121,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
         private ImageBox imgBox;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.Button button2;
     }
 }
