@@ -236,5 +236,10 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             });
 
         }
+
+        private void imgBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SwdBrowser.GetDriver().SwitchTo().ActiveElement().SendKeys(e.KeyChar.ToString());
+        }
     }
 }
