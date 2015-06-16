@@ -46,10 +46,6 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             absoluteY = Convert.ToInt32(absoluteY / imgBox.ZoomFactor) + Convert.ToInt32(imgBox.VerticalScroll.Value / imgBox.ZoomFactor);
 
 
-            absoluteX = absoluteX - imageViewPort.Left;
-            absoluteY = absoluteY - imageViewPort.Top;
-
-
             txtLog.DoInvokeAction(() =>
             {
                 txtLog.Text += "\r\n" + "X " + absoluteX.ToString() + " Y " + absoluteY.ToString();
@@ -68,10 +64,37 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
             
 
-            var clickCommand = String.Format(@"return document.elementFromPoint({0}, {1});", absoluteX, absoluteY);
+            var clickCommand =
+            @"return (function SWD_GET_ELEMENT() {
+                  var absoluteX = {## absoluteX ##};
+                  var absoluteY = {## absoluteY ##};
+                  var view = {
+                      Left: window.scrollX,
+                      Top: window.scrollY,        
+                      Right: window.scrollX + window.innerWidth,
+                      Bottom: window.scrollY + window.innerHeight
+                  };
+              
+                  var elementInsideViewPort = (view.Left <= absoluteX && absoluteX <= view.Right) &&
+                                              (view.Top <= absoluteY && absoluteY <= view.Bottom);
+                  if (!elementInsideViewPort) {
+                    window.scroll(Math.max(absoluteX - 30, 0), Math.max(absoluteY - 30, 0));
+                  }
+                  absoluteX = absoluteX - window.scrollX;
+                  absoluteY = absoluteY - window.scrollY;
+                  return document.elementFromPoint(absoluteX, absoluteY);
+              })()"
+            .Replace("{## absoluteX ##}", absoluteX.ToString())
+            .Replace("{## absoluteY ##}", absoluteY.ToString());
+
             IWebElement element = (IWebElement)SwdBrowser.ExecuteJavaScript(clickCommand);
             // element.Click();
 
+            if (element == null) 
+            {
+                MyLog.Error("Element is null after performing command " + clickCommand ?? "<null>");
+                return;
+            }
             if (element.TagName == "iframe")
             {
                 try
