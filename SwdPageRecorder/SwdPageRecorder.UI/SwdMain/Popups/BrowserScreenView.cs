@@ -18,6 +18,33 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 {
     public partial class BrowserScreenView : Form
     {
+        /* HAS Changes Script
+         
+        (function() {
+            var result = {};
+            var activeEl = document.activeElement || {};
+            var expectedPropsTypes = ["string", "number", "boolean"];
+
+            for(var propName in activeEl) {
+                var shouldCollect = expectedPropsTypes.indexOf(typeof activeEl[propName]) >= 0;
+
+                if (shouldCollect && activeEl[propName]) {
+                    result[propName] = activeEl[propName];
+                }
+            }
+            var jsonResult = "";
+            try {
+                jsonResult = JSON.stringify(result);
+            }
+            catch (e) {
+                console.warn("SWD Error ignored:", e);
+            }
+            return jsonResult;
+        })();         
+         
+         
+         */
+
 
         UserCommandProcessor UserCommand { get; set; }
         

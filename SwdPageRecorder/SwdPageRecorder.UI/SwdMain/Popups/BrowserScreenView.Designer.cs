@@ -31,11 +31,18 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrowserScreenView));
             this.imgBox = new Cyotek.Windows.Forms.ImageBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpWebPage = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.webDriverBrowserComponentView1 = new SwdPageRecorder.UI.SwdMain.Popups.Components.WebDriver.WebDriverBrowserComponentView();
+            this.grpWebPage.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // imgBox
@@ -47,8 +54,9 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.imgBox.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
             this.imgBox.Location = new System.Drawing.Point(3, 16);
             this.imgBox.Name = "imgBox";
-            this.imgBox.Size = new System.Drawing.Size(745, 434);
+            this.imgBox.Size = new System.Drawing.Size(750, 520);
             this.imgBox.TabIndex = 0;
+            this.imgBox.TextBackColor = System.Drawing.Color.White;
             this.imgBox.Zoom = 1600;
             this.imgBox.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseWheel);
             this.imgBox.Click += new System.EventHandler(this.imgBox_Click);
@@ -58,22 +66,22 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.imgBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseMove);
             this.imgBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgBox_MouseUp);
             // 
-            // groupBox1
+            // grpWebPage
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grpWebPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.imgBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(751, 453);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.grpWebPage.Controls.Add(this.imgBox);
+            this.grpWebPage.Location = new System.Drawing.Point(12, 63);
+            this.grpWebPage.Name = "grpWebPage";
+            this.grpWebPage.Size = new System.Drawing.Size(756, 539);
+            this.grpWebPage.TabIndex = 1;
+            this.grpWebPage.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(769, 39);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(783, 96);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(258, 23);
             this.button1.TabIndex = 2;
@@ -83,16 +91,18 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(769, 133);
+            this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLog.Location = new System.Drawing.Point(774, 166);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(390, 329);
+            this.txtLog.Size = new System.Drawing.Size(390, 100);
             this.txtLog.TabIndex = 3;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(769, 90);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(783, 125);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -100,19 +110,84 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Location = new System.Drawing.Point(12, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1152, 35);
+            this.panel1.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(356, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(790, 20);
+            this.textBox1.TabIndex = 0;
+            // 
+            // button5
+            // 
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Image = global::SwdPageRecorder.UI.Properties.Resources.reload_2x;
+            this.button5.Location = new System.Drawing.Point(65, 2);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(29, 29);
+            this.button5.TabIndex = 3;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Image = global::SwdPageRecorder.UI.Properties.Resources.arrow_right_2x;
+            this.button4.Location = new System.Drawing.Point(34, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(29, 29);
+            this.button4.TabIndex = 2;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Image = global::SwdPageRecorder.UI.Properties.Resources.arrow_left_2x;
+            this.button3.Location = new System.Drawing.Point(3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(29, 29);
+            this.button3.TabIndex = 1;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // webDriverBrowserComponentView1
+            // 
+            this.webDriverBrowserComponentView1.Location = new System.Drawing.Point(966, 307);
+            this.webDriverBrowserComponentView1.Name = "webDriverBrowserComponentView1";
+            this.webDriverBrowserComponentView1.Size = new System.Drawing.Size(193, 208);
+            this.webDriverBrowserComponentView1.TabIndex = 6;
+            // 
             // BrowserScreenView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 477);
+            this.ClientSize = new System.Drawing.Size(1176, 614);
+            this.Controls.Add(this.webDriverBrowserComponentView1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtLog);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpWebPage);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BrowserScreenView";
             this.Text = "BrowserScreenView";
-            this.groupBox1.ResumeLayout(false);
+            this.grpWebPage.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,9 +195,15 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
         #endregion
         private ImageBox imgBox;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpWebPage;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button5;
+        private Components.WebDriver.WebDriverBrowserComponentView webDriverBrowserComponentView1;
     }
 }

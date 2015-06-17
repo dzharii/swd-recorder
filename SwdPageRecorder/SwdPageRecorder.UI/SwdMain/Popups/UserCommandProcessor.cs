@@ -29,7 +29,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
         public void AddMouseUp(MouseEventArgs evt)
         {
-            IUserCommand lastCommand = GetLastCommand(cmd => !(cmd is MouseMoveAbstractCommand));
+            IUserCommand lastCommand = GetLastCommand();
 
             var mouseUp = new MouseUpCommand(evt);
             Commands.Add(mouseUp);
@@ -37,10 +37,27 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
             if (lastCommand is MouseDownCommand) 
             {
-                var newClick = new MouseClickCommand(evt);
-                Dbg<MouseClickCommand>("Added", evt);
-                Trigger(newClick);
+                if (AreCoordinatesClose(mouseUp, lastCommand as MouseDownCommand, 3))
+                {
+                    var newClick = new MouseClickCommand(evt);
+                    Dbg<MouseClickCommand>("Added", evt);
+                    Trigger(newClick);
+                }
+                else {
+                    Dbg<MouseClickCommand>("MouseClickCommand was not triggered because MouseUp/Down coordinates were not close enough", evt);
+                }
             }
+        }
+
+        private bool AreCoordinatesClose(MouseUpCommand mouseUp, MouseDownCommand mouseDown, int pixelTollerance)
+        {
+            if (mouseUp == null) return false;
+            if (mouseDown == null) return false;
+
+            bool isCloseX = Math.Abs(mouseUp.MouseEvent.X - mouseDown.MouseEvent.X) <= pixelTollerance;
+            bool isCloseY = Math.Abs(mouseUp.MouseEvent.Y - mouseDown.MouseEvent.Y) <= pixelTollerance;
+            return isCloseX && isCloseY;
+
         }
 
         private void Trigger(MouseClickCommand cmd)
@@ -48,27 +65,6 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             if (OnMouseClick != null) OnMouseClick(cmd);
         }
 
-        public void AddMouseMove(MouseEventArgs evt)
-        {
-            IUserCommand lastCommand = GetLastCommand();
-
-            if (!(lastCommand is MouseMoveStartedCommand || lastCommand is MouseMoveFinishedCommand)) 
-            {
-                Commands.Add(new MouseMoveStartedCommand(evt));
-                Dbg<MouseMoveStartedCommand>("Added", evt);
-            }
-            else if (lastCommand is MouseMoveStartedCommand)
-            {
-                Commands.Add(new MouseMoveFinishedCommand(evt));
-                Dbg<MouseMoveFinishedCommand>("Added", evt);
-            }
-            else if (lastCommand is MouseMoveFinishedCommand)
-            {
-                (lastCommand as MouseMoveFinishedCommand).Update(evt);
-                Dbg<MouseMoveFinishedCommand>("Updated", evt);
-            }
-            
-        }
 
         private void Dbg<T>(string action, EventArgs evt)
         {

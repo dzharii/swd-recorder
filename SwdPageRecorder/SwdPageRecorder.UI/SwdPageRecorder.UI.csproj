@@ -131,12 +131,15 @@
     <Compile Include="SwdMain\Popups\BrowserScreenView.Designer.cs">
       <DependentUpon>BrowserScreenView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SwdMain\Popups\Components\Appium\AppiumComponentView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Popups\Components\WebDriver\WebDriverBrowserComponentView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SwdMain\Popups\Presenters\SwitchToPopupPresenter.cs" />
     <Compile Include="SwdMain\Popups\UserCommandProcessor.cs" />
     <Compile Include="SwdMain\Popups\UserCommands\IUserCommand.cs" />
-    <Compile Include="SwdMain\Popups\UserCommands\MouseMoveFinishedCommand.cs" />
-    <Compile Include="SwdMain\Popups\UserCommands\MouseMoveStartedCommand.cs" />
-    <Compile Include="SwdMain\Popups\UserCommands\MouseMoveAbstractCommand.cs" />
     <Compile Include="SwdMain\Popups\UserCommands\MouseClickCommand.cs" />
     <Compile Include="SwdMain\Popups\UserCommands\MouseUpCommand.cs" />
     <Compile Include="SwdMain\Popups\UserCommands\MouseDownCommand.cs" />
@@ -228,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\Popups\BrowserScreenView.resx">
       <DependentUpon>BrowserScreenView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Popups\Components\Appium\AppiumComponentView.resx">
+      <DependentUpon>AppiumComponentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Popups\Components\WebDriver\WebDriverBrowserComponentView.resx">
+      <DependentUpon>WebDriverBrowserComponentView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\SwdMainView.resx">
       <DependentUpon>SwdMainView.cs</DependentUpon>
@@ -336,6 +345,9 @@
     <None Include="Resources\camera.png" />
     <None Include="Resources\eye.png" />
     <None Include="Resources\monitor.png" />
+    <None Include="Resources\arrow-left-2x.png" />
+    <None Include="Resources\arrow-right-2x.png" />
+    <None Include="Resources\reload-2x.png" />
     <Content Include="sample_ParserWebElements.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
