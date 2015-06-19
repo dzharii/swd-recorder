@@ -22,7 +22,7 @@ namespace SwdPageRecorder.UI
             InitializeComponent();
             
             this.parentView = parent;
-            this.presenter = Presenters.SwitchToPopupPresenter;
+            this.presenter = MyPresenters.SwitchToPopupPresenter;
 
             presenter.InitWithView(this);
             presenter.InitWithFrame(currentFrame);

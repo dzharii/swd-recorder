@@ -62,15 +62,15 @@ namespace SwdPageRecorder.UI
 
         internal void NewWebElement()
         {
-            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
-            Presenters.PageObjectDefinitionPresenter._currentEditingNode = null;
+            MyPresenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
+            MyPresenters.PageObjectDefinitionPresenter._currentEditingNode = null;
             view.ClearWebElementForm();
         }
 
         internal void CopyWebElement()
         {
-            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
-            Presenters.PageObjectDefinitionPresenter._currentEditingNode = null;
+            MyPresenters.PageObjectDefinitionPresenter._isEditingExistingNode = false;
+            MyPresenters.PageObjectDefinitionPresenter._currentEditingNode = null;
             view.AppendWebElementNameWith("__Copy");
         }
 
@@ -85,8 +85,8 @@ namespace SwdPageRecorder.UI
 
         internal void OpenExistingNodeForEdit(TreeNode treeNode)
         {
-            Presenters.PageObjectDefinitionPresenter._isEditingExistingNode = true;
-            Presenters.PageObjectDefinitionPresenter._currentEditingNode = treeNode;
+            MyPresenters.PageObjectDefinitionPresenter._isEditingExistingNode = true;
+            MyPresenters.PageObjectDefinitionPresenter._currentEditingNode = treeNode;
             var webElementFormData = treeNode.Tag as WebElementDefinition;
             view.UpdateWebElementForm(webElementFormData);
         }

@@ -28,7 +28,7 @@ namespace SwdPageRecorder.UI
             MyLog.Write("Started: " + versionText);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 
-            presenter = Presenters.SwdMainPresenter;
+            presenter = MyPresenters.SwdMainPresenter;
             presenter.InitView(this);
         }
 
@@ -92,7 +92,7 @@ namespace SwdPageRecorder.UI
         private void btnBrowser_Go_Click(object sender, EventArgs e)
         {
             presenter.SetBrowserUrl(txtBrowserUrl.Text);
-
+            MyPresenters.BrowserScreenButtonPresenter.UpdateScreenshot();
         }
 
 
@@ -315,6 +315,22 @@ namespace SwdPageRecorder.UI
         }
 
         private void btnOpenBrowserPreview_Click(object sender, EventArgs e)
+        {
+            var browserScreenView = new BrowserScreenView();
+            browserScreenView.Show();
+        }
+
+        private void browserScreenButtonView1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void browserScreenButtonView1_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void browserScreenButtonView1_Click(object sender, EventArgs e)
         {
             var browserScreenView = new BrowserScreenView();
             browserScreenView.Show();

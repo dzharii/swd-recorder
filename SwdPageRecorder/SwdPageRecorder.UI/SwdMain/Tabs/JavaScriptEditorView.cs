@@ -22,7 +22,7 @@ namespace SwdPageRecorder.UI
             InitializeComponent();
 
             
-            this.presenter = Presenters.JavascriptEditorTabPresenter;
+            this.presenter = MyPresenters.JavascriptEditorTabPresenter;
             presenter.InitWithView(this);
 
             txtJavaScriptEditor.Language = FastColoredTextBoxNS.Language.JS;

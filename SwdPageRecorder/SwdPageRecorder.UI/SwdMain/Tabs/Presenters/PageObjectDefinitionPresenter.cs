@@ -104,13 +104,9 @@ namespace SwdPageRecorder.UI
 
         internal void OpenExistingNodeForEdit(TreeNode treeNode)
         {
-            Presenters.SelectorsEditPresenter.OpenExistingNodeForEdit(treeNode);
+            MyPresenters.SelectorsEditPresenter.OpenExistingNodeForEdit(treeNode);
         }
 
-        internal void UpdateLastCallStat(string statText)
-        {
-            view.UpdateLastCallStat(statText);
-        }
 
         internal SwdPageObject GetWebElementDefinitionFromTree()
         {
@@ -283,7 +279,6 @@ namespace SwdPageRecorder.UI
             TypeDescriptor.AddAttributes(readOnlyElement, new Attribute[] { new ReadOnlyAttribute(true) });
             element = readOnlyElement;
 
-            view.propPageElement.SelectedObject = readOnlyElement;
         }
 
     }

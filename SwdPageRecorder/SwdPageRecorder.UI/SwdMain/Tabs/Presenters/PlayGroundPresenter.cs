@@ -51,7 +51,7 @@ namespace SwdPageRecorder.UI
             SwdBrowser.OnDriverStarted += InitControls;
             SwdBrowser.OnDriverClosed += InitControls;
 
-            Presenters.PageObjectDefinitionPresenter.OnPageObjectTreeChanged += PageObjectDefinitionPresenter_OnPageObjectTreeChanged;
+            MyPresenters.PageObjectDefinitionPresenter.OnPageObjectTreeChanged += PageObjectDefinitionPresenter_OnPageObjectTreeChanged;
 
 
             InitControls();
@@ -96,7 +96,7 @@ namespace SwdPageRecorder.UI
 
             };
 
-            var pageObject = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
+            var pageObject = MyPresenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
 
             foreach (var webElementDefinition in pageObject.Items)
             {
@@ -175,7 +175,7 @@ namespace SwdPageRecorder.UI
         internal async void RunScript(string code)
         {
 
-            Presenters.SwdMainPresenter.DisplayLoadingIndicator(true);
+            MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(true);
             
             Task<string> t = new Task<string>( () => 
             {
@@ -185,7 +185,7 @@ namespace SwdPageRecorder.UI
 
                     ImportTypes(engine);
 
-                    var uiPageObject = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
+                    var uiPageObject = MyPresenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
 
                 
                     foreach (var element in uiPageObject.Items)
@@ -218,7 +218,7 @@ namespace SwdPageRecorder.UI
             finally 
             {
                 view.AppendConsole(logLine + "\r\n");
-                Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
+                MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(false);
             }
         }
 

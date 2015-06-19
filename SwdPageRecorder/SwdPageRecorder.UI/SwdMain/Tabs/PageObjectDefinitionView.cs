@@ -22,7 +22,7 @@ namespace SwdPageRecorder.UI
         {
             InitializeComponent();
 
-            presenter = Presenters.PageObjectDefinitionPresenter;
+            presenter = MyPresenters.PageObjectDefinitionPresenter;
             presenter.InitWithView(this);
 
             // Enable DragDrop operations only for standalone window
@@ -112,13 +112,6 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        internal void UpdateLastCallStat(string elapsedTime)
-        {
-            lblLastCallTime.DoInvokeAction(() =>
-            {
-                lblLastCallTime.Text = elapsedTime;
-            });
-        }
 
         internal SwdPageObject GetWebElementDefinitionFromTree()
         {

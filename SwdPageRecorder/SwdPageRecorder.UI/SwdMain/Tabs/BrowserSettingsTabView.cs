@@ -22,7 +22,7 @@ namespace SwdPageRecorder.UI
         public BrowserSettingsTabView()
         {
             InitializeComponent();
-            Presenter = Presenters.BrowserSettingsTabPresenter;
+            Presenter = MyPresenters.BrowserSettingsTabPresenter;
             Presenter.InitWithView(this);
                         
             HandleRemoteDriverSettingsEnabledStatus();

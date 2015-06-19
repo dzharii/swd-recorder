@@ -185,8 +185,8 @@ namespace SwdPageRecorder.UI
                     frame = simpleFrame,
                 };
                 bool addNew = true;
-                Presenters.SelectorsEditPresenter.UpdateWebElementWithAdditionalProperties(element);
-                Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element, addNew);
+                MyPresenters.SelectorsEditPresenter.UpdateWebElementWithAdditionalProperties(element);
+                MyPresenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element, addNew);
             }
         }
 

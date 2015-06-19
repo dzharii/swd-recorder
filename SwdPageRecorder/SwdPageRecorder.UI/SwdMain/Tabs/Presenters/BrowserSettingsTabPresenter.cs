@@ -163,7 +163,7 @@ namespace SwdPageRecorder.UI
                         "Operation: Stop WebDriver instance",
                         () =>
                         {
-                            Presenters.SwdMainPresenter.StopVisualSearch();
+                            MyPresenters.SwdMainPresenter.StopVisualSearch();
                             SwdBrowser.CloseDriver();
                         },
                             out threadException,

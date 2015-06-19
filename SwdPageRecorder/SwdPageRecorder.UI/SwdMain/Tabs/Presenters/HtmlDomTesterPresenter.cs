@@ -80,13 +80,13 @@ namespace SwdPageRecorder.UI
 
             MyLog.Write("TestLocators - Entered");
 
-            Presenters.SwdMainPresenter.PauseWebElementExplorerProcessing();
+            MyPresenters.SwdMainPresenter.PauseWebElementExplorerProcessing();
 
             view.DisableTestLocatorsButton();
             try
             {
-                var searchMethod = Presenters.SelectorsEditPresenter.GetLocatorSearchMethod();
-                var locator = Presenters.SelectorsEditPresenter.GetLocatorText();
+                var searchMethod = MyPresenters.SelectorsEditPresenter.GetLocatorSearchMethod();
+                var locator = MyPresenters.SelectorsEditPresenter.GetLocatorText();
 
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
@@ -101,7 +101,6 @@ namespace SwdPageRecorder.UI
                 }
 
                 sw.Stop();
-                Presenters.PageObjectDefinitionPresenter.UpdateLastCallStat(sw.ElapsedMilliseconds.ToString() + " ms");
 
                 view.DisplaySearchResults(displayList);
 
@@ -117,7 +116,7 @@ namespace SwdPageRecorder.UI
                 view.EnableTestLocatorsButton();
             }
 
-            Presenters.SwdMainPresenter.ResumeWebElementExplorerProcessing();
+            MyPresenters.SwdMainPresenter.ResumeWebElementExplorerProcessing();
 
             MyLog.Write("TestLocators - Exited");
         }
@@ -221,7 +220,7 @@ namespace SwdPageRecorder.UI
 
         internal void UpdateTestHtmlDocumentView()
         {
-            Presenters.SwdMainPresenter.PauseWebElementExplorerProcessing();
+            MyPresenters.SwdMainPresenter.PauseWebElementExplorerProcessing();
 
             HAP.HtmlDocument doc = SwdBrowser.GetPageSource();
             HAP.HtmlNode root = doc.DocumentNode.ChildNodes.FindFirst(@"html");
@@ -238,7 +237,7 @@ namespace SwdPageRecorder.UI
 
             view.AddTestHtmlNodes(treeRootNode);
 
-            Presenters.SwdMainPresenter.ResumeWebElementExplorerProcessing();
+            MyPresenters.SwdMainPresenter.ResumeWebElementExplorerProcessing();
 
         }
 

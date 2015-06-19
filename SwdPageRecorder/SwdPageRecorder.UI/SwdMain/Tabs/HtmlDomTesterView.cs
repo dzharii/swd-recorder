@@ -20,13 +20,13 @@ namespace SwdPageRecorder.UI
         public HtmlDomTesterView()
         {
             InitializeComponent();
-            this.presenter = Presenters.HtmlDomTesterPresenter;
+            this.presenter = MyPresenters.HtmlDomTesterPresenter;
             presenter.InitWithView(this);
         }
 
         private void btnTestLocator_Click(object sender, EventArgs e)
         {
-            if (!Presenters.SelectorsEditPresenter.IsValidForm()) return;
+            if (!MyPresenters.SelectorsEditPresenter.IsValidForm()) return;
 
             presenter.UpdateTestHtmlDocumentView();
             presenter.TestLocators();

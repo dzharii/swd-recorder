@@ -23,7 +23,7 @@ namespace SwdPageRecorder.UI
             InitializeComponent();
 
 
-            this.presenter = Presenters.PlayGroundPresenter;
+            this.presenter = MyPresenters.PlayGroundPresenter;
             presenter.InitWithView(this);
 
             txtJavaScriptCode.Language = FastColoredTextBoxNS.Language.JS;
