@@ -36,10 +36,10 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.txtLog = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.webDriverBrowserComponentView1 = new SwdPageRecorder.UI.SwdMain.Popups.Components.WebDriver.WebDriverBrowserComponentView();
             this.grpWebPage.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -124,19 +124,8 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.panel1.Size = new System.Drawing.Size(1152, 35);
             this.panel1.TabIndex = 5;
             // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(356, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(790, 20);
-            this.textBox1.TabIndex = 0;
-            // 
             // button5
             // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Image = global::SwdPageRecorder.UI.Properties.Resources.reload_2x;
             this.button5.Location = new System.Drawing.Point(65, 2);
             this.button5.Name = "button5";
@@ -146,7 +135,6 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             // 
             // button4
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Image = global::SwdPageRecorder.UI.Properties.Resources.arrow_right_2x;
             this.button4.Location = new System.Drawing.Point(34, 2);
             this.button4.Name = "button4";
@@ -156,13 +144,22 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             // 
             // button3
             // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Image = global::SwdPageRecorder.UI.Properties.Resources.arrow_left_2x;
             this.button3.Location = new System.Drawing.Point(3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(29, 29);
             this.button3.TabIndex = 1;
             this.button3.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(356, 6);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(790, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // webDriverBrowserComponentView1
             // 
@@ -185,6 +182,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BrowserScreenView";
             this.Text = "BrowserScreenView";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BrowserScreenView_FormClosing);
             this.grpWebPage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

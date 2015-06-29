@@ -38,6 +38,7 @@
             // 
             this.imgBox.AllowZoom = false;
             this.imgBox.AutoPan = false;
+            this.imgBox.AutoScroll = false;
             this.imgBox.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.imgBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imgBox.GridDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.Image;
@@ -47,6 +48,7 @@
             this.imgBox.Name = "imgBox";
             this.imgBox.ShortcutsEnabled = false;
             this.imgBox.Size = new System.Drawing.Size(200, 163);
+            this.imgBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Stretch;
             this.imgBox.TabIndex = 1;
             this.imgBox.TextBackColor = System.Drawing.Color.White;
             this.imgBox.DoubleClick += new System.EventHandler(this.imgBox_DoubleClick);
@@ -66,7 +68,6 @@
             // btnOpenBrowserScreen
             // 
             this.btnOpenBrowserScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenBrowserScreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenBrowserScreen.Image = global::SwdPageRecorder.UI.Properties.Resources.resize_both_4x;
             this.btnOpenBrowserScreen.Location = new System.Drawing.Point(159, 19);
             this.btnOpenBrowserScreen.Name = "btnOpenBrowserScreen";

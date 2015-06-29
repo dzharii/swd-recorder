@@ -32,6 +32,9 @@ namespace SwdPageRecorder.WebDriver
     {
         public static event Action OnDriverStarted;
         public static event Action OnDriverClosed;
+
+        public static Screenshot LatestScreenshot { get; private set; }
+        public static event Action<Screenshot> OnNewScreenshotTaken;
         
         private static IWebDriver _driver = null;
         public static bool Started { get; private set; }
@@ -534,7 +537,16 @@ namespace SwdPageRecorder.WebDriver
                 return new Screenshot(screenshotResult);
             }
 
-            return screenshotDriver.GetScreenshot();
+            Screenshot screenShot = screenshotDriver.GetScreenshot();
+
+            LatestScreenshot = screenShot;
+
+            if (OnNewScreenshotTaken != null) {
+                OnNewScreenshotTaken(screenShot);
+            }
+
+            
+            return screenShot;
         }
     }
 }

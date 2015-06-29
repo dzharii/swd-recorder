@@ -92,7 +92,10 @@ namespace SwdPageRecorder.UI
         private void btnBrowser_Go_Click(object sender, EventArgs e)
         {
             presenter.SetBrowserUrl(txtBrowserUrl.Text);
-            MyPresenters.BrowserScreenButtonPresenter.UpdateScreenshot();
+            SwdBrowser.TakeScreenshot();
+            
+            // \todo Remove this line:
+            // MyPresenters.BrowserScreenButtonPresenter.UpdateScreenshot();
         }
 
 
@@ -336,5 +339,10 @@ namespace SwdPageRecorder.UI
             browserScreenView.Show();
         }
 
+
+        internal void UpdateBrowserScreenshot(Screenshot screenshot)
+        {
+            
+        }
     }
 }

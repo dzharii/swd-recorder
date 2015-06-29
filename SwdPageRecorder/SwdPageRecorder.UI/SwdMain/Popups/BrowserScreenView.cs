@@ -48,15 +48,39 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
         UserCommandProcessor UserCommand { get; set; }
         
+
+
         public BrowserScreenView()
         {
             UserCommand = new UserCommandProcessor();
             InitializeComponent();
             imgBox.Zoom = 100;
-            
 
-            UserCommand.OnMouseClick += UserCommand_OnMouseClick;
+            var lastImage = SwdBrowser.LatestScreenshot;
             
+            if (lastImage != null)
+            {
+                UpdateScreenshot(lastImage);
+            }
+
+
+            RegisterEvents();            
+        }
+
+        public void RegisterEvents() {
+            UserCommand.OnMouseClick += UserCommand_OnMouseClick;
+            SwdBrowser.OnNewScreenshotTaken += SwdBrowser_OnNewScreenshotTaken;        
+        }
+
+        public void UnregisterEvents()
+        {
+            UserCommand.OnMouseClick -= UserCommand_OnMouseClick;
+            SwdBrowser.OnNewScreenshotTaken -= SwdBrowser_OnNewScreenshotTaken;
+        }
+
+        void SwdBrowser_OnNewScreenshotTaken(Screenshot screenshot)
+        {
+            UpdateScreenshot(screenshot);
         }
 
 
@@ -209,11 +233,16 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
             //imgBox.Zoom = 100;
 
+            UpdateScreenshot(screenshot);
+
+        }
+
+        private void UpdateScreenshot(Screenshot screenshot)
+        {
             using (var ms = new MemoryStream(screenshot.AsByteArray))
             {
                 imgBox.Image = Image.FromStream(ms);
             }
-
         }
 
         private void imgBox_Click(object sender, EventArgs args)
@@ -290,6 +319,11 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
         private void imgBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             SwdBrowser.GetDriver().SwitchTo().ActiveElement().SendKeys(e.KeyChar.ToString());
+        }
+
+        private void BrowserScreenView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterEvents();
         }
     }
 }

@@ -50,6 +50,8 @@ namespace SwdPageRecorder.UI
 
             SwdBrowser.OnDriverStarted += InitSwitchToControls;
 
+
+
             InitControls();
         }
 
