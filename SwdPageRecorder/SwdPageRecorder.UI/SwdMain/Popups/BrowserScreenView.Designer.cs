@@ -81,9 +81,9 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(783, 96);
+            this.button1.Location = new System.Drawing.Point(878, 96);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(258, 23);
+            this.button1.Size = new System.Drawing.Size(189, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Take Screenshot";
             this.button1.UseVisualStyleBackColor = true;
@@ -92,17 +92,17 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             // txtLog
             // 
             this.txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLog.Location = new System.Drawing.Point(774, 166);
+            this.txtLog.Location = new System.Drawing.Point(878, 172);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(390, 100);
+            this.txtLog.Size = new System.Drawing.Size(205, 100);
             this.txtLog.TabIndex = 3;
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(783, 125);
+            this.button2.Location = new System.Drawing.Point(878, 125);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -163,7 +163,8 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             // 
             // webDriverBrowserComponentView1
             // 
-            this.webDriverBrowserComponentView1.Location = new System.Drawing.Point(966, 307);
+            this.webDriverBrowserComponentView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.webDriverBrowserComponentView1.Location = new System.Drawing.Point(890, 307);
             this.webDriverBrowserComponentView1.Name = "webDriverBrowserComponentView1";
             this.webDriverBrowserComponentView1.Size = new System.Drawing.Size(193, 208);
             this.webDriverBrowserComponentView1.TabIndex = 6;

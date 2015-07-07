@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data.cs" />
+    <Compile Include="Integration\SwdPageRecorder.WebDriver\In_SwdPageRecorder_IsWorking.cs" />
     <Compile Include="Integration\Templates\CSharpPageObjectGenerator_Tests.cs" />
     <Compile Include="Integration\WebElement_Explorer_Tests.cs" />
     <Compile Include="MyTest.cs" />

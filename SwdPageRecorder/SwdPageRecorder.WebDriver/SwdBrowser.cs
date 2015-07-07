@@ -207,24 +207,33 @@ namespace SwdPageRecorder.WebDriver
             {
                 lock (lockObject)
                 {
-                    bool result = true;
+                    bool isAlive = true;
                     if (_driver != null)
                     {
                         try
                         {
-                            // Try to get page title
-                            var title = _driver.Title;
+                            var statusCheck = _driver as IStatusCheck;
+
+                            isAlive = statusCheck.IsAlive();
+                            //if (statusCheck != null)
+                            //{
+                                
+                            //}
+                            //else
+                            //{
+                            //    var title = _driver.Title;
+                            //}
                         }
                         catch
                         {
-                            result = false;
+                            isAlive = false;
                         }
                     }
                     else // When driver is Null it definitely not working
                     {
-                        result = false;
+                        isAlive = false;
                     }
-                    return result;
+                    return isAlive;
                 }
             }
         }

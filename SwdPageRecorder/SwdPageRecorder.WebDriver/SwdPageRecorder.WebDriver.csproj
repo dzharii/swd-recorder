@@ -86,12 +86,14 @@
   <ItemGroup>
     <Compile Include="BrowserPageFrame.cs" />
     <Compile Include="BrowserWindow.cs" />
+    <Compile Include="IStatusCheck.cs" />
     <Compile Include="JsCommand\AddElement.cs" />
     <Compile Include="JsCommand\BrowserCommand.cs" />
     <Compile Include="JsCommand\BrowserCommandParser.cs" />
     <Compile Include="JsCommand\GetXPathFromElement.cs" />
     <Compile Include="LocatorSearchMethod.cs" />
     <Compile Include="MyLog.cs" />
+    <Compile Include="MyRemoteWebDriver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeleniumServerProcess.cs" />
     <Compile Include="SerializableDictionary.cs" />

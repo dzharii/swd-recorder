@@ -75,7 +75,7 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                     throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserName),
                                                 "WebDriverOptions.BrowserName");
             }
-            RemoteWebDriver newDriver = new RemoteWebDriver(hubUri, caps);
+            MyRemoteWebDriver newDriver = new MyRemoteWebDriver(hubUri, caps);
             return newDriver;
         }
     }
