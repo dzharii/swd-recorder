@@ -82,9 +82,11 @@
         }
         bye('getCssSelectorOF');
         return path.join(' > ');
-    }; // TODO: invoke 
-
+    }; 
+    //---
+    
     getPathTo = function(element) {
+    var element_sibling, siblingTagName, siblings, cnt, sibling_count;
 
         hello("getPathTo");
         var elementTagName = element.tagName.toLowerCase();
@@ -98,18 +100,18 @@
         if (element === document.body) {
             return '/html/' + elementTagName;
         }
-        var sibling_count = 0;
-        var siblings = element.parentNode.childNodes;
+        sibling_count = 0;
+        siblings = element.parentNode.childNodes;
         siblings_length = siblings.length;
         for (cnt = 0; cnt < siblings_length; cnt++) {
-            var sibling_element = siblings[cnt];
-            if (sibling_element.nodeType !== 1) { // not ELEMENT_NODE
+            var element_sibling = siblings[cnt];
+            if (element_sibling.nodeType !== 1) { // not ELEMENT_NODE
                 continue;
             }
-            if (sibling_element === element) {
+            if (element_sibling === element) {
                 return getPathTo(element.parentNode) + '/' + elementTagName + '[' + (sibling_count + 1) + ']';
             }
-            if (sibling_element.nodeType === 1 && sibling_element.tagName === elementTagName) {
+            if (element_sibling.nodeType === 1 && element_sibling.tagName.toLowerCase() === elementTagName) {
                 sibling_count++;
             }
         }
