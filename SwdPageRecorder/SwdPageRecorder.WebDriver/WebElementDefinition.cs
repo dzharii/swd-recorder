@@ -17,6 +17,9 @@ namespace SwdPageRecorder.WebDriver
         [DisplayName("Search Method")]
         public LocatorSearchMethod HowToSearch { get; set; }
 
+        [DisplayName("CSS Selector")]
+        public string CssSelector { get; set; }
+
         [DisplayName("Locator")]
         public string Locator { get; set; }
 
@@ -91,6 +94,7 @@ namespace SwdPageRecorder.WebDriver
             {
                 Name = Name,
                 Locator = Locator,
+                CssSelector = CssSelector,
                 HowToSearch = HowToSearch,
                 HtmlTag = HtmlTag,
                 ReturnsCollection = ReturnsCollection,
@@ -116,6 +120,7 @@ namespace SwdPageRecorder.WebDriver
                                       { 
                                           HowToSearch = entry.HowToSearch, 
                                           Locator = entry.Locator,
+                                          CssSelector = entry.CssSelector,
                                       });
             }
 

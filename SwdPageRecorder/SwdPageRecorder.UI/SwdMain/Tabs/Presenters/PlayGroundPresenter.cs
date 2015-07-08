@@ -83,6 +83,7 @@ namespace SwdPageRecorder.UI
         
         internal void InitiCodeEditor()
         {
+        	#pragma warning disable 162
             // This code is disabled 
             // TODO: Complete. Handle crash
             return;
@@ -106,7 +107,7 @@ namespace SwdPageRecorder.UI
 
 
             autocomplete.Items.SetAutocompleteItems(autoComleteWords);
-
+        	#pragma warning restore 162
         }
 
         private IEnumerable<MethodAutocompleteItem> BuildMethodsListForWebElement(WebElementDefinition webElementDefinition)
@@ -171,13 +172,13 @@ namespace SwdPageRecorder.UI
                 engine.AddHostType(pair.Key, pair.Value);
             }
         }
-
+        // You need to be using a C# 5 compiler, e.g. VS2012. If you're using VS2010, you can't use async.
         internal async void RunScript(string code)
         {
 
             Presenters.SwdMainPresenter.DisplayLoadingIndicator(true);
             
-            Task<string> t = new Task<string>( () => 
+            Task<System.String> t = new Task<System.String>( () => 
             {
                 using (var engine = new JScriptEngine())
                 {
