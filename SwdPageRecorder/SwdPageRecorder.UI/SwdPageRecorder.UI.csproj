@@ -74,7 +74,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClearScript">
-      <HintPath>..\vendor\ClearScript\ClearScript.dll</HintPath>
+      <!-- NOTE the .NET v.45 build of ClearScript seems to not yet exist -->
+      <HintPath>..\packages\ClearScript.V8.5.4.2\lib\net40\ClearScript.dll</HintPath>
     </Reference>
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\packages\CyotekImageBox.1.1.5.1\lib\net20\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
@@ -274,6 +275,9 @@
     <None Include="CodeTemplates\[CSharp] WebDriver.Support PageObject %28Default%29.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="CodeTemplates\[Powershell] Generic.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CodeTemplates\[Python] Simple PageObject.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -353,7 +357,6 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" />
   <PropertyGroup>
     <TypeScriptOutFile>$(ProjectDir)\WebElementExplorer\WebElementExplorer.js</TypeScriptOutFile>
   </PropertyGroup>

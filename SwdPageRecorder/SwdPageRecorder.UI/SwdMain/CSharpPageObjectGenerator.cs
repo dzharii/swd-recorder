@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using RazorEngine;
+using RazorEngine.Templating;
 using SwdPageRecorder.UI.CodeGeneration;
 using SwdPageRecorder.WebDriver;
 
@@ -25,7 +26,9 @@ namespace SwdPageRecorder.UI
             string result = "not parsed";
             try
             {
+            	#pragma warning disable 618
                 result = Razor.Parse(template, model);
+                #pragma warning restore 618
             }
             catch
             {
