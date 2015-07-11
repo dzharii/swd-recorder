@@ -231,8 +231,10 @@ namespace SwdPageRecorder.UI
             ClearWebElementForm();
             txtWebElementName.Text = formData.Name;
 
+             // Fill with the formData
+             txtCssSelector.Text = formData.CssSelector;
 
-
+            // override the setting with possibly modified value
             switch (formData.HowToSearch)
             {
                 case LocatorSearchMethod.Id:
