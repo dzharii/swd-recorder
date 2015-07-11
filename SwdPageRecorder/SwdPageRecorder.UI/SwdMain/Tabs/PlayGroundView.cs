@@ -11,6 +11,8 @@ using SwdPageRecorder.WebDriver;
 
 namespace SwdPageRecorder.UI
 {
+
+    delegate void SetTextCallback(string text);
     public partial class PlayGroundView : UserControl, IView
     {
         private PlayGroundPresenter presenter;
@@ -67,22 +69,32 @@ driver.GetScreenshot().SaveAsFile(""Screenshots\\mywebpagetest.png"", ImageForma
             RunWorkerCompletedEventArgs e)
         {
             Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
+            btnRunScript.Enabled = true;
         }
 
         private void btnRunScript_Click(object sender, EventArgs e)
         {
-            var code = txtJavaScriptCode.Text;
             if (runScriptBackgroundWorker.IsBusy != true)
             {
-
-                Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
-
+                btnRunScript.Enabled = false;
+                var code = txtJavaScriptCode.Text;
+                Presenters.SwdMainPresenter.DisplayLoadingIndicator(true);
                 runScriptBackgroundWorker.RunWorkerAsync(code);
             }
         }
         internal void AppendConsole(string text)
         {
-            txtConsole.AppendText(text);
+
+            if (this.txtConsole.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(txtConsole.AppendText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                txtConsole.AppendText(text);
+            }
+            
         }
     }
 }
