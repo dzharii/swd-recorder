@@ -35,7 +35,6 @@ namespace SwdPageRecorder.UI
 
         const int VisualSearchQueryDelayMs = 777;
 
-
         public string ScreenshotsLocation { get {
             return Path.Combine(Utils.AssemblyDirectory, "Screenshots");
         } }

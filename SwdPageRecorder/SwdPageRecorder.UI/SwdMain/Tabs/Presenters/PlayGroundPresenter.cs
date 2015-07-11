@@ -55,7 +55,7 @@ namespace SwdPageRecorder.UI
 
 
             InitControls();
-            
+
 
         }
 
@@ -80,10 +80,10 @@ namespace SwdPageRecorder.UI
 
 
 
-        
+
         internal void InitiCodeEditor()
         {
-        	#pragma warning disable 162
+#pragma warning disable 162
             // This code is disabled 
             // TODO: Complete. Handle crash
             return;
@@ -107,7 +107,7 @@ namespace SwdPageRecorder.UI
 
 
             autocomplete.Items.SetAutocompleteItems(autoComleteWords);
-        	#pragma warning restore 162
+#pragma warning restore 162
         }
 
         private IEnumerable<MethodAutocompleteItem> BuildMethodsListForWebElement(WebElementDefinition webElementDefinition)
@@ -122,7 +122,7 @@ namespace SwdPageRecorder.UI
             {
                 result.Add(new MethodAutocompleteItem(propName));
             }
-            
+
             foreach (var methodName in IWebElementMethods)
             {
                 result.Add(new MethodAutocompleteItem(methodName + "( );"));
@@ -172,13 +172,10 @@ namespace SwdPageRecorder.UI
                 engine.AddHostType(pair.Key, pair.Value);
             }
         }
-        // You need to be using a C# 5 compiler, e.g. VS2012. If you're using VS2010, you can't use async.
-        internal async void RunScript(string code)
-        {
 
-            Presenters.SwdMainPresenter.DisplayLoadingIndicator(true);
-            
-            Task<System.String> t = new Task<System.String>( () => 
+        internal void RunScript(string code)
+        {
+            var t = new Task<System.String>(() =>
             {
                 using (var engine = new JScriptEngine())
                 {
@@ -188,7 +185,7 @@ namespace SwdPageRecorder.UI
 
                     var uiPageObject = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
 
-                
+
                     foreach (var element in uiPageObject.Items)
                     {
                         IWebElement proxyElement = SwdBrowser.CreateWebElementProxy(element);
@@ -206,8 +203,8 @@ namespace SwdPageRecorder.UI
             try
             {
                 t.Start();
-
-                logLine = await t;
+                t.Wait();
+                logLine = t.Result;
             }
             catch (Exception ex)
             {
@@ -216,10 +213,9 @@ namespace SwdPageRecorder.UI
                 // TODO: FIX message --> Exception has been thrown by the target of invocation
                 // \TODO: FIX message --> Exception has been thrown by the target of invocation
             }
-            finally 
+            finally
             {
                 view.AppendConsole(logLine + "\r\n");
-                Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
             }
         }
 

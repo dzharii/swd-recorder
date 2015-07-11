@@ -1,51 +1,60 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A22BF707-81E6-42C6-8088-CFEEA128B0AB}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\Microsoft.Build.dll = .nuget\Microsoft.Build.dll
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 5.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.WebDriver", "SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj", "{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.Tests", "SwdPageRecorder.Tests\SwdPageRecorder.Tests.csproj", "{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.UI", "SwdPageRecorder.UI\SwdPageRecorder.UI.csproj", "{F0246C75-182B-4305-8649-C9185BF886E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.TestModel", "SwdPageRecorder.TestModel\SwdPageRecorder.TestModel.csproj", "{CF660034-7A02-4800-A232-2C2B8F670A83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.UI", "SwdPageRecorder.UI\SwdPageRecorder.UI.csproj", "{F0246C75-182B-4305-8649-C9185BF886E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.Tests", "SwdPageRecorder.Tests\SwdPageRecorder.Tests.csproj", "{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|Any CPU.Build.0 = Debug|x86
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|x86.ActiveCfg = Debug|x86
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Debug|x86.Build.0 = Debug|x86
 		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF660034-7A02-4800-A232-2C2B8F670A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF660034-7A02-4800-A232-2C2B8F670A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF660034-7A02-4800-A232-2C2B8F670A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF660034-7A02-4800-A232-2C2B8F670A83}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F0246C75-182B-4305-8649-C9185BF886E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F0246C75-182B-4305-8649-C9185BF886E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Release|x86.ActiveCfg = Release|x86
+		{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}.Release|x86.Build.0 = Release|x86
+		{F0246C75-182B-4305-8649-C9185BF886E1}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{F0246C75-182B-4305-8649-C9185BF886E1}.Debug|Any CPU.Build.0 = Debug|x86
+		{F0246C75-182B-4305-8649-C9185BF886E1}.Debug|x86.ActiveCfg = Debug|x86
+		{F0246C75-182B-4305-8649-C9185BF886E1}.Debug|x86.Build.0 = Debug|x86
 		{F0246C75-182B-4305-8649-C9185BF886E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0246C75-182B-4305-8649-C9185BF886E1}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		{F0246C75-182B-4305-8649-C9185BF886E1}.Release|x86.ActiveCfg = Release|x86
+		{F0246C75-182B-4305-8649-C9185BF886E1}.Release|x86.Build.0 = Release|x86
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Debug|x86.ActiveCfg = Debug|x86
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Debug|x86.Build.0 = Debug|x86
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Release|x86.ActiveCfg = Release|x86
+		{CF660034-7A02-4800-A232-2C2B8F670A83}.Release|x86.Build.0 = Release|x86
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Debug|x86.ActiveCfg = Debug|x86
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Debug|x86.Build.0 = Debug|x86
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Release|x86.ActiveCfg = Release|x86
+		{DBDB1761-5B74-4D2D-A240-381CFB0D05EF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = SwdPageRecorder.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
