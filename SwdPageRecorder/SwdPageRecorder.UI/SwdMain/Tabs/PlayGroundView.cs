@@ -9,28 +9,25 @@ using System.Windows.Forms;
 using OpenQA.Selenium;
 using SwdPageRecorder.WebDriver;
 
+
+
 namespace SwdPageRecorder.UI
 {
     public partial class PlayGroundView : UserControl, IView
     {
         private PlayGroundPresenter presenter;
-        private System.ComponentModel.BackgroundWorker runScriptBackgroundWorker;
+
+
         public PlayGroundView()
         {
             InitializeComponent();
 
 
-            this.presenter = Presenters.PlayGroundPresenter;
+            this.presenter = MyPresenters.PlayGroundPresenter;
             presenter.InitWithView(this);
 
             txtJavaScriptCode.Language = FastColoredTextBoxNS.Language.JS;
-            // https://msdn.microsoft.com/en-us/library/cc221403%28v=vs.95%29.aspx
-            this.runScriptBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.runScriptBackgroundWorker.DoWork +=
-                new DoWorkEventHandler(runScriptBackgroundWorker_DoWork);
-            // this.runScriptBackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerExample_ProgressChanged);
-            this.runScriptBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(runScriptBackgroundWorker_RunWorkerCompleted);
-
+            
             presenter.InitiCodeEditor();
 
             txtJavaScriptCode.Text =
@@ -51,39 +48,18 @@ driver.GetScreenshot().SaveAsFile(""Screenshots\\mywebpagetest.png"", ImageForma
 
         }
 
-        private void percentageProgress_ValueChanged(int oldValue, int newValue)
-        {
-            // runScriptBackgroundWorker.ReportProgress(newValue);
-            // progressBar1.Value = e.ProgressPercentage;
-        }
-        private void runScriptBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            BackgroundWorker worker = sender as BackgroundWorker;
-            if (worker.CancellationPending == true) return;
-            presenter.RunScript(e.Argument.ToString());
-        }
-
-        private void runScriptBackgroundWorker_RunWorkerCompleted(object sender,
-            RunWorkerCompletedEventArgs e)
-        {
-            Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
-        }
 
         private void btnRunScript_Click(object sender, EventArgs e)
         {
             var code = txtJavaScriptCode.Text;
-            if (runScriptBackgroundWorker.IsBusy != true)
-            {
-
-                Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
-
-                runScriptBackgroundWorker.RunWorkerAsync(code);
-            }
+            presenter.RunScript(code);
         }
+
+
+
         internal void AppendConsole(string text)
         {
-            txtConsole.DoInvokeAction(() => txtConsole.AppendText(text));
-            
+            txtConsole.AppendText(text);
         }
     }
 }

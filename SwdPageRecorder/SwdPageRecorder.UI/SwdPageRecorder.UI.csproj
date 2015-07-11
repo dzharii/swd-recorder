@@ -25,7 +25,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SwdPageRecorder.UI</RootNamespace>
     <AssemblyName>SwdPageRecorder.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -69,55 +69,38 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\..\Bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClearScript">
-      <HintPath>..\packages\ClearScript.V8.5.4.2\lib\net40\ClearScript.dll</HintPath>
+      <HintPath>..\vendor\ClearScript\ClearScript.dll</HintPath>
     </Reference>
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\packages\CyotekImageBox.1.1.5.1\lib\net20\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
     </Reference>
-    <Reference Include="FastColoredTextBox">
+    <Reference Include="FastColoredTextBox, Version=2.12.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\vendor\FastColoredTextBox-PavelTorgashov\FastColoredTextBox.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net40\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Threading.Tasks" />
-    <Reference Include="Newtonsoft.Json">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RazorEngine">
+    <Reference Include="RazorEngine, Version=3.6.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RazorEngine.3.7.0\lib\net40\RazorEngine.dll</HintPath>
+      <HintPath>..\packages\RazorEngine.3.6.1\lib\net45\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO" />
-    <Reference Include="System.Runtime" />
-    <Reference Include="System.Threading.Tasks" />
-    <Reference Include="System.Web.Razor">
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net40\System.Web.Razor.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -127,7 +110,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebDriver">
+    <Reference Include="WebDriver, Version=2.46.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Selenium.WebDriver.2.46.0\lib\net40\WebDriver.dll</HintPath>
     </Reference>
@@ -136,7 +119,7 @@
     <Compile Include="CodeGeneration\ExternalGenerator.cs" />
     <Compile Include="IPresenter.cs" />
     <Compile Include="IView.cs" />
-    <Compile Include="Presenters.cs" />
+    <Compile Include="MyPresenters.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,7 +131,19 @@
     <Compile Include="SwdMain\Popups\BrowserScreenView.Designer.cs">
       <DependentUpon>BrowserScreenView.cs</DependentUpon>
     </Compile>
+    <Compile Include="SwdMain\Popups\Components\Appium\AppiumComponentView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Popups\Components\WebDriver\WebDriverBrowserComponentView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SwdMain\Popups\Presenters\SwitchToPopupPresenter.cs" />
+    <Compile Include="SwdMain\Popups\UserCommandProcessor.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\IUserCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseClickCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseUpCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\MouseDownCommand.cs" />
+    <Compile Include="SwdMain\Popups\UserCommands\NullCommand.cs" />
     <Compile Include="SwdMain\Tabs\PlayGroundView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -163,8 +158,15 @@
     </Compile>
     <Compile Include="SwdMain\Tabs\Model\ChromeDesiredCapabilitiesData.cs" />
     <Compile Include="SwdMain\Tabs\Model\IEDesiredCapabilitiesData.cs" />
+    <Compile Include="SwdMain\Tabs\Presenters\BrowserScreenButtonPresenter.cs" />
     <Compile Include="SwdMain\Tabs\Presenters\PlayGroundPresenter.cs" />
     <Compile Include="SwdMain\Tabs\Presenters\JavascriptEditorTabPresenter.cs" />
+    <Compile Include="SwdMain\Tabs\BrowserScreenButtonView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SwdMain\Tabs\BrowserScreenButtonView.Designer.cs">
+      <DependentUpon>BrowserScreenButtonView.cs</DependentUpon>
+    </Compile>
     <Compile Include="SwdMain\UIActions.cs" />
     <Compile Include="SwdMain\Tabs\BrowserSettingsTabView.cs">
       <SubType>UserControl</SubType>
@@ -237,6 +239,12 @@
     <EmbeddedResource Include="SwdMain\Popups\BrowserScreenView.resx">
       <DependentUpon>BrowserScreenView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Popups\Components\Appium\AppiumComponentView.resx">
+      <DependentUpon>AppiumComponentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Popups\Components\WebDriver\WebDriverBrowserComponentView.resx">
+      <DependentUpon>WebDriverBrowserComponentView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\SwdMainView.resx">
       <DependentUpon>SwdMainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SwdMain\Popups\SwitchToPopupView.resx">
       <DependentUpon>SwitchToPopupView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SwdMain\Tabs\BrowserScreenButtonView.resx">
+      <DependentUpon>BrowserScreenButtonView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -300,9 +311,6 @@
     <None Include="CodeTemplates\Run External Tool.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="CodeTemplates\[Powershell] Generic.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -315,10 +323,43 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj">
+      <Project>{dc2ec3c9-dc4f-430a-bba7-7f04b9c215eb}</Project>
+      <Name>SwdPageRecorder.WebDriver</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="icon3.ico" />
     <None Include="Resources\camera.png" />
     <None Include="Resources\eye.png" />
     <None Include="Resources\monitor.png" />
+    <None Include="Resources\arrow-left-2x.png" />
+    <None Include="Resources\arrow-right-2x.png" />
+    <None Include="Resources\reload-2x.png" />
+    <None Include="Resources\resize-both-6x.png" />
+    <None Include="Resources\resize-both-4x.png" />
     <Content Include="sample_ParserWebElements.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -334,14 +375,9 @@
     <Content Include="transparent_icon.ico" />
     <None Include="Resources\loading-indicator.gif" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj">
-      <Project>{DC2EC3C9-DC4F-430A-BBA7-7F04B9C215EB}</Project>
-      <Name>SwdPageRecorder.WebDriver</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <PropertyGroup>
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptGeneratesDeclarations>true</TypeScriptGeneratesDeclarations>
@@ -350,12 +386,7 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <!-- Contains entries for MSBuild to create a zip package that can be deploy through MS Deploy
-  alternative is to use nuget https://www.nuget.org/packages/MSBuild.Microsoft.VisualStudio.Web.targets/
-  see 
-  http://stackoverflow.com/questions/25047714/microsoft-webapplication-targets
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" />
-  -->
   <PropertyGroup>
     <TypeScriptOutFile>$(ProjectDir)\WebElementExplorer\WebElementExplorer.js</TypeScriptOutFile>
   </PropertyGroup>

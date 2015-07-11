@@ -57,7 +57,7 @@ namespace SwdPageRecorder.UI
 
 
         public bool wasBrowserStarted = false;
-        public void StartNewBrowser(WebDriverOptions browserOptions, bool startSeleniumServerIfNotStarted, bool shouldMaximizeBrowserWindow)
+        public void StartNewBrowser(WebDriverOptions browserOptions, bool shouldMaximizeBrowserWindow)
         {
             if (wasBrowserStarted)
             {
@@ -65,8 +65,7 @@ namespace SwdPageRecorder.UI
             }
             else
             {
-                if (startSeleniumServerIfNotStarted
-                && !SeleniumServerProcess.IsRunning(browserOptions.RemoteUrl))
+                if (!SeleniumServerProcess.IsRunning(browserOptions.RemoteUrl))
                 {
                     Exception outException;
                     bool isOk = UIActions.PerformSlowOperation(
@@ -164,7 +163,7 @@ namespace SwdPageRecorder.UI
                         "Operation: Stop WebDriver instance",
                         () =>
                         {
-                            Presenters.SwdMainPresenter.StopVisualSearch();
+                            MyPresenters.SwdMainPresenter.StopVisualSearch();
                             SwdBrowser.CloseDriver();
                         },
                             out threadException,

@@ -63,7 +63,7 @@ namespace SwdPageRecorder.UI
             });
 
 
-            Presenters.SwdMainPresenter.DisplayLoadingIndicator(true);
+            MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(true);
             
             Stopwatch timeSpent = new Stopwatch();
             timeSpent.Start();
@@ -76,7 +76,7 @@ namespace SwdPageRecorder.UI
 
                 if (timeSpent.Elapsed > operationTimeout)
                 {
-                    Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
+                    MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(false);
 
                     string errorMessage = "Timeout had occurred while performing operation << "
                                                 + operationId + " >>. Timeout was: "
@@ -94,7 +94,7 @@ namespace SwdPageRecorder.UI
                 exception = threadException;
             }
 
-            Presenters.SwdMainPresenter.DisplayLoadingIndicator(false);
+            MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(false);
             
             MyLog.Write("PerformSlowOperation: Finished for operation: " + operationId);
             MyLog.Write("PerformSlowOperation: Operation result: " + (isSuccessful ? "successful :)" : "unsuccessful :("));

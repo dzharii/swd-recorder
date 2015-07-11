@@ -11,8 +11,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using FormKeys = System.Windows.Forms.Keys;
 using SwdPageRecorder.UI.SwdMain.Popups;
-using System.Threading;
-using System.Threading.Tasks;
 
 
 namespace SwdPageRecorder.UI
@@ -20,11 +18,8 @@ namespace SwdPageRecorder.UI
     public partial class SwdMainView : Form, IView
     {
         private SwdMainPresenter presenter = null;
-
         private System.Threading.ManualResetEvent startedEvent;
-        private System.ComponentModel.BackgroundWorker takePageScreenshotBackgroundWorker;
-        private Color oldBackground;
-
+        
         public SwdMainView()
         {
             InitializeComponent();
@@ -33,19 +28,11 @@ namespace SwdPageRecorder.UI
             MyLog.Write("Started: " + versionText);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 
-            presenter = Presenters.SwdMainPresenter;
-            // https://msdn.microsoft.com/en-us/library/cc221403%28v=vs.95%29.aspx
-            this.takePageScreenshotBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.takePageScreenshotBackgroundWorker.DoWork +=
-                new DoWorkEventHandler(takePageScreenshotBackgroundWorker_DoWork);
-            // this.takePageScreenshotBackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(backgroundWorkerExample_ProgressChanged);
-            this.takePageScreenshotBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(takePageScreenshotBackgroundWorker_RunWorkerCompleted);
-
+            presenter = MyPresenters.SwdMainPresenter;
             presenter.InitView(this);
         }
 
-        public SwdMainView(System.Threading.ManualResetEvent startedEvent)
-            : this()
+        public SwdMainView(System.Threading.ManualResetEvent startedEvent) : this()
         {
             this.startedEvent = startedEvent;
         }
@@ -105,7 +92,10 @@ namespace SwdPageRecorder.UI
         private void btnBrowser_Go_Click(object sender, EventArgs e)
         {
             presenter.SetBrowserUrl(txtBrowserUrl.Text);
-
+            SwdBrowser.TakeScreenshot();
+            
+            // \todo Remove this line:
+            // MyPresenters.BrowserScreenButtonPresenter.UpdateScreenshot();
         }
 
 
@@ -192,12 +182,12 @@ namespace SwdPageRecorder.UI
 
         internal void SetDriverDependingControlsEnabled(bool shouldControlBeEnabled)
         {
-            txtBrowserUrl.DoInvokeAction(() => txtBrowserUrl.Enabled = shouldControlBeEnabled);
-            btnBrowser_Go.DoInvokeAction(() => btnBrowser_Go.Enabled = shouldControlBeEnabled);
+            txtBrowserUrl.DoInvokeAction(   () => txtBrowserUrl.Enabled = shouldControlBeEnabled);
+            btnBrowser_Go.DoInvokeAction(   () =>  btnBrowser_Go.Enabled = shouldControlBeEnabled);
             btnTakePageScreenshot.DoInvokeAction(() => btnTakePageScreenshot.Enabled = shouldControlBeEnabled);
             btnOpenScreenshotFolder.DoInvokeAction(() => btnOpenScreenshotFolder.Enabled = shouldControlBeEnabled);
-            grpVisualSearch.DoInvokeAction(() => grpVisualSearch.Enabled = shouldControlBeEnabled);
-            grpSwitchTo.DoInvokeAction(() => grpSwitchTo.Enabled = shouldControlBeEnabled);
+            grpVisualSearch.DoInvokeAction( () =>  grpVisualSearch.Enabled = shouldControlBeEnabled);
+            grpSwitchTo.DoInvokeAction(     () => grpSwitchTo.Enabled = shouldControlBeEnabled);
         }
 
         internal void UpdateBrowserWindowsList(BrowserWindow[] currentWindows, string currentWindowHandle)
@@ -304,37 +294,22 @@ namespace SwdPageRecorder.UI
             presenter.OpenSwitchToFrameCodeHelperPopup(frame);
         }
 
-        private void takePageScreenshotBackgroundWorker_ValueChanged(int oldValue, int newValue)
+        private async void btnTakePageScreenshot_Click(object sender, EventArgs e)
         {
-            // takePageScreenshotBackgroundWorker.ReportProgress(newValue);
-            // progressBar1.Value = e.ProgressPercentage;
-        }
-        private void takePageScreenshotBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            BackgroundWorker worker = sender as BackgroundWorker;
-            if (worker.CancellationPending == true) return;
-            presenter.TakeAndSaveScreenshot();
-        }
-        private void btnTakePageScreenshot_Click(object sender, EventArgs e)
-        {
-            if (takePageScreenshotBackgroundWorker.IsBusy != true)
+            btnTakePageScreenshot.Enabled = false;
+            var oldBackground = btnTakePageScreenshot.BackColor;
+            btnTakePageScreenshot.BackColor = Color.DarkGray;
+            try
             {
-                btnTakePageScreenshot.Enabled = false;
-                oldBackground = btnTakePageScreenshot.BackColor;
-                btnTakePageScreenshot.BackColor = Color.DarkGray;
                 presenter.DisplayLoadingIndicator(true);
-                takePageScreenshotBackgroundWorker.RunWorkerAsync();
+                await presenter.TakeAndSaveScreenshot();
             }
-        }
-
-        private void takePageScreenshotBackgroundWorker_RunWorkerCompleted(object sender,
-            RunWorkerCompletedEventArgs e)
-        {
-
-            btnTakePageScreenshot.Enabled = true;
-            btnTakePageScreenshot.BackColor = oldBackground;
-            presenter.DisplayLoadingIndicator(false);
-
+            finally 
+            {
+                btnTakePageScreenshot.Enabled = true;
+                btnTakePageScreenshot.BackColor = oldBackground;
+                presenter.DisplayLoadingIndicator(false);
+            }
         }
 
         private void btnOpenScreenshotFolder_Click(object sender, EventArgs e)
@@ -348,5 +323,26 @@ namespace SwdPageRecorder.UI
             browserScreenView.Show();
         }
 
+        private void browserScreenButtonView1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void browserScreenButtonView1_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void browserScreenButtonView1_Click(object sender, EventArgs e)
+        {
+            var browserScreenView = new BrowserScreenView();
+            browserScreenView.Show();
+        }
+
+
+        internal void UpdateBrowserScreenshot(Screenshot screenshot)
+        {
+            
+        }
     }
 }

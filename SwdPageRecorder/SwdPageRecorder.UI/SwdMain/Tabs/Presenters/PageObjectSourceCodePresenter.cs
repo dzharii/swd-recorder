@@ -22,7 +22,7 @@ namespace SwdPageRecorder.UI
 
         internal void GenerateSourceCodeForPageObject()
         {
-            var definitions = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
+            var definitions = MyPresenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
             var generator = new CSharpPageObjectGenerator();
             string selectedTemalateName = view.GetSelectedTemplateFile();
 

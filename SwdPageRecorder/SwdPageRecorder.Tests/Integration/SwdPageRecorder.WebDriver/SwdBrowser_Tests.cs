@@ -31,7 +31,6 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
             WebDriverOptions options = new WebDriverOptions()
             {
                  BrowserName = WebDriverOptions.browser_HtmlUnitWithJavaScript,
-                 IsRemote = true,
                  RemoteUrl = "http://localhost:4444/wd/hub/",
             };
 
@@ -88,7 +87,6 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
             WebDriverOptions options = new WebDriverOptions()
             {
                 BrowserName = WebDriverOptions.browser_Firefox,
-                IsRemote = false,
             };
 
             string specialTitle = "SwdBrowser.CloseDriver TEST TEST";

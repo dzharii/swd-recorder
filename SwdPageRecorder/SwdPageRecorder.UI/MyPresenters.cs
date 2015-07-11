@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SwdPageRecorder.UI.SwdMain.Tabs.Presenters;
 
 
 namespace SwdPageRecorder.UI
 {
    
-    public static class Presenters
+    public static class MyPresenters
     {
         private static SwdMainPresenter _swdMainPresenter = null;
         public static SwdMainPresenter SwdMainPresenter
@@ -99,6 +100,17 @@ namespace SwdPageRecorder.UI
                 return (_switchToPopupPresenter = _switchToPopupPresenter ?? new SwitchToPopupPresenter());
             }
         }
+
+        private static BrowserScreenButtonPresenter _browserScreenButtonPresenter = null;
+        public static BrowserScreenButtonPresenter BrowserScreenButtonPresenter
+        {
+            get
+            {
+                return (_browserScreenButtonPresenter = _browserScreenButtonPresenter ?? new BrowserScreenButtonPresenter());
+            }
+        }
+
+        
 
     }
 }

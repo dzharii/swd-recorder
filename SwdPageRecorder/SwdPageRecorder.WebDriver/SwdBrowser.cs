@@ -32,10 +32,11 @@ namespace SwdPageRecorder.WebDriver
     {
         public static event Action OnDriverStarted;
         public static event Action OnDriverClosed;
+
+        public static Screenshot LatestScreenshot { get; private set; }
+        public static event Action<Screenshot> OnNewScreenshotTaken;
         
         private static IWebDriver _driver = null;
-        private static bool isRemote = false;
-
         public static bool Started { get; private set; }
 
         private static object lockObject = new object();
@@ -63,9 +64,7 @@ namespace SwdPageRecorder.WebDriver
                 Started = false;
             }
 
-            bool wasRemoteDriverCreated = false;
-            _driver = WebDriverUtils.Initialize(browserOptions, out wasRemoteDriverCreated);
-            isRemote = wasRemoteDriverCreated;
+            _driver = WebDriverUtils.Initialize(browserOptions);
 
             Started = true;
 
@@ -73,7 +72,6 @@ namespace SwdPageRecorder.WebDriver
             if (OnDriverStarted != null)
             {
                 OnDriverStarted();
-                
             }
         }
 
@@ -209,24 +207,33 @@ namespace SwdPageRecorder.WebDriver
             {
                 lock (lockObject)
                 {
-                    bool result = true;
+                    bool isAlive = true;
                     if (_driver != null)
                     {
                         try
                         {
-                            // Try to get page title
-                            var title = _driver.Title;
+                            var statusCheck = _driver as IStatusCheck;
+
+                            isAlive = statusCheck.IsAlive();
+                            //if (statusCheck != null)
+                            //{
+                                
+                            //}
+                            //else
+                            //{
+                            //    var title = _driver.Title;
+                            //}
                         }
                         catch
                         {
-                            result = false;
+                            isAlive = false;
                         }
                     }
                     else // When driver is Null it definitely not working
                     {
-                        result = false;
+                        isAlive = false;
                     }
-                    return result;
+                    return isAlive;
                 }
             }
         }
@@ -539,7 +546,16 @@ namespace SwdPageRecorder.WebDriver
                 return new Screenshot(screenshotResult);
             }
 
-            return screenshotDriver.GetScreenshot();
+            Screenshot screenShot = screenshotDriver.GetScreenshot();
+
+            LatestScreenshot = screenShot;
+
+            if (OnNewScreenshotTaken != null) {
+                OnNewScreenshotTaken(screenShot);
+            }
+
+            
+            return screenShot;
         }
     }
 }

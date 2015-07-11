@@ -22,12 +22,12 @@ namespace SwdPageRecorder.UI
         public BrowserSettingsTabView()
         {
             InitializeComponent();
-            Presenter = Presenters.BrowserSettingsTabPresenter;
+            Presenter = MyPresenters.BrowserSettingsTabPresenter;
             Presenter.InitWithView(this);
                         
             HandleRemoteDriverSettingsEnabledStatus();
 
-            driverControls = new Control[] { chkUseRemoteHub, grpRemoteConnection, ddlBrowserToStart };
+            driverControls = new Control[] { ddlBrowserToStart };
 
             SetDesiredCapsAvailability(false);
             Presenter.InitDesiredCapabilities();
@@ -42,30 +42,24 @@ namespace SwdPageRecorder.UI
 
         private void btnStartWebDriver_Click(object sender, EventArgs e)
         {
-            var isRemoteDriver = chkUseRemoteHub.Checked;
-            var startSeleniumServerIfNotStarted = chkAutomaticallyStartServer.Checked;
             var shouldMaximizeBrowserWindow = chkMaximizeBrowserWindow.Checked;
 
             var browserOptions = new WebDriverOptions()
             {
                 BrowserName = ddlBrowserToStart.SelectedItem as string,
-                IsRemote = isRemoteDriver,
                 RemoteUrl = txtRemoteHubUrl.Text,
             };
 
 
-            Presenter.StartNewBrowser(browserOptions, startSeleniumServerIfNotStarted, shouldMaximizeBrowserWindow); 
+            Presenter.StartNewBrowser(browserOptions, shouldMaximizeBrowserWindow); 
         }
 
         private void HandleRemoteDriverSettingsEnabledStatus()
         {
-            grpRemoteConnection.DoInvokeAction(
-                    () => grpRemoteConnection.Enabled = chkUseRemoteHub.Checked); 
-
-            ChangeBrowsersList(chkUseRemoteHub.Checked);
+            ChangeBrowsersList();
         }
 
-        private void ChangeBrowsersList(bool showAll)
+        private void ChangeBrowsersList()
         {
             var selectedItem = ddlBrowserToStart.SelectedItem;
             string previousValue = "";
@@ -78,16 +72,9 @@ namespace SwdPageRecorder.UI
             ddlBrowserToStart.Items.Clear();
 
             string[] addedItems = null;
-            if (showAll)
-            {
-                addedItems = WebDriverOptions.allWebdriverBrowsersSupported;
-                ddlBrowserToStart.Items.AddRange(addedItems);
-            }
-            else
-            {
-                addedItems = WebDriverOptions.embededWebdriverBrowsersSupported;
-                ddlBrowserToStart.Items.AddRange(addedItems);
-            }
+
+            addedItems = WebDriverOptions.allWebdriverBrowsersSupported;
+            ddlBrowserToStart.Items.AddRange(addedItems);
 
             int index = Array.IndexOf(addedItems, previousValue);
             index = index >= 0 ? index : 0;
@@ -153,16 +140,17 @@ namespace SwdPageRecorder.UI
 
         internal void SetTestResult(string result, bool isOk)
         {
-            lblRemoteHubStatus.Text = result;
-            lblRemoteHubStatus.ForeColor = (isOk) ? Color.Green : Color.Red;
+            lblRemoteHubStatus.DoInvokeAction(() =>
+            {
+                lblRemoteHubStatus.Text = result;
+                lblRemoteHubStatus.ForeColor = (isOk) ? Color.Green : Color.Red;
+            });
         }
 
         internal void SetBrowserStartupSettings(WebDriverOptions browserOptions)
         {
             Action action = new Action(() =>
             {
-                chkUseRemoteHub.Checked = browserOptions.IsRemote;
-
                 var index = ddlBrowserToStart.Items.IndexOf(browserOptions.BrowserName);
 
                 ddlBrowserToStart.SelectedIndex = index;

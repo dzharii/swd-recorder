@@ -17,7 +17,7 @@ namespace SwdPageRecorder.UI
         {
             InitializeComponent();
 
-            this.presenter = Presenters.PageObjectSourceCodePresenter;
+            this.presenter = MyPresenters.PageObjectSourceCodePresenter;
             presenter.InitWithView(this);
 
             txtHtmlPageSource.Language = Language.HTML;

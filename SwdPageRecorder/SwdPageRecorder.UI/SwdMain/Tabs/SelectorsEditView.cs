@@ -36,7 +36,7 @@ namespace SwdPageRecorder.UI
         public SelectorsEditView()
         {
             InitializeComponent();
-            this.presenter = Presenters.SelectorsEditPresenter;
+            this.presenter = MyPresenters.SelectorsEditPresenter;
             presenter.InitWithView(this);
             InitOtherLocatorDropDown();
 
@@ -88,7 +88,7 @@ namespace SwdPageRecorder.UI
         private void btnUpdateDeclaration_Click(object sender, EventArgs e)
         {
             var element = GetWebElementDefinitionFromForm();
-            Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element);
+            MyPresenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element);
         }
 
 
@@ -231,10 +231,8 @@ namespace SwdPageRecorder.UI
             ClearWebElementForm();
             txtWebElementName.Text = formData.Name;
 
-             // Fill with the formData
-             txtCssSelector.Text = formData.CssSelector;
 
-            // override the setting with possibly modified value
+
             switch (formData.HowToSearch)
             {
                 case LocatorSearchMethod.Id:

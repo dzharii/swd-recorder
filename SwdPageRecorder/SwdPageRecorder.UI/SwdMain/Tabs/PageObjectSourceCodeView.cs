@@ -17,7 +17,7 @@ namespace SwdPageRecorder.UI
         {
             InitializeComponent();
 
-            presenter = Presenters.FullHtmlSourceTabPresenter;
+            presenter = MyPresenters.FullHtmlSourceTabPresenter;
             presenter.InitWithView(this);
             presenter.InitTemplateFilesList();
             presenter.TrySelectDefaultTemplate();

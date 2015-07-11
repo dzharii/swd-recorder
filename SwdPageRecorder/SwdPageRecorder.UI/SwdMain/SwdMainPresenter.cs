@@ -35,6 +35,7 @@ namespace SwdPageRecorder.UI
 
         const int VisualSearchQueryDelayMs = 777;
 
+
         public string ScreenshotsLocation { get {
             return Path.Combine(Utils.AssemblyDirectory, "Screenshots");
         } }
@@ -48,6 +49,8 @@ namespace SwdPageRecorder.UI
             SwdBrowser.OnDriverClosed += InitControls;
 
             SwdBrowser.OnDriverStarted += InitSwitchToControls;
+
+
 
             InitControls();
         }
@@ -181,12 +184,11 @@ namespace SwdPageRecorder.UI
                     Name = addElementCommand.ElementCodeName,
                     HowToSearch = LocatorSearchMethod.XPath,
                     Locator = addElementCommand.ElementXPath,
-                    CssSelector = addElementCommand.ElementCssSelector,
                     frame = simpleFrame,
                 };
                 bool addNew = true;
-                Presenters.SelectorsEditPresenter.UpdateWebElementWithAdditionalProperties(element);
-                Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element, addNew);
+                MyPresenters.SelectorsEditPresenter.UpdateWebElementWithAdditionalProperties(element);
+                MyPresenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element, addNew);
             }
         }
 

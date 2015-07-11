@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwdMainView));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnOpenBrowserPreview = new System.Windows.Forms.Button();
             this.btnOpenScreenshotFolder = new System.Windows.Forms.Button();
             this.btnTakePageScreenshot = new System.Windows.Forms.Button();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnBrowser_Go = new System.Windows.Forms.Button();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.pnlLoadingBar = new System.Windows.Forms.Panel();
@@ -70,6 +70,7 @@
             this.javaScriptEditorView1 = new SwdPageRecorder.UI.JavaScriptEditorView();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.playGroundView1 = new SwdPageRecorder.UI.PlayGroundView();
+            this.browserScreenButtonView1 = new SwdPageRecorder.UI.SwdMain.Tabs.BrowserScreenButtonView();
             this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinitionView();
             this.groupBox1.SuspendLayout();
             this.pnlLoadingBar.SuspendLayout();
@@ -94,10 +95,10 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.btnOpenBrowserPreview);
             this.groupBox1.Controls.Add(this.btnOpenScreenshotFolder);
             this.groupBox1.Controls.Add(this.btnTakePageScreenshot);
-            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.btnBrowser_Go);
             this.groupBox1.Controls.Add(this.txtBrowserUrl);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -107,12 +108,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Browser";
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(869, 20);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(116, 13);
+            this.linkLabel1.TabIndex = 2;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Visit project\'s home site";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // btnOpenBrowserPreview
             // 
             this.btnOpenBrowserPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenBrowserPreview.Enabled = false;
             this.btnOpenBrowserPreview.Image = global::SwdPageRecorder.UI.Properties.Resources.monitor;
-            this.btnOpenBrowserPreview.Location = new System.Drawing.Point(827, 13);
+            this.btnOpenBrowserPreview.Location = new System.Drawing.Point(726, 13);
             this.btnOpenBrowserPreview.Name = "btnOpenBrowserPreview";
             this.btnOpenBrowserPreview.Size = new System.Drawing.Size(35, 23);
             this.btnOpenBrowserPreview.TabIndex = 5;
@@ -123,7 +135,7 @@
             // 
             this.btnOpenScreenshotFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenScreenshotFolder.Image = global::SwdPageRecorder.UI.Properties.Resources.eye;
-            this.btnOpenScreenshotFolder.Location = new System.Drawing.Point(750, 13);
+            this.btnOpenScreenshotFolder.Location = new System.Drawing.Point(684, 13);
             this.btnOpenScreenshotFolder.Name = "btnOpenScreenshotFolder";
             this.btnOpenScreenshotFolder.Size = new System.Drawing.Size(35, 23);
             this.btnOpenScreenshotFolder.TabIndex = 4;
@@ -134,29 +146,17 @@
             // 
             this.btnTakePageScreenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTakePageScreenshot.Image = global::SwdPageRecorder.UI.Properties.Resources.camera;
-            this.btnTakePageScreenshot.Location = new System.Drawing.Point(716, 13);
+            this.btnTakePageScreenshot.Location = new System.Drawing.Point(643, 13);
             this.btnTakePageScreenshot.Name = "btnTakePageScreenshot";
             this.btnTakePageScreenshot.Size = new System.Drawing.Size(35, 23);
             this.btnTakePageScreenshot.TabIndex = 3;
             this.btnTakePageScreenshot.UseVisualStyleBackColor = true;
             this.btnTakePageScreenshot.Click += new System.EventHandler(this.btnTakePageScreenshot_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(868, 23);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(116, 13);
-            this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Visit project\'s home site";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // btnBrowser_Go
             // 
             this.btnBrowser_Go.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowser_Go.Location = new System.Drawing.Point(650, 13);
+            this.btnBrowser_Go.Location = new System.Drawing.Point(580, 13);
             this.btnBrowser_Go.Name = "btnBrowser_Go";
             this.btnBrowser_Go.Size = new System.Drawing.Size(46, 23);
             this.btnBrowser_Go.TabIndex = 1;
@@ -170,7 +170,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBrowserUrl.Location = new System.Drawing.Point(6, 13);
             this.txtBrowserUrl.Name = "txtBrowserUrl";
-            this.txtBrowserUrl.Size = new System.Drawing.Size(637, 20);
+            this.txtBrowserUrl.Size = new System.Drawing.Size(568, 20);
             this.txtBrowserUrl.TabIndex = 0;
             this.txtBrowserUrl.Text = "https://github.com/dzharii/swd-recorder";
             this.txtBrowserUrl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBrowserUrl_KeyUp);
@@ -237,6 +237,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.browserScreenButtonView1);
             this.splitContainer1.Panel2.Controls.Add(this.pageObjectDefinitionView);
             this.splitContainer1.Size = new System.Drawing.Size(1002, 430);
             this.splitContainer1.SplitterDistance = 748;
@@ -538,14 +539,23 @@
             this.playGroundView1.Size = new System.Drawing.Size(734, 398);
             this.playGroundView1.TabIndex = 0;
             // 
+            // browserScreenButtonView1
+            // 
+            this.browserScreenButtonView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.browserScreenButtonView1.Location = new System.Drawing.Point(3, 3);
+            this.browserScreenButtonView1.Name = "browserScreenButtonView1";
+            this.browserScreenButtonView1.Size = new System.Drawing.Size(244, 111);
+            this.browserScreenButtonView1.TabIndex = 3;
+            // 
             // pageObjectDefinitionView
             // 
             this.pageObjectDefinitionView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pageObjectDefinitionView.Location = new System.Drawing.Point(3, 3);
+            this.pageObjectDefinitionView.Location = new System.Drawing.Point(3, 113);
             this.pageObjectDefinitionView.Name = "pageObjectDefinitionView";
-            this.pageObjectDefinitionView.Size = new System.Drawing.Size(244, 420);
+            this.pageObjectDefinitionView.Size = new System.Drawing.Size(244, 317);
             this.pageObjectDefinitionView.TabIndex = 2;
             // 
             // SwdMainView
@@ -628,6 +638,7 @@
         private System.Windows.Forms.Button btnTakePageScreenshot;
         private System.Windows.Forms.Button btnOpenScreenshotFolder;
         private System.Windows.Forms.Button btnOpenBrowserPreview;
+        private SwdMain.Tabs.BrowserScreenButtonView browserScreenButtonView1;
         
 
     }

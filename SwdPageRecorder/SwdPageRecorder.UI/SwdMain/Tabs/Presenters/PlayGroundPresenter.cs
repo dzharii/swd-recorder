@@ -51,11 +51,11 @@ namespace SwdPageRecorder.UI
             SwdBrowser.OnDriverStarted += InitControls;
             SwdBrowser.OnDriverClosed += InitControls;
 
-            Presenters.PageObjectDefinitionPresenter.OnPageObjectTreeChanged += PageObjectDefinitionPresenter_OnPageObjectTreeChanged;
+            MyPresenters.PageObjectDefinitionPresenter.OnPageObjectTreeChanged += PageObjectDefinitionPresenter_OnPageObjectTreeChanged;
 
 
             InitControls();
-
+            
 
         }
 
@@ -80,10 +80,9 @@ namespace SwdPageRecorder.UI
 
 
 
-
+        
         internal void InitiCodeEditor()
         {
-#pragma warning disable 162
             // This code is disabled 
             // TODO: Complete. Handle crash
             return;
@@ -97,7 +96,7 @@ namespace SwdPageRecorder.UI
 
             };
 
-            var pageObject = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
+            var pageObject = MyPresenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
 
             foreach (var webElementDefinition in pageObject.Items)
             {
@@ -107,7 +106,7 @@ namespace SwdPageRecorder.UI
 
 
             autocomplete.Items.SetAutocompleteItems(autoComleteWords);
-#pragma warning restore 162
+
         }
 
         private IEnumerable<MethodAutocompleteItem> BuildMethodsListForWebElement(WebElementDefinition webElementDefinition)
@@ -122,7 +121,7 @@ namespace SwdPageRecorder.UI
             {
                 result.Add(new MethodAutocompleteItem(propName));
             }
-
+            
             foreach (var methodName in IWebElementMethods)
             {
                 result.Add(new MethodAutocompleteItem(methodName + "( );"));
@@ -173,9 +172,12 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        internal void RunScript(string code)
+        internal async void RunScript(string code)
         {
-            var t = new Task<System.String>(() =>
+
+            MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(true);
+            
+            Task<string> t = new Task<string>( () => 
             {
                 using (var engine = new JScriptEngine())
                 {
@@ -183,9 +185,9 @@ namespace SwdPageRecorder.UI
 
                     ImportTypes(engine);
 
-                    var uiPageObject = Presenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
+                    var uiPageObject = MyPresenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
 
-
+                
                     foreach (var element in uiPageObject.Items)
                     {
                         IWebElement proxyElement = SwdBrowser.CreateWebElementProxy(element);
@@ -203,8 +205,8 @@ namespace SwdPageRecorder.UI
             try
             {
                 t.Start();
-                t.Wait();
-                logLine = t.Result;
+
+                logLine = await t;
             }
             catch (Exception ex)
             {
@@ -213,9 +215,10 @@ namespace SwdPageRecorder.UI
                 // TODO: FIX message --> Exception has been thrown by the target of invocation
                 // \TODO: FIX message --> Exception has been thrown by the target of invocation
             }
-            finally
+            finally 
             {
                 view.AppendConsole(logLine + "\r\n");
+                MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(false);
             }
         }
 

@@ -22,19 +22,11 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
 {
     public static class WebDriverUtils
     {
-        public static IWebDriver Initialize(WebDriverOptions browserOptions, out bool isRemote)
+        public static IWebDriver Initialize(WebDriverOptions browserOptions)
         {
+            
             IWebDriver driver = null;
-            if (browserOptions.IsRemote)
-            {
-                driver = ConnetctToRemoteWebDriver(browserOptions);
-                isRemote = true;
-            }
-            else
-            {
-                driver = StartEmbededWebDriver(browserOptions);
-                isRemote = false;
-            }
+            driver = ConnetctToRemoteWebDriver(browserOptions);
             return driver;
         }
 
@@ -83,29 +75,8 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                     throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserName),
                                                 "WebDriverOptions.BrowserName");
             }
-            RemoteWebDriver newDriver = new RemoteWebDriver(hubUri, caps);
+            MyRemoteWebDriver newDriver = new MyRemoteWebDriver(hubUri, caps);
             return newDriver;
-        }
-
-        private static IWebDriver StartEmbededWebDriver(WebDriverOptions browserOptions)
-        {
-            switch (browserOptions.BrowserName)
-            {
-
-                case WebDriverOptions.browser_Firefox:
-                    return new FirefoxDriver();
-                case WebDriverOptions.browser_Chrome:
-                    return new ChromeDriver();
-                case WebDriverOptions.browser_InternetExplorer:
-                    return new InternetExplorerDriver();
-                case WebDriverOptions.browser_PhantomJS:
-                    return new PhantomJSDriver();
-                case WebDriverOptions.browser_Safari:
-                    return new SafariDriver();
-                default:
-                    throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserName),   
-                                                "WebDriverOptions.BrowserName");
-            }
         }
     }
 }
