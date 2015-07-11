@@ -55,7 +55,7 @@ namespace SwdPageRecorder.UI
 
 
             InitControls();
-            
+
 
         }
 
@@ -80,9 +80,10 @@ namespace SwdPageRecorder.UI
 
 
 
-        
+
         internal void InitiCodeEditor()
         {
+#pragma warning disable 162
             // This code is disabled 
             // TODO: Complete. Handle crash
             return;
@@ -106,7 +107,7 @@ namespace SwdPageRecorder.UI
 
 
             autocomplete.Items.SetAutocompleteItems(autoComleteWords);
-
+#pragma warning restore 162
         }
 
         private IEnumerable<MethodAutocompleteItem> BuildMethodsListForWebElement(WebElementDefinition webElementDefinition)
@@ -121,7 +122,7 @@ namespace SwdPageRecorder.UI
             {
                 result.Add(new MethodAutocompleteItem(propName));
             }
-            
+
             foreach (var methodName in IWebElementMethods)
             {
                 result.Add(new MethodAutocompleteItem(methodName + "( );"));
@@ -172,9 +173,8 @@ namespace SwdPageRecorder.UI
             }
         }
 
-        internal async void RunScript(string code)
+        internal void RunScript(string code)
         {
-
             MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(true);
             
             Task<string> t = new Task<string>( () => 
@@ -187,7 +187,7 @@ namespace SwdPageRecorder.UI
 
                     var uiPageObject = MyPresenters.PageObjectDefinitionPresenter.GetWebElementDefinitionFromTree();
 
-                
+
                     foreach (var element in uiPageObject.Items)
                     {
                         IWebElement proxyElement = SwdBrowser.CreateWebElementProxy(element);
@@ -205,8 +205,8 @@ namespace SwdPageRecorder.UI
             try
             {
                 t.Start();
-
-                logLine = await t;
+                t.Wait();
+                logLine = t.Result;
             }
             catch (Exception ex)
             {
@@ -215,13 +215,11 @@ namespace SwdPageRecorder.UI
                 // TODO: FIX message --> Exception has been thrown by the target of invocation
                 // \TODO: FIX message --> Exception has been thrown by the target of invocation
             }
-            finally 
+            finally
             {
                 view.AppendConsole(logLine + "\r\n");
                 MyPresenters.SwdMainPresenter.DisplayLoadingIndicator(false);
             }
         }
-
-
     }
 }

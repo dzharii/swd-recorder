@@ -15,6 +15,10 @@ namespace SwdPageRecorder.WebDriver
 
         [DisplayName("Locator")]
         public string Locator { get; set; }
+        
+        [DisplayName("CSS Selector")]
+        public string CssSelector { get; set; }
+
     }
 
     // XmlAttribute were required in oder to fix

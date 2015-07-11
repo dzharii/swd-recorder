@@ -44,6 +44,12 @@ Let SWD Page Recorder do this for your. SWD Page Recorder enables you to pick th
 
 ![SWD Page Recorder](https://raw.githubusercontent.com/dzharii/swd-recorder/master/articles/04-inro-features-readme.md/pagerecorder.png)
 
+Contributors
+-------------
+
+* @sergueik
+* @dzharii
+
 
 
 
