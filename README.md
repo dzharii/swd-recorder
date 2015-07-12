@@ -54,4 +54,3 @@ Contributors
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dzhariy/swd-recorder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
