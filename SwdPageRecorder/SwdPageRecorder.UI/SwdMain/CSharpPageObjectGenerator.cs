@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
+﻿using System.IO;
 using RazorEngine;
-using SwdPageRecorder.UI.CodeGeneration;
 using SwdPageRecorder.WebDriver;
 
 namespace SwdPageRecorder.UI
