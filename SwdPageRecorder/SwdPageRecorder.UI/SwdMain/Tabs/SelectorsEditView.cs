@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SwdPageRecorder.WebDriver;
@@ -14,13 +10,11 @@ namespace SwdPageRecorder.UI
     {
         private SelectorsEditPresenter presenter;
 
-
         const string otherLocator_Name = "Name";
         const string otherLocator_TagName = "Tag Name";
         const string otherLocator_ClassName = "Class Name";
         const string otherLocator_LinkText = "Link Text";
         const string otherLocator_PartialLinkText = "Partial Link Text";
-
 
         string[] otherLocatorListItems = new string[] 
         {
@@ -31,17 +25,13 @@ namespace SwdPageRecorder.UI
             otherLocator_PartialLinkText,
         };
 
-
-
         public SelectorsEditView()
         {
             InitializeComponent();
             this.presenter = MyPresenters.SelectorsEditPresenter;
             presenter.InitWithView(this);
             InitOtherLocatorDropDown();
-
         }
-
 
         private void InitOtherLocatorDropDown()
         {
@@ -155,7 +145,6 @@ namespace SwdPageRecorder.UI
             txtPropArg3.Clear();
 
             chkReturnsListOfWebElements.Checked = false;
-
         }
 
         internal void AppendWebElementNameWith(string appendWithStr)
@@ -230,8 +219,6 @@ namespace SwdPageRecorder.UI
         {
             ClearWebElementForm();
             txtWebElementName.Text = formData.Name;
-
-
 
             switch (formData.HowToSearch)
             {

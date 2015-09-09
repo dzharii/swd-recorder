@@ -99,6 +99,7 @@ namespace SwdPageRecorder.UI
             if (!SeleniumServerProcess.IsJavaInstalled()) {
                 MyLog.Error("Crap. Java is not installed on the system (where command returned non zero exit code)");
                 string userFriendlyException =
+                #region It's too long, sorry
                         "That's funny! ha-ha-ha-ha... but... \n" +
                         "well...you would need to download and install java(either JRE or JDK)\n" +
                         "in order to run the selenium server. \n" +
@@ -109,6 +110,7 @@ namespace SwdPageRecorder.UI
                         "If you have Java installed, please make sure the \r" +
                         "System  %PATH% variable contains the correct path \r" +
                         "to the java's bin directory\r";
+                #endregion
                 throw new Exception(userFriendlyException);
             }
         }

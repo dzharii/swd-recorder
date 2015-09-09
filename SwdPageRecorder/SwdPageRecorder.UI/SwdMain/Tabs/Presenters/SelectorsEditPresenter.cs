@@ -1,23 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
-
-using System.Collections.ObjectModel;
-
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Firefox;
 using SwdPageRecorder.WebDriver;
-using SwdPageRecorder.WebDriver.JsCommand;
-
-using System.Xml;
-using System.Xml.Linq;
-
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace SwdPageRecorder.UI
 {
@@ -47,7 +31,7 @@ namespace SwdPageRecorder.UI
         {
             bool isValid = true;
             var element = view.GetWebElementDefinitionFromForm();
-            if (String.IsNullOrWhiteSpace(element.Locator))
+            if (string.IsNullOrWhiteSpace(element.Locator))
             {
                 string message = "Locator's value cannot be empty.\n\n" + 
                                  "Please, type the Locator value or load the existing element\n" + 

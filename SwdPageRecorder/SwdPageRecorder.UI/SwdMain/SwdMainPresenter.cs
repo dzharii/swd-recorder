@@ -1,28 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-
-using System.Collections.ObjectModel;
-
 using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Firefox;
 using SwdPageRecorder.WebDriver;
 using SwdPageRecorder.WebDriver.JsCommand;
-
-using System.Xml;
-using System.Xml.Linq;
-
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using System.IO;
-
-
 
 namespace SwdPageRecorder.UI
 {
@@ -271,11 +257,9 @@ namespace SwdPageRecorder.UI
             while (!visualSearchWorker.IsAlive)
             {
                 Application.DoEvents();
-                System.Threading.Thread.Sleep(1);
+                Thread.Sleep(1);
             }
-
             view.VisuaSearchStarted();
-
         }
 
 
