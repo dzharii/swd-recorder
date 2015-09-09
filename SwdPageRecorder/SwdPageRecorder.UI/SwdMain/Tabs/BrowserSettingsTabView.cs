@@ -50,7 +50,7 @@ namespace SwdPageRecorder.UI
                 RemoteUrl = txtRemoteHubUrl.Text,
             };
 
-
+            
             Presenter.StartNewBrowser(browserOptions, shouldMaximizeBrowserWindow); 
         }
 

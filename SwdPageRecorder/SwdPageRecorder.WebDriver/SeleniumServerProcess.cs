@@ -11,7 +11,14 @@ namespace SwdPageRecorder.WebDriver
     {
         private static Process currentProcess;
 
-        
+
+        public static bool IsJavaInstalled() {
+            var where = Process.Start("where", "java");
+            where.WaitForExit(5000);
+            var isInstalled = where.ExitCode == 0;
+            return isInstalled;
+        }
+
         public static void Launch(string pathToStartupBatFile, string additionalArgs = "")
         {
             if (IsRunning())
