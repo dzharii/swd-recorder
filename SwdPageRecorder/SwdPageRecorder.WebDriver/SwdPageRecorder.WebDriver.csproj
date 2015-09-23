@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="BrowserPageFrame.cs" />
     <Compile Include="BrowserWindow.cs" />
+    <Compile Include="PageSourceWatcher.cs" />
     <Compile Include="IStatusCheck.cs" />
     <Compile Include="JsCommand\AddElement.cs" />
     <Compile Include="JsCommand\BrowserCommand.cs" />

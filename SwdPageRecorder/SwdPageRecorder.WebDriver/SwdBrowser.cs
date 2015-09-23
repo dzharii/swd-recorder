@@ -32,6 +32,7 @@ namespace SwdPageRecorder.WebDriver
     {
         public static event Action OnDriverStarted;
         public static event Action OnDriverClosed;
+        public static event Action OnPageSourceChanged;
 
         public static Screenshot LatestScreenshot { get; private set; }
         public static event Action<Screenshot> OnNewScreenshotTaken;
@@ -41,9 +42,24 @@ namespace SwdPageRecorder.WebDriver
 
         private static object lockObject = new object();
 
+        private static PageSourceWatcher pageSourceWatcher = new PageSourceWatcher();
+
         static SwdBrowser()
         {
             Started = false;
+
+            pageSourceWatcher.OnPageSourceChanged += PageSourceWatcher_OnPageSourceChanged;
+
+            pageSourceWatcher.Start();
+        }
+
+        private static void PageSourceWatcher_OnPageSourceChanged()
+        {
+            if (OnPageSourceChanged != null)
+            {
+                OnPageSourceChanged();
+            }
+            TakeScreenshot();
         }
 
         public static IWebDriver GetDriver()
