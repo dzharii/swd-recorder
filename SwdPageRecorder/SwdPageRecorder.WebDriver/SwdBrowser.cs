@@ -33,6 +33,7 @@ namespace SwdPageRecorder.WebDriver
         public static event Action OnDriverStarted;
         public static event Action OnDriverClosed;
         public static event Action OnPageSourceChanged;
+        public static event Action<string> OnPageUrlChanged;
 
         public static Screenshot LatestScreenshot { get; private set; }
         public static event Action<Screenshot> OnNewScreenshotTaken;
@@ -49,8 +50,16 @@ namespace SwdPageRecorder.WebDriver
             Started = false;
 
             pageSourceWatcher.OnPageSourceChanged += PageSourceWatcher_OnPageSourceChanged;
-
+            pageSourceWatcher.OnPageUrlChanged += PageSourceWatcher_OnPageUrlChanged;
             pageSourceWatcher.Start();
+        }
+
+        private static void PageSourceWatcher_OnPageUrlChanged(string newUrl)
+        {
+            if (OnPageUrlChanged != null)
+            {
+                OnPageUrlChanged(newUrl);
+            }
         }
 
         private static void PageSourceWatcher_OnPageSourceChanged()

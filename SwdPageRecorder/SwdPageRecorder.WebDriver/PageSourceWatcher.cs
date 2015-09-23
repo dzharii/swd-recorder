@@ -13,8 +13,11 @@ namespace SwdPageRecorder.WebDriver
         private Task watcher;
 
         public event Action OnPageSourceChanged;
+        public event Action<string> OnPageUrlChanged;
 
-        string previousHtmlSource = null;
+        string previousSource = null;
+        string previousUrl = null;
+
         CancellationTokenSource cancelationSource;
         CancellationToken cancelationToken;
 
@@ -52,10 +55,21 @@ namespace SwdPageRecorder.WebDriver
                 {
                     if (SwdBrowser.IsWorking)
                     {
-                        var actualSource = SwdBrowser.GetDriver().PageSource ?? "";
-                        if (previousHtmlSource != actualSource)
+                        var actualUrl = SwdBrowser.GetDriver().Url;
+                        var actualSource = SwdBrowser.GetDriver().PageSource;
+
+                        if (previousUrl != actualUrl)
                         {
-                            previousHtmlSource = actualSource;
+                            previousUrl = actualUrl;
+                            if (OnPageUrlChanged != null)
+                            {
+                                OnPageUrlChanged(actualUrl);
+                            }
+                        }
+
+                        if (previousSource != actualSource)
+                        {
+                            previousSource = actualSource;
 
                             if (OnPageSourceChanged != null)
                             {

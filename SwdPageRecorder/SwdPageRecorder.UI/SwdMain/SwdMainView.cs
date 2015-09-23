@@ -27,6 +27,11 @@ namespace SwdPageRecorder.UI
             presenter.InitView(this);
         }
 
+        public void SetUrl(string newUrl)
+        {
+            txtBrowserUrl.DoInvokeAction(() => txtBrowserUrl.Text = newUrl);
+        }
+
         public SwdMainView(System.Threading.ManualResetEvent startedEvent) : this()
         {
             this.startedEvent = startedEvent;

@@ -39,7 +39,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPageUrl = new System.Windows.Forms.TextBox();
             this.webDriverBrowserComponentView1 = new SwdPageRecorder.UI.SwdMain.Popups.Components.WebDriver.WebDriverBrowserComponentView();
             this.grpWebPage.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -118,7 +118,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtPageUrl);
             this.panel1.Location = new System.Drawing.Point(12, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1152, 35);
@@ -151,15 +151,15 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
             this.button3.TabIndex = 1;
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtPageUrl
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPageUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(356, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(790, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtPageUrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPageUrl.Location = new System.Drawing.Point(356, 6);
+            this.txtPageUrl.Name = "txtPageUrl";
+            this.txtPageUrl.Size = new System.Drawing.Size(790, 20);
+            this.txtPageUrl.TabIndex = 0;
             // 
             // webDriverBrowserComponentView1
             // 
@@ -201,7 +201,7 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPageUrl;
         private System.Windows.Forms.Button button5;
         private Components.WebDriver.WebDriverBrowserComponentView webDriverBrowserComponentView1;
     }

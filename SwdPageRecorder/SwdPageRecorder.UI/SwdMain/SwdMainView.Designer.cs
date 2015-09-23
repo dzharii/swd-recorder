@@ -1,4 +1,6 @@
-﻿namespace SwdPageRecorder.UI
+﻿using System;
+
+namespace SwdPageRecorder.UI
 {
     partial class SwdMainView
     {
@@ -594,6 +596,7 @@
             this.ResumeLayout(false);
 
         }
+
 
         #endregion
 

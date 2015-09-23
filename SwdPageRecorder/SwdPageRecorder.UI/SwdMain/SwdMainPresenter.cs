@@ -35,10 +35,14 @@ namespace SwdPageRecorder.UI
             SwdBrowser.OnDriverClosed += InitControls;
 
             SwdBrowser.OnDriverStarted += InitSwitchToControls;
-
-
+            SwdBrowser.OnPageUrlChanged += SwdBrowser_OnPageUrlChanged;
 
             InitControls();
+        }
+
+        private void SwdBrowser_OnPageUrlChanged(string newUrl)
+        {
+            view.SetUrl(newUrl);
         }
 
         private void InitSwitchToControls()

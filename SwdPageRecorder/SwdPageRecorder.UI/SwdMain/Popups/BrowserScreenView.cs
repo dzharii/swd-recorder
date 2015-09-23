@@ -62,8 +62,21 @@ namespace SwdPageRecorder.UI.SwdMain.Popups
 
         public void RegisterEvents() {
             UserCommand.OnMouseClick += UserCommand_OnMouseClick;
-            SwdBrowser.OnNewScreenshotTaken += SwdBrowser_OnNewScreenshotTaken;        
+            SwdBrowser.OnNewScreenshotTaken += SwdBrowser_OnNewScreenshotTaken;
+
+            SwdBrowser.OnPageUrlChanged += SwdBrowser_OnPageUrlChanged;
         }
+
+        private void SwdBrowser_OnPageUrlChanged(string newUrl)
+        {
+            SetUrl(newUrl);
+        }
+
+        public void SetUrl(string newUrl)
+        {
+             txtPageUrl.DoInvokeAction(() => txtPageUrl.Text = newUrl);
+        }
+
 
         public void UnregisterEvents()
         {
