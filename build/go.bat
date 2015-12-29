@@ -19,8 +19,16 @@ echo Hello! >%STDOUT_DEFAULT%
 
 
 
-@"C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" %SlnPath% /t:clean >>%STDOUT_DEFAULT%
-@"C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe" %SlnPath% >>%STDOUT_DEFAULT%
+@call "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" %SlnPath% /t:clean >>%STDOUT_DEFAULT%
+if %errorlevel% neq 0 (
+    echo ERROR: MSbuild: Compilation / Build Error
+    exit /b %errorlevel%
+)
+@call "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" %SlnPath% >>%STDOUT_DEFAULT%
+if %errorlevel% neq 0 (
+    echo ERROR: MSbuild: Compilation / Build Error
+    exit /b %errorlevel%
+)
 
 IF EXIST "SwdPageRecorder_Latest" rd SwdPageRecorder_Latest /Q /S  >>%STDOUT_DEFAULT%
 md SwdPageRecorder_Latest >>%STDOUT_DEFAULT%
@@ -40,7 +48,12 @@ set MERGE_LIBS2=%SwdUiPath%\RazorEngine.dll %SwdUiPath%\System.Web.Razor.dll %Sw
 set MERGE_LIBS3=%SwdUiPath%\ClearScript.dll 
 
 
-ilmerge\ILMerge.exe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5" /t:winexe /out:SwdPageRecorder_Latest\SwdPageRecorder.exe %SwdUiPath%\SwdPageRecorder.UI.exe  %MERGE_LIBS1% %MERGE_LIBS2% %MERGE_LIBS3% >>%STDOUT_DEFAULT%
+call ilmerge\ILMerge.exe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5" /t:winexe /out:SwdPageRecorder_Latest\SwdPageRecorder.exe %SwdUiPath%\SwdPageRecorder.UI.exe  %MERGE_LIBS1% %MERGE_LIBS2% %MERGE_LIBS3% >>%STDOUT_DEFAULT%
+
+if %errorlevel% neq 0 (
+    echo ERROR: ILMerge Error
+    exit /b %errorlevel%
+)
 
 @REM Remove SwdPageRecorder.pdb
 del /F /Q SwdPageRecorder_Latest\SwdPageRecorder.pdb

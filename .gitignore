@@ -22,6 +22,8 @@ build/SwdPageRecorder_Latest
 [Bb]in/
 [Oo]bj/
 
+.vs
+
 # mstest test results
 TestResults
 
