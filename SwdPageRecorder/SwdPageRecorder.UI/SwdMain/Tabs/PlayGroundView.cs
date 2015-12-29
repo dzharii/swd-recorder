@@ -59,7 +59,7 @@ driver.GetScreenshot().SaveAsFile(""Screenshots\\mywebpagetest.png"", ImageForma
 
         internal void AppendConsole(string text)
         {
-            txtConsole.AppendText(text);
+            txtConsole.DoInvokeAction(() => txtConsole.AppendText(text));
         }
     }
 }
