@@ -231,6 +231,8 @@ namespace SwdPageRecorder.UI
             ClearWebElementForm();
             txtWebElementName.Text = formData.Name;
 
+             // Fill with the formData
+             txtCssSelector.Text = formData.CssSelector;
 
 
             switch (formData.HowToSearch)

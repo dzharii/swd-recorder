@@ -182,6 +182,7 @@ namespace SwdPageRecorder.UI
                     Name = addElementCommand.ElementCodeName,
                     HowToSearch = LocatorSearchMethod.XPath,
                     Locator = addElementCommand.ElementXPath,
+                    CssSelector = addElementCommand.ElementCssSelector,
                     frame = simpleFrame,
                 };
                 bool addNew = true;
