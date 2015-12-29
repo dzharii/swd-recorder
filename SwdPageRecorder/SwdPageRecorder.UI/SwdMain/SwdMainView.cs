@@ -23,7 +23,7 @@ namespace SwdPageRecorder.UI
         public SwdMainView()
         {
             InitializeComponent();
-            string versionText = string.Format("SWD Page Recorder {0} (Build Number: {1})", Build.WebDriverVersion, Build.Version);
+            string versionText = string.Format("SWD Page Recorder {0} (Build: {1})", Build.WebDriverVersion, Build.Version);
             this.Text = versionText;
             MyLog.Write("Started: " + versionText);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
