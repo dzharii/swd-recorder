@@ -5,6 +5,10 @@ SWD Page Recorder is a .NET application that makes it easy to create new Seleniu
 You can use it to test webdriver locators (html id, css selectors, xpath etc.) using Selenium Webdriver on various 
 browsers and using various modes (Internal Driver and Remote Hub connection).
 
+[![](https://cloud.githubusercontent.com/assets/36020/9678504/f36d753c-529a-11e5-9710-1d02c81c9fcb.png)](https://www.youtube.com/watch?v=MSl1XO7eWic)
+
+#### ← [SWD Starter C#](https://github.com/dzharii/SWD.Starter) -= SWD Page Recorder =- [SWD Starter Java](https://github.com/dzharii/Swd.StarterJ)  →
+
 #### :anchor: Articles in English:
 
 * [SWD Page Recorder &mdash; records WebElements and generates PageObject classes (Announcement)](https://groups.google.com/d/msg/selenium-users/epneoHaOymk/MjjhyoBcUf4J)
@@ -44,8 +48,13 @@ Let SWD Page Recorder do this for your. SWD Page Recorder enables you to pick th
 
 ![SWD Page Recorder](https://raw.githubusercontent.com/dzharii/swd-recorder/master/articles/04-inro-features-readme.md/pagerecorder.png)
 
+Contributors
+-------------
+
+* @sergueik
+* @dzharii
+
 
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dzhariy/swd-recorder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
