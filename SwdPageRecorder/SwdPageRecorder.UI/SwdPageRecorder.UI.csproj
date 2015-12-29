@@ -274,6 +274,9 @@
     <None Include="CodeTemplates\[CSharp] WebDriver.Support PageObject %28Default%29.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="CodeTemplates\[Powershell] Generic.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CodeTemplates\[Python] Simple PageObject.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
