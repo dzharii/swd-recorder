@@ -52,6 +52,14 @@
       <HintPath>..\packages\FluentAssertions.4.1.1\lib\net45\FluentAssertions.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnitTestAdapter.WithFramework.2.0.0\lib\nunit.core.dll</HintPath>
       <Private>False</Private>
@@ -102,11 +110,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EndToEnd\Smoke_UI_OpenClose_Browser.cs" />
     <Compile Include="Integration\SwdPageRecorder.WebDriver\SwdBrowser_Tests.cs" />
+    <Compile Include="SwdPageRecorder.ConfigurationManagement\Internals\FieldExpression_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SwdPageRecorder.ConfigurationManagement\SwdPageRecorder.ConfigurationManagement.csproj">
+      <Project>{29848a98-3381-4d64-a613-d3b73adaa4fa}</Project>
+      <Name>SwdPageRecorder.ConfigurationManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SwdPageRecorder.TestModel\SwdPageRecorder.TestModel.csproj">
       <Project>{CF660034-7A02-4800-A232-2C2B8F670A83}</Project>
       <Name>SwdPageRecorder.TestModel</Name>
