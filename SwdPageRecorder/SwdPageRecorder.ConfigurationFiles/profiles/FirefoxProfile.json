@@ -1,3 +1,29 @@
 ﻿{
+  "profile": {
+    "displayName": "Firefox",
+    "displayPriority": 0,
+    "canUseWithLocalWebdriver": true,
+    "canUseWithRemoteWebdriver": true
+  },
+  "activation": {
+    "localWebDriver": {
+      "classFullName": "OpenQA.Selenium.Firefox.FirefoxDriver"
+    },
+    "remoteWebDriver": {
+      "browserName": "firefox"
+    }
+  },
+  "capabilities": {
+    "localWebDriver": {
 
+    },
+    "remoteWebDriver": {
+
+
+    },
+    "all": {
+
+    }
+
+  }
 }
