@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.UI", "SwdPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.ConfigurationManagement", "SwdPageRecorder.ConfigurationManagement\SwdPageRecorder.ConfigurationManagement.csproj", "{29848A98-3381-4D64-A613-D3B73ADAA4FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwdPageRecorder.ConfigurationFiles", "SwdPageRecorder.ConfigurationFiles\SwdPageRecorder.ConfigurationFiles.csproj", "{A9A9D8B2-AE30-4A93-B2D0-0FD26E18E1C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{29848A98-3381-4D64-A613-D3B73ADAA4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29848A98-3381-4D64-A613-D3B73ADAA4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29848A98-3381-4D64-A613-D3B73ADAA4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9A9D8B2-AE30-4A93-B2D0-0FD26E18E1C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9A9D8B2-AE30-4A93-B2D0-0FD26E18E1C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9A9D8B2-AE30-4A93-B2D0-0FD26E18E1C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9A9D8B2-AE30-4A93-B2D0-0FD26E18E1C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

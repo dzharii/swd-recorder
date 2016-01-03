@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
-using SwdPageRecorder.ConfigurationManagement.Internals;
+using SwdPageRecorder.ConfigurationManagement.ConfigurationFramework.Internals;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwdPageRecorder.ConfigurationManagement
+namespace SwdPageRecorder.ConfigurationManagement.ConfigurationFramework
 {
     public abstract class JsonConfigurationManagerBase<T> where T : ConfigEntryBase, new()
     {
@@ -55,7 +55,7 @@ namespace SwdPageRecorder.ConfigurationManagement
 
         private bool HasJPathMatches(string applyValue, JObject jObj)
         {
-            return FieldExpression.HasMatches(applyValue, jObj);
+            return BooleanFieldExpression.HasMatches(applyValue, jObj);
         }
 
         public static string GetAssemblyDirectory()

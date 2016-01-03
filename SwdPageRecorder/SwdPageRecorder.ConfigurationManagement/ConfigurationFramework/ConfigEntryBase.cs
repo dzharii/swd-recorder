@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwdPageRecorder.ConfigurationManagement
+namespace SwdPageRecorder.ConfigurationManagement.ConfigurationFramework
 {
     public abstract class ConfigEntryBase
     {

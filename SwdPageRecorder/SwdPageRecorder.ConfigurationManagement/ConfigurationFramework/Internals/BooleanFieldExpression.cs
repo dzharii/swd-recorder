@@ -7,9 +7,9 @@ using Newtonsoft.Json.Linq;
 using NLog;
 using Newtonsoft.Json;
 
-namespace SwdPageRecorder.ConfigurationManagement.Internals
+namespace SwdPageRecorder.ConfigurationManagement.ConfigurationFramework.Internals
 {
-     public class FieldExpression
+     public class BooleanFieldExpression
     {
         static Logger logger = LogManager.GetCurrentClassLogger();
 
@@ -23,7 +23,7 @@ namespace SwdPageRecorder.ConfigurationManagement.Internals
 
             if (paramValuePair.Length != 2)
             {
-                string msg = $"Unexpected expression result. paramValue.Length != 2\n"
+                string msg = $"Unexpected expression result. paramValue.Length != 2 (param, value)\n"
                            + $"Context:\n"
                            + $"Expression: <{applyValue}>\n"
                            + $"jObj: <{jObj.ToString(Formatting.Indented)}>";
