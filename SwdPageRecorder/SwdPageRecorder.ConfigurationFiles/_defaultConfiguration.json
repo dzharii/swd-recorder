@@ -12,7 +12,7 @@
 [
   {
     "name": "Default Configuration",
-    "applyTo": "all",
+    "applyTo": [ "all" ],
 
     "application": {
       "defaultUrl": "https://github.com/dzharii/swd-recorder",

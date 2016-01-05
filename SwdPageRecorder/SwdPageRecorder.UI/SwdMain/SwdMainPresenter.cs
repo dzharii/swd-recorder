@@ -21,13 +21,15 @@ using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using System.IO;
-
-
+using SwdPageRecorder.ConfigurationManagement.MyConfigurationMappings;
+using SwdPageRecorder.ConfigurationManagement;
 
 namespace SwdPageRecorder.UI
 {
     public class SwdMainPresenter
     {
+        private static MyConfigurationCollection.MyConfigEntry _config = MyConfiguration.GetCurrent();
+
         private SwdMainView view;
         public IWebDriver Driver { get { return SwdBrowser.GetDriver(); } }
 
@@ -49,8 +51,17 @@ namespace SwdPageRecorder.UI
             SwdBrowser.OnDriverClosed += InitControls;
 
             SwdBrowser.OnDriverStarted += InitSwitchToControls;
-
+            ConfigureView();
             InitControls();
+        }
+
+        private void ConfigureView()
+        {
+            var browserUrl = _config?.application?.defaultUrl;
+            if (browserUrl != null)
+            {
+                view.SetUrlText(browserUrl);
+            }
         }
 
         private void InitSwitchToControls()

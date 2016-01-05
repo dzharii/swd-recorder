@@ -302,6 +302,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SwdPageRecorder.ConfigurationManagement\SwdPageRecorder.ConfigurationManagement.csproj">
+      <Project>{29848a98-3381-4d64-a613-d3b73adaa4fa}</Project>
+      <Name>SwdPageRecorder.ConfigurationManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SwdPageRecorder.WebDriver\SwdPageRecorder.WebDriver.csproj">
       <Project>{dc2ec3c9-dc4f-430a-bba7-7f04b9c215eb}</Project>
       <Name>SwdPageRecorder.WebDriver</Name>

@@ -126,7 +126,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SwdPageRecorder.ConfigurationManagement\SwdPageRecorder.ConfigurationManagement.csproj">
+      <Project>{29848a98-3381-4d64-a613-d3b73adaa4fa}</Project>
+      <Name>SwdPageRecorder.ConfigurationManagement</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>

@@ -72,6 +72,11 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        internal void SetUrlText(string browserUrl)
+        {
+            txtBrowserUrl.DoInvokeAction(() => txtBrowserUrl.Text = browserUrl);
+        }
+
         public BrowserPageFrame getCurrentlyChosenFrame()
         {
             BrowserPageFrame frame = null;
