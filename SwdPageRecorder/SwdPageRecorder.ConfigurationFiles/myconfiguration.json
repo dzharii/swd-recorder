@@ -1,3 +1,9 @@
-﻿{
-
-}
+﻿// Feel free to redefine any configuration property from "_defaultConfiguration.json"
+// inside THIS file. 
+[
+  {
+    "name": "Default Configuration",
+    "applyTo": "all"
+    
+  }
+]

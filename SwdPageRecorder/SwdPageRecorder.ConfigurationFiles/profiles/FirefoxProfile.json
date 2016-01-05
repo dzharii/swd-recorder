@@ -1,5 +1,6 @@
 ﻿{
   "profile": {
+    "profileId": "Firefox",
     "displayName": "Firefox",
     "displayPriority": 0,
     "canUseWithLocalWebdriver": true,
