@@ -23,11 +23,11 @@
           "runStartSeleniumServerBatWhenWebdriverIsNotAvailable": false
         },
         "maximizeBrowserWindow": true,
-        "defaultBrowserProfileId": "Firefox",
-        "automaticallyRunDefaultBrowserProfileWhenPageRecorderStart": false
+        "defaultBrowserProfileId": "Firefox", // TODO: NOT IMPLEMENTED
+        "automaticallyRunDefaultBrowserProfileWhenPageRecorderStart": false // TODO: NOT IMPLEMENTED
       },
       "LocatorsTab": {
-        "automaticallyStartWebElementExplorerWhenBrowserStarts": false
+        "automaticallyStartWebElementExplorerWhenBrowserStarts": false // TODO: NOT IMPLEMENTED
       }
     }
   }

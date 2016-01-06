@@ -135,6 +135,16 @@ namespace SwdPageRecorder.UI
             SetDesiredCapsAvailability(true);
         }
 
+        internal void SetRemoteHubUrl(string remoteHubUrl)
+        {
+            txtRemoteHubUrl.DoInvokeAction(() => txtRemoteHubUrl.Text = remoteHubUrl);
+        }
+
+        internal void SetRunSeleniumServerBatch(bool batchAutorun)
+        {
+            chkAutomaticallyStartServer.DoInvokeAction(() => chkAutomaticallyStartServer.Checked = batchAutorun);
+        }
+
         internal void DisableDriverStartButton()
         {
             btnStartWebDriver.DoInvokeAction( () =>  btnStartWebDriver.Enabled = false);

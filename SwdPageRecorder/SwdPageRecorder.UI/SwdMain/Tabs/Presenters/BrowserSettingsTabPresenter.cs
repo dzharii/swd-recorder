@@ -119,7 +119,27 @@ namespace SwdPageRecorder.UI
                 view.SetMaximizeBrowserWindow(maximizeBrowserWindow == true);
             }
 
+            if (browserSettings.RemoteHubConnectionSettings != null) {
+                ConfigureRemoteHubSettings(browserSettings.RemoteHubConnectionSettings);
+            }
+
         }
+
+        private void ConfigureRemoteHubSettings(MyConfigurationCollection.Remotehubconnectionsettings remoteHub)
+        {
+
+            if (remoteHub.remoteHubUrl != null)
+            {
+                view.SetRemoteHubUrl(remoteHub.remoteHubUrl);
+            }
+
+            bool? batchAutorun = remoteHub.runStartSeleniumServerBatWhenWebdriverIsNotAvailable;
+            if (batchAutorun != null)
+            {
+                view.SetRunSeleniumServerBatch(batchAutorun == true);
+            }
+        }
+
 
         public void StartDriver(WebDriverOptions browserOptions, bool shouldMaximizeBrowserWindow)
         {
