@@ -13,6 +13,33 @@ namespace SwdPageRecorder.ConfigurationManagement.Profiles
                 return ProfileConfig.profile.displayName;
             }
         }
+
+        public string ActivationBrowserName
+        {
+            get
+            {
+                return ProfileConfig.activation.browserName;
+            }
+        }
+
+        public string ProfileId
+        {
+            get
+            {
+                return ProfileConfig.profile.profileId;
+            }
+        }
+
+        public override string ToString()
+        {
+            return ProfileDisplayName;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public ProfileConfigurationMapping ProfileConfig { get; set; }
         public bool HasErrors { get; set; }
         public Exception Exception { get; set; }

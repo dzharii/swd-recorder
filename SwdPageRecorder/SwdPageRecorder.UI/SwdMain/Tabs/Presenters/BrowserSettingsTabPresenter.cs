@@ -22,6 +22,7 @@ using System.Diagnostics;
 using System.Net;
 using SwdPageRecorder.ConfigurationManagement.MyConfigurationMappings;
 using SwdPageRecorder.ConfigurationManagement;
+using SwdPageRecorder.ConfigurationManagement.Profiles;
 
 namespace SwdPageRecorder.UI
 {
@@ -95,6 +96,24 @@ namespace SwdPageRecorder.UI
 
                 StartDriver(browserOptions, shouldMaximizeBrowserWindow);
             }
+        }
+
+        public Profile[] GetLocalWebdriverProfiles()
+        {
+            ProfileDiscovery profileDiscovery = new ProfileDiscovery();
+            Profile[] allProfiles = profileDiscovery.Discover();
+
+            Profile[] result = allProfiles.Where(p => p.ProfileConfig.profile.canUseWithLocalWebdriver).ToArray();
+            return result;
+        }
+
+        public Profile[] GetRemoteWebdriverProfiles()
+        {
+            ProfileDiscovery profileDiscovery = new ProfileDiscovery();
+            Profile[] allProfiles = profileDiscovery.Discover();
+
+            Profile[] result = allProfiles.Where(p => p.ProfileConfig.profile.canUseWithRemoteWebdriver).ToArray();
+            return result;
         }
 
         internal void ConfigureView()

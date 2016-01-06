@@ -10,7 +10,7 @@
         "useRemoteHubConnection": false,
         "RemoteHubConnectionSettings": {
           "remoteHubUrl": "http://127.0.0.1:4444/wd/hub",
-          "runStartSeleniumServerBatWhenWebdriverIsNotAvailable": true
+          "runStartSeleniumServerBatWhenWebdriverIsNotAvailable": false
         },
         "maximizeBrowserWindow": false,
         "defaultBrowserProfileId": "Firefox",

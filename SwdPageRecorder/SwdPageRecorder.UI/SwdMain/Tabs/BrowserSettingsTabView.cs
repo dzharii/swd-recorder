@@ -11,6 +11,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
 using FormKeys = System.Windows.Forms.Keys;
+using SwdPageRecorder.ConfigurationManagement.Profiles;
 
 namespace SwdPageRecorder.UI
 {
@@ -46,9 +47,12 @@ namespace SwdPageRecorder.UI
             var startSeleniumServerIfNotStarted = chkAutomaticallyStartServer.Checked;
             var shouldMaximizeBrowserWindow = chkMaximizeBrowserWindow.Checked;
 
+            Profile selectedProfile = ddlBrowserToStart.SelectedItem as Profile;
+
+
             var browserOptions = new WebDriverOptions()
             {
-                BrowserName = ddlBrowserToStart.SelectedItem as string,
+                BrowserName = selectedProfile.ActivationBrowserName,
                 IsRemote = isRemoteDriver,
                 RemoteUrl = txtRemoteHubUrl.Text,
             };
@@ -65,29 +69,29 @@ namespace SwdPageRecorder.UI
             ChangeBrowsersList(chkUseRemoteHub.Checked);
         }
 
-        private void ChangeBrowsersList(bool showAll)
+        private void ChangeBrowsersList(bool showRemoteWebDriverProfiles)
         {
+
             var selectedItem = ddlBrowserToStart.SelectedItem;
-            string previousValue = "";
+            Profile previousValue = null;
 
             if (selectedItem != null)
             {
-                previousValue = ddlBrowserToStart.SelectedItem as string;
+                previousValue = ddlBrowserToStart.SelectedItem as Profile;
             }
 
             ddlBrowserToStart.Items.Clear();
 
-            string[] addedItems = null;
-            if (showAll)
+            Profile[] addedItems = null;
+            if (showRemoteWebDriverProfiles)
             {
-                addedItems = WebDriverOptions.allWebdriverBrowsersSupported;
-                ddlBrowserToStart.Items.AddRange(addedItems);
+                addedItems =  Presenter.GetRemoteWebdriverProfiles();
             }
             else
             {
-                addedItems = WebDriverOptions.embededWebdriverBrowsersSupported;
-                ddlBrowserToStart.Items.AddRange(addedItems);
+                addedItems = Presenter.GetLocalWebdriverProfiles();
             }
+            ddlBrowserToStart.Items.AddRange(addedItems);
 
             int index = Array.IndexOf(addedItems, previousValue);
             index = index >= 0 ? index : 0;

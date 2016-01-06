@@ -7,11 +7,11 @@
     "canUseWithRemoteWebdriver": true
   },
   "activation": {
+    "browserName": "Firefox",
     "localWebDriver": {
-      "browserName": "firefox"
+
     },
     "remoteWebDriver": {
-      "browserName": "firefox"
     }
   },
   "capabilities": {
