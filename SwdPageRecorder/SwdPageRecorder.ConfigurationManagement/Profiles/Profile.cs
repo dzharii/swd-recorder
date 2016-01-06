@@ -8,6 +8,11 @@ namespace SwdPageRecorder.ConfigurationManagement.Profiles
 {
     public class Profile
     {
+        public string ProfileDisplayName {
+            get {
+                return ProfileConfig.profile.displayName;
+            }
+        }
         public ProfileConfigurationMapping ProfileConfig { get; set; }
         public bool HasErrors { get; set; }
         public Exception Exception { get; set; }

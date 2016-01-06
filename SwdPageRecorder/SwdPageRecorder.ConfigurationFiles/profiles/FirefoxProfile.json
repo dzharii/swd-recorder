@@ -8,7 +8,7 @@
   },
   "activation": {
     "localWebDriver": {
-      "classFullName": "OpenQA.Selenium.Firefox.FirefoxDriver"
+      "browserName": "firefox"
     },
     "remoteWebDriver": {
       "browserName": "firefox"
@@ -16,14 +16,14 @@
   },
   "capabilities": {
     "localWebDriver": [
-      [ "capName", "capValue" ]
+      // [ "capName", "capValue" ]
     ],
     "remoteWebDriver": [
-      [ "capName", "capValue" ]
+      // [ "capName", "capValue" ]
 
     ],
     "all": [
-      [ "capName", "capValue" ]
+      // [ "capName", "capValue" ]
     ]
 
   }

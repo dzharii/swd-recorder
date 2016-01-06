@@ -44,7 +44,7 @@ namespace SwdPageRecorder.ConfigurationManagement.Profiles
 
     public class Localwebdriver
     {
-        public string classFullName { get; set; }
+        public string browserName { get; set; }
     }
 
     public class Remotewebdriver
