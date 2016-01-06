@@ -23,6 +23,7 @@ build/SwdPageRecorder_Latest
 [Oo]bj/
 
 .vs
+DTAR_*
 
 # mstest test results
 TestResults
