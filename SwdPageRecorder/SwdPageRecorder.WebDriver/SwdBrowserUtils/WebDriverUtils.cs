@@ -16,12 +16,16 @@ using SwdPageRecorder.WebDriver.JsCommand;
 
 using System.Xml;
 using HtmlAgilityPack;
-
+using SwdPageRecorder.ConfigurationManagement.Profiles;
+using NLog;
+using Newtonsoft.Json;
 
 namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
 {
     public static class WebDriverUtils
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         public static IWebDriver Initialize(WebDriverOptions browserOptions, out bool isRemote)
         {
             IWebDriver driver = null;
@@ -43,7 +47,7 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
             DesiredCapabilities caps = null;
             Uri hubUri = new Uri(browserOptions.RemoteUrl);
 
-            switch (browserOptions.BrowserName)
+            switch (browserOptions.BrowserProfile.ActivationBrowserName)
             {
 
                 case WebDriverOptions.browser_Firefox:
@@ -80,8 +84,8 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                     caps = DesiredCapabilities.Android();
                     break;
                 default:
-                    throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserName),
-                                                "WebDriverOptions.BrowserName");
+                    throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserProfile.ActivationBrowserName),
+                                                "WebDriverOptions.BrowserProfile.ActivationBrowserName");
             }
             RemoteWebDriver newDriver = new RemoteWebDriver(hubUri, caps);
             return newDriver;
@@ -89,12 +93,17 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
 
         private static IWebDriver StartEmbededWebDriver(WebDriverOptions browserOptions)
         {
-            switch (browserOptions.BrowserName)
+            bool isRemoteDriver = false;
+            DesiredCapabilities caps = null;
+            switch (browserOptions.BrowserProfile.ActivationBrowserName)
             {
 
                 case WebDriverOptions.browser_Firefox:
-                    return new FirefoxDriver();
+                    caps = DesiredCapabilities.Firefox();
+                    caps = ConfigureCapabilities(caps, browserOptions.BrowserProfile, isRemoteDriver);
+                    return new FirefoxDriver(caps);
                 case WebDriverOptions.browser_Chrome:
+                    //TODO: Capabilities are not implemented. Use ChtomeOptions... Fuck!
                     return new ChromeDriver();
                 case WebDriverOptions.browser_InternetExplorer:
                     return new InternetExplorerDriver();
@@ -103,9 +112,49 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                 case WebDriverOptions.browser_Safari:
                     return new SafariDriver();
                 default:
-                    throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserName),   
-                                                "WebDriverOptions.BrowserName");
+                    throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserProfile.ActivationBrowserName),
+                                                "WebDriverOptions.BrowserProfile.ActivationBrowserName");
             }
+        }
+
+        private static DesiredCapabilities ConfigureCapabilities(DesiredCapabilities caps, Profile browserProfile, bool isRemoteDriver)
+        {
+
+            var profileCaps = browserProfile.ProfileConfig.capabilities;
+
+            if (isRemoteDriver)
+            {
+                foreach (string[] capability in profileCaps.remoteWebDriver)
+                {
+                    AddCapability(capability, caps);
+                }
+            }
+            else
+            {
+                foreach (string[] capability in profileCaps.localWebDriver)
+                {
+                    AddCapability(capability, caps);
+                }
+            }
+
+            foreach (string[] capability in profileCaps.all)
+            {
+                AddCapability(capability, caps);
+            }
+
+            return caps;
+        }
+
+        private static void AddCapability(string[] capability, DesiredCapabilities caps)
+        {
+            if (capability.Length != 2)
+            {
+                _logger.Error($"Incorrect Capability value: << {JsonConvert.SerializeObject(capability)} >>. The capability key/value pair array length is expected to be 2, but was: {capability.Length}");
+                return;
+            }
+            string capabilityKey = capability[0];
+            string capabilityValue = capability[1];
+            caps.SetCapability(capabilityKey, capabilityValue);
         }
     }
 }

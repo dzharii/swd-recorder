@@ -52,7 +52,7 @@ namespace SwdPageRecorder.UI
 
             var browserOptions = new WebDriverOptions()
             {
-                BrowserName = selectedProfile.ActivationBrowserName,
+                BrowserProfile = selectedProfile,
                 IsRemote = isRemoteDriver,
                 RemoteUrl = txtRemoteHubUrl.Text,
             };
@@ -187,7 +187,7 @@ namespace SwdPageRecorder.UI
             {
                 chkUseRemoteHub.Checked = browserOptions.IsRemote;
 
-                var index = ddlBrowserToStart.Items.IndexOf(browserOptions.BrowserName);
+                var index = ddlBrowserToStart.Items.IndexOf(browserOptions.BrowserProfile.DisplayName);
 
                 ddlBrowserToStart.SelectedIndex = index;
 

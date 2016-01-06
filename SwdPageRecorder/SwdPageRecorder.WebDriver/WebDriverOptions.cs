@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SwdPageRecorder.ConfigurationManagement.Profiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,7 @@ namespace SwdPageRecorder.WebDriver
             browser_Safari,
         };
 
-        public string BrowserName { get; set; }
+        public Profile BrowserProfile { get; set; }
 
         public bool IsRemote { get; set; }
 

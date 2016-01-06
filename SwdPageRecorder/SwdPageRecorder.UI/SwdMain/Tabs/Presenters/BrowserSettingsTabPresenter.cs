@@ -204,7 +204,7 @@ namespace SwdPageRecorder.UI
         private void SetDesiredCapabilities(WebDriverOptions browserOptions)
         {
 
-            switch (browserOptions.BrowserName)
+            switch (browserOptions.BrowserProfile.ActivationBrowserName)
             {
                 case WebDriverOptions.browser_Chrome:
                     _desiredCapabilitiesdata = new ChromeDesiredCapabilitiesData();

@@ -8,7 +8,7 @@ namespace SwdPageRecorder.ConfigurationManagement.Profiles
 {
     public class Profile
     {
-        public string ProfileDisplayName {
+        public string DisplayName {
             get {
                 return ProfileConfig.profile.displayName;
             }
@@ -32,7 +32,7 @@ namespace SwdPageRecorder.ConfigurationManagement.Profiles
 
         public override string ToString()
         {
-            return ProfileDisplayName;
+            return DisplayName;
         }
 
         public override int GetHashCode()

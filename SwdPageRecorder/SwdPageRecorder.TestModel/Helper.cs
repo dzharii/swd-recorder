@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Collections;
 
 using System.Diagnostics;
+using SwdPageRecorder.ConfigurationManagement.Profiles;
 
 namespace SwdPageRecorder.TestModel
 {
@@ -30,10 +31,13 @@ namespace SwdPageRecorder.TestModel
         
         public static void RunDefaultBrowser()
         {
+            var browserProfile = new Profile();
+            browserProfile.ProfileConfig.activation.browserName = "Firefox";
+
             WebDriverOptions options = new WebDriverOptions()
             {
-                BrowserName = WebDriverOptions.browser_Firefox
-                //BrowserName = WebDriverOptions.browser_PhantomJS,
+                BrowserProfile = browserProfile,
+
             };
 
             SwdBrowser.Initialize(options);

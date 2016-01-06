@@ -11,6 +11,7 @@ using SwdPageRecorder.WebDriver;
 using SwdPageRecorder.TestModel;
 
 using FluentAssertions;
+using SwdPageRecorder.ConfigurationManagement.Profiles;
 
 namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
 {
@@ -28,9 +29,12 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
         [Test(Description = "WebDriver")]
         public void Initialize_should_be_able_to_start_new_browser()
         {
+            Profile browserProfile = new Profile();
+            browserProfile.ProfileConfig.activation.browserName = WebDriverOptions.browser_HtmlUnitWithJavaScript;
+
             WebDriverOptions options = new WebDriverOptions()
             {
-                 BrowserName = WebDriverOptions.browser_HtmlUnitWithJavaScript,
+                 BrowserProfile = browserProfile,
                  IsRemote = true,
                  RemoteUrl = "http://localhost:4444/wd/hub/",
             };
@@ -85,9 +89,12 @@ namespace SwdPageRecorder.Tests.Integration.SwdPageRecorder.WebDriver
         [Test(Description = "WebDriver")]
         public void CloseDriver_should_close_the_opened_browser_instance()
         {
+            Profile browserProfile = new Profile();
+            browserProfile.ProfileConfig.activation.browserName = WebDriverOptions.browser_Firefox;
+
             WebDriverOptions options = new WebDriverOptions()
             {
-                BrowserName = WebDriverOptions.browser_Firefox,
+                BrowserProfile = browserProfile,
                 IsRemote = false,
             };
 
