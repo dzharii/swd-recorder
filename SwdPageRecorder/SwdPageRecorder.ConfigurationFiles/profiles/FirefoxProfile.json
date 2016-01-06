@@ -15,16 +15,16 @@
     }
   },
   "capabilities": {
-    "localWebDriver": {
+    "localWebDriver": [
+      [ "capName", "capValue" ]
+    ],
+    "remoteWebDriver": [
+      [ "capName", "capValue" ]
 
-    },
-    "remoteWebDriver": {
-
-
-    },
-    "all": {
-
-    }
+    ],
+    "all": [
+      [ "capName", "capValue" ]
+    ]
 
   }
 }
