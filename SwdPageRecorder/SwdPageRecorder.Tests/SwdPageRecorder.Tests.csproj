@@ -111,6 +111,7 @@
     <Compile Include="EndToEnd\Smoke_UI_OpenClose_Browser.cs" />
     <Compile Include="Integration\SwdPageRecorder.WebDriver\SwdBrowser_Tests.cs" />
     <Compile Include="SwdPageRecorder.ConfigurationManagement.Profiles\ProfileDiscovery_Tests.cs" />
+    <Compile Include="SwdPageRecorder.ConfigurationManagement.Profiles\TemporaryTestProfile.cs" />
     <Compile Include="SwdPageRecorder.ConfigurationManagement\Internals\BooleanFieldExpression_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
