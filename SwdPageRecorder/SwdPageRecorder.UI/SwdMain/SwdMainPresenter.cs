@@ -28,7 +28,9 @@ namespace SwdPageRecorder.UI
 {
     public class SwdMainPresenter
     {
-        private static MyConfigurationCollection.MyConfigEntry _config = MyConfiguration.GetCurrent();
+        // The reason why it is a method, and not the property or a field is the debugging nightmare 
+        // when you are receiving a TypeInitializer exceptions with corrupted stacktrace
+        private static MyConfigurationCollection.MyConfigEntry Config() => MyConfiguration.GetCurrent();
 
         private SwdMainView view;
         public IWebDriver Driver { get { return SwdBrowser.GetDriver(); } }
@@ -57,11 +59,21 @@ namespace SwdPageRecorder.UI
 
         private void ConfigureView()
         {
-            var browserUrl = _config?.application?.defaultUrl;
+            if (Config() == null) return;
+
+            var appConfig = Config().application;
+            if (appConfig == null) return;
+
+            var browserSettings = Config().application.browserSettingsTab;
+            if (browserSettings == null) return;
+
+            string browserUrl = Config().application.defaultUrl;
             if (browserUrl != null)
             {
                 view.SetUrlText(browserUrl);
             }
+
+            Presenters.BrowserSettingsTabPresenter.ConfigureView();
         }
 
         private void InitSwitchToControls()

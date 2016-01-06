@@ -20,6 +20,8 @@ using System.Windows.Forms;
 using System.Diagnostics;
 
 using System.Net;
+using SwdPageRecorder.ConfigurationManagement.MyConfigurationMappings;
+using SwdPageRecorder.ConfigurationManagement;
 
 namespace SwdPageRecorder.UI
 {
@@ -27,7 +29,9 @@ namespace SwdPageRecorder.UI
     {
         private BrowserSettingsTabView view = null;
         private DesiredCapabilitiesData _desiredCapabilitiesdata = null;
-        
+
+        private static MyConfigurationCollection.MyConfigEntry Config() => MyConfiguration.GetCurrent();
+
         public void InitWithView(BrowserSettingsTabView view)
         {
             this.view = view;
@@ -91,6 +95,30 @@ namespace SwdPageRecorder.UI
 
                 StartDriver(browserOptions, shouldMaximizeBrowserWindow);
             }
+        }
+
+        internal void ConfigureView()
+        {
+            if (Config() == null) return;
+
+            var appConfig = Config().application;
+            if (appConfig == null) return;
+
+            var browserSettings = Config().application.browserSettingsTab;
+            if (browserSettings == null) return;
+
+            bool? useRemoteHubConnection = browserSettings.useRemoteHubConnection;
+            if (useRemoteHubConnection != null)
+            {
+                view.SetUseRemoteHubConnection(useRemoteHubConnection == true);
+            }
+
+            bool? maximizeBrowserWindow = browserSettings.maximizeBrowserWindow;
+            if (maximizeBrowserWindow != null)
+            {
+                view.SetMaximizeBrowserWindow(maximizeBrowserWindow == true);
+            }
+
         }
 
         public void StartDriver(WebDriverOptions browserOptions, bool shouldMaximizeBrowserWindow)

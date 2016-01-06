@@ -112,7 +112,17 @@ namespace SwdPageRecorder.UI
             }
             HandleRemoteDriverSettingsEnabledStatus();
         }
-        
+
+        internal void SetUseRemoteHubConnection(bool useRemoteHubConnection)
+        {
+            chkUseRemoteHub.DoInvokeAction(() => chkUseRemoteHub.Checked = useRemoteHubConnection);
+        }
+
+        internal void SetMaximizeBrowserWindow(bool maximizeBrowserWindow)
+        {
+            chkMaximizeBrowserWindow.DoInvokeAction(() => chkMaximizeBrowserWindow.Checked = maximizeBrowserWindow);
+        }
+
         internal void DriverIsStopping()
         {
             SetControlsState("Start", true);

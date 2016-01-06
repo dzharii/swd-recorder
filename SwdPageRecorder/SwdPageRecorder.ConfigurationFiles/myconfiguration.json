@@ -5,7 +5,20 @@
     "name": "Default Configuration",
     "applyTo": [ "all" ],
     "application": {
-      "defaultUrl": "https://github.com/dzharii/swd-recorder"
-    }    
+      "defaultUrl": "https://github.com/dzharii/swd-recorder",
+      "browserSettingsTab": {
+        "useRemoteHubConnection": false,
+        "RemoteHubConnectionSettings": {
+          "remoteHubUrl": "http://127.0.0.1:4444/wd/hub",
+          "runStartSeleniumServerBatWhenWebdriverIsNotAvailable": false
+        },
+        "maximizeBrowserWindow": false,
+        "defaultBrowserProfileId": "Firefox",
+        "automaticallyRunDefaultBrowserProfileWhenPageRecorderStart": false
+      },
+      "LocatorsTab": {
+        "automaticallyStartWebElementExplorerWhenBrowserStarts": false
+      }
+    }
   }
 ]
