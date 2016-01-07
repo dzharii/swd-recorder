@@ -46,6 +46,7 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
         {
             DesiredCapabilities caps = null;
             Uri hubUri = new Uri(browserOptions.RemoteUrl);
+            const bool isRemoteDriver = true;
 
             switch (browserOptions.BrowserProfile.ActivationBrowserName)
             {
@@ -87,6 +88,9 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                     throw new ArgumentException(String.Format(@"<{0}> was not recognized as supported browser. This parameter is case sensitive", browserOptions.BrowserProfile.ActivationBrowserName),
                                                 "WebDriverOptions.BrowserProfile.ActivationBrowserName");
             }
+
+            caps = ConfigureCapabilities(caps, browserOptions.BrowserProfile, isRemoteDriver);
+
             RemoteWebDriver newDriver = new RemoteWebDriver(hubUri, caps);
             return newDriver;
         }
