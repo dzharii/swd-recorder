@@ -1,13 +1,13 @@
 ﻿{
   "profile": {
-    "profileId": "Firefox43Portable",
-    "displayName": "Firefox43Portable",
+    "profileId": "PhantomJS",
+    "displayName": "PhantomJS",
     "displayPriority": 0,
     "canUseWithLocalWebdriver": true,
     "canUseWithRemoteWebdriver": true
   },
   "activation": {
-    "browserName": "Firefox",
+    "browserName": "PhantomJS",
     "localWebDriver": {
 
     },
@@ -15,16 +15,9 @@
     }
   },
   "capabilities": {
-    "localWebDriver": [
-       [ "firefox_binary", "C:\\FF43Portable\\FirefoxPortable.exe" ]
-    ],
     "remoteWebDriver": [
       // [ "capName", "capValue" ]
 
-    ],
-    "all": [
-      // [ "capName", "capValue" ]
     ]
-
   }
 }

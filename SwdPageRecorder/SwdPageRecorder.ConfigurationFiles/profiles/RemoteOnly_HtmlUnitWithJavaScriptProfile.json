@@ -1,0 +1,23 @@
+﻿{
+  "profile": {
+    "profileId": "HtmlUnitWithJavaScript",
+    "displayName": "HtmlUnitWithJavaScript",
+    "displayPriority": 0,
+    "canUseWithLocalWebdriver": false,
+    "canUseWithRemoteWebdriver": true
+  },
+  "activation": {
+    "browserName": "HtmlUnitWithJavaScript",
+    "localWebDriver": {
+
+    },
+    "remoteWebDriver": {
+    }
+  },
+  "capabilities": {
+    "remoteWebDriver": [
+      // [ "capName", "capValue" ]
+
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+﻿{
+  "profile": {
+    "profileId": "Chrome",
+    "displayName": "Chrome",
+    "displayPriority": 1,
+    "canUseWithLocalWebdriver": true,
+    "canUseWithRemoteWebdriver": true
+  },
+  "activation": {
+    "browserName": "Chrome",
+    "localWebDriver": {
+
+    },
+    "remoteWebDriver": {
+    }
+  },
+  "capabilities": {
+    "remoteWebDriver": [
+      // [ "capName", "capValue" ]
+
+    ]
+  }
+}
