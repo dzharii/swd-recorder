@@ -72,12 +72,12 @@ namespace SwdPageRecorder.UI
         private void ChangeBrowsersList(bool showRemoteWebDriverProfiles)
         {
 
-            var selectedItem = ddlBrowserToStart.SelectedItem;
+            Profile selectedItem = ddlBrowserToStart.SelectedItem as Profile;
             Profile previousValue = null;
 
             if (selectedItem != null)
             {
-                previousValue = ddlBrowserToStart.SelectedItem as Profile;
+                previousValue = selectedItem;
             }
 
             ddlBrowserToStart.Items.Clear();
@@ -85,7 +85,7 @@ namespace SwdPageRecorder.UI
             Profile[] addedItems = null;
             if (showRemoteWebDriverProfiles)
             {
-                addedItems =  Presenter.GetRemoteWebdriverProfiles();
+                addedItems = Presenter.GetRemoteWebdriverProfiles();
             }
             else
             {
@@ -93,10 +93,28 @@ namespace SwdPageRecorder.UI
             }
             ddlBrowserToStart.Items.AddRange(addedItems);
 
-            int index = Array.IndexOf(addedItems, previousValue);
+            int index = TryFindPreviousIndex(previousValue, addedItems);
+
             index = index >= 0 ? index : 0;
             ddlBrowserToStart.SelectedIndex = index;
+        }
 
+        private int TryFindPreviousIndex(Profile previousValue, Profile[] addedItems)
+        {
+            int index = -1;
+            if (previousValue == null) return index;
+            if (addedItems == null) return index;
+
+            for (var i = 0; i < addedItems.Length; i++)
+            {
+                if (previousValue.DisplayName != null && addedItems[i].DisplayName == previousValue.DisplayName)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
         }
 
         private void chkUseRemoteHub_CheckedChanged(object sender, EventArgs e)
