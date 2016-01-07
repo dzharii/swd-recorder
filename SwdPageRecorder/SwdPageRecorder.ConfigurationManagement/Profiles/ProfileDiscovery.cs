@@ -51,6 +51,11 @@ namespace SwdPageRecorder.ConfigurationManagement.Profiles
                 }
                 resultProfilesList.Add(profile);
             }
+
+            resultProfilesList = resultProfilesList.OrderBy(item => item.ProfileConfig.profile.displayPriority)
+                                                   .ThenBy(item => item.DisplayName)
+                                                   .ToList();
+
             return resultProfilesList.ToArray();
         }
     }

@@ -2,7 +2,7 @@
   "profile": {
     "profileId": "HtmlUnitWithJavaScript",
     "displayName": "HtmlUnitWithJavaScript",
-    "displayPriority": 0,
+    "displayPriority": 10,
     "canUseWithLocalWebdriver": false,
     "canUseWithRemoteWebdriver": true
   },

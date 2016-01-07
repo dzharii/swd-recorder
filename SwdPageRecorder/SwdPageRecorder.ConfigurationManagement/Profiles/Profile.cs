@@ -44,6 +44,7 @@ namespace SwdPageRecorder.ConfigurationManagement.Profiles
         public bool HasErrors { get; set; }
         public Exception Exception { get; set; }
         public string FileName { get; set; }
+        
 
         public Profile()
         {
