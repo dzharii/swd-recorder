@@ -98,6 +98,9 @@ xcopy %SwdUiPath%\profiles  SwdPageRecorder_Latest\profiles /e/y/i >>%STDOUT_DEF
 
 @echo Copy -- DONE
 
+@echo create empty folder for Screenshots
+md SwdPageRecorder_Latest\Screenshots
+
 @REM # Copy WebDriver DLL files
 
 copy %SwdUiPath%\WebDriver.dll SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
