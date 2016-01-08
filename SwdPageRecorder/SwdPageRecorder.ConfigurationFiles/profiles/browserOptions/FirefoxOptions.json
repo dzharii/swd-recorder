@@ -1,0 +1,60 @@
+﻿{
+  "FirefoxOptions": {
+    // Sets a value indicating whether or not to use the
+    // Mozilla-provided Marionette implementation.
+    "isMarionette": true
+  },
+  "FirefoxBinary": {
+    "firefoxBinaryFilePath":  ""
+  }
+  "FirefoxProfile": {
+
+    // Initializes a new instance of the FirefoxProfile class
+    // using a specific profile directory.
+    "useExistingProfilePath": "",
+
+    // Delete the source directory of the profile upon cleaning.
+    "deleteSourceOnClean": false,
+
+    // Adds a Firefox Extensions to this profile
+    "addExtensions": [
+      // "extension1 Path...",
+      // "extension2 Path..."
+    ],
+
+    // Sets a preferences in the profile.
+    "setPreferences": [
+      //  [ "profilePreferenceName1", "profilePreferenceStringValue" ],
+      //  [ "profilePreferenceName2", 42 ],
+      //  [ "profilePreferenceName3", false],
+    ],
+
+    // Sets a value indicating whether Firefox should accept
+    // SSL certificates which have expired, signed by
+    // an unknown authority or are generally untrusted.
+    // Set to true by default.
+    "acceptUntrustedCertificates": true,
+
+    // Linux only: sets a value indicating whether to always load the
+    // library for allowing Firefox to execute commands
+    // without its window having focus.
+    "alwaysLoadNoFocusLibrary": false,
+
+    // sets a value indicating whether Firefox assume untrusted
+    // SSL certificates come from an untrusted issuer
+    // or are self-signed. Set to true by default.
+    "assumeUntrustedCertificateIssuer": true,
+    // sets a value indicating whether to delete this
+    // profile after use with the OpenQA.Selenium.Firefox.FirefoxDriver.
+    "deleteProfileAfterUse": false,
+
+    // Gets or sets a value indicating whether
+    // native events are enabled.
+    "enableNativeEvents": false,
+
+    // Gets or sets the port on which the profile
+    // connects to the WebDriver extension.
+    // -1 means "use default"
+    "port": -1,
+  }
+}
