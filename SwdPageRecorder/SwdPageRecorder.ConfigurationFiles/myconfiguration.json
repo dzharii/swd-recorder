@@ -9,7 +9,8 @@
       "browserSettingsTab": {
         "useRemoteHubConnection": false,
         "RemoteHubConnectionSettings": {
-          "remoteHubUrl": "http://127.0.0.1:4444/wd/hub",
+          //"remoteHubUrl": "http://127.0.0.1:4444/wd/hub",
+          "remoteHubUrl": "http://127.0.0.1:4445/wd/hub",
           "runStartSeleniumServerBatWhenWebdriverIsNotAvailable": false
         },
         "maximizeBrowserWindow": false,

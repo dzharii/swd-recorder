@@ -8,11 +8,6 @@
   },
   "activation": {
     "browserName": "PhantomJS",
-    "localWebDriver": {
-
-    },
-    "remoteWebDriver": {
-    }
   },
   "capabilities": {
     "remoteWebDriver": [

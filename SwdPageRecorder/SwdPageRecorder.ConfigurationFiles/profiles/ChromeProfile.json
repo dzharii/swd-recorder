@@ -7,12 +7,7 @@
     "canUseWithRemoteWebdriver": true
   },
   "activation": {
-    "browserName": "Chrome",
-    "localWebDriver": {
-
-    },
-    "remoteWebDriver": {
-    }
+    "browserName": "Chrome"
   },
   "capabilities": {
     "remoteWebDriver": [

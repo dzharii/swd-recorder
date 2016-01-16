@@ -7,17 +7,11 @@
     "canUseWithRemoteWebdriver": true
   },
   "activation": {
-    "browserName": "Safari",
-    "localWebDriver": {
-
-    },
-    "remoteWebDriver": {
-    }
+    "browserName": "Safari"
   },
   "capabilities": {
     "remoteWebDriver": [
       // [ "capName", "capValue" ]
-
     ]
   }
 }

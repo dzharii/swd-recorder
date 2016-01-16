@@ -7,12 +7,7 @@
     "canUseWithRemoteWebdriver": true
   },
   "activation": {
-    "browserName": "InternetExplorer",
-    "localWebDriver": {
-
-    },
-    "remoteWebDriver": {
-    }
+    "browserName": "InternetExplorer"
   },
   "capabilities": {
     "remoteWebDriver": [

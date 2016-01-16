@@ -89,7 +89,7 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                                                 "WebDriverOptions.BrowserProfile.ActivationBrowserName");
             }
 
-            caps = ConfigureCapabilities(caps, browserOptions.BrowserProfile, isRemoteDriver);
+            caps = ConfigureRemoteWebdriverCapabilities(caps, browserOptions.BrowserProfile, isRemoteDriver);
 
             RemoteWebDriver newDriver = new RemoteWebDriver(hubUri, caps);
             return newDriver;
@@ -104,7 +104,7 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
 
                 case WebDriverOptions.browser_Firefox:
                     caps = DesiredCapabilities.Firefox();
-                    caps = ConfigureCapabilities(caps, browserOptions.BrowserProfile, isRemoteDriver);
+                    caps = ConfigureRemoteWebdriverCapabilities(caps, browserOptions.BrowserProfile, isRemoteDriver);
                     return new FirefoxDriver(caps);
                 case WebDriverOptions.browser_Chrome:
                     //TODO: Capabilities are not implemented. Use ChtomeOptions... Fuck!
@@ -121,7 +121,7 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
             }
         }
 
-        private static DesiredCapabilities ConfigureCapabilities(DesiredCapabilities caps, Profile browserProfile, bool isRemoteDriver)
+        private static DesiredCapabilities ConfigureRemoteWebdriverCapabilities(DesiredCapabilities caps, Profile browserProfile, bool isRemoteDriver)
         {
 
             var profileCaps = browserProfile.ProfileConfig.capabilities;
@@ -132,18 +132,6 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                 {
                     AddCapability(capability, caps);
                 }
-            }
-            else
-            {
-                foreach (string[] capability in profileCaps.localWebDriver)
-                {
-                    AddCapability(capability, caps);
-                }
-            }
-
-            foreach (string[] capability in profileCaps.all)
-            {
-                AddCapability(capability, caps);
             }
 
             return caps;

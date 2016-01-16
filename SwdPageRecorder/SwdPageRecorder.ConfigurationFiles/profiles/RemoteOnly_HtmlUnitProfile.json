@@ -7,12 +7,7 @@
     "canUseWithRemoteWebdriver": true
   },
   "activation": {
-    "browserName": "HtmlUnit",
-    "localWebDriver": {
-
-    },
-    "remoteWebDriver": {
-    }
+    "browserName": "HtmlUnit"
   },
   "capabilities": {
     "remoteWebDriver": [

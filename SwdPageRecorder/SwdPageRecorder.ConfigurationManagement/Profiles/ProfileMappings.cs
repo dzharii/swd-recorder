@@ -33,37 +33,17 @@ namespace SwdPageRecorder.ConfigurationManagement.Profiles
     public class Activation
     {
         public string browserName { get; set; }
-        public Localwebdriver localWebDriver { get; set; }
-        public Remotewebdriver remoteWebDriver { get; set; }
-
-        public Activation()
-        {
-            localWebDriver = new Localwebdriver();
-            remoteWebDriver = new Remotewebdriver();
-        }
     }
 
-    public class Localwebdriver
-    {
-        
-    }
 
-    public class Remotewebdriver
-    {
-
-    }
 
     public class Capabilities
     {
-        public string[][] localWebDriver { get; set; }
         public string[][] remoteWebDriver { get; set; }
-        public string[][] all { get; set; }
 
         public Capabilities()
         {
-            localWebDriver = new string[][] { };
             remoteWebDriver = new string[][] { };
-            all = new string[][] { };
         }
     }
 

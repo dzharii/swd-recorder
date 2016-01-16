@@ -6,7 +6,7 @@
   },
   "FirefoxBinary": {
     "firefoxBinaryFilePath":  ""
-  }
+  },
   "FirefoxProfile": {
 
     // Initializes a new instance of the FirefoxProfile class
@@ -54,7 +54,7 @@
 
     // Gets or sets the port on which the profile
     // connects to the WebDriver extension.
-    // -1 means "use default"
-    "port": -1,
+    // The value -1 or 0 means "use default"
+    "port": -1
   }
 }
