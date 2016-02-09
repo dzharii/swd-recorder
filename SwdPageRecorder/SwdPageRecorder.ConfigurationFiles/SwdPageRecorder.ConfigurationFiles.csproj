@@ -46,7 +46,9 @@
     <None Include="myConfiguration.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="profiles\browserOptions\FirefoxOptions.json" />
+    <None Include="profiles\browserOptions\FirefoxOptions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="profiles\RemoteOnly_SaucelabsFirefoxWindowsProfile.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
