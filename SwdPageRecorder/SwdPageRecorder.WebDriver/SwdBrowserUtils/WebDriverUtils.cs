@@ -110,7 +110,7 @@ namespace SwdPageRecorder.WebDriver.SwdBrowserUtils
                     //TODO: Capabilities are not implemented. Use ChtomeOptions... Fuck!
                     return new ChromeDriver();
                 case WebDriverOptions.browser_InternetExplorer:
-                    return new InternetExplorerDriver();
+                    return new InternetExplorerDriver(new InternetExplorerOptions() { IntroduceInstabilityByIgnoringProtectedModeSettings = true });
                 case WebDriverOptions.browser_PhantomJS:
                     return new PhantomJSDriver();
                 case WebDriverOptions.browser_Safari:

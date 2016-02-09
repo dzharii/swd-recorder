@@ -8,6 +8,8 @@
 (function() {
   var SWD_Page_Recorder, addStyle, bye, createCommand, dbg, getInputElementsByTypeAndValue, getPageXY, getCssSelectorOF, getElementId, getPathTo, handler, hello, prev, preventEvent, pseudoGuid, rightClickHandler, say;
 
+  var ELEMENT_NODE = 1;
+
   say = function(something) {
     if (typeof console !== "undefined" && console !== null) {
       return console.log(something);
@@ -60,7 +62,7 @@ getElementId = function(element) {
          var selector = '';
          hello('getElementId');
  
-         if (element instanceof Element && element.nodeType === Node.ELEMENT_NODE && element.id) {
+         if (element instanceof Element && element.nodeType === ELEMENT_NODE && element.id) {
              selector = element.id;
          }
          bye('getElementId');
@@ -72,7 +74,7 @@ getElementId = function(element) {
          if (!(element instanceof Element))
              return;
          var path = [];
-         while (element.nodeType === Node.ELEMENT_NODE) {
+         while (element.nodeType === ELEMENT_NODE) {
              var selector = element.nodeName.toLowerCase();
              if (element.id) {
                  if (element.id.indexOf('-') > -1) {
@@ -119,7 +121,7 @@ getElementId = function(element) {
         siblings_length = siblings.length;
         for (cnt = 0; cnt < siblings_length; cnt++) {
             var element_sibling = siblings[cnt];
-            if (element_sibling.nodeType !== 1) { // not ELEMENT_NODE
+            if (element_sibling.nodeType !== ELEMENT_NODE) { // not ELEMENT_NODE
                 continue;
             }
             if (element_sibling === element) {

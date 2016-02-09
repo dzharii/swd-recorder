@@ -12,8 +12,8 @@
   "capabilities": {
     "remoteWebDriver": [
       // [ "capName", "capValue" ],
-      [ "username", "SirmoSirmo" ],
-      [ "accessKey", "65c6c894-958d-443a-bfee-2d70cb1a6603" ],
+      [ "username", "YoName" ],
+      [ "accessKey", "65c6c894-666-443a-bfee-2d70cb1a6603" ],
       [ "platform", "Windows" ]
 
     ]

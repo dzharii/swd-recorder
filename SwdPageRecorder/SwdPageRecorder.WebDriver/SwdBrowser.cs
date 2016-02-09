@@ -1,29 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.IO;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Safari;
-using OpenQA.Selenium.PhantomJS;
 using System.Net;
-using SwdPageRecorder.WebDriver.JsCommand;
-using System.Collections.ObjectModel;
-
-using System.Xml;
-
+using System.Linq;
+using OpenQA.Selenium;
 using HtmlAgilityPack;
-
-using SwdPageRecorder.WebDriver.SwdBrowserUtils;
-
-using SwdPageRecorder.WebDriver.OpenQA.Selenium.Support.PageObjects;
 using System.Reflection;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Remote;
+using System.Collections.Generic;
+using SwdPageRecorder.WebDriver.JsCommand;
+using SwdPageRecorder.WebDriver.SwdBrowserUtils;
+using SwdPageRecorder.WebDriver.OpenQA.Selenium.Support.PageObjects;
 
 
 namespace SwdPageRecorder.WebDriver
@@ -495,7 +481,7 @@ namespace SwdPageRecorder.WebDriver
         }
 
         /// <summary>
-        /// Tests remote hub availabbility. 
+        /// Tests remote hub availability. 
         /// Throws Exception when the hub is not available. 
         /// </summary>
         /// <param name="url"></param>

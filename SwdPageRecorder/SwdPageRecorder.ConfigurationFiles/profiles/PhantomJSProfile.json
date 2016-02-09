@@ -7,7 +7,7 @@
     "canUseWithRemoteWebdriver": true
   },
   "activation": {
-    "browserName": "PhantomJS",
+    "browserName": "PhantomJS"
   },
   "capabilities": {
     "remoteWebDriver": [
