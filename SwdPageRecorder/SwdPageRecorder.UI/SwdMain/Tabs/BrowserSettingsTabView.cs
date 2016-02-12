@@ -93,10 +93,12 @@ namespace SwdPageRecorder.UI
             }
             ddlBrowserToStart.Items.AddRange(addedItems);
 
-            int index = TryFindPreviousIndex(previousValue, addedItems);
-
-            index = index >= 0 ? index : 0;
-            ddlBrowserToStart.SelectedIndex = index;
+            if (ddlBrowserToStart.Items.Count > 0)
+            {
+                int index = TryFindPreviousIndex(previousValue, addedItems);
+                index = index >= 0 ? index : 0;
+                ddlBrowserToStart.SelectedIndex = index;
+            }
         }
 
         private int TryFindPreviousIndex(Profile previousValue, Profile[] addedItems)
