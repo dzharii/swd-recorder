@@ -112,6 +112,23 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        internal void DeleteExistingElementFromPage(TreeNode existingNode) {
+
+            var action = (MethodInvoker)delegate
+            {
+                tvWebElements.Nodes[0].Nodes.Remove(existingNode);                
+            };
+
+            if (tvWebElements.InvokeRequired)
+            {
+                tvWebElements.Invoke(action);
+            }
+            else
+            {
+                action();
+            }
+        }
+
         internal void UpdateLastCallStat(string elapsedTime)
         {
             lblLastCallTime.DoInvokeAction(() =>

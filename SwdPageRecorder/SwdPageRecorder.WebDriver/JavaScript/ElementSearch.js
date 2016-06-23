@@ -345,9 +345,10 @@ getElementId = function(element) {
     };
 
     SWD_Page_Recorder.prototype.addElement = function() {
-      var JsonData, XPathLocatorElement, codeIDTextElement;
+      var JsonData, XPathLocatorElement, codeIDTextElement, htmlIdElement;
       hello("addElement");
       codeIDTextElement = document.getElementById("SwdPR_PopUp_CodeIDText");
+      htmlIdElement = document.getElementById("SwdPR_PopUp_ElementId");
       CssSelectorElement = document.getElementById("SwdPR_PopUp_CssSelector");
       XPathLocatorElement = document.getElementById("SwdPR_PopUp_XPathLocator");
       JsonData = {
@@ -355,6 +356,7 @@ getElementId = function(element) {
         "Caller": "addElement",
         "CommandId": pseudoGuid(),
         "ElementCodeName": codeIDTextElement.value,
+        "ElementId": (htmlIdElement.hasChildNodes())?htmlIdElement.firstChild.nodeValue:"",
         "ElementCssSelector": CssSelectorElement.firstChild.nodeValue,
         "ElementXPath": XPathLocatorElement.firstChild.nodeValue
       };

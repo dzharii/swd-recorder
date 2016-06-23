@@ -200,11 +200,14 @@ namespace SwdPageRecorder.UI
                     simpleFrame = new SimpleFrame(-1, "noFrameChosen", "noFrameChosen", "noFrameChosen", null);
                 }
 
+                bool emptyHtmlId = String.IsNullOrEmpty(addElementCommand.ElementId);
                 var element = new WebElementDefinition()
                 {
                     Name = addElementCommand.ElementCodeName,
-                    HowToSearch = LocatorSearchMethod.XPath,
-                    Locator = addElementCommand.ElementXPath,
+                    HtmlId = addElementCommand.ElementId,
+                    Xpath = addElementCommand.ElementXPath,
+                    HowToSearch = (emptyHtmlId) ? LocatorSearchMethod.XPath: LocatorSearchMethod.Id,
+                    Locator = (emptyHtmlId) ? addElementCommand.ElementXPath: addElementCommand.ElementId,
                     CssSelector = addElementCommand.ElementCssSelector,
                     frame = simpleFrame,
                 };

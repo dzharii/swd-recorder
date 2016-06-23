@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRemoveWebElement = new System.Windows.Forms.Button();
             this.pnlLocatorEditContainer = new System.Windows.Forms.Panel();
             this.txtHtmlElementFrameId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,6 +66,7 @@
             this.btnHighlightWebElementInBrowser = new System.Windows.Forms.Button();
             this.btnNewWebElement = new System.Windows.Forms.Button();
             this.btnUpdateDeclaration = new System.Windows.Forms.Button();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox2.SuspendLayout();
             this.pnlLocatorEditContainer.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,6 +78,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox2.Controls.Add(this.btnRemoveWebElement);
             this.groupBox2.Controls.Add(this.pnlLocatorEditContainer);
             this.groupBox2.Controls.Add(this.btnReadElementProperties);
             this.groupBox2.Controls.Add(this.btnCopyWebElement);
@@ -87,6 +91,18 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "WebElement";
+            // 
+            // btnRemoveWebElement
+            // 
+            this.btnRemoveWebElement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveWebElement.Location = new System.Drawing.Point(661, 66);
+            this.btnRemoveWebElement.Name = "btnRemoveWebElement";
+            this.btnRemoveWebElement.Enabled = false;
+            this.btnRemoveWebElement.Size = new System.Drawing.Size(85, 23);
+            this.btnRemoveWebElement.TabIndex = 20;
+            this.btnRemoveWebElement.Text = "Remove";
+            this.btnRemoveWebElement.UseVisualStyleBackColor = true;
+            this.btnRemoveWebElement.Click += new System.EventHandler(this.btnRemoveWebElement_Click);
             // 
             // pnlLocatorEditContainer
             // 
@@ -158,7 +174,7 @@
             this.txtCssSelector.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtCssSelector.Location = new System.Drawing.Point(135, 57);
             this.txtCssSelector.Name = "txtCssSelector";
-            this.txtCssSelector.Size = new System.Drawing.Size(496, 20);
+            this.txtCssSelector.Size = new System.Drawing.Size(462, 20);
             this.txtCssSelector.TabIndex = 3;
             this.txtCssSelector.Enter += new System.EventHandler(this.txtCssSelector_Enter);
             // 
@@ -166,7 +182,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(584, 272);
+            this.button2.Location = new System.Drawing.Point(550, 272);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(47, 23);
             this.button2.TabIndex = 20;
@@ -187,7 +203,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Enabled = false;
-            this.label9.Location = new System.Drawing.Point(332, 255);
+            this.label9.Location = new System.Drawing.Point(298, 255);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(122, 13);
             this.label9.TabIndex = 19;
@@ -208,7 +224,7 @@
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox7.Enabled = false;
             this.textBox7.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.textBox7.Location = new System.Drawing.Point(335, 275);
+            this.textBox7.Location = new System.Drawing.Point(301, 275);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(238, 20);
             this.textBox7.TabIndex = 12;
@@ -261,7 +277,7 @@
             this.txtOtherLocator.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtOtherLocator.Location = new System.Drawing.Point(135, 108);
             this.txtOtherLocator.Name = "txtOtherLocator";
-            this.txtOtherLocator.Size = new System.Drawing.Size(496, 20);
+            this.txtOtherLocator.Size = new System.Drawing.Size(462, 20);
             this.txtOtherLocator.TabIndex = 5;
             this.txtOtherLocator.Enter += new System.EventHandler(this.txtOtherLocator_Enter);
             // 
@@ -281,7 +297,7 @@
             this.txtXPath.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtXPath.Location = new System.Drawing.Point(135, 80);
             this.txtXPath.Name = "txtXPath";
-            this.txtXPath.Size = new System.Drawing.Size(496, 20);
+            this.txtXPath.Size = new System.Drawing.Size(462, 20);
             this.txtXPath.TabIndex = 4;
             this.txtXPath.Enter += new System.EventHandler(this.txtXPath_Enter);
             // 
@@ -302,7 +318,7 @@
             this.txtHtmlId.Font = new System.Drawing.Font("Lucida Console", 9.75F);
             this.txtHtmlId.Location = new System.Drawing.Point(135, 32);
             this.txtHtmlId.Name = "txtHtmlId";
-            this.txtHtmlId.Size = new System.Drawing.Size(496, 20);
+            this.txtHtmlId.Size = new System.Drawing.Size(462, 20);
             this.txtHtmlId.TabIndex = 2;
             this.txtHtmlId.Enter += new System.EventHandler(this.txtHtmlId_Enter);
             // 
@@ -315,7 +331,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtPropArg1);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(335, 161);
+            this.groupBox1.Location = new System.Drawing.Point(301, 161);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(302, 91);
             this.groupBox1.TabIndex = 13;
@@ -386,7 +402,7 @@
             this.txtWebElementName.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txtWebElementName.Location = new System.Drawing.Point(135, 6);
             this.txtWebElementName.Name = "txtWebElementName";
-            this.txtWebElementName.Size = new System.Drawing.Size(496, 20);
+            this.txtWebElementName.Size = new System.Drawing.Size(462, 20);
             this.txtWebElementName.TabIndex = 1;
             // 
             // txtPropHtmlTag
@@ -421,7 +437,7 @@
             // btnReadElementProperties
             // 
             this.btnReadElementProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReadElementProperties.Location = new System.Drawing.Point(660, 109);
+            this.btnReadElementProperties.Location = new System.Drawing.Point(661, 120);
             this.btnReadElementProperties.Name = "btnReadElementProperties";
             this.btnReadElementProperties.Size = new System.Drawing.Size(85, 23);
             this.btnReadElementProperties.TabIndex = 18;
@@ -443,7 +459,7 @@
             // btnHighlightWebElementInBrowser
             // 
             this.btnHighlightWebElementInBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHighlightWebElementInBrowser.Location = new System.Drawing.Point(660, 75);
+            this.btnHighlightWebElementInBrowser.Location = new System.Drawing.Point(661, 92);
             this.btnHighlightWebElementInBrowser.Name = "btnHighlightWebElementInBrowser";
             this.btnHighlightWebElementInBrowser.Size = new System.Drawing.Size(85, 23);
             this.btnHighlightWebElementInBrowser.TabIndex = 15;
@@ -492,6 +508,7 @@
 
         #endregion
 
+        public System.Windows.Forms.Timer timer;
         public System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.Button btnCopyWebElement;
         public System.Windows.Forms.Button btnHighlightWebElementInBrowser;
@@ -528,5 +545,6 @@
         public System.Windows.Forms.TextBox txtHtmlElementFrameId;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pnlLocatorEditContainer;
+        public System.Windows.Forms.Button btnRemoveWebElement;
     }
 }
