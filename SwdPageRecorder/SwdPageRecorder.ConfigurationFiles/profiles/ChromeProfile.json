@@ -2,7 +2,7 @@
   "profile": {
     "profileId": "Chrome",
     "displayName": "Chrome",
-    "displayPriority": 1,
+    "displayPriority": 0,
     "canUseWithLocalWebdriver": true,
     "canUseWithRemoteWebdriver": true
   },

@@ -66,39 +66,42 @@ del /F /Q SwdPageRecorder_Latest\SwdPageRecorder.pdb
 @echo [6/8]    Shovelling coal into the build...
 @REM  Copy license, javascript files, code templates and WebDriver.dll
 
-@echo Copy JavaScript scripts
+@echo .... Copy JavaScript scripts
 xcopy %SwdUiPath%\JavaScript  SwdPageRecorder_Latest\JavaScript /e/y/i >>%STDOUT_DEFAULT%
 
-@echo Copy Code Templates
+@echo .... Copy Code Templates
 xcopy %SwdUiPath%\CodeTemplates  SwdPageRecorder_Latest\CodeTemplates /e/y/i >>%STDOUT_DEFAULT%
 
-@echo Copy JavaScript Snippets
+@echo .... Copy JavaScript Snippets
 xcopy %SwdUiPath%\Snippets  SwdPageRecorder_Latest\Snippets /e/y/i >>%STDOUT_DEFAULT%
 
-@echo Copy Nlog configuration file
+@echo .... Copy Nlog configuration file
 copy %SwdUiPath%\NLog.config SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 
-@echo Copy license file
+@echo .... Copy license file
 copy ..\license.md SwdPageRecorder_Latest\license.txt /y >>%STDOUT_DEFAULT%
 
-@echo Copy Selenium Start batch file
+@echo .... Copy Selenium Start batch file
 copy %SwdUiPath%\start_selenium_server.bat SwdPageRecorder_Latest\start_selenium_server.bat /y >>%STDOUT_DEFAULT%
 
-@echo .NET Application Configuration file
+@echo .... .NET Application Configuration file
 copy %SwdUiPath%\SwdPageRecorder.UI.exe.config SwdPageRecorder_Latest\SwdPageRecorder.exe.config /y >>%STDOUT_DEFAULT%
 
-@echo Copy Samples
+@echo .... Copy Samples
 copy %SwdUiPath%\sample_ParserWebElements.js SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 copy %SwdUiPath%\sample_ParserWebElements.lib.json2.js SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 
-@echo SWD Recorder configuration files and browser profiles
+@echo .... Copy chromedriver.exe
+copy %SwdUiPath%\chromedriver.exe SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
+
+@echo .... SWD Recorder configuration files and browser profiles
 copy %SwdUiPath%\_defaultConfiguration.json SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 copy %SwdUiPath%\myConfiguration.json SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 xcopy %SwdUiPath%\profiles  SwdPageRecorder_Latest\profiles /e/y/i >>%STDOUT_DEFAULT%
 
-@echo Copy -- DONE
+@echo .... Copy -- DONE
 
-@echo create empty folder for Screenshots
+@echo .... create empty folder for Screenshots
 md SwdPageRecorder_Latest\Screenshots
 
 @REM # Copy WebDriver DLL files

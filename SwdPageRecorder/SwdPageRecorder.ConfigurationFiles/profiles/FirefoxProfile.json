@@ -2,7 +2,7 @@
   "profile": {
     "profileId": "Firefox",
     "displayName": "Firefox",
-    "displayPriority": 0,
+    "displayPriority": 1,
     "canUseWithLocalWebdriver": true,
     "canUseWithRemoteWebdriver": true
   },
