@@ -34,6 +34,7 @@
             this.btnOpenBrowserPreview = new System.Windows.Forms.Button();
             this.btnOpenScreenshotFolder = new System.Windows.Forms.Button();
             this.btnTakePageScreenshot = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btnBrowser_Go = new System.Windows.Forms.Button();
             this.txtBrowserUrl = new System.Windows.Forms.TextBox();
             this.pnlLoadingBar = new System.Windows.Forms.Panel();
@@ -70,7 +71,6 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.playGroundView1 = new SwdPageRecorder.UI.PlayGroundView();
             this.pageObjectDefinitionView = new SwdPageRecorder.UI.PageObjectDefinitionView();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.pnlLoadingBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -140,6 +140,18 @@
             this.btnTakePageScreenshot.TabIndex = 3;
             this.btnTakePageScreenshot.UseVisualStyleBackColor = true;
             this.btnTakePageScreenshot.Click += new System.EventHandler(this.btnTakePageScreenshot_Click);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(868, 18);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(116, 13);
+            this.linkLabel1.TabIndex = 2;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Visit project\'s home site";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // btnBrowser_Go
             // 
@@ -535,18 +547,6 @@
             this.pageObjectDefinitionView.Name = "pageObjectDefinitionView";
             this.pageObjectDefinitionView.Size = new System.Drawing.Size(244, 420);
             this.pageObjectDefinitionView.TabIndex = 2;
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(868, 18);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(116, 13);
-            this.linkLabel1.TabIndex = 2;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Visit project\'s home site";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // SwdMainView
             // 

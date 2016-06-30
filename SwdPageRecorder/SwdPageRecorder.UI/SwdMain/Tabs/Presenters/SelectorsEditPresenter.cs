@@ -74,6 +74,11 @@ namespace SwdPageRecorder.UI
             view.AppendWebElementNameWith("__Copy");
         }
 
+        internal void RemoveWebElement(WebElementDefinition element) 
+        {
+            Presenters.PageObjectDefinitionPresenter.removeElementFromObjectPage(element);
+        }
+
         internal void HighLightWebElement(WebElementDefinition element)
         {
             if (!IsValidForm()) return;
@@ -89,6 +94,7 @@ namespace SwdPageRecorder.UI
             Presenters.PageObjectDefinitionPresenter._currentEditingNode = treeNode;
             var webElementFormData = treeNode.Tag as WebElementDefinition;
             view.UpdateWebElementForm(webElementFormData);
+            view.btnRemoveWebElement.Enabled = true;
         }
 
         internal LocatorSearchMethod GetLocatorSearchMethod()

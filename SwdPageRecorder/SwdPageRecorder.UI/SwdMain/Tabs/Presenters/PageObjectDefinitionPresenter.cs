@@ -101,6 +101,27 @@ namespace SwdPageRecorder.UI
             }
         }
 
+        internal void removeElementFromObjectPage(WebElementDefinition element)
+        {
+            if (_isEditingExistingNode)
+            {
+                DialogResult dr = MessageBox.Show("Do you want to remove the element which is named as "+ _currentEditingNode.Text + "?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    view.DeleteExistingElementFromPage(_currentEditingNode);
+                    NotifyOnChanges();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Can not remove if element hasn't been ever saved. ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
         internal void OpenExistingNodeForEdit(TreeNode treeNode)
         {
