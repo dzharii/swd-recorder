@@ -23,6 +23,12 @@ namespace SwdPageRecorder.WebDriver
         [DisplayName("Locator")]
         public string Locator { get; set; }
 
+        [DisplayName("Id")]
+        public string HtmlId { get; set; }
+
+        [DisplayName("Xpath")]
+        public string Xpath { get; set; }
+
         [Browsable(false)]
         public string HtmlTag { get; set; }
 
@@ -88,13 +94,32 @@ namespace SwdPageRecorder.WebDriver
             }
         }
 
+        [Browsable(false)]
+        [XmlIgnore]
+        public string HtmlClass 
+        {
+            get
+            {
+                var htmlClass = string.Empty;
+
+                if (AllHtmlTagProperties.ContainsKey("class"))
+                {
+                    htmlClass = AllHtmlTagProperties["class"];
+                }
+
+                return htmlClass;
+            }
+        }
+
         public WebElementDefinition Clone()
         {
             var clone =  new WebElementDefinition()
             {
                 Name = Name,
+                HtmlId = HtmlId,
                 Locator = Locator,
                 CssSelector = CssSelector,
+                Xpath = Xpath,
                 HowToSearch = HowToSearch,
                 HtmlTag = HtmlTag,
                 ReturnsCollection = ReturnsCollection,

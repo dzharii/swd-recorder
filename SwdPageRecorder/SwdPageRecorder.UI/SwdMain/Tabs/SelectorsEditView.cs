@@ -81,12 +81,25 @@ namespace SwdPageRecorder.UI
 
         private void btnHighlightWebElementInBrowser_Click(object sender, EventArgs e)
         {
+            timer.Interval = 500; // here time in milliseconds
+            timer.Tick += timer_Tick;
+            timer.Start();
+            btnHighlightWebElementInBrowser.Enabled = false;
+
             var element = GetWebElementDefinitionFromForm();
             presenter.HighLightWebElement(element);
+            
+        }
+
+        void timer_Tick(object sender, System.EventArgs e)
+        {
+            btnHighlightWebElementInBrowser.Enabled = true;
+            timer.Stop();
         }
 
         private void btnUpdateDeclaration_Click(object sender, EventArgs e)
         {
+            
             var element = GetWebElementDefinitionFromForm();
             Presenters.PageObjectDefinitionPresenter.UpdatePageDefinition(element);
         }
@@ -97,6 +110,9 @@ namespace SwdPageRecorder.UI
             var element = new WebElementDefinition()
             {
                 Name = txtWebElementName.Text,
+                HtmlId = txtHtmlId.Text,
+                CssSelector = txtCssSelector.Text,
+                Xpath = txtXPath.Text,
                 HowToSearch = GetLocatorSearchMethod(),
                 Locator = GetLocatorText(),
                 
@@ -156,6 +172,7 @@ namespace SwdPageRecorder.UI
 
             chkReturnsListOfWebElements.Checked = false;
 
+            btnRemoveWebElement.Enabled = false;
         }
 
         internal void AppendWebElementNameWith(string appendWithStr)
@@ -231,8 +248,10 @@ namespace SwdPageRecorder.UI
             ClearWebElementForm();
             txtWebElementName.Text = formData.Name;
 
-             // Fill with the formData
-             txtCssSelector.Text = formData.CssSelector;
+            // Fill with the formData
+            txtCssSelector.Text = formData.CssSelector;
+            txtHtmlId.Text = formData.HtmlId;
+            txtXPath.Text = formData.Xpath;
 
 
             switch (formData.HowToSearch)
@@ -283,6 +302,31 @@ namespace SwdPageRecorder.UI
         internal void DisplayWarningMessage(string message)
         {
             MessageBox.Show(message, "Yo! (SWD Page Recorder)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        internal void DisableHighlightWebElementInBrowserButton()
+        {
+            btnHighlightWebElementInBrowser.DoInvokeAction(() =>
+            {
+                btnHighlightWebElementInBrowser.Enabled = false;
+
+            }); 
+        }
+
+        internal void EnableHighlightWebElementInBrowserButton()
+        {
+            btnHighlightWebElementInBrowser.DoInvokeAction(() =>
+            {
+                btnHighlightWebElementInBrowser.Enabled = true;
+
+            });
+        }
+
+        private void btnRemoveWebElement_Click(object sender, EventArgs e)
+        {
+            var element = GetWebElementDefinitionFromForm();
+            presenter.RemoveWebElement(element);
+            presenter.NewWebElement();
         }
     }
 }
