@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SwdPageRecorder.ConfigurationFiles")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TEAM OS")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SwdPageRecorder.ConfigurationFiles")]
-[assembly: AssemblyCopyright("Copyright © TEAM OS 2016")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -1,3 +1,23 @@
+SWD PageRecorder 29 MAR 2017 v3.3.0
+
+(Minor release)
+
+## Bugfixes
+
+Attempt to fix the the issue by upgrading project dependencies to the recent versions:
+[Failed to start up socket due to 'OpenQA.Selenium.WebDriverException' #50](https://github.com/dzharii/swd-recorder/issues/50) reported by @nitfeu
+
+## Changes and updates
+
+- Selenium WebDriver upgraded to version 3.3.0
+- Upgraded chromedriver
+- Added geckodriver
+
+The binary distribution was scanned with VirusTotal. [See the results here.](https://www.virustotal.com/en/file/8a27bfc0ebec76710fb03e110f3caab57899d96997d973bd5c8fa7be94e499b5/analysis/1490847462/)
+
+
+
+
 SWD Page Recorder v2.XX.XX
 
 - Added JSON based configuration files. Now you can override the available settings inside `myConfiguration.json`
