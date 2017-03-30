@@ -94,6 +94,9 @@ copy %SwdUiPath%\sample_ParserWebElements.lib.json2.js SwdPageRecorder_Latest\*.
 @echo .... Copy chromedriver.exe
 copy %SwdUiPath%\chromedriver.exe SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 
+@echo .... Copy geckodriver.exe
+copy %SwdUiPath%\geckodriver.exe SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
+
 @echo .... SWD Recorder configuration files and browser profiles
 copy %SwdUiPath%\_defaultConfiguration.json SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
 copy %SwdUiPath%\myConfiguration.json SwdPageRecorder_Latest\*.* /y >>%STDOUT_DEFAULT%
