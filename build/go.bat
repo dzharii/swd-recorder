@@ -19,12 +19,12 @@ echo Hello! >%STDOUT_DEFAULT%
 
 
 
-@call "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" %SlnPath% /t:clean >>%STDOUT_DEFAULT%
+@call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe" %SlnPath% /t:clean >>%STDOUT_DEFAULT%
 if %errorlevel% neq 0 (
     echo ERROR: MSbuild: Compilation / Build Error
     exit /b %errorlevel%
 )
-@call "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" %SlnPath% >>%STDOUT_DEFAULT%
+@call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin\MSBuild.exe" %SlnPath% >>%STDOUT_DEFAULT%
 if %errorlevel% neq 0 (
     echo ERROR: MSbuild: Compilation / Build Error
     exit /b %errorlevel%

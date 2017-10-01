@@ -43,7 +43,7 @@ namespace SwdPageRecorder.UI
 // PageObject web elements, (IWebElement), driver (IWebDriver), By, Keys, Actions.
 
 driver.Navigate().GoToUrl(""https://github.com/dzharii/swd-recorder"");
-driver.GetScreenshot().SaveAsFile(""Screenshots\\mywebpagetest.png"", ImageFormat.Png); // See <SwdRecorder.exe-folder>\Screenshots
+driver.GetScreenshot().SaveAsFile(""Screenshots\\mywebpagetest.png"", ScreenshotImageFormat.Png); // See <SwdRecorder.exe-folder>\Screenshots
 ";
 
         }

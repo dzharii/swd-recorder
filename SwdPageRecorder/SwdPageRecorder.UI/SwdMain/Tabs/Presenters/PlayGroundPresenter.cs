@@ -161,7 +161,7 @@ namespace SwdPageRecorder.UI
             {"TouchActions", typeof(OpenQA.Selenium.Interactions.TouchActions)},
 
             // Screenshots / Images
-            {"ImageFormat", typeof(ImageFormat)},
+            {"ScreenshotImageFormat", typeof(ScreenshotImageFormat)},
         };
 
         private void ImportTypes(JScriptEngine engine)

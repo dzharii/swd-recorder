@@ -1,8 +1,18 @@
-SWD PageRecorder 29 MAR 2017 v3.3.0
+# SWD PageRecorder 01 OCT 2017 v3.6.0
+(Minor release)
 
+## Changes and updates
+- Selenium WebDriver upgraded to version 3.6.0
+- Upgraded chromedriver
+- Upgraded geckodriver
+
+
+
+# SWD PageRecorder 29 MAR 2017 v3.3.0
 (Minor release)
 
 ## Bugfixes
+
 
 Attempt to fix the the issue by upgrading project dependencies to the recent versions:
 [Failed to start up socket due to 'OpenQA.Selenium.WebDriverException' #50](https://github.com/dzharii/swd-recorder/issues/50) reported by @nitfeu
@@ -26,4 +36,4 @@ SWD Page Recorder v2.XX.XX
   on available settings. Always use `myConfiguration.json` for your user-defined configuration changes. 
 
 - JSON based browser configuration profiles. Profiles are the configuration system extension, allows you to tweak the 
-  browser start up behaviour and alter the default browser capabilities. 
+  browser start up behavior and alter the default browser capabilities. 

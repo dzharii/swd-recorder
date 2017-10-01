@@ -264,5 +264,10 @@ namespace SwdPageRecorder.WebDriver.OpenQA.Selenium.Support.PageObjects
         {
             return this.WrappedElement.GetHashCode();
         }
+
+        public string GetProperty(string propertyName)
+        {
+            return this.WrappedElement.GetProperty(propertyName);
+        }
     }
 }

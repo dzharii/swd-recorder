@@ -404,7 +404,7 @@ namespace SwdPageRecorder.UI
                     string newFilePath = Path.Combine(ScreenshotsLocation, newFileName);
                     
                     Screenshot screenshot = SwdBrowser.TakeScreenshot();
-                    screenshot.SaveAsFile(newFilePath, ImageFormat.Png);
+                    screenshot.SaveAsFile(newFilePath, ScreenshotImageFormat.Png);
                 }
                 catch (Exception ex)
                 {

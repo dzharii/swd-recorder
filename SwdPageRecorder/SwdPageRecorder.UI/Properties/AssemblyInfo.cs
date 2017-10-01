@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SWD Page Recorder")]
-[assembly: AssemblyCopyright("Dmytro Zharii 2013 - 2016; License: MIT")]
+[assembly: AssemblyCopyright("Dmytro Zharii 2013 - 2017; License: MIT")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 public class Build
 {
-    public const string Version = "2017.03.29";
-    public const string WebDriverVersion = "v2.53.1";
+    public const string Version = "2017.10.01";
+    public const string WebDriverVersion = "v3.6.0";
 }
 
