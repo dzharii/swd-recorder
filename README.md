@@ -1,16 +1,17 @@
 SWD Page Recorder
 =================
 
-DEPRECATION NOTICE (March 24, 2018)
-==================
+##DEPRECATION NOTICE (March 24, 2018)
 
 Sorry bros and sister, I am not planning to support this project.  
 Long-long time ago, It was a a fun time adding new features and fixing the bugs... 
 Well, thank you to all users and contributers! 
 
 Oh, if you might want to check something new, check this out: 
-[sergueik/SWET - Selenum WebDriver Page Test / workflow recorder (successor to SWD recorder)](https://github.com/sergueik/SWET)
 
+[sergueik/SWET](https://github.com/sergueik/SWET) - Selenum WebDriver Page Test / workflow recorder (successor to SWD recorder)
+
+### ...
 
 SWD Page Recorder is a .NET application that makes it easy to create new Selenium Webdriver PageObject classes. 
 You can use it to test webdriver locators (html id, css selectors, xpath etc.) using Selenium Webdriver on various 
