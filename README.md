@@ -3,13 +3,13 @@ SWD Page Recorder
 
 ## DEPRECATION NOTICE (March 24, 2018)
 
-Sorry bros and sister, I am not planning to support this project.  
-Long-long time ago, It was a a fun time adding new features and fixing the bugs... 
+Sorry bros and sisters, I am not planning to support this project.  
+Long-long time ago, it was a fun time adding new features and fixing the old bugs... 
 Well, thank you all users and contributers! 
 
 Oh, if you might want to check something new, check this out: 
 
-[sergueik/SWET](https://github.com/sergueik/SWET) - Selenum WebDriver Page Test / workflow recorder (successor to SWD recorder)
+### [sergueik/SWET](https://github.com/sergueik/SWET) - Selenum WebDriver Page Test / workflow recorder (successor to SWD recorder)
 
 ### ...
 
