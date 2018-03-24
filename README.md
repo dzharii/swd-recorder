@@ -1,7 +1,7 @@
 SWD Page Recorder
 =================
 
-##DEPRECATION NOTICE (March 24, 2018)
+## DEPRECATION NOTICE (March 24, 2018)
 
 Sorry bros and sister, I am not planning to support this project.  
 Long-long time ago, It was a a fun time adding new features and fixing the bugs... 
